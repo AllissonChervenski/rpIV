@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SistemaGibis" target="1.5" />
+      <module name="SistemaGibis" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
