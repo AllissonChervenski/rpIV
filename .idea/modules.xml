@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SistemaGibis/SistemaGibis.iml" filepath="$PROJECT_DIR$/SistemaGibis/SistemaGibis.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/rpIV.iml" filepath="$PROJECT_DIR$/.idea/rpIV.iml" />
+      <module fileurl="file://$PROJECT_DIR$/editoragibi.iml" filepath="$PROJECT_DIR$/editoragibi.iml" />
     </modules>
   </component>
 </project>
