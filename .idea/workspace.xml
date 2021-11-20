@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67a413f4-359e-44c8-8560-f4c8aeaf1df8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/rpIV.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0c663e8078dd2affc30900a344a05dde31b216bd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3d06732232aa92439626bbbd763a638687b7be73" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b7d433509c4059a1b15ee6c606a8276385a7f443" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaGibis/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaGibis/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaGibis/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaGibis/SistemaGibis.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaGibis/application/src/main/java/main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaGibis/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaGibis/target/classes/main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rpIV/main.class" beforeDir="false" />
-    </list>
+    <list default="true" id="67a413f4-359e-44c8-8560-f4c8aeaf1df8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +26,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/editoragibi" />
   </component>
   <component name="RunManager">
     <configuration name="EditoragibiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -68,6 +47,7 @@
       <updated>1637352486160</updated>
       <workItem from="1637352488634" duration="603000" />
       <workItem from="1637353119409" duration="125000" />
+      <workItem from="1637353843754" duration="80000" />
     </task>
     <servers />
   </component>
