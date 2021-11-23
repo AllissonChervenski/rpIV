@@ -37,9 +37,9 @@ public class DesenhistaService {
 
     }
 
-    public Desenhista updateDesenhista(Desenhista desenhista) {
+    public Desenhista updateDesenhista(int id, Desenhista desenhista) {
 
-        return desenhistaRepository.updateDesenhista(desenhista);
+        return desenhistaRepository.updateDesenhista(id, desenhista);
     }
 
 }
