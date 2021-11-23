@@ -37,4 +37,22 @@ public class DesenhistaRepository {
 
         return modelMapper.map(desenhistaToReturn, Desenhista.class);
     }
+
+    public boolean deleteDesenhista(Integer id) {
+
+        //DesenhistaEntity desenhistaEntity = modelMapper.map(id, DesenhistaEntity.class);
+
+        desenhistaRepository.deleteById(id);
+
+        return true;
+    }
+
+    public Desenhista updateDesenhista(Desenhista desenhista) {
+
+        DesenhistaEntity desenhistaEntity = modelMapper.map(desenhista, DesenhistaEntity.class);
+
+        DesenhistaEntity desenhistaToReturn = desenhistaRepository.save(desenhistaEntity);
+
+        return modelMapper.map(desenhistaToReturn, Desenhista.class);
+    }
 }

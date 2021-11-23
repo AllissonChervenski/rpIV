@@ -11,15 +11,31 @@ public class DesenhistaController {
     @Autowired
     DesenhistaService desenhistaService;
 
+    @RequestMapping("/sucesso")
+    public String sucesso() {
+        return "sucesso";
+    }
+
     @GetMapping("/{id}")
     public Desenhista getDesenhistaById(@PathVariable int id) {
 
         return desenhistaService.getDesenhistaById(id);
     }
 
-    @PostMapping
+    @PostMapping("/desenhista/create")
     public Desenhista addDesenhista(@RequestBody Desenhista desenhista) {
 
         return desenhistaService.addDesenhista(desenhista);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public boolean deleteDesenhista(@PathVariable Integer id) {
+
+        return desenhistaService.deleteDesenhista(id);
+    }
+
+    @PutMapping("/update")
+    public void updateDesenhista(@RequestBody Desenhista desenhista){
+        desenhistaService.updateDesenhista(desenhista);
     }
 }
