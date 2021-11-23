@@ -37,4 +37,9 @@ public class DesenhistaService {
 
     }
 
+    public Desenhista updateDesenhista(Desenhista desenhista) {
+
+        return desenhistaRepository.updateDesenhista(desenhista);
+    }
+
 }

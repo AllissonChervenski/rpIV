@@ -33,4 +33,9 @@ public class DesenhistaController {
 
         return desenhistaService.deleteDesenhista(id);
     }
+
+    @PutMapping("/update")
+    public void updateDesenhista(@RequestBody Desenhista desenhista){
+        desenhistaService.updateDesenhista(desenhista);
+    }
 }
