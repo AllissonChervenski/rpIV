@@ -47,7 +47,9 @@ public class DesenhistaRepository {
         return true;
     }
 
-    public Desenhista updateDesenhista(Desenhista desenhista) {
+    public Desenhista updateDesenhista(int id, Desenhista desenhista) {
+
+        desenhista.setId(id);
 
         DesenhistaEntity desenhistaEntity = modelMapper.map(desenhista, DesenhistaEntity.class);
 
