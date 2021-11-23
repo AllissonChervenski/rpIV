@@ -11,11 +11,6 @@ public class DesenhistaController {
     @Autowired
     DesenhistaService desenhistaService;
 
-    @RequestMapping("/sucesso")
-    public String sucesso() {
-        return "sucesso";
-    }
-
     @GetMapping("/{id}")
     public Desenhista getDesenhistaById(@PathVariable int id) {
 

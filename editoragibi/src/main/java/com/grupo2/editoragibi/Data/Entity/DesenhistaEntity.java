@@ -1,9 +1,6 @@
 package com.grupo2.editoragibi.Data.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import lombok.Data;
@@ -16,12 +13,14 @@ public class DesenhistaEntity implements Serializable {
     public static final Long serialVersionUID = 1L;
 
     @Id
+    @Column(name = "desenhista_id")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "desenhista_desenhista_id_seq")
     private int id;
 
-    @Column(name = "nome")
+    @Column(name = "nome_desenhista")
     private String nomeDesenhista;
 
-    @Column(name = "endereco")
+    @Column(name = "endereco_desenhista")
     private String enderecoDesenhista;
 
     @Column(name = "data_contratacao")
