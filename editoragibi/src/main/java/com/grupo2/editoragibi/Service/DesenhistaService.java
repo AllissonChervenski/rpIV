@@ -6,6 +6,7 @@ import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -28,4 +29,23 @@ public class DesenhistaService {
 
         return desenhistaRepository.addDesenhista(desenhista);
     }
+
+
+    public boolean deleteDesenhista(Integer id) {
+
+        return desenhistaRepository.deleteDesenhista(id);
+
+    }
+
+/*
+    public void delete(Desenhista desenhista) {
+        desenhistaRepository.delete(desenhista);
+    }
+
+    public void deleteById(Long id) {
+        desenhistaRepository.deleteById(id);
+    }
+
+ */
+
 }
