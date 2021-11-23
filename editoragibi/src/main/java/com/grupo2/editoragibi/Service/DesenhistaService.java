@@ -37,15 +37,4 @@ public class DesenhistaService {
 
     }
 
-/*
-    public void delete(Desenhista desenhista) {
-        desenhistaRepository.delete(desenhista);
-    }
-
-    public void deleteById(Long id) {
-        desenhistaRepository.deleteById(id);
-    }
-
- */
-
 }

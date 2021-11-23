@@ -44,7 +44,6 @@ public class DesenhistaRepository {
 
         desenhistaRepository.deleteById(id);
 
-
         return true;
     }
 }
