@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Input from '../form/Input'
 import Select from '../form/Select'
 import SubmitButtom from '../form/SubmitButton'
@@ -19,9 +20,13 @@ function GibisForm({btnText}){
             
             <SubmitButtom text={btnText} />
 =======
+=======
+import styles from './GibisForm.module.css'
+
+>>>>>>> 9329383 (Ajustes formulários)
 function GibisForm(){
     return (
-        <form>
+        <form className={styles.form}>
             <div>
             <input type="text" placeholder="Título do Gibi" />
             </div>
@@ -41,7 +46,7 @@ function GibisForm(){
             </div>
 
             <div>
-            <input type="submit" placeholder="Cadastrar Gibi" />
+            <input type="submit" value="Cadastrar Gibi" />
             </div>
 >>>>>>> c1653e8 (Campos de cadastro de gibis)
         </form>
