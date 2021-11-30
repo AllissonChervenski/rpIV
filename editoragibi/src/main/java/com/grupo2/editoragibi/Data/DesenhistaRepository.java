@@ -52,14 +52,15 @@ public class DesenhistaRepository {
 
     public boolean deleteDesenhista(Integer id) {
 
-        //DesenhistaEntity desenhistaEntity = modelMapper.map(id, DesenhistaEntity.class);
-
         desenhistaRepository.deleteById(id);
 
         return true;
     }
 
     public Desenhista updateDesenhista(int id, Desenhista desenhista) {
+
+        if (desenhistaRepository.findById(id).isEmpty())
+            return null;
 
         desenhista.setId(id);
 

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/desenhistas/")
 public class DesenhistaController {
 
     @Autowired
@@ -19,13 +20,13 @@ public class DesenhistaController {
         return desenhistaService.getDesenhistaById(id);
     }
 
-    @GetMapping("/desenhistas")
+    @GetMapping("/all")
     public List<Desenhista> getDesenhistas() {
 
         return desenhistaService.getDesenhistas();
     }
 
-    @PostMapping("/desenhista/create")
+    @PostMapping("/create")
     public Desenhista addDesenhista(@RequestBody Desenhista desenhista) {
 
         return desenhistaService.addDesenhista(desenhista);
@@ -38,7 +39,7 @@ public class DesenhistaController {
     }
 
     @PutMapping("/update/{id}")
-    public void updateDesenhista(@PathVariable int id, @RequestBody Desenhista desenhista){
-        desenhistaService.updateDesenhista(id, desenhista);
+    public Desenhista updateDesenhista(@PathVariable int id, @RequestBody Desenhista desenhista){
+        return desenhistaService.updateDesenhista(id, desenhista);
     }
 }
