@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './components/pages/Home'
 import Cadastros from './components/pages/Cadastros'
+import Gibis from './components/pages/Gibis'
 import Financeiro from './components/pages/Financeiro'
 import Container from './components/layout/Container'
 import Footer from './components/layout/Footer'
@@ -18,6 +19,10 @@ function App() {
 
         <Route exact path="/cadastros"> 
         <Cadastros />
+        </Route>
+
+        <Route exact path="/gibis"> 
+        <Gibis />
         </Route>
 
         <Route exact path="/financeiro"> 
