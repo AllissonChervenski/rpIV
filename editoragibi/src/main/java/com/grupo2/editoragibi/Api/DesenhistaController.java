@@ -5,16 +5,30 @@ import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class DesenhistaController {
 
     @Autowired
     DesenhistaService desenhistaService;
 
+    //somente para teste
+    @GetMapping("/testando")
+    public String testar() {
+        return "Está tudo certo";
+    }
+
     @GetMapping("/{id}")
     public Desenhista getDesenhistaById(@PathVariable int id) {
 
         return desenhistaService.getDesenhistaById(id);
+    }
+
+    @GetMapping("/desenhistas")
+    public List<Desenhista> getDesenhistas() {
+
+        return desenhistaService.getDesenhistas();
     }
 
     @PostMapping("/desenhista/create")
