@@ -6,7 +6,7 @@ function Gibis(){
         <div className={styles.gibis_container}>
             <h1>Cadastrar novo Gibi</h1>
             <p>Insira no formulário abaixo as informações solicitadas:</p>
-            <GibisForm />
+            <GibisForm btnText="Cadastrar Gibi"/>
         </div>
     )
 }

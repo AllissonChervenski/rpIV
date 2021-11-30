@@ -1,29 +1,22 @@
+import Input from '../form/Input'
+import Select from '../form/Select'
+import SubmitButtom from '../form/SubmitButton'
+
 import styles from './GibisForm.module.css'
 
-function GibisForm(){
+
+function GibisForm({btnText}){
     return (
         <form className={styles.form}>
-            <div>
-            <input type="text" placeholder="Título do Gibi" />
-            </div>
+            <Input type="text" text="Nome do Gibi" name="nomeGibi" placeholder="Insira o nome completo do Gibi" />
 
-            <div>
-            <input type="number" placeholder="Ano de início da publicação" />
-            </div>
-
-            <div>
-            <input type="number" placeholder="Ano de fim da publicação. Caso ainda esteja sendo publicado, deixar campo em branco" />
-            </div>
+            <Input type="number" text="Início das publicações" name="inicioP" placeholder="Insira o ano de início das publicações" />
             
-            <div> 
-            <select name="descontinuado_id">
-                <option disabled>O Gibi foi descontinuado?</option>
-            </select>
-            </div>
+            <Input type="number" text="Fim das publicações" name="fimP" placeholder="Não preencher caso as publicações estejam ativas" />
 
-            <div>
-            <input type="submit" value="Cadastrar Gibi" />
-            </div>
+            <Select name="descontinuado_op" text="O Gibi foi descontinuado?" />
+            
+            <SubmitButtom text={btnText} />
         </form>
     )
 }
