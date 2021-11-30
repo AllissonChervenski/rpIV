@@ -13,12 +13,6 @@ public class DesenhistaController {
     @Autowired
     DesenhistaService desenhistaService;
 
-    //somente para teste
-    @GetMapping("/testando")
-    public String testar() {
-        return "Está tudo certo";
-    }
-
     @GetMapping("/{id}")
     public Desenhista getDesenhistaById(@PathVariable int id) {
 
