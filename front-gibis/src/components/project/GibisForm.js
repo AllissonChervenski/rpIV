@@ -1,6 +1,8 @@
+import styles from './GibisForm.module.css'
+
 function GibisForm(){
     return (
-        <form>
+        <form className={styles.form}>
             <div>
             <input type="text" placeholder="Título do Gibi" />
             </div>
@@ -20,7 +22,7 @@ function GibisForm(){
             </div>
 
             <div>
-            <input type="submit" placeholder="Cadastrar Gibi" />
+            <input type="submit" value="Cadastrar Gibi" />
             </div>
         </form>
     )
