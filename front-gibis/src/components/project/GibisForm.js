@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Input from '../form/Input'
 import Select from '../form/Select'
 import SubmitButtom from '../form/SubmitButton'
@@ -17,6 +18,32 @@ function GibisForm({btnText}){
             <Select name="descontinuado_op" text="O Gibi foi descontinuado?" />
             
             <SubmitButtom text={btnText} />
+=======
+function GibisForm(){
+    return (
+        <form>
+            <div>
+            <input type="text" placeholder="Título do Gibi" />
+            </div>
+
+            <div>
+            <input type="number" placeholder="Ano de início da publicação" />
+            </div>
+
+            <div>
+            <input type="number" placeholder="Ano de fim da publicação. Caso ainda esteja sendo publicado, deixar campo em branco" />
+            </div>
+            
+            <div> 
+            <select name="descontinuado_id">
+                <option disabled>O Gibi foi descontinuado?</option>
+            </select>
+            </div>
+
+            <div>
+            <input type="submit" placeholder="Cadastrar Gibi" />
+            </div>
+>>>>>>> c1653e8 (Campos de cadastro de gibis)
         </form>
     )
 }
