@@ -1,17 +1,14 @@
 package com.grupo2.editoragibi.Service.Domain;
 
-import org.apache.tomcat.jni.Local;
-import org.springframework.stereotype.Component;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Desenhista {
 
     private int id;
     private String nomeDesenhista;
+    private String paisNascimento;
+    private LocalDate dataNascimento;
+    private LocalDate dataFalecimento;
     private String enderecoDesenhista;
     private LocalDate dataContratacao;
     private LocalDate dataDemissao;
@@ -19,11 +16,13 @@ public class Desenhista {
     public Desenhista() {
     }
 
-    public Desenhista(String nomeDesenhista, String enderecoDesenhista) {
+    public Desenhista(String nomeDesenhista, String enderecoDesenhista, LocalDate dataContratacao, String paisNascimento, LocalDate dataNascimento) {
 
         this.nomeDesenhista = nomeDesenhista;
         this.enderecoDesenhista = enderecoDesenhista;
-        dataContratacao = LocalDate.now();
+        this.dataContratacao = dataContratacao;
+        this.paisNascimento = paisNascimento;
+        this.dataNascimento = dataNascimento;
     }
 
     public int getId() {
@@ -40,6 +39,30 @@ public class Desenhista {
 
     public void setNomeDesenhista(String nomeDesenhista) {
         this.nomeDesenhista = nomeDesenhista;
+    }
+
+    public String getPaisNascimento() {
+        return paisNascimento;
+    }
+
+    public void setPaisNascimento(String paisNascimento) {
+        this.paisNascimento = paisNascimento;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public LocalDate getDataFalecimento() {
+        return dataFalecimento;
+    }
+
+    public void setDataFalecimento(LocalDate dataFalecimento) {
+        this.dataFalecimento = dataFalecimento;
     }
 
     public String getEnderecoDesenhista() {

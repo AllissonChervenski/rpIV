@@ -20,6 +20,15 @@ public class DesenhistaEntity implements Serializable {
     @Column(name = "nome_desenhista")
     private String nomeDesenhista;
 
+    @Column(name = "pais_nascimento")
+    private String paisNascimento;
+
+    @Column(name = "data_nascimento_desenhista")
+    private LocalDate dataNascimento;
+
+    @Column(name = "data_falecimento_desenhista")
+    private LocalDate dataFalecimento;
+
     @Column(name = "endereco_desenhista")
     private String enderecoDesenhista;
 
