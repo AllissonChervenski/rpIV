@@ -9,7 +9,6 @@ import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
 import Desenhista from './components/pages/Desenhista'
 import Transportadoras from './components/pages/Transportadoras'
-import SingIn from './components/pages/SingIn'
 import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
 
@@ -48,10 +47,7 @@ function App() {
         <Transportadoras />
         </Route>
 
-        <Route exact path="/singin"> 
-        <SingIn />
-        </Route>
-
+      
         <Route exact path="/acervo"> 
         <Acervo />
         </Route>
