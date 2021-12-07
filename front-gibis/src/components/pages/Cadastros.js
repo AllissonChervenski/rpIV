@@ -36,6 +36,7 @@ function Cadastros(){
 =======
         <LinkButton to="/escritor" text="Cadastrar novo escritor" />
         <LinkButton to="/gibis" text="Cadastrar novo gibi" />
+        <LinkButton to="/transportadoras" text="Cadastrar nova transportadora" />
 
 >>>>>>> 1fe8be3 (Formulário Escritor - Cadastro)
        

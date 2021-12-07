@@ -16,12 +16,17 @@ function Transportadoras() {
                 <span>Transportadoras</span>
             </h1>
 
+<<<<<<< HEAD
 
             <LinkButton to="/transportadoraForm" text="Cadastrar Transportadora" />
             <p>Consultar</p>
             <p>Alterar</p>
             <p>Excluir</p>
 >>>>>>> e31c498 (Updates)
+=======
+            <TransportadoraForm btnText="Cadastrar Transportadora" />
+            
+>>>>>>> 23fe3e7 (Updates)
 
 
         </section>
