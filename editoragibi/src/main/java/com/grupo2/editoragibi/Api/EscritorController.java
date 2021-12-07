@@ -41,7 +41,7 @@ public class EscritorController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean addEscritor(@PathVariable int id) {
+    public boolean deleteEscritor(@PathVariable int id) {
 
         return escritorService.deleteEscritor(id);
     }
