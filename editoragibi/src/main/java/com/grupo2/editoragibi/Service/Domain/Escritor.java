@@ -1,7 +1,10 @@
 package com.grupo2.editoragibi.Service.Domain;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+=======
+>>>>>>> f2e5813 (crud de escritor e personagem)
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +18,23 @@ public class Escritor {
     private String emailEscritor;
     private LocalDate dataContratacao;
     private LocalDate dataDemissao;
+<<<<<<< HEAD
     @JsonBackReference
     private List<Personagem> personagens = new ArrayList<>();
+=======
+
+    public Escritor(String nomeEscritor, String enderecoEscritor, String telefoneEscritor, String emailEscritor, LocalDate dataContratacao) {
+
+        this.nomeEscritor = nomeEscritor;
+        this.enderecoEscritor = enderecoEscritor;
+        this.telefoneEscritor = telefoneEscritor;
+        this.emailEscritor = emailEscritor;
+        this.dataContratacao = dataContratacao;
+    }
+
+    public Escritor() {
+    }
+>>>>>>> f2e5813 (crud de escritor e personagem)
 
     public int getEscritorId() {
         return escritorId;
@@ -73,6 +91,7 @@ public class Escritor {
     public void setDataDemissao(LocalDate dataDemissao) {
         this.dataDemissao = dataDemissao;
     }
+<<<<<<< HEAD
 
     public List<Personagem> getPersonagens() {
         return personagens;
@@ -81,4 +100,6 @@ public class Escritor {
     public void setPersonagens(List<Personagem> personagens) {
         this.personagens = personagens;
     }
+=======
+>>>>>>> f2e5813 (crud de escritor e personagem)
 }

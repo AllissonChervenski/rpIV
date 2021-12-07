@@ -38,7 +38,10 @@ public class EscritorEntity implements Serializable {
 
     @Column(name = "data_demissao")
     private LocalDate dataDemissao;
+<<<<<<< HEAD
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "escritores")
     private List<PersonagemEntity> personagens;
+=======
+>>>>>>> f2e5813 (crud de escritor e personagem)
 }

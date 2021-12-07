@@ -5,8 +5,11 @@ import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.EscritorService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+=======
+>>>>>>> f2e5813 (crud de escritor e personagem)
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +22,7 @@ public class EscritorController {
     EscritorService escritorService;
 
     @GetMapping("/{id}")
+<<<<<<< HEAD
     public ResponseEntity<Object> getEscritorById(@PathVariable int id) {
 
         Escritor escritor = null;
@@ -30,6 +34,11 @@ public class EscritorController {
         }
 
         return new ResponseEntity<>(escritor, HttpStatus.OK);
+=======
+    public Escritor getEscritorById(@PathVariable int id) {
+
+        return escritorService.getEscritorById(id);
+>>>>>>> f2e5813 (crud de escritor e personagem)
     }
 
     @GetMapping("/all")
@@ -51,6 +60,7 @@ public class EscritorController {
     }
 
     @DeleteMapping("/delete/{id}")
+<<<<<<< HEAD
     public ResponseEntity<Object> deleteEscritor(@PathVariable int id) {
 
         try {
@@ -64,10 +74,20 @@ public class EscritorController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Object> updateEscritor(@PathVariable int id, @RequestBody EscritorRequest escritorRequest) {
+=======
+    public boolean addEscritor(@PathVariable int id) {
+
+        return escritorService.deleteEscritor(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public Escritor updateEscritor(@PathVariable int id, @RequestBody EscritorRequest escritorRequest) {
+>>>>>>> f2e5813 (crud de escritor e personagem)
         Escritor escritor = new Escritor();
 
         BeanUtils.copyProperties(escritorRequest, escritor);
 
+<<<<<<< HEAD
         Escritor escritorToReturn = null;
         try {
             escritorToReturn = escritorService.updateEscritor(id, escritor);
@@ -76,5 +96,10 @@ public class EscritorController {
         }
 
         return new ResponseEntity<>(escritorToReturn, HttpStatus.OK);
+=======
+        Escritor escritorToReturn = escritorService.updateEscritor(id, escritor);
+
+        return escritorToReturn;
+>>>>>>> f2e5813 (crud de escritor e personagem)
     }
 }
