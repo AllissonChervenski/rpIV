@@ -29,7 +29,12 @@ import Transportadoras from './components/pages/Transportadoras'
 >>>>>>> e31c498 (Updates)
 =======
 import SingIn from './components/pages/SingIn'
+<<<<<<< HEAD
 >>>>>>> ef88676 (Login page)
+=======
+import Acervo from './components/pages/Acervo'
+import Login from './components/pages/Login'
+>>>>>>> 7c60ee0 (Login Update (add image))
 
 
 >>>>>>> 4e6661d (Desenhista Forms)
@@ -97,7 +102,19 @@ function App() {
         <Route exact path="/singin"> 
         <SingIn />
         </Route>
+<<<<<<< HEAD
 >>>>>>> ef88676 (Login page)
+=======
+
+        <Route exact path="/acervo"> 
+        <Acervo />
+        </Route>
+
+        <Route exact path="/login"> 
+        <Login />
+        </Route>
+        
+>>>>>>> 7c60ee0 (Login Update (add image))
         
         <Route exact path="/editorHomePage"> 
         <EditorHomePage />

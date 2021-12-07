@@ -27,7 +27,8 @@ function Home() {
 =======
       <LinkButton to="/cadastros" text="Teste Botão Cadastros" />
       <LinkButton to="/gibis" text="Teste Botão Gibis" />
-      <LinkButton to="/singin" text="Teste Página Login" />
+      <LinkButton to="/login" text="Teste Página Login" />
+
       </div> 
 >>>>>>> e31c498 (Updates)
 >>>>>>> df79e55 (Updates)

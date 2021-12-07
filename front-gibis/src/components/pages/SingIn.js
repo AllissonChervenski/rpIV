@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import marvel from '../../img/marvel.jpg'
 
 const theme = createTheme();
 
@@ -71,13 +72,9 @@ export default function SignIn() {
             >
               Entrar
             </Button>
-            <Grid container>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Cadastrar novo ADMIN"}
-                </Link>
-              </Grid>
-            </Grid>
+
+
+            <img src={marvel} alt="marvel picture" />
           </Box>
         </Box>
       </Container>

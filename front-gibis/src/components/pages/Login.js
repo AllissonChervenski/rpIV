@@ -9,11 +9,19 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+<<<<<<< HEAD
 
 
 const theme = createTheme();
 
 export default function Login() {
+=======
+import marvel from '../../img/marvel.jpg'
+
+const theme = createTheme();
+
+export default function SignInSide() {
+>>>>>>> 7c60ee0 (Login Update (add image))
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
