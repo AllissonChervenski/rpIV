@@ -19,9 +19,6 @@ function Navbar() {
             <Link to="/cadastros">Cadastros</Link>
           </li>
           <li className={styles.item}>
-            <Link to="/gibis">Gibis</Link>
-          </li>
-          <li className={styles.item}>
             <Link to="/financeiro">Financeiro</Link>
           </li>
         </ul>

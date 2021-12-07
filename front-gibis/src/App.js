@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './components/pages/Home'
 import Cadastros from './components/pages/Cadastros'
+import Escritor from './components/pages/Escritor'
 import Gibis from './components/pages/Gibis'
 import Financeiro from './components/pages/Financeiro'
 import Container from './components/layout/Container'
@@ -27,6 +28,10 @@ function App() {
 
         <Route exact path="/financeiro"> 
         <Financeiro />
+        </Route>
+
+        <Route exact path="/escritor"> 
+        <Escritor />
         </Route>
       </Container>
       </Switch>
