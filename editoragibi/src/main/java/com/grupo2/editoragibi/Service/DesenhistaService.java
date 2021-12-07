@@ -39,8 +39,9 @@ public class DesenhistaService {
 
     public boolean deleteDesenhista(Integer id) {
 
-        return desenhistaRepository.deleteDesenhista(id);
+        desenhistaRepository.deleteDesenhista(id);
 
+        return true;
     }
 
     public Desenhista updateDesenhista(int id, Desenhista desenhista) {

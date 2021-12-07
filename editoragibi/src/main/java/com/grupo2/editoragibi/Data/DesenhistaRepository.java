@@ -50,11 +50,9 @@ public class DesenhistaRepository {
         return modelMapper.map(desenhistaToReturn, Desenhista.class);
     }
 
-    public boolean deleteDesenhista(Integer id) {
+    public void deleteDesenhista(Integer id) {
 
         desenhistaRepository.deleteById(id);
-
-        return true;
     }
 
     public Desenhista updateDesenhista(int id, Desenhista desenhista) {
