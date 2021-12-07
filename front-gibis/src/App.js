@@ -28,6 +28,54 @@ function App() {
         <Route exact path="/financeiro"> 
         <Financeiro />
         </Route>
+<<<<<<< HEAD
+=======
+
+<<<<<<< HEAD
+        <Route exact path="/escritorp"> 
+        <EscritorP />
+        </Route>
+
+        <Route exact path="/escritor"> 
+        <Escritor />
+        </Route>
+
+        <Route exact path="/desenhistap"> 
+        <DesenhistaP />
+        </Route>
+
+        <Route exact path="/desenhista"> 
+        <Desenhista />
+        </Route>
+
+        <Route exact path="/transportadoras"> 
+        <Transportadoras />
+        </Route>
+
+      
+        <Route exact path="/acervo"> 
+        <Acervo />
+        </Route>
+
+        <Route exact path="/login"> 
+        <Login />
+        </Route>
+        
+        <Route exact path="/editorHomePage"> 
+        <EditorHomePage />
+        </Route>
+
+        <Route exact path="/banca"> 
+        <Banca />
+        </Route>
+
+        
+=======
+        <Route exact path="/escritor"> 
+        <Escritor />
+        </Route>
+>>>>>>> 1fe8be3 (Formulário Escritor - Cadastro)
+>>>>>>> d1db7a3 (Formulário Escritor - Cadastro)
       </Container>
       </Switch>
       <Footer />

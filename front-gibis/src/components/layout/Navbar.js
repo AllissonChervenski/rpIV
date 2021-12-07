@@ -19,9 +19,19 @@ function Navbar() {
             <Link to="/cadastros">Cadastros</Link>
           </li>
           <li className={styles.item}>
+<<<<<<< HEAD
             <Link to="/gibis">Gibis</Link>
+=======
+<<<<<<< HEAD
+            <Link to="/escritorp">Escritores</Link>
           </li>
           <li className={styles.item}>
+            <Link to="/gibisp">Gibis</Link>
+>>>>>>> d1db7a3 (Formulário Escritor - Cadastro)
+          </li>
+          <li className={styles.item}>
+=======
+>>>>>>> 1fe8be3 (Formulário Escritor - Cadastro)
             <Link to="/financeiro">Financeiro</Link>
           </li>
         </ul>
