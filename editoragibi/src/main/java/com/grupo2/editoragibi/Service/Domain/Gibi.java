@@ -13,6 +13,7 @@ public class Gibi {
     private String titulo;
     private LocalDate inicioData;
     private LocalDate encData;
+    private int edicoes = 0;
 
     public Gibi(){
 
@@ -21,6 +22,14 @@ public class Gibi {
     public Gibi(String titulo){
         this.titulo = titulo;
         this.inicioData = LocalDate.now();
+    }
+
+    public void setEdicoes(Integer edicoes){
+        this.edicoes = edicoes;
+    }
+
+    public int getEdicoes(){
+        return this.edicoes;
     }
 
     public int getId() {
