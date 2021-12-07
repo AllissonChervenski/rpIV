@@ -12,6 +12,7 @@ function Cadastros(){
 
 
         <LinkButton to="/desenhista" text="Cadastrar novo desenhista" />
+<<<<<<< HEAD
         <LinkButton to="/escritor" text="Cadastrar novo escritor" />
         <LinkButton to="/gibis" text="Cadastrar novo gibi" />
         <LinkButton to="/transportadoras" text="Cadastrar nova transportadora" />
@@ -26,6 +27,9 @@ function Cadastros(){
 
         <LinkButton to="/desenhista" text="Cadastrar novo desenhista" />
 <<<<<<< HEAD
+=======
+        <LinkButton to="/transportadoras" text="Cadastrar nova transportadora" />
+>>>>>>> e31c498 (Updates)
         <p>Cadastrar novo Gibi</p>
         <p>Cadastrar Escritor</p>
 >>>>>>> b85bdeb (Cadastro e Desenhista)

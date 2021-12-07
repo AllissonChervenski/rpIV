@@ -10,6 +10,7 @@ import Navbar from './components/layout/Navbar'
 =======
 import Desenhista from './components/pages/Desenhista'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Transportadoras from './components/pages/Transportadoras'
 import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
@@ -22,6 +23,9 @@ import EditorHomePage from './components/pages/EditorHomePage'
 
 =======
 >>>>>>> 5253f45 (Desenhista Forms)
+=======
+import Transportadoras from './components/pages/Transportadoras'
+>>>>>>> e31c498 (Updates)
 
 
 >>>>>>> 4e6661d (Desenhista Forms)
@@ -71,6 +75,7 @@ function App() {
         <Route exact path="/transportadoras"> 
         <Transportadoras />
         </Route>
+<<<<<<< HEAD
 
       
         <Route exact path="/acervo"> 
@@ -80,6 +85,8 @@ function App() {
         <Route exact path="/login"> 
         <Login />
         </Route>
+=======
+>>>>>>> e31c498 (Updates)
         
         <Route exact path="/editorHomePage"> 
         <EditorHomePage />

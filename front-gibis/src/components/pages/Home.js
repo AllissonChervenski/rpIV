@@ -12,9 +12,25 @@ function Home() {
       <p>Site em construção</p>
 
       <div class="btn-toolbar">
+<<<<<<< HEAD
       <LinkButton to="/cadastros" text="Teste Botão Cadastros" />
       <LinkButton to="/gibis" text="Teste Botão Gibis" />
       </div> 
+=======
+<<<<<<< HEAD
+        <LinkButton to="/cadastros" text="Cadastros Gerais" />
+        <LinkButton to="/login" text="Página Login" />
+        <LinkButton to="/editorHomePage" text="Editor Home Page" />
+        
+
+      </div>
+=======
+      <LinkButton to="/cadastros" text="Teste Botão Cadastros" />
+      <LinkButton to="/gibis" text="Teste Botão Gibis" />
+      <LinkButton to="/transportadoras" text="Transportadoras" />
+      </div> 
+>>>>>>> e31c498 (Updates)
+>>>>>>> df79e55 (Updates)
 
       <img src={savings} alt="Savings" />
     </section>
