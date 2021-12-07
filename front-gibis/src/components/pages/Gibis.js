@@ -3,6 +3,7 @@ import GibisForm from '../project/GibisForm'
 import styles from './Gibis.module.css'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Gibis() {
     return (
         <div className={styles.gibis_container}>
@@ -30,7 +31,18 @@ function Gibis(){
 =======
             <GibisForm btnText="Cadastrar Gibi"/>
 >>>>>>> 75195b7 (Conclusão formulário gibis)
+<<<<<<< HEAD
 >>>>>>> ef00674 (Conclusão formulário gibis)
+=======
+=======
+function Gibis() {
+    return (
+        <div className={styles.gibis_container}>
+            <h1>Cadastrar novo Gibi</h1>
+            <p>Insira no formulário abaixo as informações solicitadas:</p>
+            <GibisForm btnText="Cadastrar Gibi" />
+>>>>>>> 5253f45 (Desenhista Forms)
+>>>>>>> 4e6661d (Desenhista Forms)
         </div>
     )
 }

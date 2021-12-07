@@ -6,6 +6,25 @@ import Financeiro from './components/pages/Financeiro'
 import Container from './components/layout/Container'
 import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
+<<<<<<< HEAD
+=======
+import Desenhista from './components/pages/Desenhista'
+<<<<<<< HEAD
+import Transportadoras from './components/pages/Transportadoras'
+import Acervo from './components/pages/Acervo'
+import Login from './components/pages/Login'
+import DesenhistaP from './components/pages/DesenhistaP'
+import EscritorP from './components/pages/EscritorP'
+import GibisP from './components/pages/GibisP'
+import Banca from './components/pages/Banca'
+import EditorHomePage from './components/pages/EditorHomePage'
+
+
+=======
+>>>>>>> 5253f45 (Desenhista Forms)
+
+
+>>>>>>> 4e6661d (Desenhista Forms)
 
 function App() {
   return (
@@ -31,6 +50,7 @@ function App() {
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         <Route exact path="/escritorp"> 
         <EscritorP />
@@ -75,7 +95,16 @@ function App() {
         <Escritor />
         </Route>
 >>>>>>> 1fe8be3 (Formulário Escritor - Cadastro)
+<<<<<<< HEAD
 >>>>>>> d1db7a3 (Formulário Escritor - Cadastro)
+=======
+=======
+        <Route exact path="/desenhista"> 
+        <Desenhista />
+        </Route>
+        
+>>>>>>> 5253f45 (Desenhista Forms)
+>>>>>>> 4e6661d (Desenhista Forms)
       </Container>
       </Switch>
       <Footer />

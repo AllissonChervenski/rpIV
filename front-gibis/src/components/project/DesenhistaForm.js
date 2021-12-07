@@ -11,9 +11,13 @@ function DesenhistaForm({ btnText }) {
 
             <Input type="text" text="Endereço" name="enderecoDesenhista" placeholder="Insira o endereço do desenhista" />
 
+<<<<<<< HEAD
             <Input type="date" text="Data contratação" name="contratacaoDesenhista" placeholder="Insira a data de contratação" />
 
             <Input type="date" text="Data demissão" name="demissaoDesenhista" placeholder="Insira a data de demissão (se houver)" />
+=======
+            <Input type="number" text="Data contratação" name="contratacaoDesenhista" placeholder="Insira a data de contratação" />
+>>>>>>> 5253f45 (Desenhista Forms)
 
             <SubmitButtom text={btnText} />
         </form>
