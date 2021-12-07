@@ -12,6 +12,7 @@ import Desenhista from './components/pages/Desenhista'
 <<<<<<< HEAD
 <<<<<<< HEAD
 import Transportadoras from './components/pages/Transportadoras'
+<<<<<<< HEAD
 import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
 import DesenhistaP from './components/pages/DesenhistaP'
@@ -26,6 +27,9 @@ import EditorHomePage from './components/pages/EditorHomePage'
 =======
 import Transportadoras from './components/pages/Transportadoras'
 >>>>>>> e31c498 (Updates)
+=======
+import SingIn from './components/pages/SingIn'
+>>>>>>> ef88676 (Login page)
 
 
 >>>>>>> 4e6661d (Desenhista Forms)
@@ -76,6 +80,7 @@ function App() {
         <Transportadoras />
         </Route>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
       
         <Route exact path="/acervo"> 
@@ -87,6 +92,12 @@ function App() {
         </Route>
 =======
 >>>>>>> e31c498 (Updates)
+=======
+
+        <Route exact path="/singin"> 
+        <SingIn />
+        </Route>
+>>>>>>> ef88676 (Login page)
         
         <Route exact path="/editorHomePage"> 
         <EditorHomePage />
