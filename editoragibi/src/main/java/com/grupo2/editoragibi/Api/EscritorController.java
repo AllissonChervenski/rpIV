@@ -61,6 +61,7 @@ public class EscritorController {
 
     @DeleteMapping("/delete/{id}")
 <<<<<<< HEAD
+<<<<<<< HEAD
     public ResponseEntity<Object> deleteEscritor(@PathVariable int id) {
 
         try {
@@ -76,6 +77,9 @@ public class EscritorController {
     public ResponseEntity<Object> updateEscritor(@PathVariable int id, @RequestBody EscritorRequest escritorRequest) {
 =======
     public boolean addEscritor(@PathVariable int id) {
+=======
+    public boolean deleteEscritor(@PathVariable int id) {
+>>>>>>> b786377 (correção em nome de método)
 
         return escritorService.deleteEscritor(id);
     }
