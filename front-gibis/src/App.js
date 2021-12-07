@@ -7,6 +7,11 @@ import Financeiro from './components/pages/Financeiro'
 import Container from './components/layout/Container'
 import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
+import Desenhista from './components/pages/Desenhista'
+import Transportadoras from './components/pages/Transportadoras'
+import SingIn from './components/pages/SingIn'
+
+
 
 function App() {
   return (
@@ -33,6 +38,18 @@ function App() {
         <Route exact path="/escritor"> 
         <Escritor />
         </Route>
+        <Route exact path="/desenhista"> 
+        <Desenhista />
+        </Route>
+
+        <Route exact path="/transportadoras"> 
+        <Transportadoras />
+        </Route>
+
+        <Route exact path="/singin"> 
+        <SingIn />
+        </Route>
+        
       </Container>
       </Switch>
       <Footer />
