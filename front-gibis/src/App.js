@@ -10,6 +10,8 @@ import Navbar from './components/layout/Navbar'
 import Desenhista from './components/pages/Desenhista'
 import Transportadoras from './components/pages/Transportadoras'
 import SingIn from './components/pages/SingIn'
+import Acervo from './components/pages/Acervo'
+import Login from './components/pages/Login'
 
 
 
@@ -49,6 +51,15 @@ function App() {
         <Route exact path="/singin"> 
         <SingIn />
         </Route>
+
+        <Route exact path="/acervo"> 
+        <Acervo />
+        </Route>
+
+        <Route exact path="/login"> 
+        <Login />
+        </Route>
+        
         
       </Container>
       </Switch>

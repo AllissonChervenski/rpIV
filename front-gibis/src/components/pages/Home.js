@@ -14,7 +14,8 @@ function Home() {
       <div class="btn-toolbar">
       <LinkButton to="/cadastros" text="Teste Botão Cadastros" />
       <LinkButton to="/gibis" text="Teste Botão Gibis" />
-      <LinkButton to="/singin" text="Teste Página Login" />
+      <LinkButton to="/login" text="Teste Página Login" />
+
       </div> 
 
       <img src={savings} alt="Savings" />
