@@ -8,6 +8,7 @@ function Cadastros(){
           Página de  <span>cadastros</span>
         </h1>
         <LinkButton to="/desenhista" text="Cadastrar novo desenhista" />
+        <LinkButton to="/transportadoras" text="Cadastrar nova transportadora" />
         <p>Cadastrar novo Gibi</p>
         <p>Cadastrar Escritor</p>
        

@@ -7,6 +7,7 @@ import Container from './components/layout/Container'
 import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
 import Desenhista from './components/pages/Desenhista'
+import Transportadoras from './components/pages/Transportadoras'
 
 
 
@@ -34,6 +35,10 @@ function App() {
 
         <Route exact path="/desenhista"> 
         <Desenhista />
+        </Route>
+
+        <Route exact path="/transportadoras"> 
+        <Transportadoras />
         </Route>
         
       </Container>
