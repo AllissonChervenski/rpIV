@@ -9,11 +9,8 @@ function Transportadoras() {
                 <span>Transportadoras</span>
             </h1>
 
-
-            <LinkButton to="/transportadoraForm" text="Cadastrar Transportadora" />
-            <p>Consultar</p>
-            <p>Alterar</p>
-            <p>Excluir</p>
+            <TransportadoraForm btnText="Cadastrar Transportadora" />
+            
 
 
         </section>
