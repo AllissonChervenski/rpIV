@@ -6,6 +6,9 @@ import Financeiro from './components/pages/Financeiro'
 import Container from './components/layout/Container'
 import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
+import Desenhista from './components/pages/Desenhista'
+
+
 
 function App() {
   return (
@@ -28,6 +31,11 @@ function App() {
         <Route exact path="/financeiro"> 
         <Financeiro />
         </Route>
+
+        <Route exact path="/desenhista"> 
+        <Desenhista />
+        </Route>
+        
       </Container>
       </Switch>
       <Footer />
