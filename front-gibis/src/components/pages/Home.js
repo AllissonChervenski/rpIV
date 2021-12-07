@@ -15,6 +15,7 @@ function Home() {
       <LinkButton to="/cadastros" text="Teste Botão Cadastros" />
       <LinkButton to="/gibis" text="Teste Botão Gibis" />
       <LinkButton to="/transportadoras" text="Transportadoras" />
+      <LinkButton to="/singin" text="Login" />
       </div> 
 
       <img src={savings} alt="Savings" />
