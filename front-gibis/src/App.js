@@ -13,6 +13,9 @@ import Desenhista from './components/pages/Desenhista'
 <<<<<<< HEAD
 import Transportadoras from './components/pages/Transportadoras'
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 175ab58 (Ajuste após substituição do SingIn por Login)
 import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
 import DesenhistaP from './components/pages/DesenhistaP'
@@ -99,6 +102,7 @@ function App() {
 >>>>>>> e31c498 (Updates)
 =======
 
+<<<<<<< HEAD
         <Route exact path="/singin"> 
         <SingIn />
         </Route>
@@ -106,6 +110,9 @@ function App() {
 >>>>>>> ef88676 (Login page)
 =======
 
+=======
+      
+>>>>>>> 175ab58 (Ajuste após substituição do SingIn por Login)
         <Route exact path="/acervo"> 
         <Acervo />
         </Route>
