@@ -1,0 +1,12 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÁÔìç
+P
+java:S1128"5Remove this unused import 'javax.persistence.Entity'.(úƒßıûÿÿÿÿ
+`
+java:S1128"ERemove this unused import 'org.springframework.stereotype.Component'.(Ş÷Ñ¸ÿÿÿÿÿ
+A
+java:S1128	"+Remove this unused import 'java.util.Date'.(¸…¼ü
+M
+java:S1128"8Remove this unused import 'org.apache.tomcat.jni.Local'.(å¡.
+G
+java:S1128"1Remove this unused import 'javax.persistence.Id'.(ş¹ŞÜ
