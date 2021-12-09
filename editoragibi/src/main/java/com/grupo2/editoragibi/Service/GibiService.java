@@ -29,9 +29,13 @@ public class GibiService {
         return gibiRepository.addGibi(gibi);
     }
 
-    public boolean deleteGibi(Integer id){
-        return gibiRepository.deleteGibi(id);
-
+    public boolean deleteGibi(Integer id) {
+        if (getGibiById(id).getEdicoes() == 0){
+            return gibiRepository.deleteGibi(id);
+    }
+        else{
+            return false;
+        }
     }
 
     public Gibi updateGibi(Integer id, Gibi gibi){

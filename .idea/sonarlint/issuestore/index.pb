@@ -17,3 +17,9 @@ Neditoragibi/src/main/java/com/grupo2/editoragibi/Api/DesenhistaController.java
 Oeditoragibi/src/main/java/com/grupo2/editoragibi/Data/DesenhistaRepository.java,5\3\53b880052122ad618c8959ac672f86059948362a
 y
 Ieditoragibi/src/main/java/com/grupo2/editoragibi/Service/Domain/Gibi.java,c\7\c78108e82a7085dbac045c525d8de223ea36306c
+y
+Ieditoragibi/src/main/java/com/grupo2/editoragibi/Service/GibiService.java,1\e\1e39bed31bc7d33d09cac2855d4c378a8ae0f764
+{
+Keditoragibi/src/main/java/com/grupo2/editoragibi/Service/Domain/Edicao.java,2\d\2d4bd67433a58e723b9ca34a38c163f0a6f4d112
+
+Oeditoragibi/src/main/java/com/grupo2/editoragibi/Service/Domain/Desenhista.java,2\b\2b775b7ebb010cedd9b24a502408a3961107f7f3

@@ -56,7 +56,7 @@ public class Gibi {
     public void setEncData(LocalDate encData) {
         this.encData = encData;
     }
-  
+
 
 
 }

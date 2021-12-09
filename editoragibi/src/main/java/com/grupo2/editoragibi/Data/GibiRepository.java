@@ -40,6 +40,7 @@ public class GibiRepository {
 
     public boolean deleteGibi(Integer id){
 
+
         gibiRepository.deleteById(id);
 
         return true;
