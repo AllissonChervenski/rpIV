@@ -12,9 +12,8 @@ function Home() {
       <p>Site em construção</p>
 
       <div class="btn-toolbar">
-      <LinkButton to="/cadastros" text="Teste Botão Cadastros" />
-      <LinkButton to="/gibis" text="Teste Botão Gibis" />
-      <LinkButton to="/login" text="Teste Página Login" />
+      <LinkButton to="/cadastros" text="Cadastros Gerais" />
+      <LinkButton to="/login" text="Página Login" />
 
       </div> 
 
