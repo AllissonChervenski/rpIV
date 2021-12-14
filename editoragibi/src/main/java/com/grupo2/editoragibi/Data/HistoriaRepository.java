@@ -4,7 +4,10 @@ import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
+<<<<<<< HEAD
 import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
+=======
+>>>>>>> 43be89a (crud de histórias)
 import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Historia;
@@ -25,9 +28,12 @@ public class HistoriaRepository {
     IHistoriaRepository historiaRepository;
 
     @Autowired
+<<<<<<< HEAD
     VisitorToEntity visitorToEntity;
 
     @Autowired
+=======
+>>>>>>> 43be89a (crud de histórias)
     ModelMapper modelMapper;
 
     public Optional<Historia> getHistoriaById(int id) throws HistoriaInvalidaException {
@@ -51,7 +57,11 @@ public class HistoriaRepository {
 
     public Historia addHistoria(Historia historia) {
 
+<<<<<<< HEAD
         HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
+=======
+        HistoriaEntity historiaEntity = mapFromHistoria(historia);
+>>>>>>> 43be89a (crud de histórias)
 
         HistoriaEntity historiaToReturn = historiaRepository.save(historiaEntity);
 
@@ -74,13 +84,35 @@ public class HistoriaRepository {
 
         historia.setHistoriaId(id);
 
+<<<<<<< HEAD
         HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
+=======
+        HistoriaEntity historiaEntity = mapFromHistoria(historia);
+>>>>>>> 43be89a (crud de histórias)
 
         HistoriaEntity historiaToReturn = historiaRepository.save(historiaEntity);
 
         return mapHistoria(historiaToReturn);
     }
 
+<<<<<<< HEAD
+=======
+    private HistoriaEntity mapFromHistoria(Historia historia) {
+
+        HistoriaEntity historiaEntity = modelMapper.map(historia, HistoriaEntity.class);
+
+        historiaEntity.setArtefinalizador(modelMapper.map(historia.getArtefinalizador(), DesenhistaEntity.class));
+        historiaEntity.setDesenhista(modelMapper.map(historia.getDesenhista(), DesenhistaEntity.class));
+        historiaEntity.setEscritor(modelMapper.map(historia.getEscritor(), EscritorEntity.class));
+
+        historiaEntity.setPersonagens(historia.getPersonagens().stream().map(personagem -> {
+            return modelMapper.map(personagem, PersonagemEntity.class);
+        }).collect(Collectors.toList()));
+
+        return historiaEntity;
+    }
+
+>>>>>>> 43be89a (crud de histórias)
     private Historia mapHistoria(HistoriaEntity historiaEntity) {
 
         Historia historia = modelMapper.map(historiaEntity, Historia.class);
