@@ -13,10 +13,13 @@ function Home() {
 
       <div class="btn-toolbar">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <LinkButton to="/cadastros" text="Teste Botão Cadastros" />
       <LinkButton to="/gibis" text="Teste Botão Gibis" />
       </div> 
 =======
+=======
+>>>>>>> db51e1b (Organização do site)
 <<<<<<< HEAD
         <LinkButton to="/cadastros" text="Cadastros Gerais" />
         <LinkButton to="/login" text="Página Login" />
@@ -28,6 +31,10 @@ function Home() {
       <LinkButton to="/cadastros" text="Teste Botão Cadastros" />
       <LinkButton to="/gibis" text="Teste Botão Gibis" />
       <LinkButton to="/login" text="Teste Página Login" />
+=======
+      <LinkButton to="/cadastros" text="Cadastros Gerais" />
+      <LinkButton to="/login" text="Página Login" />
+>>>>>>> 800e520 (Organização do site)
 
       </div> 
 >>>>>>> e31c498 (Updates)

@@ -17,20 +17,33 @@ function Navbar() {
           </li>
           <li className={styles.item}>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <Link to="/cadastros">Cadastros</Link>
 =======
+=======
+>>>>>>> db51e1b (Organização do site)
 <<<<<<< HEAD
             <Link to="/desenhistap">Desenhistas</Link>
 =======
             <Link to="/desenhistas">Desenhistas</Link>
+=======
+            <Link to="/desenhistap">Desenhistas</Link>
+>>>>>>> 800e520 (Organização do site)
           </li>
           <li className={styles.item}>
-            <Link to="/escritores">Escritores</Link>
+            <Link to="/escritorp">Escritores</Link>
           </li>
           <li className={styles.item}>
+<<<<<<< HEAD
             <Link to="/gibis">Gibis</Link>
 >>>>>>> 2b4ac12 (ajustes)
+<<<<<<< HEAD
 >>>>>>> 3fae582 (ajustes)
+=======
+=======
+            <Link to="/gibisp">Gibis</Link>
+>>>>>>> 800e520 (Organização do site)
+>>>>>>> db51e1b (Organização do site)
           </li>
           <li className={styles.item}>
 <<<<<<< HEAD

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import LinkButton from '../layout/LinkButton'
 import styles from './Home.module.css'
 
@@ -15,5 +16,9 @@ function FinanceiroP(){
        
       </section>
     )
+=======
+function FinanceiroP(){
+    return <h1>Financeiro</h1>
+>>>>>>> 800e520 (Organização do site)
 }
 export default FinanceiroP

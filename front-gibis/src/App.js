@@ -21,6 +21,7 @@ import Login from './components/pages/Login'
 import DesenhistaP from './components/pages/DesenhistaP'
 import EscritorP from './components/pages/EscritorP'
 import GibisP from './components/pages/GibisP'
+<<<<<<< HEAD
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
 
@@ -38,6 +39,8 @@ import SingIn from './components/pages/SingIn'
 import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
 >>>>>>> 7c60ee0 (Login Update (add image))
+=======
+>>>>>>> 800e520 (Organização do site)
 
 
 >>>>>>> 4e6661d (Desenhista Forms)
@@ -70,6 +73,9 @@ function App() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 800e520 (Organização do site)
         <Route exact path="/escritorp"> 
         <EscritorP />
         </Route>
