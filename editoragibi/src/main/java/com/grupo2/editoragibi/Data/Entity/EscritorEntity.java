@@ -39,9 +39,15 @@ public class EscritorEntity implements Serializable {
     @Column(name = "data_demissao")
     private LocalDate dataDemissao;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "escritores")
     private List<PersonagemEntity> personagens;
 =======
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "escritores")
+    private List<PersonagemEntity> personagens;
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
 }

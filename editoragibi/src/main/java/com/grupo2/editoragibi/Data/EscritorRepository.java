@@ -6,9 +6,12 @@ import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
+<<<<<<< HEAD
 =======
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,12 +40,17 @@ public class EscritorRepository {
     @Autowired
     IEscritorRepository escritorRepository;
 
+<<<<<<< HEAD
     public Optional<Escritor> getEscritorById(int id) {
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+    public Optional<Escritor> getEscritorById(int id) throws EscritorInvalidoException {
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
 
         Optional<EscritorEntity> escritorEntity = escritorRepository.findById(id);
 
         if (!escritorEntity.isPresent())
+<<<<<<< HEAD
 <<<<<<< HEAD
             throw new EscritorInvalidoException("Escritor não está no sistema");
 
@@ -56,6 +64,15 @@ public class EscritorRepository {
 
         Escritor escritor = modelMapper.map(escritorEntity, Escritor.class);
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+            throw new EscritorInvalidoException("Escritor não está no sistema");
+
+        Escritor escritor = modelMapper.map(escritorEntity.get(), Escritor.class);
+
+        escritor.setPersonagens(escritorEntity.get().getPersonagens().stream().map(personagem -> {
+            return modelMapper.map(personagem, Personagem.class);
+        }).collect(Collectors.toList()));
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
 
         return Optional.of(escritor);
     }
@@ -83,6 +100,7 @@ public class EscritorRepository {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public boolean deleteEscritor(int id) {
 
         if (escritorRepository.findById(id).isEmpty())
@@ -107,9 +125,21 @@ public class EscritorRepository {
     }
 
     public Escritor updateEscritor(int id, Escritor escritor) {
+=======
+    public boolean deleteEscritor(int id) {
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
 
         if (escritorRepository.findById(id).isEmpty())
-            return null;
+            return false;
+
+        escritorRepository.deleteById(id);
+        return true;
+    }
+
+    public Escritor updateEscritor(int id, Escritor escritor) throws EscritorInvalidoException {
+
+        if (escritorRepository.findById(id).isEmpty())
+            throw new EscritorInvalidoException("Escritor não está no sistema");
 
         escritor.setEscritorId(id);
 

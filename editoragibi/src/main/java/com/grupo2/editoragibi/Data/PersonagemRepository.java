@@ -7,18 +7,25 @@ import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
+<<<<<<< HEAD
 =======
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import javax.swing.text.html.Option;
 =======
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+import javax.swing.text.html.Option;
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -43,12 +50,17 @@ public class PersonagemRepository {
     @Autowired
     IPersonagemRepository personagemRepository;
 
+<<<<<<< HEAD
     public Optional<Personagem> getPersonagemById(int id) {
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+    public Optional<Personagem> getPersonagemById(int id) throws PersonagemInvalidoException {
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
 
         Optional<PersonagemEntity> personagemEntity = personagemRepository.findById(id);
 
         if (!personagemEntity.isPresent())
+<<<<<<< HEAD
 <<<<<<< HEAD
             throw new PersonagemInvalidoException("Personagem não está no sistema");
 
@@ -57,11 +69,18 @@ public class PersonagemRepository {
         return Optional.of(personagemToReturn);
 =======
             return Optional.empty();
+=======
+            throw new PersonagemInvalidoException("Personagem não está no sistema");
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
 
-        Personagem personagem = mapPersonagem(personagemEntity.get());
+        Personagem personagemToReturn = mapPersonagem(personagemEntity.get());
 
+<<<<<<< HEAD
         return Optional.of(personagem);
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+        return Optional.of(personagemToReturn);
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
     }
 
     public List<Personagem> getPersonagens() {
@@ -89,6 +108,7 @@ public class PersonagemRepository {
     public Personagem addPersonagem(Personagem personagem) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         List<Escritor> escritores = personagem.getEscritores();
 
         PersonagemEntity personagemEntity = visitorToEntity.personagemToEntity(personagem);
@@ -99,13 +119,11 @@ public class PersonagemRepository {
 =======
         PersonagemEntity personagemEntity = modelMapper.map(personagem, PersonagemEntity.class);
 
+=======
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
         List<Escritor> escritores = personagem.getEscritores();
 
-        List<EscritorEntity> escritoresEntity = escritores.stream().map(escritor -> {
-            return modelMapper.map(escritor, EscritorEntity.class);
-        }).collect(Collectors.toList());
-
-        personagemEntity.setEscritores(escritoresEntity);
+        PersonagemEntity personagemEntity = mapFromPersonagem(personagem);
 
         PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
 
@@ -117,6 +135,7 @@ public class PersonagemRepository {
         return toReturn;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     public boolean deletePersonagem(int id) {
 
@@ -141,18 +160,40 @@ public class PersonagemRepository {
         return mapPersonagem(personagemToReturn);
 =======
     public void deletePersonagem(int id) {
+=======
+    public PersonagemEntity mapFromPersonagem(Personagem personagem) {
+>>>>>>> 0e6e52f (tratamento de exceções apropriado)
 
-        personagemRepository.deleteById(id);
+        PersonagemEntity personagemEntity = modelMapper.map(personagem, PersonagemEntity.class);
+
+        List<Escritor> escritores = personagem.getEscritores();
+
+        List<EscritorEntity> escritoresEntity = escritores.stream().map(escritor -> {
+            return modelMapper.map(escritor, EscritorEntity.class);
+        }).collect(Collectors.toList());
+
+        personagemEntity.setEscritores(escritoresEntity);
+
+        return personagemEntity;
     }
 
-    public Personagem updatePersonagem(int id, Personagem personagem) {
+    public boolean deletePersonagem(int id) {
 
         if (personagemRepository.findById(id).isEmpty())
-            return null;
+            return false;
+
+        personagemRepository.deleteById(id);
+        return true;
+    }
+
+    public Personagem updatePersonagem(int id, Personagem personagem) throws PersonagemInvalidoException {
+
+        if (personagemRepository.findById(id).isEmpty())
+            throw new PersonagemInvalidoException("Personagem não está no sistema");
 
         personagem.setPersonagemId(id);
 
-        PersonagemEntity personagemEntity = modelMapper.map(personagem, PersonagemEntity.class);
+        PersonagemEntity personagemEntity = mapFromPersonagem(personagem);
 
         PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
 
