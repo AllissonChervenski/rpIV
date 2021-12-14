@@ -6,7 +6,7 @@ function Transportadoras() {
     return (
         <section className={styles.home_container}>
             <h1>
-                <span>Transportadoras</span>
+                Transportadoras
             </h1>
 
             <TransportadoraForm btnText="Cadastrar Transportadora" />
