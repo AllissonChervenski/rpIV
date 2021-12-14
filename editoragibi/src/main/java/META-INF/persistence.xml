@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="entityManagerFactory">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.grupo2.editoragibi.Data.EntityFK.DesenhistaEntity</class>
+        <class>com.grupo2.editoragibi.Data.EntityFK.EdicaoEntity</class>
+        <class>com.grupo2.editoragibi.Data.EntityFK.EditorEntity</class>
+        <class>com.grupo2.editoragibi.Data.EntityFK.EscritorEntity</class>
+        <class>com.grupo2.editoragibi.Data.EntityFK.EscritorHistoriaEntity</class>
+        <class>com.grupo2.editoragibi.Data.EntityFK.EscritorPersonagemEntity</class>
+        <class>com.grupo2.editoragibi.Data.EntityFK.GibiEntity</class>
+        <class>com.grupo2.editoragibi.Data.EntityFK.HistoriaEntity</class>
+        <class>com.grupo2.editoragibi.Data.EntityFK.HistoriaPersonagemEntity</class>
+        <class>com.grupo2.editoragibi.Data.EntityFK.ItemEdicaoEntity</class>
+        <class>com.grupo2.editoragibi.Data.EntityFK.PersonagemEntity</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5433/sistemagibi"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="hibernate.connection.username" value="postgres"/>
+            <property name="hibernate.connection.password" value="adm"/>
+            <property name="hibernate.archive.autodetection" value="class"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+</persistence>

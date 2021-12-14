@@ -2,11 +2,6 @@ package com.grupo2.editoragibi.Service.Domain;
 
 import java.time.LocalDate;
 
-/*gibi_id serial,
-titulo_gibi varchar(20) not null,
-data_inicio_publi date not null,
-data_encerramento date,
-primary key(gibi_id)*/
 
 public class Gibi {
     private int id;

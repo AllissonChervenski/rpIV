@@ -8,6 +8,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/editoragibi/pom.xml" />
+        <option value="$PROJECT_DIR$/editoragibi/src/main/java/com/grupo2/editoragibi/Data/EntityFK/pom.xml" />
       </list>
     </option>
   </component>

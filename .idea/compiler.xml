@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="editoragibi" />
+        <module name="rpIV" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="editoragibi" target="11" />
+      <module name="rpIV" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

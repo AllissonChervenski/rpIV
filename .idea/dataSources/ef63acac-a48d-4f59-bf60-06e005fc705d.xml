@@ -9,7 +9,7 @@
       <Comment>default administrative connection database</Comment>
       <StateNumber>673</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>2534</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2581</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|16403|16405|1
@@ -101,7 +101,7 @@ sequence|table|1123594|1123596|1
       <Comment>standard public schema</Comment>
       <StateNumber>705</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>2535</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2582</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>

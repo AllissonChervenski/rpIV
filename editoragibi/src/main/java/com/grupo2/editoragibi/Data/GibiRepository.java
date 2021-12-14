@@ -8,7 +8,9 @@ import com.grupo2.editoragibi.Service.Domain.Gibi;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+
 
 @Repository
 public class GibiRepository {
@@ -16,6 +18,7 @@ public class GibiRepository {
     @Autowired
     ModelMapper modelMapper;
 
+    @Qualifier("iGibiRepository")
     @Autowired
     IGibiRepository gibiRepository;
 
