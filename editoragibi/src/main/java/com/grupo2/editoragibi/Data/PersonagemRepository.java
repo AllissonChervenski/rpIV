@@ -2,6 +2,7 @@ package com.grupo2.editoragibi.Data;
 
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
+import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
@@ -18,10 +19,13 @@ import java.util.stream.Collectors;
 public class PersonagemRepository {
 
     @Autowired
-    ModelMapper modelMapper;
+    IPersonagemRepository personagemRepository;
 
     @Autowired
-    IPersonagemRepository personagemRepository;
+    VisitorToEntity visitorToEntity;
+
+    @Autowired
+    ModelMapper modelMapper;
 
     public Optional<Personagem> getPersonagemById(int id) throws PersonagemInvalidoException {
 
@@ -61,30 +65,13 @@ public class PersonagemRepository {
 
         List<Escritor> escritores = personagem.getEscritores();
 
-        PersonagemEntity personagemEntity = mapFromPersonagem(personagem);
+        PersonagemEntity personagemEntity = visitorToEntity.personagemToEntity(personagem);
 
         PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
 
-        Personagem toReturn = modelMapper.map(personagemToReturn, Personagem.class);
-
-        toReturn.setEscritores(escritores);
+        Personagem toReturn = mapPersonagem(personagemToReturn);
 
         return toReturn;
-    }
-
-    public PersonagemEntity mapFromPersonagem(Personagem personagem) {
-
-        PersonagemEntity personagemEntity = modelMapper.map(personagem, PersonagemEntity.class);
-
-        List<Escritor> escritores = personagem.getEscritores();
-
-        List<EscritorEntity> escritoresEntity = escritores.stream().map(escritor -> {
-            return modelMapper.map(escritor, EscritorEntity.class);
-        }).collect(Collectors.toList());
-
-        personagemEntity.setEscritores(escritoresEntity);
-
-        return personagemEntity;
     }
 
     public boolean deletePersonagem(int id) {
@@ -103,10 +90,10 @@ public class PersonagemRepository {
 
         personagem.setPersonagemId(id);
 
-        PersonagemEntity personagemEntity = mapFromPersonagem(personagem);
+        PersonagemEntity personagemEntity = visitorToEntity.personagemToEntity(personagem);
 
         PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
 
-        return modelMapper.map(personagemToReturn, Personagem.class);
+        return mapPersonagem(personagemToReturn);
     }
 }

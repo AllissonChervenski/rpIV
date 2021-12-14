@@ -4,6 +4,7 @@ import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
+import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
 import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Historia;
@@ -22,6 +23,9 @@ public class HistoriaRepository {
 
     @Autowired
     IHistoriaRepository historiaRepository;
+
+    @Autowired
+    VisitorToEntity visitorToEntity;
 
     @Autowired
     ModelMapper modelMapper;
@@ -47,7 +51,7 @@ public class HistoriaRepository {
 
     public Historia addHistoria(Historia historia) {
 
-        HistoriaEntity historiaEntity = mapFromHistoria(historia);
+        HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
 
         HistoriaEntity historiaToReturn = historiaRepository.save(historiaEntity);
 
@@ -70,26 +74,11 @@ public class HistoriaRepository {
 
         historia.setHistoriaId(id);
 
-        HistoriaEntity historiaEntity = mapFromHistoria(historia);
+        HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
 
         HistoriaEntity historiaToReturn = historiaRepository.save(historiaEntity);
 
         return mapHistoria(historiaToReturn);
-    }
-
-    private HistoriaEntity mapFromHistoria(Historia historia) {
-
-        HistoriaEntity historiaEntity = modelMapper.map(historia, HistoriaEntity.class);
-
-        historiaEntity.setArtefinalizador(modelMapper.map(historia.getArtefinalizador(), DesenhistaEntity.class));
-        historiaEntity.setDesenhista(modelMapper.map(historia.getDesenhista(), DesenhistaEntity.class));
-        historiaEntity.setEscritor(modelMapper.map(historia.getEscritor(), EscritorEntity.class));
-
-        historiaEntity.setPersonagens(historia.getPersonagens().stream().map(personagem -> {
-            return modelMapper.map(personagem, PersonagemEntity.class);
-        }).collect(Collectors.toList()));
-
-        return historiaEntity;
     }
 
     private Historia mapHistoria(HistoriaEntity historiaEntity) {

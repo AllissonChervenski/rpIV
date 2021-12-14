@@ -1,6 +1,7 @@
 package com.grupo2.editoragibi.Data;
 
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
+import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
@@ -16,10 +17,13 @@ import java.util.stream.Collectors;
 public class EscritorRepository {
 
     @Autowired
-    ModelMapper modelMapper;
+    IEscritorRepository escritorRepository;
 
     @Autowired
-    IEscritorRepository escritorRepository;
+    VisitorToEntity visitorToEntity;
+
+    @Autowired
+    ModelMapper modelMapper;
 
     public Optional<Escritor> getEscritorById(int id) throws EscritorInvalidoException {
 
@@ -48,7 +52,7 @@ public class EscritorRepository {
 
     public Escritor addEscritor(Escritor escritor) {
 
-        EscritorEntity escritorEntity = modelMapper.map(escritor, EscritorEntity.class);
+        EscritorEntity escritorEntity = visitorToEntity.escritorToEntity(escritor);
 
         EscritorEntity escritorToReturn = escritorRepository.save(escritorEntity);
 
@@ -71,7 +75,7 @@ public class EscritorRepository {
 
         escritor.setEscritorId(id);
 
-        EscritorEntity escritorEntity = modelMapper.map(escritor, EscritorEntity.class);
+        EscritorEntity escritorEntity = visitorToEntity.escritorToEntity(escritor);
 
         EscritorEntity escritorToReturn = escritorRepository.save(escritorEntity);
 
