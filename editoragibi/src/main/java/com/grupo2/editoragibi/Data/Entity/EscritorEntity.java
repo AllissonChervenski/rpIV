@@ -38,4 +38,7 @@ public class EscritorEntity implements Serializable {
 
     @Column(name = "data_demissao")
     private LocalDate dataDemissao;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "escritores")
+    private List<PersonagemEntity> personagens;
 }

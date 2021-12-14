@@ -4,10 +4,12 @@ import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
+import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -21,16 +23,16 @@ public class PersonagemRepository {
     @Autowired
     IPersonagemRepository personagemRepository;
 
-    public Optional<Personagem> getPersonagemById(int id) {
+    public Optional<Personagem> getPersonagemById(int id) throws PersonagemInvalidoException {
 
         Optional<PersonagemEntity> personagemEntity = personagemRepository.findById(id);
 
         if (!personagemEntity.isPresent())
-            return Optional.empty();
+            throw new PersonagemInvalidoException("Personagem não está no sistema");
 
-        Personagem personagem = mapPersonagem(personagemEntity.get());
+        Personagem personagemToReturn = mapPersonagem(personagemEntity.get());
 
-        return Optional.of(personagem);
+        return Optional.of(personagemToReturn);
     }
 
     public List<Personagem> getPersonagens() {
@@ -57,15 +59,9 @@ public class PersonagemRepository {
 
     public Personagem addPersonagem(Personagem personagem) {
 
-        PersonagemEntity personagemEntity = modelMapper.map(personagem, PersonagemEntity.class);
-
         List<Escritor> escritores = personagem.getEscritores();
 
-        List<EscritorEntity> escritoresEntity = escritores.stream().map(escritor -> {
-            return modelMapper.map(escritor, EscritorEntity.class);
-        }).collect(Collectors.toList());
-
-        personagemEntity.setEscritores(escritoresEntity);
+        PersonagemEntity personagemEntity = mapFromPersonagem(personagem);
 
         PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
 
@@ -76,19 +72,38 @@ public class PersonagemRepository {
         return toReturn;
     }
 
-    public void deletePersonagem(int id) {
+    public PersonagemEntity mapFromPersonagem(Personagem personagem) {
 
-        personagemRepository.deleteById(id);
+        PersonagemEntity personagemEntity = modelMapper.map(personagem, PersonagemEntity.class);
+
+        List<Escritor> escritores = personagem.getEscritores();
+
+        List<EscritorEntity> escritoresEntity = escritores.stream().map(escritor -> {
+            return modelMapper.map(escritor, EscritorEntity.class);
+        }).collect(Collectors.toList());
+
+        personagemEntity.setEscritores(escritoresEntity);
+
+        return personagemEntity;
     }
 
-    public Personagem updatePersonagem(int id, Personagem personagem) {
+    public boolean deletePersonagem(int id) {
 
         if (personagemRepository.findById(id).isEmpty())
-            return null;
+            return false;
+
+        personagemRepository.deleteById(id);
+        return true;
+    }
+
+    public Personagem updatePersonagem(int id, Personagem personagem) throws PersonagemInvalidoException {
+
+        if (personagemRepository.findById(id).isEmpty())
+            throw new PersonagemInvalidoException("Personagem não está no sistema");
 
         personagem.setPersonagemId(id);
 
-        PersonagemEntity personagemEntity = modelMapper.map(personagem, PersonagemEntity.class);
+        PersonagemEntity personagemEntity = mapFromPersonagem(personagem);
 
         PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
 

@@ -4,6 +4,7 @@ import com.grupo2.editoragibi.Data.EscritorRepository;
 import com.grupo2.editoragibi.Data.PersonagemRepository;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +20,9 @@ public class EscritorService {
     @Autowired
     PersonagemRepository personagemRepository;
 
-    public Escritor getEscritorById(int id) {
+    public Escritor getEscritorById(int id) throws EscritorInvalidoException {
 
         Optional<Escritor> escritor = escritorRepository.getEscritorById(id);
-
-        if (escritor.isEmpty())
-            return null;
 
         return escritor.get();
     }
@@ -39,14 +37,13 @@ public class EscritorService {
         return escritorRepository.addEscritor(escritor);
     }
 
-    public boolean deleteEscritor(int id) {
+    public void deleteEscritor(int id) throws EscritorInvalidoException {
 
-        escritorRepository.deleteEscritor(id);
-
-        return true;
+        if (!escritorRepository.deleteEscritor(id))
+            throw new EscritorInvalidoException("Escritor não está no sistema");
     }
 
-    public Escritor updateEscritor(int id, Escritor escritor) {
+    public Escritor updateEscritor(int id, Escritor escritor) throws EscritorInvalidoException {
 
         return escritorRepository.updateEscritor(id, escritor);
     }

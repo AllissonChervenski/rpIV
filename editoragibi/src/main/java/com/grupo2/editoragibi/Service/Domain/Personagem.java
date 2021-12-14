@@ -1,5 +1,7 @@
 package com.grupo2.editoragibi.Service.Domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +13,8 @@ public class Personagem {
     private String historicoPersonagem;
     private String patentePersonagem;
     private LocalDate dataCriacao;
+    @JsonManagedReference
     private List<Escritor> escritores = new ArrayList<>();
-
-    public Personagem(String nomePersonagem, LocalDate dataCriacao) {
-
-        this.nomePersonagem = nomePersonagem;
-        this.dataCriacao = dataCriacao;
-    }
-
-    public Personagem() {
-    }
 
     public void addEscritor(Escritor escritor) {
         escritores.add(escritor);

@@ -2,6 +2,8 @@ package com.grupo2.editoragibi.Data;
 
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
+import com.grupo2.editoragibi.Service.Domain.Personagem;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,14 +21,18 @@ public class EscritorRepository {
     @Autowired
     IEscritorRepository escritorRepository;
 
-    public Optional<Escritor> getEscritorById(int id) {
+    public Optional<Escritor> getEscritorById(int id) throws EscritorInvalidoException {
 
         Optional<EscritorEntity> escritorEntity = escritorRepository.findById(id);
 
         if (!escritorEntity.isPresent())
-            return Optional.empty();
+            throw new EscritorInvalidoException("Escritor não está no sistema");
 
-        Escritor escritor = modelMapper.map(escritorEntity, Escritor.class);
+        Escritor escritor = modelMapper.map(escritorEntity.get(), Escritor.class);
+
+        escritor.setPersonagens(escritorEntity.get().getPersonagens().stream().map(personagem -> {
+            return modelMapper.map(personagem, Personagem.class);
+        }).collect(Collectors.toList()));
 
         return Optional.of(escritor);
     }
@@ -49,15 +55,19 @@ public class EscritorRepository {
         return modelMapper.map(escritorToReturn, Escritor.class);
     }
 
-    public void deleteEscritor(int id) {
-
-        escritorRepository.deleteById(id);
-    }
-
-    public Escritor updateEscritor(int id, Escritor escritor) {
+    public boolean deleteEscritor(int id) {
 
         if (escritorRepository.findById(id).isEmpty())
-            return null;
+            return false;
+
+        escritorRepository.deleteById(id);
+        return true;
+    }
+
+    public Escritor updateEscritor(int id, Escritor escritor) throws EscritorInvalidoException {
+
+        if (escritorRepository.findById(id).isEmpty())
+            throw new EscritorInvalidoException("Escritor não está no sistema");
 
         escritor.setEscritorId(id);
 
