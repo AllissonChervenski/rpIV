@@ -16,7 +16,21 @@ function Navbar() {
             <Link to="/">Home</Link>
           </li>
           <li className={styles.item}>
+<<<<<<< HEAD
             <Link to="/cadastros">Cadastros</Link>
+=======
+<<<<<<< HEAD
+            <Link to="/desenhistap">Desenhistas</Link>
+=======
+            <Link to="/desenhistas">Desenhistas</Link>
+          </li>
+          <li className={styles.item}>
+            <Link to="/escritores">Escritores</Link>
+          </li>
+          <li className={styles.item}>
+            <Link to="/gibis">Gibis</Link>
+>>>>>>> 2b4ac12 (ajustes)
+>>>>>>> 3fae582 (ajustes)
           </li>
           <li className={styles.item}>
 <<<<<<< HEAD

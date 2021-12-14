@@ -33,10 +33,13 @@ function Desenhista(){
 =======
 import DesenhistaForm from '../project/DesenhistaForm'
 import styles from './Desenhista.module.css'
+import LinkButton from '../layout/LinkButton'
 
 function Desenhista() {
   return (
+    
     <div className={styles.gibis_container}>
+
       <h1>Cadastrar novo Desenhista</h1>
       <p>Insira no formulário abaixo as informações solicitadas:</p>
       <DesenhistaForm btnText="Cadastrar Desenhista" />

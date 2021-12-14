@@ -7,6 +7,9 @@ function Transportadoras() {
         <section className={styles.home_container}>
             <h1>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2b4ac12 (ajustes)
                 Transportadoras
             </h1>
 

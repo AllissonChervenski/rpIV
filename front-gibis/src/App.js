@@ -68,6 +68,7 @@ function App() {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Route exact path="/escritorp"> 
         <EscritorP />
         </Route>
@@ -81,6 +82,12 @@ function App() {
         </Route>
 
         <Route exact path="/desenhista"> 
+=======
+        <Route exact path="/escritores"> 
+        <Escritor />
+        </Route>
+        <Route exact path="/desenhistas"> 
+>>>>>>> 2b4ac12 (ajustes)
         <Desenhista />
         </Route>
 
