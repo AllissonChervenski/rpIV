@@ -36,10 +36,10 @@ function App() {
         <Financeiro />
         </Route>
 
-        <Route exact path="/escritores"> 
+        <Route exact path="/escritor"> 
         <Escritor />
         </Route>
-        <Route exact path="/desenhistas"> 
+        <Route exact path="/desenhista"> 
         <Desenhista />
         </Route>
 
