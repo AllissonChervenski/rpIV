@@ -5,9 +5,13 @@ import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
 =======
 >>>>>>> 43be89a (crud de histórias)
+=======
+import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
+>>>>>>> 55afae3 (implementação do padrão visitor)
 import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Historia;
@@ -29,11 +33,17 @@ public class HistoriaRepository {
 
     @Autowired
 <<<<<<< HEAD
+<<<<<<< HEAD
     VisitorToEntity visitorToEntity;
 
     @Autowired
 =======
 >>>>>>> 43be89a (crud de histórias)
+=======
+    VisitorToEntity visitorToEntity;
+
+    @Autowired
+>>>>>>> 55afae3 (implementação do padrão visitor)
     ModelMapper modelMapper;
 
     public Optional<Historia> getHistoriaById(int id) throws HistoriaInvalidaException {
@@ -58,10 +68,14 @@ public class HistoriaRepository {
     public Historia addHistoria(Historia historia) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
 =======
         HistoriaEntity historiaEntity = mapFromHistoria(historia);
 >>>>>>> 43be89a (crud de histórias)
+=======
+        HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
+>>>>>>> 55afae3 (implementação do padrão visitor)
 
         HistoriaEntity historiaToReturn = historiaRepository.save(historiaEntity);
 
@@ -85,16 +99,21 @@ public class HistoriaRepository {
         historia.setHistoriaId(id);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
 =======
         HistoriaEntity historiaEntity = mapFromHistoria(historia);
 >>>>>>> 43be89a (crud de histórias)
+=======
+        HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
+>>>>>>> 55afae3 (implementação do padrão visitor)
 
         HistoriaEntity historiaToReturn = historiaRepository.save(historiaEntity);
 
         return mapHistoria(historiaToReturn);
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     private HistoriaEntity mapFromHistoria(Historia historia) {
@@ -113,6 +132,8 @@ public class HistoriaRepository {
     }
 
 >>>>>>> 43be89a (crud de histórias)
+=======
+>>>>>>> 55afae3 (implementação do padrão visitor)
     private Historia mapHistoria(HistoriaEntity historiaEntity) {
 
         Historia historia = modelMapper.map(historiaEntity, Historia.class);

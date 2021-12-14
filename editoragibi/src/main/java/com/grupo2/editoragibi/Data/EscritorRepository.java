@@ -2,6 +2,9 @@ package com.grupo2.editoragibi.Data;
 
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 55afae3 (implementação do padrão visitor)
 import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
@@ -25,6 +28,7 @@ public class EscritorRepository {
 
     @Autowired
 <<<<<<< HEAD
+<<<<<<< HEAD
     IEscritorRepository escritorRepository;
 
     @Autowired
@@ -36,9 +40,15 @@ public class EscritorRepository {
     public Optional<Escritor> getEscritorById(int id) throws EscritorInvalidoException {
 =======
     ModelMapper modelMapper;
+=======
+    IEscritorRepository escritorRepository;
+>>>>>>> 55afae3 (implementação do padrão visitor)
 
     @Autowired
-    IEscritorRepository escritorRepository;
+    VisitorToEntity visitorToEntity;
+
+    @Autowired
+    ModelMapper modelMapper;
 
 <<<<<<< HEAD
     public Optional<Escritor> getEscritorById(int id) {
@@ -89,10 +99,14 @@ public class EscritorRepository {
     public Escritor addEscritor(Escritor escritor) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         EscritorEntity escritorEntity = visitorToEntity.escritorToEntity(escritor);
 =======
         EscritorEntity escritorEntity = modelMapper.map(escritor, EscritorEntity.class);
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+        EscritorEntity escritorEntity = visitorToEntity.escritorToEntity(escritor);
+>>>>>>> 55afae3 (implementação do padrão visitor)
 
         EscritorEntity escritorToReturn = escritorRepository.save(escritorEntity);
 
@@ -118,6 +132,7 @@ public class EscritorRepository {
         escritor.setEscritorId(id);
 
         EscritorEntity escritorEntity = visitorToEntity.escritorToEntity(escritor);
+<<<<<<< HEAD
 =======
     public void deleteEscritor(int id) {
 
@@ -145,6 +160,8 @@ public class EscritorRepository {
 
         EscritorEntity escritorEntity = modelMapper.map(escritor, EscritorEntity.class);
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+>>>>>>> 55afae3 (implementação do padrão visitor)
 
         EscritorEntity escritorToReturn = escritorRepository.save(escritorEntity);
 

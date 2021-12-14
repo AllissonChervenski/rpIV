@@ -3,6 +3,9 @@ package com.grupo2.editoragibi.Data;
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 55afae3 (implementação do padrão visitor)
 import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
@@ -35,6 +38,7 @@ public class PersonagemRepository {
 
     @Autowired
 <<<<<<< HEAD
+<<<<<<< HEAD
     IPersonagemRepository personagemRepository;
 
     @Autowired
@@ -46,9 +50,15 @@ public class PersonagemRepository {
     public Optional<Personagem> getPersonagemById(int id) throws PersonagemInvalidoException {
 =======
     ModelMapper modelMapper;
+=======
+    IPersonagemRepository personagemRepository;
+>>>>>>> 55afae3 (implementação do padrão visitor)
 
     @Autowired
-    IPersonagemRepository personagemRepository;
+    VisitorToEntity visitorToEntity;
+
+    @Autowired
+    ModelMapper modelMapper;
 
 <<<<<<< HEAD
     public Optional<Personagem> getPersonagemById(int id) {
@@ -123,18 +133,23 @@ public class PersonagemRepository {
 >>>>>>> 0e6e52f (tratamento de exceções apropriado)
         List<Escritor> escritores = personagem.getEscritores();
 
-        PersonagemEntity personagemEntity = mapFromPersonagem(personagem);
+        PersonagemEntity personagemEntity = visitorToEntity.personagemToEntity(personagem);
 
         PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
 
+<<<<<<< HEAD
         Personagem toReturn = modelMapper.map(personagemToReturn, Personagem.class);
 
         toReturn.setEscritores(escritores);
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+        Personagem toReturn = mapPersonagem(personagemToReturn);
+>>>>>>> 55afae3 (implementação do padrão visitor)
 
         return toReturn;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     public boolean deletePersonagem(int id) {
@@ -177,6 +192,8 @@ public class PersonagemRepository {
         return personagemEntity;
     }
 
+=======
+>>>>>>> 55afae3 (implementação do padrão visitor)
     public boolean deletePersonagem(int id) {
 
         if (personagemRepository.findById(id).isEmpty())
@@ -193,11 +210,15 @@ public class PersonagemRepository {
 
         personagem.setPersonagemId(id);
 
-        PersonagemEntity personagemEntity = mapFromPersonagem(personagem);
+        PersonagemEntity personagemEntity = visitorToEntity.personagemToEntity(personagem);
 
         PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
 
+<<<<<<< HEAD
         return modelMapper.map(personagemToReturn, Personagem.class);
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+        return mapPersonagem(personagemToReturn);
+>>>>>>> 55afae3 (implementação do padrão visitor)
     }
 }
