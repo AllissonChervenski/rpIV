@@ -1,7 +1,11 @@
 package com.grupo2.editoragibi.Service;
 
+import com.grupo2.editoragibi.Api.Requests.PersonagemRequest;
 import com.grupo2.editoragibi.Data.EscritorRepository;
 import com.grupo2.editoragibi.Data.PersonagemRepository;
+import com.grupo2.editoragibi.Service.Builders.IBasePersonagemBuilder;
+import com.grupo2.editoragibi.Service.Builders.PersonagemBuilder;
+import com.grupo2.editoragibi.Service.Directors.PersonagemDirector;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
@@ -16,6 +20,9 @@ import java.util.Optional;
 @Service
 public class PersonagemService {
 
+    private IBasePersonagemBuilder personagemBuilder = new PersonagemBuilder();
+    private PersonagemDirector personagemDirector = new PersonagemDirector(personagemBuilder);
+
     @Autowired
     PersonagemRepository personagemRepository;
 
@@ -24,20 +31,17 @@ public class PersonagemService {
 
     public Personagem getPersonagemById(int id) throws PersonagemInvalidoException {
 
-        Optional<Personagem> personagem = personagemRepository.getPersonagemById(id);
-
-        return personagem.get();
+        return personagemRepository.getPersonagemById(id);
     }
 
-    public List<Personagem> getPersonagens() {
+    public List<Personagem> getPersonagens() throws PersonagemInvalidoException {
 
         return personagemRepository.getPersonagens();
     }
 
-    public Personagem addPersonagem(Personagem personagem, List<Integer> escritoresIds) throws EscritorInvalidoException {
+    public Personagem addPersonagem(PersonagemRequest personagemRequest) throws EscritorInvalidoException, PersonagemInvalidoException {
 
-        addEscritor(personagem, escritoresIds);
-
+        Personagem personagem = (Personagem) personagemDirector.buildFromPersonagemRequest(personagemRequest);
         return personagemRepository.addPersonagem(personagem);
     }
 
@@ -47,26 +51,9 @@ public class PersonagemService {
             throw new PersonagemInvalidoException("Personagem não está no sistema");
     }
 
-    public Personagem updatePersonagem(int id, Personagem personagem, List<Integer> escritoresIds) throws EscritorInvalidoException, PersonagemInvalidoException {
+    public Personagem updatePersonagem(int id, PersonagemRequest personagemRequest) throws EscritorInvalidoException, PersonagemInvalidoException {
 
-        addEscritor(personagem, escritoresIds);
-
+        Personagem personagem = (Personagem) personagemDirector.buildFromPersonagemRequest(personagemRequest);
         return personagemRepository.updatePersonagem(id, personagem);
-    }
-
-    private void addEscritor(Personagem personagem, List<Integer> escritoresIds) throws EscritorInvalidoException {
-
-        if (escritoresIds == null || escritoresIds.isEmpty())
-            throw new EscritorInvalidoException("Personagem sem escritor associado");
-
-        for (int id : escritoresIds) {
-
-            Optional<Escritor> escritor = escritorRepository.getEscritorById(id);
-
-            if (escritor.isEmpty())
-                throw new EscritorInvalidoException("Escritor não está no sistema");
-
-            personagem.addEscritor(escritor.get());
-        }
     }
 }

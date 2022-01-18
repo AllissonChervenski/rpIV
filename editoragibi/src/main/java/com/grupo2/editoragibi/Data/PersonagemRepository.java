@@ -1,8 +1,11 @@
 package com.grupo2.editoragibi.Data;
 
-import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
-import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
+import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Builders.IBasePersonagemBuilder;
+import com.grupo2.editoragibi.Service.Builders.PersonagemBuilder;
+import com.grupo2.editoragibi.Service.Builders.PersonagemEntityBuilder;
+import com.grupo2.editoragibi.Service.Directors.PersonagemDirector;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
@@ -10,7 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.swing.text.html.Option;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,60 +21,43 @@ import java.util.stream.Collectors;
 @Repository
 public class PersonagemRepository {
 
+    private IBasePersonagemBuilder personagemBuilder = new PersonagemBuilder();
+    private IBasePersonagemBuilder personagemEntityBuilder = new PersonagemEntityBuilder();
+    private PersonagemDirector personagemDirector = new PersonagemDirector(personagemBuilder);
+    private PersonagemDirector personagemEntityDirector = new PersonagemDirector(personagemEntityBuilder);
+
     @Autowired
     IPersonagemRepository personagemRepository;
 
-    @Autowired
-    VisitorToEntity visitorToEntity;
-
-    @Autowired
-    ModelMapper modelMapper;
-
-    public Optional<Personagem> getPersonagemById(int id) throws PersonagemInvalidoException {
+    public Personagem getPersonagemById(int id) throws PersonagemInvalidoException {
 
         Optional<PersonagemEntity> personagemEntity = personagemRepository.findById(id);
 
         if (!personagemEntity.isPresent())
             throw new PersonagemInvalidoException("Personagem não está no sistema");
 
-        Personagem personagemToReturn = mapPersonagem(personagemEntity.get());
+        BasePersonagem personagem = personagemDirector.buildFromPersonagemEntity(personagemEntity.get());
 
-        return Optional.of(personagemToReturn);
+        return (Personagem) personagem;
     }
 
-    public List<Personagem> getPersonagens() {
+    public List<Personagem> getPersonagens() throws PersonagemInvalidoException {
 
-        List<PersonagemEntity> personagens = personagemRepository.findAll();
+        List<PersonagemEntity> personagensEntity = personagemRepository.findAll();
 
-        return personagens.stream().map(personagem -> {
-            return mapPersonagem(personagem);
-        }).collect(Collectors.toList());
+        List<Personagem> personagens = new ArrayList<>();
+        for (PersonagemEntity personagem : personagensEntity) {
+            personagens.add((Personagem) personagemDirector.buildFromPersonagemEntity(personagem));
+        }
+
+        return personagens;
     }
 
-    private Personagem mapPersonagem(PersonagemEntity personagemEntity) {
+    public Personagem addPersonagem(Personagem personagem) throws PersonagemInvalidoException {
 
-        Personagem personagem = modelMapper.map(personagemEntity, Personagem.class);
-
-        List<Escritor> escritores = personagemEntity.getEscritores().stream().map(escritor -> {
-            return modelMapper.map(escritor, Escritor.class);
-        }).collect(Collectors.toList());
-
-        personagem.setEscritores(escritores);
-
-        return personagem;
-    }
-
-    public Personagem addPersonagem(Personagem personagem) {
-
-        List<Escritor> escritores = personagem.getEscritores();
-
-        PersonagemEntity personagemEntity = visitorToEntity.personagemToEntity(personagem);
-
+        PersonagemEntity personagemEntity = (PersonagemEntity) personagemEntityDirector.buildFromPersonagem(personagem);
         PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
-
-        Personagem toReturn = mapPersonagem(personagemToReturn);
-
-        return toReturn;
+        return (Personagem) personagemDirector.buildFromPersonagemEntity(personagemToReturn);
     }
 
     public boolean deletePersonagem(int id) {
@@ -90,10 +76,10 @@ public class PersonagemRepository {
 
         personagem.setPersonagemId(id);
 
-        PersonagemEntity personagemEntity = visitorToEntity.personagemToEntity(personagem);
+        PersonagemEntity personagemEntity = (PersonagemEntity) personagemEntityDirector.buildFromPersonagem(personagem);
 
         PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
 
-        return mapPersonagem(personagemToReturn);
+        return (Personagem) personagemDirector.buildFromPersonagemEntity(personagemToReturn);
     }
 }

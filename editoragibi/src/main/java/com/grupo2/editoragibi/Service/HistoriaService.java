@@ -32,9 +32,7 @@ public class HistoriaService {
 
     public Historia getHistoriaById(int id) throws HistoriaInvalidaException {
 
-        Optional<Historia> historia = historiaRepository.getHistoriaById(id);
-
-        return historia.get();
+        return historiaRepository.getHistoriaById(id);
     }
 
     public List<Historia> getHsitorias() {
@@ -67,22 +65,16 @@ public class HistoriaService {
             throw new Exception("Desenhista Inválido");
         historia.setDesenhista(desenhista.get());
 
-        Optional<Escritor> escritor = escritorRepository.getEscritorById(escritorId);
-        if (escritor.isEmpty())
-            throw new Exception("Escritor Inválido");
-        historia.setEscritor(escritor.get());
+        historia.setEscritor( escritorRepository.getEscritorById(escritorId));
 
         if (personagensIds.isEmpty())
             throw new Exception("Não tem personagens relacionador à essa historia");
 
         for (int id : personagensIds) {
 
-            Optional<Personagem> personagem = personagemRepository.getPersonagemById(id);
+            Personagem personagem = personagemRepository.getPersonagemById(id);
 
-            if (personagem.isEmpty())
-                throw new Exception("Personagem Inválido");
-
-            historia.addPersonagem(personagem.get());
+            historia.addPersonagem(personagem);
         }
     }
 

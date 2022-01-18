@@ -1,10 +1,6 @@
 package com.grupo2.editoragibi.Data;
 
-import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
-import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
-import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
-import com.grupo2.editoragibi.Data.Support.VisitorToEntity;
 import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Historia;
@@ -25,19 +21,16 @@ public class HistoriaRepository {
     IHistoriaRepository historiaRepository;
 
     @Autowired
-    VisitorToEntity visitorToEntity;
-
-    @Autowired
     ModelMapper modelMapper;
 
-    public Optional<Historia> getHistoriaById(int id) throws HistoriaInvalidaException {
+    public Historia getHistoriaById(int id) throws HistoriaInvalidaException {
 
         Optional<HistoriaEntity> historiaEntity = historiaRepository.findById(id);
 
         if (historiaEntity.isEmpty())
             throw new HistoriaInvalidaException("Historia não está no sistema");
 
-        return Optional.of(mapHistoria(historiaEntity.get()));
+        return mapHistoria(historiaEntity.get());
     }
 
     public List<Historia> getHistorias() {
@@ -49,13 +42,17 @@ public class HistoriaRepository {
         }).collect(Collectors.toList());
     }
 
+    //TODO
     public Historia addHistoria(Historia historia) {
 
-        HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
+        //HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
 
-        HistoriaEntity historiaToReturn = historiaRepository.save(historiaEntity);
+        //HistoriaEntity historiaToReturn = historiaRepository.save(historiaEntity);
 
-        return mapHistoria(historiaToReturn);
+        //return mapHistoria(historiaToReturn);
+
+        //provisório
+        return null;
     }
 
     public boolean deleteHistoria(int id) {
@@ -67,6 +64,7 @@ public class HistoriaRepository {
         return true;
     }
 
+    //TODO
     public Historia updateHistoria(int id, Historia historia) throws HistoriaInvalidaException {
 
         if (historiaRepository.findById(id).isEmpty())
@@ -74,11 +72,14 @@ public class HistoriaRepository {
 
         historia.setHistoriaId(id);
 
-        HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
+        //HistoriaEntity historiaEntity = visitorToEntity.historiaToEntity(historia);
 
-        HistoriaEntity historiaToReturn = historiaRepository.save(historiaEntity);
+        //HistoriaEntity historiaToReturn = historiaRepository.save(historiaEntity);
 
-        return mapHistoria(historiaToReturn);
+        //return mapHistoria(historiaToReturn);
+
+        //provisório
+        return null;
     }
 
     private Historia mapHistoria(HistoriaEntity historiaEntity) {

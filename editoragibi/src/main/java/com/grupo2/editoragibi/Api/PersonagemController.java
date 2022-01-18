@@ -2,7 +2,6 @@ package com.grupo2.editoragibi.Api;
 
 import com.grupo2.editoragibi.Api.Requests.PersonagemRequest;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
-import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.PersonagemService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,23 +35,27 @@ public class PersonagemController {
     @GetMapping("/all")
     public ResponseEntity<Object> getPersonagens() {
 
-        return new ResponseEntity<>(personagemService.getPersonagens(), HttpStatus.OK);
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<Object> addPersonagem(@RequestBody PersonagemRequest personagemRequest) throws Exception {
-        Personagem personagem = new Personagem();
-
-        BeanUtils.copyProperties(personagemRequest, personagem);
-
-        Personagem personagemToReturn = null;
+        List<Personagem> personagens = null;
         try {
-            personagemToReturn = personagemService.addPersonagem(personagem, personagemRequest.getEscritoresIds());
+            personagens = personagemService.getPersonagens();
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
 
-        return new ResponseEntity<>(personagemToReturn, HttpStatus.OK);
+        return new ResponseEntity<>(personagens, HttpStatus.OK);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Object> addPersonagem(@RequestBody PersonagemRequest personagemRequest) throws Exception {
+        Personagem personagem = null;
+
+        try {
+            personagem = personagemService.addPersonagem(personagemRequest);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+
+        return new ResponseEntity<>(personagem, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -69,16 +72,12 @@ public class PersonagemController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Object> updatePersonagem(@PathVariable int id, @RequestBody PersonagemRequest personagemRequest) {
-        Personagem personagem = new Personagem();
-
-        BeanUtils.copyProperties(personagemRequest, personagem);
-
-        Personagem personagemToReturn = null;
+        Personagem personagem = null;
         try {
-            personagemToReturn = personagemService.updatePersonagem(id, personagem, personagemRequest.getEscritoresIds());
+            personagem = personagemService.updatePersonagem(id, personagemRequest);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
-        return new ResponseEntity<>(personagemToReturn, HttpStatus.OK);
+        return new ResponseEntity<>(personagem, HttpStatus.OK);
     }
 }
