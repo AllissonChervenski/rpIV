@@ -16,15 +16,12 @@ import java.util.Optional;
 
 public class EscritorEntityBuilder implements IBaseEscritorBuilder {
 
-    @Autowired
-    IPersonagemRepository iPersonagemRepository;
-
-    @Autowired
-    ModelMapper modelMapper;
+    private IPersonagemRepository iPersonagemRepository;
 
     private EscritorEntity escritorEntity;
 
-    public EscritorEntityBuilder() {
+    public EscritorEntityBuilder(IPersonagemRepository iPersonagemRepository) {
+        this.iPersonagemRepository = iPersonagemRepository;
         reset();
     }
 
@@ -68,10 +65,13 @@ public class EscritorEntityBuilder implements IBaseEscritorBuilder {
     }
 
     @Override
-    public void setPersonagens(List<BasePersonagem> personagens) throws PersonagemInvalidoException {
+    public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException {
         List<PersonagemEntity> personagensEscritor = escritorEntity.getPersonagens();
-        for (BasePersonagem personagem : personagens) {
-            personagensEscritor.add(modelMapper.map(personagem, PersonagemEntity.class));
+        for (Integer id : personagensIds) {
+            Optional<PersonagemEntity> personagemEntity = iPersonagemRepository.findById(id);
+            if (personagemEntity.isEmpty())
+                throw new PersonagemInvalidoException("O personagem não existe no sistema");
+            personagensEscritor.add(personagemEntity.get());
         }
     }
 

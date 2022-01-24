@@ -1,7 +1,13 @@
 package com.grupo2.editoragibi.Data;
 
 import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
+import com.grupo2.editoragibi.Service.Builders.DesenhistaBuilder;
+import com.grupo2.editoragibi.Service.Builders.DesenhistaEntityBuilder;
+import com.grupo2.editoragibi.Service.Builders.IBaseDesenhistaBuilder;
+import com.grupo2.editoragibi.Service.Builders.IBaseEscritorBuilder;
+import com.grupo2.editoragibi.Service.Directors.DesenhistaDirector;
 import com.grupo2.editoragibi.Service.Domain.Desenhista;
+import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,58 +20,64 @@ import java.util.stream.Collectors;
 @Repository
 public class DesenhistaRepository {
 
-    @Autowired
-    ModelMapper modelMapper;
+    private IBaseDesenhistaBuilder desenhistaBuilder = new DesenhistaBuilder();
+    private IBaseDesenhistaBuilder desenhistaEntityBuilder = new DesenhistaEntityBuilder();
+    private DesenhistaDirector desenhistaDirector = new DesenhistaDirector(desenhistaBuilder);
+    private DesenhistaDirector desenhistaEntityDirector = new DesenhistaDirector(desenhistaEntityBuilder);
 
     @Autowired
     IDesenhistaRepository desenhistaRepository;
 
-    public Optional<Desenhista> getDesenhistaById(int id) {
+    public Desenhista getDesenhistaById(int id) throws DesenhistaInvalidoException {
 
         Optional<DesenhistaEntity> desenhistaEntity = desenhistaRepository.findById(id);
 
         if (!desenhistaEntity.isPresent())
-            return Optional.empty();
+            throw new DesenhistaInvalidoException("Desenhista não está no sistema");
 
-        Desenhista desenhista = modelMapper.map(desenhistaEntity.get(), Desenhista.class);
-
-        return Optional.of(desenhista);
+        return (Desenhista) desenhistaDirector.buildFromDesenhistaEntity(desenhistaEntity.get());
     }
 
-    public List<Desenhista> getDesenhistas() {
+    public List<Desenhista> getDesenhistas() throws DesenhistaInvalidoException {
 
         List<DesenhistaEntity> desenhistasEntity = desenhistaRepository.findAll();
 
-        return desenhistasEntity.stream().map(desenhista -> {
-            return modelMapper.map(desenhista, Desenhista.class);
-        }).collect(Collectors.toList());
+        List<Desenhista> desenhistas = new ArrayList<>();
+        for (DesenhistaEntity desenhistaEntity : desenhistasEntity) {
+            desenhistas.add((Desenhista) desenhistaDirector.buildFromDesenhistaEntity(desenhistaEntity));
+        }
+        return desenhistas;
     }
 
-    public Desenhista addDesenhista(Desenhista desenhista) {
+    public Desenhista addDesenhista(Desenhista desenhista) throws DesenhistaInvalidoException {
 
-        DesenhistaEntity desenhistaEntity = modelMapper.map(desenhista, DesenhistaEntity.class);
+        DesenhistaEntity desenhistaEntity = (DesenhistaEntity) desenhistaEntityDirector.buildFromDesenhista(desenhista);
 
         DesenhistaEntity desenhistaToReturn = desenhistaRepository.save(desenhistaEntity);
 
-        return modelMapper.map(desenhistaToReturn, Desenhista.class);
+        return (Desenhista) desenhistaDirector.buildFromDesenhistaEntity(desenhistaToReturn);
     }
 
-    public void deleteDesenhista(Integer id) {
-
-        desenhistaRepository.deleteById(id);
-    }
-
-    public Desenhista updateDesenhista(int id, Desenhista desenhista) {
+    public boolean deleteDesenhista(Integer id) {
 
         if (desenhistaRepository.findById(id).isEmpty())
-            return null;
+            return false;
 
-        desenhista.setId(id);
+        desenhistaRepository.deleteById(id);
+        return true;
+    }
 
-        DesenhistaEntity desenhistaEntity = modelMapper.map(desenhista, DesenhistaEntity.class);
+    public Desenhista updateDesenhista(int id, Desenhista desenhista) throws DesenhistaInvalidoException {
+
+        if (desenhistaRepository.findById(id).isEmpty())
+            throw new DesenhistaInvalidoException("Desenhista não está no sistema");
+
+        desenhista.setDesenhistaId(id);
+
+        DesenhistaEntity desenhistaEntity = (DesenhistaEntity) desenhistaEntityDirector.buildFromDesenhista(desenhista);
 
         DesenhistaEntity desenhistaToReturn = desenhistaRepository.save(desenhistaEntity);
 
-        return modelMapper.map(desenhistaToReturn, Desenhista.class);
+        return (Desenhista) desenhistaDirector.buildFromDesenhistaEntity(desenhistaToReturn);
     }
 }

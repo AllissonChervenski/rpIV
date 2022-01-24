@@ -3,12 +3,14 @@ package com.grupo2.editoragibi.Data.Entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+
+import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
 import lombok.Data;
 
 @Data
 @Table(name = "desenhista")
 @Entity
-public class DesenhistaEntity implements Serializable {
+public class DesenhistaEntity extends BaseDesenhista implements Serializable {
 
     public static final Long serialVersionUID = 1L;
 

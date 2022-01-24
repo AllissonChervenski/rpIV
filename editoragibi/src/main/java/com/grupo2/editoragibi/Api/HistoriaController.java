@@ -31,30 +31,27 @@ public class HistoriaController {
     }
 
     @GetMapping("/all")
-    public List<Historia> getHistorias() {
+    public ResponseEntity<Object> getHistorias() {
 
-        return historiaService.getHsitorias();
+        List<Historia> historias = null;
+        try {
+            historias = historiaService.getHsitorias();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+        return new ResponseEntity<>(historias, HttpStatus.OK);
     }
 
     @PostMapping("/create")
     public ResponseEntity<Object> addHistoria(@RequestBody HistoriaRequest historiaRequest) {
 
-        Historia historia = new Historia();
-
-        BeanUtils.copyProperties(historiaRequest, historia);
-
-        Historia historiaToReturn = null;
+        Historia historia = null;
         try {
-            historiaToReturn = historiaService.addHistoria(historia,
-                    historiaRequest.getArtefinalizadorId(),
-                    historiaRequest.getDesenhistaId(),
-                    historiaRequest.getEscritorId(),
-                    historiaRequest.getPersonagensIds());
+            historia = historiaService.addHistoria(historiaRequest);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
-
-        return new ResponseEntity<>(historiaToReturn, HttpStatus.OK);
+        return new ResponseEntity<>(historia, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -72,21 +69,12 @@ public class HistoriaController {
     @PutMapping("/update/{id}")
     public ResponseEntity<Object> updateHistoria(@PathVariable int id, @RequestBody HistoriaRequest historiaRequest) {
 
-        Historia historia = new Historia();
-
-        BeanUtils.copyProperties(historiaRequest, historia);
-
-        Historia historiaToReturn = null;
+        Historia historia = null;
         try {
-            historiaToReturn = historiaService.updateHistoria(id, historia,
-                    historiaRequest.getArtefinalizadorId(),
-                    historiaRequest.getDesenhistaId(),
-                    historiaRequest.getEscritorId(),
-                    historiaRequest.getPersonagensIds());
+            historia = historiaService.updateHistoria(id, historiaRequest);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
-
-        return new ResponseEntity<>(historiaToReturn, HttpStatus.OK);
+        return new ResponseEntity<>(historia, HttpStatus.OK);
     }
 }

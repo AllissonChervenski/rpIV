@@ -1,0 +1,65 @@
+package com.grupo2.editoragibi.Service.BaseObjects;
+
+import com.grupo2.editoragibi.Service.Domain.Desenhista;
+import com.grupo2.editoragibi.Service.Domain.Escritor;
+import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
+import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
+
+import java.time.LocalDate;
+
+public abstract class BaseHistoria {
+
+    protected int historiaId;
+    protected String tituloHistoria;
+    protected int totalPaginas;
+    protected LocalDate dataProducao;
+    protected Desenhista artefinalizador;
+    protected Desenhista desenhista;
+    protected Escritor escritor;
+
+    public int getHistoriaId() {
+        return historiaId;
+    }
+
+    public void setHistoriaId(int historiaId) {
+        this.historiaId = historiaId;
+    }
+
+    public String getTituloHistoria() {
+        return tituloHistoria;
+    }
+
+    public abstract void setTituloHistoria(String tituloHistoria) throws HistoriaInvalidaException;
+
+    public int getTotalPaginas() {
+        return totalPaginas;
+    }
+
+    public abstract void setTotalPaginas(int totalPaginas) throws HistoriaInvalidaException;
+
+    public LocalDate getDataProducao() {
+        return dataProducao;
+    }
+
+    public abstract void setDataProducao(LocalDate dataProducao) throws HistoriaInvalidaException;
+
+    public BaseDesenhista getArtefinalizador() {
+        return artefinalizador;
+    }
+
+    public abstract void setArtefinalizador(BaseDesenhista artefinalizador) throws HistoriaInvalidaException, DesenhistaInvalidoException;
+
+    public BaseDesenhista getDesenhista() {
+        return desenhista;
+    }
+
+    public abstract void setDesenhista(BaseDesenhista desenhista) throws DesenhistaInvalidoException;
+
+    public BaseEscritor getEscritor() {
+        return escritor;
+    }
+
+    public abstract void setEscritor(BaseEscritor escritor) throws PersonagemInvalidoException, EscritorInvalidoException;
+}

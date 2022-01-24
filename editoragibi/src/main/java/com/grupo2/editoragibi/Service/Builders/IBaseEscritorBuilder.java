@@ -25,7 +25,7 @@ public interface IBaseEscritorBuilder {
 
     public void setDataDemissao(LocalDate dataDemissao);
 
-    public void setPersonagens(List<BasePersonagem> personagens) throws PersonagemInvalidoException;
+    public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException;
 
     public BaseEscritor getResult();
 }

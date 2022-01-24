@@ -24,31 +24,23 @@ public abstract class BasePersonagem {
         return nomePersonagem;
     }
 
-    public void setNomePersonagem(String nomePersonagem) throws PersonagemInvalidoException {
-        this.nomePersonagem = nomePersonagem;
-    }
+    public abstract void setNomePersonagem(String nomePersonagem) throws PersonagemInvalidoException;
 
     public String getHistoricoPersonagem() {
         return historicoPersonagem;
     }
 
-    public void setHistoricoPersonagem(String historicoPersonagem) {
-        this.historicoPersonagem = historicoPersonagem;
-    }
+    public abstract void setHistoricoPersonagem(String historicoPersonagem);
 
     public String getPatentePersonagem() {
         return patentePersonagem;
     }
 
-    public void setPatentePersonagem(String patentePersonagem) {
-        this.patentePersonagem = patentePersonagem;
-    }
+    public abstract void setPatentePersonagem(String patentePersonagem);
 
     public LocalDate getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(LocalDate dataCriacao) throws PersonagemInvalidoException {
-        this.dataCriacao = dataCriacao;
-    }
+    public abstract void setDataCriacao(LocalDate dataCriacao) throws PersonagemInvalidoException;
 }

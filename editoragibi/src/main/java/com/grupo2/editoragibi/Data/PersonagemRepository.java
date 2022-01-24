@@ -8,6 +8,7 @@ import com.grupo2.editoragibi.Service.Builders.PersonagemEntityBuilder;
 import com.grupo2.editoragibi.Service.Directors.PersonagemDirector;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +22,18 @@ import java.util.stream.Collectors;
 @Repository
 public class PersonagemRepository {
 
-    private IBasePersonagemBuilder personagemBuilder = new PersonagemBuilder();
-    private IBasePersonagemBuilder personagemEntityBuilder = new PersonagemEntityBuilder();
-    private PersonagemDirector personagemDirector = new PersonagemDirector(personagemBuilder);
-    private PersonagemDirector personagemEntityDirector = new PersonagemDirector(personagemEntityBuilder);
-
     @Autowired
     IPersonagemRepository personagemRepository;
 
-    public Personagem getPersonagemById(int id) throws PersonagemInvalidoException {
+    @Autowired
+    IEscritorRepository iEscritorRepository;
+
+    private IBasePersonagemBuilder personagemBuilder = new PersonagemBuilder();
+    private IBasePersonagemBuilder personagemEntityBuilder = new PersonagemEntityBuilder(personagemRepository, iEscritorRepository);
+    private PersonagemDirector personagemDirector = new PersonagemDirector(personagemBuilder);
+    private PersonagemDirector personagemEntityDirector = new PersonagemDirector(personagemEntityBuilder);
+
+    public Personagem getPersonagemById(int id) throws PersonagemInvalidoException, EscritorInvalidoException {
 
         Optional<PersonagemEntity> personagemEntity = personagemRepository.findById(id);
 
@@ -41,7 +45,7 @@ public class PersonagemRepository {
         return (Personagem) personagem;
     }
 
-    public List<Personagem> getPersonagens() throws PersonagemInvalidoException {
+    public List<Personagem> getPersonagens() throws PersonagemInvalidoException, EscritorInvalidoException {
 
         List<PersonagemEntity> personagensEntity = personagemRepository.findAll();
 
@@ -53,7 +57,7 @@ public class PersonagemRepository {
         return personagens;
     }
 
-    public Personagem addPersonagem(Personagem personagem) throws PersonagemInvalidoException {
+    public Personagem addPersonagem(Personagem personagem) throws PersonagemInvalidoException, EscritorInvalidoException {
 
         PersonagemEntity personagemEntity = (PersonagemEntity) personagemEntityDirector.buildFromPersonagem(personagem);
         PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
@@ -69,7 +73,7 @@ public class PersonagemRepository {
         return true;
     }
 
-    public Personagem updatePersonagem(int id, Personagem personagem) throws PersonagemInvalidoException {
+    public Personagem updatePersonagem(int id, Personagem personagem) throws PersonagemInvalidoException, EscritorInvalidoException {
 
         if (personagemRepository.findById(id).isEmpty())
             throw new PersonagemInvalidoException("Personagem não está no sistema");

@@ -5,11 +5,10 @@ import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.Builders.EscritorBuilder;
 import com.grupo2.editoragibi.Service.Builders.EscritorEntityBuilder;
 import com.grupo2.editoragibi.Service.Builders.IBaseEscritorBuilder;
-import com.grupo2.editoragibi.Service.Directors.Director;
+import com.grupo2.editoragibi.Service.Directors.EscritorDirector;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -20,18 +19,21 @@ import java.util.Optional;
 @Repository
 public class EscritorRepository {
 
-    private IBaseEscritorBuilder escritorBuilder = new EscritorBuilder();
-    private IBaseEscritorBuilder escritorEntity = new EscritorEntityBuilder();
-    private Director escritorDirector = new Director(escritorBuilder);
-    private Director escritorEntityDirector = new Director(escritorEntity);
-
     @Autowired
     IEscritorRepository escritorRepository;
+
+    @Autowired
+    IPersonagemRepository iPersonagemRepository;
+
+    private IBaseEscritorBuilder escritorBuilder = new EscritorBuilder();
+    private IBaseEscritorBuilder escritorEntity = new EscritorEntityBuilder(iPersonagemRepository);
+    private EscritorDirector escritorDirector = new EscritorDirector(escritorBuilder);
+    private EscritorDirector escritorEntityDirector = new EscritorDirector(escritorEntity);
 
     public Escritor getEscritorById(int id) throws EscritorInvalidoException, PersonagemInvalidoException {
 
         Optional<EscritorEntity> escritorEntity = escritorRepository.findById(id);
-        if (!escritorEntity.isPresent())
+        if (escritorEntity.isEmpty())
             throw new EscritorInvalidoException("Escritor não está no sistema");
         BaseEscritor escritor = escritorDirector.buildFromEscritorEntity(escritorEntity.get());
         return (Escritor) escritor;
@@ -51,9 +53,7 @@ public class EscritorRepository {
     public Escritor addEscritor(Escritor escritor) throws EscritorInvalidoException, PersonagemInvalidoException {
 
         EscritorEntity escritorEntity = (EscritorEntity) escritorEntityDirector.buildFromEscritor(escritor);
-
         EscritorEntity escritorToReturn = escritorRepository.save(escritorEntity);
-
         return (Escritor) escritorDirector.buildFromEscritorEntity(escritorToReturn);
     }
 
@@ -72,11 +72,8 @@ public class EscritorRepository {
             throw new EscritorInvalidoException("Escritor não está no sistema");
 
         escritor.setEscritorId(id);
-
         EscritorEntity escritorEntity = (EscritorEntity) escritorEntityDirector.buildFromEscritor(escritor);
-
         EscritorEntity escritorToReturn = escritorRepository.save(escritorEntity);
-
         return (Escritor) escritorDirector.buildFromEscritorEntity(escritorToReturn);
     }
 }

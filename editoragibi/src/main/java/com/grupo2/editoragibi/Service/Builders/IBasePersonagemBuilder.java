@@ -20,7 +20,7 @@ public interface IBasePersonagemBuilder {
 
     public void setDataCriacao(LocalDate dataCriacao) throws PersonagemInvalidoException;
 
-    public void setEscritores(List<BaseEscritor> escritores) throws PersonagemInvalidoException;
+    public void setEscritores(List<Integer> escritoresIds) throws PersonagemInvalidoException, EscritorInvalidoException;
 
     public BasePersonagem getResult();
 }

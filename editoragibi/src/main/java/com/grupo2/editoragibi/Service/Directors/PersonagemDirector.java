@@ -15,11 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PersonagemDirector {
-
-    @Autowired
-    EscritorRepository escritorRepository;
 
     private IBasePersonagemBuilder builder;
 
@@ -33,43 +31,37 @@ public class PersonagemDirector {
         builder.setHistoriaPersonagem(personagemRequest.getHistoricoPersonagem());
         builder.setPatentePersonagem(personagemRequest.getPatentePersonagem());
         builder.setDataCriacao(personagemRequest.getDataCriacao());
-        List<BaseEscritor> escritores = new ArrayList<>();
-        for (Integer i : personagemRequest.getEscritoresIds()) {
-            escritores.add((BaseEscritor) escritorRepository.getEscritorById(i));
-        }
-        builder.setEscritores(escritores);
+        builder.setEscritores(personagemRequest.getEscritoresIds());
 
         return builder.getResult();
     }
 
-    public BasePersonagem buildFromPersonagem(Personagem personagem) throws PersonagemInvalidoException {
+    public BasePersonagem buildFromPersonagem(Personagem personagem) throws PersonagemInvalidoException, EscritorInvalidoException {
 
         builder.setPersonagemId(personagem.getPersonagemId());
         builder.setNomePersonagem(personagem.getNomePersonagem());
         builder.setHistoriaPersonagem(personagem.getHistoricoPersonagem());
         builder.setPatentePersonagem(personagem.getPatentePersonagem());
         builder.setDataCriacao(personagem.getDataCriacao());
-        List<BaseEscritor> escritores = new ArrayList<>();
-        for (Escritor escritor : personagem.getEscritores()) {
-            escritores.add((BaseEscritor) escritor);
-        }
-        builder.setEscritores(escritores);
+        List<Integer> escritoresIds = personagem.getEscritores().stream().map(escritor -> {
+            return escritor.getEscritorId();
+        }).collect(Collectors.toList());
+        builder.setEscritores(escritoresIds);
 
         return builder.getResult();
     }
 
-    public BasePersonagem buildFromPersonagemEntity(PersonagemEntity personagemEntity) throws PersonagemInvalidoException {
+    public BasePersonagem buildFromPersonagemEntity(PersonagemEntity personagemEntity) throws PersonagemInvalidoException, EscritorInvalidoException {
 
         builder.setPersonagemId(personagemEntity.getPersonagemId());
         builder.setNomePersonagem(personagemEntity.getNomePersonagem());
         builder.setHistoriaPersonagem(personagemEntity.getHistoricoPersonagem());
         builder.setPatentePersonagem(personagemEntity.getPatentePersonagem());
         builder.setDataCriacao(personagemEntity.getDataCriacao());
-        List<BaseEscritor> escritores = new ArrayList<>();
-        for (EscritorEntity escritor : personagemEntity.getEscritores()) {
-            escritores.add((BaseEscritor) escritor);
-        }
-        builder.setEscritores(escritores);
+        List<Integer> escritoresIds = personagemEntity.getEscritores().stream().map(escritor -> {
+            return escritor.getEscritorId();
+        }).collect(Collectors.toList());
+        builder.setEscritores(escritoresIds);
 
         return builder.getResult();
     }

@@ -4,12 +4,13 @@ import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import lombok.Data;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
 public class EscritorRequest extends BaseEscritor {
 
-    private Integer[] personagensIds;
+    private List<Integer> personagensIds;
 
     @Override
     public void setNomeEscritor(String nomeEscritor) throws EscritorInvalidoException {

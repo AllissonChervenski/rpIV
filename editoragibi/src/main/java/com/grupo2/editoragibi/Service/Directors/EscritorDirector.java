@@ -17,16 +17,17 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
-public class Director {
+public class EscritorDirector {
 
     @Autowired
     PersonagemRepository personagemRepository;
 
     private IBaseEscritorBuilder builder;
 
-    public Director(IBaseEscritorBuilder builder) {
+    public EscritorDirector(IBaseEscritorBuilder builder) {
         this.builder = builder;
     }
 
@@ -38,11 +39,7 @@ public class Director {
         builder.setEmailEscritor(escritorRequest.getEmailEscritor());
         builder.setDataContratacao(escritorRequest.getDataContratacao());
         builder.setDataDemissao(escritorRequest.getDataDemissao());
-        List<BasePersonagem> personagens = new ArrayList<>();
-        for (Integer i : escritorRequest.getPersonagensIds()) {
-            personagens.add((BasePersonagem) personagemRepository.getPersonagemById(i));
-        }
-        builder.setPersonagens(personagens);
+        builder.setPersonagens(escritorRequest.getPersonagensIds());
 
         return builder.getResult();
     }
@@ -56,12 +53,10 @@ public class Director {
         builder.setEmailEscritor(escritor.getEmailEscritor());
         builder.setDataContratacao(escritor.getDataContratacao());
         builder.setDataDemissao(escritor.getDataDemissao());
-        List<Personagem> personagens = escritor.getPersonagens();
-        List<BasePersonagem> basePersonagens = new ArrayList<>();
-        for (Personagem personagem : personagens) {
-            basePersonagens.add((BasePersonagem) personagem);
-        }
-        builder.setPersonagens(basePersonagens);
+        List<Integer> personagensIds = escritor.getPersonagens().stream().map(personagem -> {
+            return personagem.getPersonagemId();
+        }).collect(Collectors.toList());
+        builder.setPersonagens(personagensIds);
 
         return builder.getResult();
     }
@@ -75,13 +70,10 @@ public class Director {
         builder.setEmailEscritor(escritorEntity.getEmailEscritor());
         builder.setDataContratacao(escritorEntity.getDataContratacao());
         builder.setDataDemissao(escritorEntity.getDataDemissao());
-
-        List<PersonagemEntity> personagens = escritorEntity.getPersonagens();
-        List<BasePersonagem> basePersonagens = new ArrayList<>();
-        for (PersonagemEntity personagem : personagens) {
-            basePersonagens.add((BasePersonagem) personagem);
-        }
-        builder.setPersonagens(basePersonagens);
+        List<Integer> personagensIds = escritorEntity.getPersonagens().stream().map(personagem -> {
+            return personagem.getPersonagemId();
+        }).collect(Collectors.toList());
+        builder.setPersonagens(personagensIds);
 
         return builder.getResult();
     }

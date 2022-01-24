@@ -28,9 +28,6 @@ public class EscritorBuilder implements IBaseEscritorBuilder {
     @Autowired
     HistoriaRepository historiaRepository;
 
-    @Autowired
-    ModelMapper modelMapper;
-
     private Escritor escritor;
 
     public EscritorBuilder() {
@@ -97,10 +94,10 @@ public class EscritorBuilder implements IBaseEscritorBuilder {
     }
 
     @Override
-    public void setPersonagens(List<BasePersonagem> personagens) throws PersonagemInvalidoException {
+    public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<Personagem> personagensEscritor = escritor.getPersonagens();
-        for (BasePersonagem personagem : personagens) {
-            personagensEscritor.add(modelMapper.map(personagem, Personagem.class));
+        for (Integer id : personagensIds) {
+            personagensEscritor.add(personagemRepository.getPersonagemById(id));
         }
     }
 

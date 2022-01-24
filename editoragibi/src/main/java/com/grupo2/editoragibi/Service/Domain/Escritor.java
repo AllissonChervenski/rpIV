@@ -62,7 +62,7 @@ public class Escritor extends BaseEscritor {
     }
 
     //TODO
-    public Personagem criaPersonagem(int personagemId) throws PersonagemInvalidoException {
+    public Personagem criaPersonagem(int personagemId) throws PersonagemInvalidoException, EscritorInvalidoException {
 
         for (Personagem personagem : personagens)
             if (personagem.getPersonagemId() == personagemId)

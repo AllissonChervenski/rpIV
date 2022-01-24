@@ -2,27 +2,30 @@ package com.grupo2.editoragibi.Service.Builders;
 
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
+import com.grupo2.editoragibi.Data.IEscritorRepository;
 import com.grupo2.editoragibi.Data.IPersonagemRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Domain.Escritor;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public class PersonagemEntityBuilder implements IBasePersonagemBuilder {
 
-    @Autowired
-    IPersonagemRepository iPersonagemRepository;
-
-    @Autowired
-    ModelMapper modelMapper;
+    private IPersonagemRepository iPersonagemRepository;
+    private IEscritorRepository iEscritorRepository;
 
     private PersonagemEntity personagemEntity;
 
-    public PersonagemEntityBuilder() {
+    public PersonagemEntityBuilder(IPersonagemRepository iPersonagemRepository, IEscritorRepository iEscritorRepository) {
+        this.iPersonagemRepository = iPersonagemRepository;
+        this.iEscritorRepository = iEscritorRepository;
         reset();
     }
 
@@ -56,10 +59,13 @@ public class PersonagemEntityBuilder implements IBasePersonagemBuilder {
     }
 
     @Override
-    public void setEscritores(List<BaseEscritor> escritores) throws PersonagemInvalidoException {
+    public void setEscritores(List<Integer> escritoresIds) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<EscritorEntity> escritoresPersonagem = personagemEntity.getEscritores();
-        for (BaseEscritor escritor : escritores) {
-            escritoresPersonagem.add(modelMapper.map(escritor, EscritorEntity.class));
+        for (Integer id : escritoresIds) {
+            Optional<EscritorEntity> escritorEntity = iEscritorRepository.findById(id);
+            if (escritorEntity.isEmpty())
+                throw new EscritorInvalidoException("Escritor não está no sistema");
+            escritoresPersonagem.add(escritorEntity.get());
         }
     }
 

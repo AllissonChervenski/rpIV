@@ -29,12 +29,12 @@ public class PersonagemService {
     @Autowired
     EscritorRepository escritorRepository;
 
-    public Personagem getPersonagemById(int id) throws PersonagemInvalidoException {
+    public Personagem getPersonagemById(int id) throws PersonagemInvalidoException, EscritorInvalidoException {
 
         return personagemRepository.getPersonagemById(id);
     }
 
-    public List<Personagem> getPersonagens() throws PersonagemInvalidoException {
+    public List<Personagem> getPersonagens() throws PersonagemInvalidoException, EscritorInvalidoException {
 
         return personagemRepository.getPersonagens();
     }

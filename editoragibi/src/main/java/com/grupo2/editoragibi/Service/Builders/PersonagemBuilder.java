@@ -1,10 +1,12 @@
 package com.grupo2.editoragibi.Service.Builders;
 
+import com.grupo2.editoragibi.Data.EscritorRepository;
 import com.grupo2.editoragibi.Data.PersonagemRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,7 @@ public class PersonagemBuilder implements IBasePersonagemBuilder {
     PersonagemRepository personagemRepository;
 
     @Autowired
-    ModelMapper modelMapper;
+    EscritorRepository escritorRepository;
 
     private Personagem personagem;
 
@@ -66,10 +68,10 @@ public class PersonagemBuilder implements IBasePersonagemBuilder {
     }
 
     @Override
-    public void setEscritores(List<BaseEscritor> escritores) throws PersonagemInvalidoException {
+    public void setEscritores(List<Integer> escritoresIds) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<Escritor> personagensEscritor = personagem.getEscritores();
-        for (BaseEscritor escritor : escritores) {
-            personagensEscritor.add(modelMapper.map(escritor, Escritor.class));
+        for (Integer id : escritoresIds) {
+            personagensEscritor.add(escritorRepository.getEscritorById(id));
         }
     }
 

@@ -1,8 +1,11 @@
 package com.grupo2.editoragibi.Api;
 
+import com.grupo2.editoragibi.Api.Requests.DesenhistaRequest;
 import com.grupo2.editoragibi.Service.DesenhistaService;
 import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,31 +18,62 @@ public class DesenhistaController {
     DesenhistaService desenhistaService;
 
     @GetMapping("/{id}")
-    public Desenhista getDesenhistaById(@PathVariable int id) {
+    public ResponseEntity<Object> getDesenhistaById(@PathVariable int id) {
 
-        return desenhistaService.getDesenhistaById(id);
+        Desenhista desenhista = null;
+        try {
+            desenhista = desenhistaService.getDesenhistaById(id);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+
+        return new ResponseEntity<>(desenhista, HttpStatus.OK);
     }
 
     @GetMapping("/all")
-    public List<Desenhista> getDesenhistas() {
+    public ResponseEntity<Object> getDesenhistas() {
 
-        return desenhistaService.getDesenhistas();
+        List<Desenhista> desenhistas = null;
+        try {
+            desenhistas = desenhistaService.getDesenhistas();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+
+        return new ResponseEntity<>(desenhistas, HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    public Desenhista addDesenhista(@RequestBody Desenhista desenhista) {
+    public ResponseEntity<Object> addDesenhista(@RequestBody DesenhistaRequest desenhistaRequest) {
 
-        return desenhistaService.addDesenhista(desenhista);
+        Desenhista desenhista = null;
+        try {
+            desenhista = desenhistaService.addDesenhista(desenhistaRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+        return new ResponseEntity<>(desenhista, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean deleteDesenhista(@PathVariable Integer id) {
-
-        return desenhistaService.deleteDesenhista(id);
+    public ResponseEntity<Object> deleteDesenhista(@PathVariable Integer id) {
+        try {
+            desenhistaService.deleteDesenhista(id);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+        return ResponseEntity.status(HttpStatus.OK).body("Desenhista excluido");
     }
 
     @PutMapping("/update/{id}")
-    public Desenhista updateDesenhista(@PathVariable int id, @RequestBody Desenhista desenhista){
-        return desenhistaService.updateDesenhista(id, desenhista);
+    public ResponseEntity<Object> updateDesenhista(@PathVariable int id, @RequestBody DesenhistaRequest desenhistaRequest){
+        Desenhista desenhista = null;
+        try {
+            desenhista = desenhistaService.updateDesenhista(id, desenhistaRequest);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+        return new ResponseEntity<>(desenhista, HttpStatus.OK);
     }
 }
