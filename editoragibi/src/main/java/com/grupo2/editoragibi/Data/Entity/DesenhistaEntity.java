@@ -17,7 +17,7 @@ public class DesenhistaEntity extends BaseDesenhista implements Serializable {
     @Id
     @Column(name = "desenhista_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "desenhista_desenhista_id_seq")
-    private int id;
+    private int desenhistaId;
 
     @Column(name = "nome_desenhista")
     private String nomeDesenhista;
