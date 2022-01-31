@@ -34,6 +34,8 @@ public class BancaController {
         try {
             bancas = bancaService.getBancas();
         } catch (Exception e) {
+            //TODO
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
         return new ResponseEntity<>(bancas, HttpStatus.OK);

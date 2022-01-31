@@ -17,34 +17,22 @@ import java.util.Optional;
 @Repository
 public class BancaRepository {
 
-    private IBaseBancaBuilder bancaBuilder = new BancaBuilder();
-    private IBaseBancaBuilder bancaEntityBuilder = new BancaEntityBuilder();
-    private BancaDirector bancaDirector = new BancaDirector(bancaBuilder);
-    private BancaDirector bancaEntityDirector = new BancaDirector(bancaEntityBuilder);
-
     @Autowired
     IBancaRepository bancaRepository;
 
-    public Banca getBancaById(int id) throws BancaInvalidaException {
+    public BancaEntity getBancaById(int id) throws BancaInvalidaException {
         Optional<BancaEntity> bancaEntity = bancaRepository.findById(id);
         if (bancaEntity.isEmpty())
             throw new BancaInvalidaException("Essa banca não está no sistema");
-        return (Banca) bancaDirector.buildFromBancaEntity(bancaEntity.get());
+        return bancaEntity.get();
     }
 
-    public List<Banca> getBancas() throws BancaInvalidaException {
-        List<BancaEntity> bancasEntity = bancaRepository.findAll();
-        List<Banca> bancas = new ArrayList<>();
-        for (BancaEntity banca : bancasEntity) {
-            bancas.add((Banca) bancaDirector.buildFromBancaEntity(banca));
-        }
-        return bancas;
+    public List<BancaEntity> getBancas() {
+        return bancaRepository.findAll();
     }
 
-    public Banca addBanca(Banca banca) throws BancaInvalidaException {
-        BancaEntity bancaEntity = (BancaEntity) bancaEntityDirector.buildFromBanca(banca);
-        BancaEntity bancaToReturn = bancaRepository.save(bancaEntity);
-        return (Banca) bancaDirector.buildFromBancaEntity(bancaToReturn);
+    public BancaEntity addBanca(BancaEntity banca) throws BancaInvalidaException {
+        return bancaRepository.save(banca);
     }
 
     public boolean deleteBanca(int id) {
@@ -54,12 +42,10 @@ public class BancaRepository {
         return true;
     }
 
-    public Banca updateBanca(int id, Banca banca) throws BancaInvalidaException {
+    public BancaEntity updateBanca(int id, BancaEntity banca) throws BancaInvalidaException {
         if (bancaRepository.findById(id).isEmpty())
-            throw new BancaInvalidaException("A banca não está no sistma");
+            throw new BancaInvalidaException("A banca não está no sistema");
         banca.setBancaId(id);
-        BancaEntity bancaEntity = (BancaEntity) bancaEntityDirector.buildFromBanca(banca);
-        BancaEntity bancaToReturn = bancaRepository.save(bancaEntity);
-        return (Banca) bancaDirector.buildFromBancaEntity(bancaToReturn);
+        return bancaRepository.save(banca);
     }
 }
