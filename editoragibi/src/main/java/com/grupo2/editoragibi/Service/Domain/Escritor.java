@@ -26,13 +26,13 @@ public class Escritor extends BaseEscritor {
 
     @Override
     public void setNomeEscritor(String nomeEscritor) throws EscritorInvalidoException {
-        if (nomeEscritor == null || !Pattern.matches("^[a-zA-Z\\s]([a-zA-Z])[a-zA-Z\\s]{1,20}$", nomeEscritor))
+        if (nomeEscritor == null || !Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,20}$", nomeEscritor))
             throw new EscritorInvalidoException("Nome inválido");
         this.nomeEscritor = nomeEscritor;
     }
 
     public void setEnderecoEscritor(String enderecoEscritor) throws EscritorInvalidoException {
-        if (enderecoEscritor == null || !Pattern.matches("^[\\w\\s-]{1,25}$", enderecoEscritor))
+        if (enderecoEscritor == null || !Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,25}$", enderecoEscritor))
             throw new EscritorInvalidoException("Endereço do escritor inválido");
         this.enderecoEscritor = enderecoEscritor;
     }

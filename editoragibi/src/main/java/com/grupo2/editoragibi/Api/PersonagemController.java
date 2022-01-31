@@ -52,6 +52,7 @@ public class PersonagemController {
         try {
             personagem = personagemService.addPersonagem(personagemRequest);
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
 

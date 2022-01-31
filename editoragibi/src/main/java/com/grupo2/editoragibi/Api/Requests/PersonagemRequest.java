@@ -1,5 +1,7 @@
 package com.grupo2.editoragibi.Api.Requests;
 
+import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -8,20 +10,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class PersonagemRequest {
+public class PersonagemRequest extends BasePersonagem {
 
-    @NotNull
-    private String nomePersonagem;
+    private List<Integer> escritoresIds;
 
-    @NotNull
-    private String historicoPersonagem;
+    @Override
+    public void setNomePersonagem(String nomePersonagem) throws PersonagemInvalidoException {
+        this.nomePersonagem = nomePersonagem;
+    }
 
-    @NotNull
-    private String patentePersonagem;
+    @Override
+    public void setHistoricoPersonagem(String historicoPersonagem) {
+        this.historicoPersonagem = historicoPersonagem;
+    }
 
-    @NotNull
-    private LocalDate dataCriacao;
+    @Override
+    public void setPatentePersonagem(String patentePersonagem) {
+        this.patentePersonagem = patentePersonagem;
+    }
 
-    @NotNull
-    public List<Integer> escritoresIds;
+    @Override
+    public void setDataCriacao(LocalDate dataCriacao) throws PersonagemInvalidoException {
+        this.dataCriacao = dataCriacao;
+    }
 }

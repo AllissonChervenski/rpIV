@@ -10,6 +10,8 @@ import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,7 +22,7 @@ public class PersonagemBuilder implements IBasePersonagemBuilder {
     PersonagemRepository personagemRepository;
 
     @Autowired
-    EscritorRepository escritorRepository;
+    private EscritorRepository escritorRepository;
 
     private Personagem personagem;
 
@@ -71,7 +73,11 @@ public class PersonagemBuilder implements IBasePersonagemBuilder {
     public void setEscritores(List<Integer> escritoresIds) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<Escritor> personagensEscritor = personagem.getEscritores();
         for (Integer id : escritoresIds) {
-            personagensEscritor.add(escritorRepository.getEscritorById(id));
+            //TODO somente para testar
+            System.out.println(escritorRepository == null);
+            escritorRepository.getEscritorById(id);
+            var e = escritorRepository.getEscritorById(id);
+            personagensEscritor.add(e);
         }
     }
 

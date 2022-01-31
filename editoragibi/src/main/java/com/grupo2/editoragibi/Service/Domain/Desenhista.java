@@ -21,7 +21,7 @@ public class Desenhista extends BaseDesenhista {
     }
 
     public void setNomeDesenhista(String nomeDesenhista) throws DesenhistaInvalidoException {
-        if (nomeDesenhista == null || !Pattern.matches("^[a-zA-Z\\s]([a-zA-Z])[a-zA-Z\\s]|[\\p{L}]{1,20}$", nomeDesenhista))
+        if (nomeDesenhista == null || !Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,20}$", nomeDesenhista))
             throw new DesenhistaInvalidoException("Nome Inválido");
         this.nomeDesenhista = nomeDesenhista;
     }
@@ -51,7 +51,7 @@ public class Desenhista extends BaseDesenhista {
     }
 
     public void setEnderecoDesenhista(String enderecoDesenhista) throws DesenhistaInvalidoException {
-        if (enderecoDesenhista == null || !Pattern.matches("^[\\w\\s-]{1,25}$", enderecoDesenhista))
+        if (enderecoDesenhista == null || !Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,25}$", enderecoDesenhista))
             throw new DesenhistaInvalidoException("Endereco inválido");
         this.enderecoDesenhista = enderecoDesenhista;
     }
