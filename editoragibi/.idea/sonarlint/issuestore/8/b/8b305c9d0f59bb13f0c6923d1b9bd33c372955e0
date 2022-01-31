@@ -1,6 +1,0 @@
-
-t
-java:S3776X"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(İ¢êÍıÿÿÿÿ8è•ÒÛ/
-c
-java:S1126h"AReplace this if-then-else statement by a single return statement.(µ´¶Äùÿÿÿÿ8è•ÒÛ/
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Œ”ˆªşÿÿÿÿ8è•ÒÛ/
