@@ -1,8 +1,10 @@
 package com.editoragibi.editoragibi.edicoes;
 
+import com.editoragibi.editoragibi.gibi.Gibi;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -22,6 +24,13 @@ public class EdicoesGibi {
     private long id;
     private int edicao;
     private LocalDate dataPub;
+
+    @ManyToOne
+    private Gibi gibi;
+
+    public Gibi getGibi() {
+        return gibi;
+    }
 
     public long getId() {
         return id;
@@ -52,7 +61,6 @@ public class EdicoesGibi {
         this.edicao = edicao;
         this.dataPub = dataPub;
     }
-
 
 
     public EdicoesGibi(int edicao, LocalDate dataPub) {

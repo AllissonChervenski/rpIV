@@ -1,6 +1,7 @@
 package com.editoragibi.editoragibi.gibi;
 
 
+import com.editoragibi.editoragibi.edicoes.EdicoesGibi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -42,4 +43,6 @@ public class GibiController {
                            @RequestParam(required = false) Integer edicoes){
         gibiService.updateGibi(gibiId, titulo, inicio, enc, edicoes);
     }
+
+
 }

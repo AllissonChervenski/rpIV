@@ -1,5 +1,7 @@
 package com.editoragibi.editoragibi.gibi;
 
+import com.editoragibi.editoragibi.edicoes.EdicoesGibi;
+import org.apache.tomcat.jni.Local;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +20,7 @@ public class GibConfig {
                     "flash",
                     LocalDate.of(1999, Month.JANUARY, 1),
                     LocalDate.of(2000, Month.JANUARY, 3),
-                    4
+                   List.of(new EdicoesGibi(3, LocalDate.of(1990, Month.APRIL, 2)))
 
             );
             Gibi sm = new Gibi(

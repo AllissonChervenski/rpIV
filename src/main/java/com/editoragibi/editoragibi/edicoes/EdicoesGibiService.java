@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EdicoesGibiService {
@@ -35,6 +36,14 @@ public class EdicoesGibiService {
             throw new IllegalStateException("Edicao nao encontrada");
         }
 
+    }
+
+    public void addEdicoesGibi(EdicoesGibi edicoesGibi) {
+        Optional<EdicoesGibi> edicoesGibiOptional = edicoesGibiRepository.findEdicoesGibiByEdicao(edicoesGibi.getEdicao());
+        if(edicoesGibiOptional.isPresent()){
+            throw new IllegalStateException("Edicao " + edicoesGibi.getEdicao() + " já existente");
+        }
+        edicoesGibiRepository.save(edicoesGibi);
     }
 }
 

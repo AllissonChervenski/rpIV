@@ -25,4 +25,10 @@ public class EdicoesGibiController {
     public List<EdicoesGibi> getEdicoesGibiByEdicao(@PathVariable("edicoesGibiEdicao") Integer edicao){
         return edicoesGibiService.getEdicoesGibiByEdicao(edicao);
     }
+
+    @PostMapping
+    public void addEdicoesGibi(@RequestBody EdicoesGibi edicoesGibi){
+        edicoesGibiService.addEdicoesGibi(edicoesGibi);
+    }
+
 }
