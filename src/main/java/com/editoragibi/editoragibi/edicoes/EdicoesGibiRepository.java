@@ -10,7 +10,9 @@ import java.util.Optional;
 @Repository
 public interface EdicoesGibiRepository  extends JpaRepository<EdicoesGibi, Long> {
 
-    @Query("SELECT e FROM EdicoesGibi e WHERE e.edicao = ?1 ")
+    @Query("SELECT e FROM EdicoesGibi e WHERE e.nroEdicao = ?1 ")
     Optional<EdicoesGibi> findEdicoesGibiByEdicao(Integer edicao);
+
+
 }
 

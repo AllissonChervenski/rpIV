@@ -1,5 +1,6 @@
 package com.editoragibi.editoragibi.edicoes;
 
+import com.editoragibi.editoragibi.gibi.Gibi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,4 +32,8 @@ public class EdicoesGibiController {
         edicoesGibiService.addEdicoesGibi(edicoesGibi);
     }
 
+    @PostMapping(path = "edicao/atr/{edicoesGibiEdicao}")
+    public void addGibiEdicoesGibi(@RequestBody Gibi gibi, @PathVariable("edicoesGibiEdicao") Long edicaoId){
+        edicoesGibiService.addGibiEdicoesGibi(gibi, edicaoId);
+    }
 }

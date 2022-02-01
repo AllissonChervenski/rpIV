@@ -4,25 +4,18 @@ import com.editoragibi.editoragibi.edicoes.EdicoesGibi;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table
 public class Gibi {
-    public Gibi(Long gibi_id, String titulo, LocalDate inicioData, LocalDate encData, int edicoes) {
-        this.gibi_id = gibi_id;
+
+    public Gibi(String titulo, LocalDate inicioData, LocalDate encData, List<EdicoesGibi> edicoesGibis) {
         this.titulo = titulo;
         this.inicioData = inicioData;
         this.encData = encData;
-        this.edicoes = edicoes;
-    }
-
-    public Gibi(String titulo, LocalDate inicioData, LocalDate encData, int edicoes) {
-        this.titulo = titulo;
-        this.inicioData = inicioData;
-        this.encData = encData;
-        this.edicoes = edicoes;
-
+        this.edicoesGibis = edicoesGibis;
     }
 
     public Gibi() {
@@ -60,13 +53,6 @@ public class Gibi {
         this.encData = encData;
     }
 
-    public int getEdicoes() {
-        return edicoes;
-    }
-
-    public void setEdicoes(int edicoes) {
-        this.edicoes = edicoes;
-    }
 
     @Id
     @SequenceGenerator(
@@ -82,18 +68,20 @@ public class Gibi {
     private String titulo;
     private LocalDate inicioData;
     private LocalDate encData;
-    private int edicoes;
 
-    public Gibi(String titulo, LocalDate inicioData, LocalDate encData, List<EdicoesGibi> edicoesGibis) {
-        this.titulo = titulo;
-        this.inicioData = inicioData;
-        this.encData = encData;
-        this.edicoes = edicoesGibis.size();
-        this.edicoesGibis = edicoesGibis;
+    public List<EdicoesGibi> getEdicoesGibis() {
+        return edicoesGibis;
     }
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<EdicoesGibi> edicoesGibis;
+
+    public Gibi(String titulo, LocalDate inicioData, LocalDate encData) {
+        this.titulo = titulo;
+        this.inicioData = inicioData;
+        this.encData = encData;
+        this.edicoesGibis = new ArrayList<>();
+    }
 
 
     @Override
@@ -103,15 +91,14 @@ public class Gibi {
                 ", titulo='" + titulo + '\'' +
                 ", inicioData=" + inicioData +
                 ", encData=" + encData +
-                ", edicoes=" + edicoes +
+                ", edicoesGibis=" + edicoesGibis +
                 '}';
     }
 
-    public List<EdicoesGibi> getEdicoesGibis() {
-        return edicoesGibis;
-    }
 
     public void setEdicoesGibis(List<EdicoesGibi> edicoesGibis) {
         this.edicoesGibis = edicoesGibis;
     }
+
+
 }

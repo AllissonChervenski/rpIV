@@ -1,9 +1,12 @@
 package com.editoragibi.editoragibi.edicoes;
 
+import com.editoragibi.editoragibi.gibi.Gibi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,13 +42,37 @@ public class EdicoesGibiService {
     }
 
     public void addEdicoesGibi(EdicoesGibi edicoesGibi) {
-        Optional<EdicoesGibi> edicoesGibiOptional = edicoesGibiRepository.findEdicoesGibiByEdicao(edicoesGibi.getEdicao());
-        if(edicoesGibiOptional.isPresent()){
-            throw new IllegalStateException("Edicao " + edicoesGibi.getEdicao() + " já existente");
+        Optional<EdicoesGibi> edicoesGibiOptional = edicoesGibiRepository.findEdicoesGibiByEdicao(edicoesGibi.getNroEdicao());
+        if (edicoesGibiOptional.isPresent()) {
+                throw new IllegalStateException("Edicao :" + edicoesGibi.getNroEdicao() + "Data: " + " já existente");
+            }
+        else {
+                edicoesGibiRepository.save(edicoesGibi);
+            }
         }
-        edicoesGibiRepository.save(edicoesGibi);
+
+        @Transactional
+    public void addGibiEdicoesGibi(Gibi gibi, Long edicaoId) {
+        Optional<EdicoesGibi> edicoesGibiOptional = edicoesGibiRepository.findById(edicaoId);
+        if(edicoesGibiOptional.isPresent()) {
+            if (gibi.getEdicoesGibis() != null) {
+                if (!gibi.getEdicoesGibis().contains(edicoesGibiOptional.get())) {
+                    gibi.getEdicoesGibis().add(edicoesGibiOptional.get());
+                } else {
+                    throw new IllegalStateException("Esta edição de gibi ja está atribuida ao gibi " + gibi.getTitulo());
+                }
+            }
+            else{
+                gibi.setEdicoesGibis(new ArrayList<>());
+                gibi.getEdicoesGibis().add(edicoesGibiOptional.get());
+            }
+        }
+        else{
+            throw new IllegalStateException("Esta edição não existe");
+        }
     }
 }
+
 
 
 

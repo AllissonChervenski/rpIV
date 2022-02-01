@@ -4,7 +4,6 @@ import com.editoragibi.editoragibi.gibi.Gibi;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 
 @Entity
@@ -21,8 +20,8 @@ public class EdicoesGibi {
             strategy = GenerationType.SEQUENCE,
             generator =  "edicoesGibi_sequence"
     )
-    private long id;
-    private int edicao;
+    private long edicaoGibiId;
+    private int nroEdicao;
     private LocalDate dataPub;
 
     @ManyToOne
@@ -32,20 +31,20 @@ public class EdicoesGibi {
         return gibi;
     }
 
-    public long getId() {
-        return id;
+    public long getEdicaoGibiId() {
+        return edicaoGibiId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setEdicaoGibiId(long id) {
+        this.edicaoGibiId = id;
     }
 
-    public int getEdicao() {
-        return edicao;
+    public int getNroEdicao() {
+        return nroEdicao;
     }
 
-    public void setEdicao(int edicao) {
-        this.edicao = edicao;
+    public void setNroEdicao(int nroEdicao) {
+        this.nroEdicao = nroEdicao;
     }
 
     public LocalDate getDataPub() {
@@ -56,20 +55,30 @@ public class EdicoesGibi {
         this.dataPub = dataPub;
     }
 
-    public EdicoesGibi(long id, int edicao, LocalDate dataPub) {
-        this.id = id;
-        this.edicao = edicao;
+    public EdicoesGibi(int nroEdicao, LocalDate dataPub) {
+        this.nroEdicao = nroEdicao;
         this.dataPub = dataPub;
     }
 
-
-    public EdicoesGibi(int edicao, LocalDate dataPub) {
-        this.edicao = edicao;
+    public EdicoesGibi(long edicaoGibiId, int nroEdicao, LocalDate dataPub, Gibi gibi) {
+        this.edicaoGibiId = edicaoGibiId;
+        this.nroEdicao = nroEdicao;
         this.dataPub = dataPub;
+        this.gibi = gibi;
+    }
+
+
+    public EdicoesGibi(int nroEdicao, LocalDate dataPub, Gibi gibi) {
+        this.nroEdicao = nroEdicao;
+        this.dataPub = dataPub;
+        this.gibi = gibi;
     }
 
     public EdicoesGibi() {
     }
 
 
+    public void setGibi(Gibi gibi) {
+        this.gibi = gibi;
+    }
 }

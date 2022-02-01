@@ -1,5 +1,6 @@
 package com.editoragibi.editoragibi.edicoes;
 
+import com.editoragibi.editoragibi.gibi.GibiRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +13,7 @@ import java.util.List;
 public class EdicoesGibiConfig {
 
     @Bean
-    CommandLineRunner edicoesGibiConfiguration(EdicoesGibiRepository edicoesGibiRepository){
+    CommandLineRunner edicoesGibiConfiguration(EdicoesGibiRepository edicoesGibiRepository, GibiRepository gibiRepository){
         return  args -> {
             EdicoesGibi primeira = new EdicoesGibi(
                     1,

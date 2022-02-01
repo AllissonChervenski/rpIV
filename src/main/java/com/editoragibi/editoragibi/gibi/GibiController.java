@@ -30,6 +30,11 @@ public class GibiController {
         gibiService.addGibi(gibi);
     }
 
+    @PostMapping(path = "atr/{gibiId}&{edicaoId}")
+    public void addEdicaoGibi(@PathVariable("gibiId") Long gibiId,@PathVariable("edicaoId") Long edicaoGibiId){
+        gibiService.addEdicaoGibi(gibiId, edicaoGibiId);
+    }
+
     @DeleteMapping(path = "{gibiId}")
     public void deleteGibi(@PathVariable("gibiId") Long gibiId){
         gibiService.deleteGibi(gibiId);
@@ -40,7 +45,7 @@ public class GibiController {
                            @RequestParam(required = false) String titulo,
                            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
                            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate enc,
-                           @RequestParam(required = false) Integer edicoes){
+                           @RequestParam(required = false) EdicoesGibi edicoes){
         gibiService.updateGibi(gibiId, titulo, inicio, enc, edicoes);
     }
 

@@ -19,18 +19,23 @@ public class GibConfig {
             Gibi flash = new Gibi(
                     "flash",
                     LocalDate.of(1999, Month.JANUARY, 1),
-                    LocalDate.of(2000, Month.JANUARY, 3),
-                   List.of(new EdicoesGibi(3, LocalDate.of(1990, Month.APRIL, 2)))
+                    LocalDate.of(2000, Month.JANUARY, 3)
 
             );
             Gibi sm = new Gibi(
                     "SM",
                     LocalDate.of(1999, Month.JANUARY, 1),
-                    LocalDate.of(2000, Month.JANUARY, 3),
-                    10
+                    LocalDate.of(2000, Month.JANUARY, 3)
 
             );
-            repository.saveAll(List.of(flash,sm));
+
+            Gibi bat = new Gibi(
+                    "Batman",
+                    LocalDate.of(1999, Month.JANUARY, 1),
+                    LocalDate.of(2000, Month.JANUARY, 3)
+            );
+
+            repository.saveAll(List.of(flash,sm, bat));
         };
     }
 }
