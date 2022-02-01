@@ -12,10 +12,12 @@ function Home() {
       <p>Site em construção</p>
 
       <div class="btn-toolbar">
-      <LinkButton to="/cadastros" text="Cadastros Gerais" />
-      <LinkButton to="/login" text="Página Login" />
+        <LinkButton to="/cadastros" text="Cadastros Gerais" />
+        <LinkButton to="/login" text="Página Login" />
+        <LinkButton to="/editorHomePage" text="Editor Home Page" />
+        
 
-      </div> 
+      </div>
 
       <img src={savings} alt="Savings" />
     </section>
