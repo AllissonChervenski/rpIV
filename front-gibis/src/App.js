@@ -14,6 +14,7 @@ import Login from './components/pages/Login'
 import DesenhistaP from './components/pages/DesenhistaP'
 import EscritorP from './components/pages/EscritorP'
 import GibisP from './components/pages/GibisP'
+import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
 
 
@@ -78,6 +79,10 @@ function App() {
         
         <Route exact path="/editorHomePage"> 
         <EditorHomePage />
+        </Route>
+
+        <Route exact path="/banca"> 
+        <Banca />
         </Route>
 
         
