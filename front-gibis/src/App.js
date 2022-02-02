@@ -23,6 +23,9 @@ import EscritorP from './components/pages/EscritorP'
 import GibisP from './components/pages/GibisP'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 66ca9bb (Banca e financeiro)
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
 
