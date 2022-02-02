@@ -24,12 +24,11 @@ public class EdicoesGibi {
     private int nroEdicao;
     private LocalDate dataPub;
 
-    @ManyToOne
-    private Gibi gibi;
-
-    public Gibi getGibi() {
-        return gibi;
+    public EdicoesGibi(int nroEdicao, LocalDate dataPub) {
+        this.nroEdicao = nroEdicao;
+        this.dataPub = dataPub;
     }
+
 
     public long getEdicaoGibiId() {
         return edicaoGibiId;
@@ -55,30 +54,17 @@ public class EdicoesGibi {
         this.dataPub = dataPub;
     }
 
-    public EdicoesGibi(int nroEdicao, LocalDate dataPub) {
-        this.nroEdicao = nroEdicao;
-        this.dataPub = dataPub;
-    }
 
-    public EdicoesGibi(long edicaoGibiId, int nroEdicao, LocalDate dataPub, Gibi gibi) {
+    public EdicoesGibi(long edicaoGibiId, int nroEdicao, LocalDate dataPub) {
         this.edicaoGibiId = edicaoGibiId;
         this.nroEdicao = nroEdicao;
         this.dataPub = dataPub;
-        this.gibi = gibi;
     }
 
-
-    public EdicoesGibi(int nroEdicao, LocalDate dataPub, Gibi gibi) {
-        this.nroEdicao = nroEdicao;
-        this.dataPub = dataPub;
-        this.gibi = gibi;
-    }
 
     public EdicoesGibi() {
     }
 
 
-    public void setGibi(Gibi gibi) {
-        this.gibi = gibi;
-    }
+
 }

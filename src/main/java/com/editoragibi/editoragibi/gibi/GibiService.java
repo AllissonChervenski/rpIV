@@ -81,10 +81,6 @@ public class GibiService {
                     throw new IllegalArgumentException("Data de encerramento não pode ser antes da data de inicio");
                 }
             }
-            if (edicoes != null) {
-                gibi.getEdicoesGibis().add(edicoes);
-                edicoes.setGibi(gibi);
-            }
         }
         gibiRepository.save(gibi);
     }

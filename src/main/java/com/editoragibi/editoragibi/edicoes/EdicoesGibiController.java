@@ -2,8 +2,10 @@ package com.editoragibi.editoragibi.edicoes;
 
 import com.editoragibi.editoragibi.gibi.Gibi;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -32,8 +34,16 @@ public class EdicoesGibiController {
         edicoesGibiService.addEdicoesGibi(edicoesGibi);
     }
 
-    @PostMapping(path = "edicao/atr/{edicoesGibiEdicao}")
-    public void addGibiEdicoesGibi(@RequestBody Gibi gibi, @PathVariable("edicoesGibiEdicao") Long edicaoId){
-        edicoesGibiService.addGibiEdicoesGibi(gibi, edicaoId);
+    @DeleteMapping(path = "deleteEdicao/{edicoesGibiId}")
+    public void deleteEdicoesGibi(@PathVariable("edicoesGibiId") Long edicoesGibiId){
+        edicoesGibiService.deleteEdicoesGibi(edicoesGibiId);
+    }
+
+    @PutMapping(path = "editar/{edicoesGibiId}")
+    public void updateEdicoesGibi(@PathVariable Long edicoesGibiId,
+                                  @RequestParam(required = false) Integer nroEdicao,
+                                  @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataPub){
+        edicoesGibiService.updateEdicoesGibi(edicoesGibiId, nroEdicao, dataPub);
+
     }
 }

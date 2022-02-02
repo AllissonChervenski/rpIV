@@ -13,7 +13,7 @@ import java.util.List;
 public class EdicoesGibiConfig {
 
     @Bean
-    CommandLineRunner edicoesGibiConfiguration(EdicoesGibiRepository edicoesGibiRepository, GibiRepository gibiRepository){
+    CommandLineRunner edicoesGibiConfiguration(EdicoesGibiRepository edicoesGibiRepository){
         return  args -> {
             EdicoesGibi primeira = new EdicoesGibi(
                     1,

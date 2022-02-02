@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,25 +52,31 @@ public class EdicoesGibiService {
             }
         }
 
-        @Transactional
-    public void addGibiEdicoesGibi(Gibi gibi, Long edicaoId) {
-        Optional<EdicoesGibi> edicoesGibiOptional = edicoesGibiRepository.findById(edicaoId);
-        if(edicoesGibiOptional.isPresent()) {
-            if (gibi.getEdicoesGibis() != null) {
-                if (!gibi.getEdicoesGibis().contains(edicoesGibiOptional.get())) {
-                    gibi.getEdicoesGibis().add(edicoesGibiOptional.get());
-                } else {
-                    throw new IllegalStateException("Esta edição de gibi ja está atribuida ao gibi " + gibi.getTitulo());
-                }
-            }
-            else{
-                gibi.setEdicoesGibis(new ArrayList<>());
-                gibi.getEdicoesGibis().add(edicoesGibiOptional.get());
-            }
+    public void deleteEdicoesGibi(Long edicoesGibiId) {
+        Optional<EdicoesGibi> edicoesGibiOptional = edicoesGibiRepository.findById(edicoesGibiId);
+        if(edicoesGibiOptional.isPresent()){
+        edicoesGibiRepository.deleteById(edicoesGibiId);
         }
         else{
-            throw new IllegalStateException("Esta edição não existe");
+            throw new IllegalStateException("A edição não existe");
         }
+    }
+
+    @Transactional
+    public void updateEdicoesGibi(Long edicoesGibiId, Integer nroEdicao, LocalDate dataPub) {
+        EdicoesGibi edicoesGibi = edicoesGibiRepository.findById(edicoesGibiId).orElseThrow(
+                () -> new IllegalStateException("Edicao com id " + edicoesGibiId + " não existe")
+        );
+
+        if(nroEdicao != null){
+            edicoesGibi.setNroEdicao(nroEdicao);
+        }
+
+        if(dataPub != null){
+            edicoesGibi.setDataPub(dataPub);
+        }
+
+        edicoesGibiRepository.save(edicoesGibi);
     }
 }
 
