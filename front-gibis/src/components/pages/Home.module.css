@@ -1,0 +1,80 @@
+.home_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4em;
+  }
+  
+  .home_container h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .home_container h1 span {
+    color: #7BD3E1;
+    padding: 0 0.2em;
+    background-color: #222;
+  }
+  
+  .home_container p {
+    margin-bottom: 1.5em;
+    color: #7b7b7b;
+  }
+  
+  .home_container img {
+    width: 350px;
+    margin: 2em 0;
+  }
+
+
+
+
+  .home_container home {
+    position: absolute;
+    width: 352px;
+    height: 104px;
+    left: 1120px;
+    top: 87px;
+
+    background: #2FA4C9;
+    border-radius: 23px;
+
+  }
+
+  .home_container rectangleOne {
+    position: absolute;
+    width: 330px;
+    height: 88px;
+    left: 95px;
+    top: 191px;
+
+    background: #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 23px;
+    
+  }
+
+  .home_container rectangleTwo {
+    position: absolute;
+    width: 330px;
+    height: 88px;
+    left: 93px;
+    top: 303px;
+
+    background: #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 23px;
+  }
+
+  .home_container grayRectangle {
+    position: absolute;
+    width: 267px;
+    height: 788px;
+    left: -13px;
+    top: 133px;
+
+    background: rgba(0, 0, 0, 0.09);
+    border-radius: 23px;
+  }
