@@ -50,19 +50,7 @@ public class DesenhistaRepository {
         return modelMapper.map(desenhistaToReturn, Desenhista.class);
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     public void deleteDesenhista(Integer id) {
-=======
-    public boolean deleteDesenhista(Integer id) {
->>>>>>> b4a9255 (reorganização da api e conserto do crud desenhistas)
-=======
-    public void deleteDesenhista(Integer id) {
->>>>>>> f2e5813 (crud de escritor e personagem)
-=======
-    public void deleteDesenhista(Integer id) {
->>>>>>> origin/main
 
         desenhistaRepository.deleteById(id);
     }

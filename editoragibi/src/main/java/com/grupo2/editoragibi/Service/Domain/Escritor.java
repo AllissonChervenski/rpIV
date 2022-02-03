@@ -1,15 +1,7 @@
 package com.grupo2.editoragibi.Service.Domain;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-=======
->>>>>>> f2e5813 (crud de escritor e personagem)
-=======
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
->>>>>>> 0e6e52f (tratamento de exceções apropriado)
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,28 +15,8 @@ public class Escritor {
     private String emailEscritor;
     private LocalDate dataContratacao;
     private LocalDate dataDemissao;
-<<<<<<< HEAD
-<<<<<<< HEAD
     @JsonBackReference
     private List<Personagem> personagens = new ArrayList<>();
-=======
-
-    public Escritor(String nomeEscritor, String enderecoEscritor, String telefoneEscritor, String emailEscritor, LocalDate dataContratacao) {
-
-        this.nomeEscritor = nomeEscritor;
-        this.enderecoEscritor = enderecoEscritor;
-        this.telefoneEscritor = telefoneEscritor;
-        this.emailEscritor = emailEscritor;
-        this.dataContratacao = dataContratacao;
-    }
-
-    public Escritor() {
-    }
->>>>>>> f2e5813 (crud de escritor e personagem)
-=======
-    @JsonBackReference
-    private List<Personagem> personagens = new ArrayList<>();
->>>>>>> 0e6e52f (tratamento de exceções apropriado)
 
     public int getEscritorId() {
         return escritorId;
@@ -101,10 +73,6 @@ public class Escritor {
     public void setDataDemissao(LocalDate dataDemissao) {
         this.dataDemissao = dataDemissao;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 0e6e52f (tratamento de exceções apropriado)
 
     public List<Personagem> getPersonagens() {
         return personagens;
@@ -113,9 +81,4 @@ public class Escritor {
     public void setPersonagens(List<Personagem> personagens) {
         this.personagens = personagens;
     }
-<<<<<<< HEAD
-=======
->>>>>>> f2e5813 (crud de escritor e personagem)
-=======
->>>>>>> 0e6e52f (tratamento de exceções apropriado)
 }

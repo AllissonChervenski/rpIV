@@ -1,15 +1,7 @@
 package com.grupo2.editoragibi.Service.Domain;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-=======
->>>>>>> f2e5813 (crud de escritor e personagem)
-=======
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
->>>>>>> 0e6e52f (tratamento de exceções apropriado)
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,29 +13,9 @@ public class Personagem {
     private String historicoPersonagem;
     private String patentePersonagem;
     private LocalDate dataCriacao;
-<<<<<<< HEAD
-<<<<<<< HEAD
     @JsonManagedReference
     private List<Escritor> escritores = new ArrayList<>();
 
-=======
-    private List<Escritor> escritores = new ArrayList<>();
-
-    public Personagem(String nomePersonagem, LocalDate dataCriacao) {
-
-        this.nomePersonagem = nomePersonagem;
-        this.dataCriacao = dataCriacao;
-    }
-
-    public Personagem() {
-    }
-
->>>>>>> f2e5813 (crud de escritor e personagem)
-=======
-    @JsonManagedReference
-    private List<Escritor> escritores = new ArrayList<>();
-
->>>>>>> 0e6e52f (tratamento de exceções apropriado)
     public void addEscritor(Escritor escritor) {
         escritores.add(escritor);
     }
