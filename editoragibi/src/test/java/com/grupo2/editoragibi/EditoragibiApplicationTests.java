@@ -1,4 +1,4 @@
-package com.editoragibi.editoragibi;
+package com.grupo2.editoragibi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

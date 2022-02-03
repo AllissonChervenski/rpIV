@@ -7,16 +7,23 @@ function Cadastros(){
         <h1>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/main
           Opções de Cadastros
         </h1>
 
 
         <LinkButton to="/desenhista" text="Cadastrar novo desenhista" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/main
         <LinkButton to="/escritor" text="Cadastrar novo escritor" />
         <LinkButton to="/gibis" text="Cadastrar novo gibi" />
         <LinkButton to="/transportadoras" text="Cadastrar nova transportadora" />
 
+<<<<<<< HEAD
 =======
           Página de  <span>cadastros</span>
 =======
@@ -39,6 +46,8 @@ function Cadastros(){
         <LinkButton to="/transportadoras" text="Cadastrar nova transportadora" />
 
 >>>>>>> 1fe8be3 (Formulário Escritor - Cadastro)
+=======
+>>>>>>> origin/main
        
       </section>
     )

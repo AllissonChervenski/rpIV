@@ -52,6 +52,7 @@ public class DesenhistaRepository {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public void deleteDesenhista(Integer id) {
 =======
     public boolean deleteDesenhista(Integer id) {
@@ -59,6 +60,9 @@ public class DesenhistaRepository {
 =======
     public void deleteDesenhista(Integer id) {
 >>>>>>> f2e5813 (crud de escritor e personagem)
+=======
+    public void deleteDesenhista(Integer id) {
+>>>>>>> origin/main
 
         desenhistaRepository.deleteById(id);
     }
