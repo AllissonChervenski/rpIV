@@ -7,10 +7,15 @@ function Home() {
   return (
     <section className={styles.home_container}>
       <h1>
-        Bem-vindo à <span>Hero Gibis!</span>
+        Bem-vindo a <span>Hero Gibis!</span>
       </h1>
       <p>Site em construção</p>
+
+      <div class="btn-toolbar">
       <LinkButton to="/cadastros" text="Teste Botão Cadastros" />
+      <LinkButton to="/gibis" text="Teste Botão Gibis" />
+      </div> 
+
       <img src={savings} alt="Savings" />
     </section>
   )

@@ -5,6 +5,7 @@
     text-decoration: none;
     transition: 0.5s;
 <<<<<<< HEAD
+<<<<<<< HEAD
     margin: 13px 12px 12px 10px;
   }
   
@@ -16,4 +17,11 @@
   .btn:hover {
     color: #ffbb33;
 >>>>>>> 05c4cc9 (Construção Home)
+=======
+    margin: 13px 12px 12px 10px;
+  }
+  
+  .btn:hover {
+    color: #7BD3E1;
+>>>>>>> be1709f (Cadastros de gibis (construção))
   }
