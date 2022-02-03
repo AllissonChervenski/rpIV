@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67a413f4-359e-44c8-8560-f4c8aeaf1df8" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/java/com/editoragibi/editoragibi/EditoragibiApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/java/com/editoragibi/editoragibi/edicoes/EdicoesGibi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/java/com/editoragibi/editoragibi/edicoes/EdicoesGibiConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/java/com/editoragibi/editoragibi/edicoes/EdicoesGibiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/java/com/editoragibi/editoragibi/edicoes/EdicoesGibiRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/java/com/editoragibi/editoragibi/edicoes/EdicoesGibiService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/java/com/editoragibi/editoragibi/gibi/GibConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/java/com/editoragibi/editoragibi/gibi/Gibi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/java/com/editoragibi/editoragibi/gibi/GibiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/java/com/editoragibi/editoragibi/gibi/GibiRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/java/com/editoragibi/editoragibi/gibi/GibiService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +93,6 @@
       <workItem from="1637589354344" duration="1375000" />
       <workItem from="1637591802942" duration="167000" />
       <workItem from="1637592000425" duration="720000" />
-      <workItem from="1643884570017" duration="79000" />
     </task>
     <servers />
   </component>
@@ -121,6 +109,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">
