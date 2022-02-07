@@ -4,25 +4,32 @@ import com.grupo2.editoragibi.Data.EscritorRepository;
 import com.grupo2.editoragibi.Data.PersonagemRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Directors.EscritorDirector;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Component("personagemBuilder")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class PersonagemBuilder implements IBasePersonagemBuilder {
 
     @Autowired
-    PersonagemRepository personagemRepository;
+    EscritorRepository escritorRepository;
 
+    @Lazy
     @Autowired
-    private EscritorRepository escritorRepository;
+    EscritorDirector escritorDirector;
 
     private Personagem personagem;
 
@@ -31,7 +38,7 @@ public class PersonagemBuilder implements IBasePersonagemBuilder {
     }
 
     public void reset() {
-        personagem = new Personagem(personagemRepository);
+        personagem = new Personagem();
     }
 
     @Override
@@ -73,12 +80,14 @@ public class PersonagemBuilder implements IBasePersonagemBuilder {
     public void setEscritores(List<Integer> escritoresIds) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<Escritor> personagensEscritor = personagem.getEscritores();
         for (Integer id : escritoresIds) {
-            //TODO somente para testar
-            System.out.println(escritorRepository == null);
-            escritorRepository.getEscritorById(id);
-            var e = escritorRepository.getEscritorById(id);
-            personagensEscritor.add(e);
+            personagensEscritor.add((Escritor) escritorDirector.buildFromEscritorEntity(escritorRepository.getEscritorById(id), personagem));
         }
+    }
+
+    @Override
+    public void setEscritor(BaseEscritor escritor) {
+        if (escritor instanceof Escritor)
+            personagem.getEscritores().add((Escritor) escritor);
     }
 
     @Override

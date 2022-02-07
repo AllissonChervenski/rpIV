@@ -18,7 +18,7 @@ public class HistoriaDirector {
         this.builder = builder;
     }
 
-    public BaseHistoria buildFromHistoriaRequest(HistoriaRequest historiaRequest) throws HistoriaInvalidaException, DesenhistaInvalidoException, PersonagemInvalidoException, EscritorInvalidoException {
+    public synchronized BaseHistoria buildFromHistoriaRequest(HistoriaRequest historiaRequest) throws HistoriaInvalidaException, DesenhistaInvalidoException, PersonagemInvalidoException, EscritorInvalidoException {
 
         builder.setTituloHistoria(historiaRequest.getTituloHistoria());
         builder.setTotalPaginas(historiaRequest.getTotalPaginas());
@@ -30,7 +30,7 @@ public class HistoriaDirector {
         return builder.getResult();
     }
 
-    public BaseHistoria buildFromHistoria(Historia historia) throws HistoriaInvalidaException, DesenhistaInvalidoException, PersonagemInvalidoException, EscritorInvalidoException {
+    public synchronized BaseHistoria buildFromHistoria(Historia historia) throws HistoriaInvalidaException, DesenhistaInvalidoException, PersonagemInvalidoException, EscritorInvalidoException {
 
         builder.setHistoriaId(historia.getHistoriaId());
         builder.setTituloHistoria(historia.getTituloHistoria());
@@ -43,7 +43,7 @@ public class HistoriaDirector {
         return builder.getResult();
     }
 
-    public BaseHistoria buildFromHistoriaEntity(HistoriaEntity historiaEntity) throws HistoriaInvalidaException, DesenhistaInvalidoException, PersonagemInvalidoException, EscritorInvalidoException {
+    public synchronized BaseHistoria buildFromHistoriaEntity(HistoriaEntity historiaEntity) throws HistoriaInvalidaException, DesenhistaInvalidoException, PersonagemInvalidoException, EscritorInvalidoException {
 
         builder.setHistoriaId(historiaEntity.getHistoriaId());
         builder.setTituloHistoria(historiaEntity.getTituloHistoria());

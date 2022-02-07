@@ -25,7 +25,7 @@ public class PersonagemDirector {
         this.builder = builder;
     }
 
-    public BasePersonagem buildFromPersonagemRequest(PersonagemRequest personagemRequest) throws PersonagemInvalidoException, EscritorInvalidoException {
+    public synchronized BasePersonagem buildFromPersonagemRequest(PersonagemRequest personagemRequest) throws PersonagemInvalidoException, EscritorInvalidoException {
 
         builder.setNomePersonagem(personagemRequest.getNomePersonagem());
         builder.setHistoriaPersonagem(personagemRequest.getHistoricoPersonagem());
@@ -36,7 +36,13 @@ public class PersonagemDirector {
         return builder.getResult();
     }
 
-    public BasePersonagem buildFromPersonagem(Personagem personagem) throws PersonagemInvalidoException, EscritorInvalidoException {
+    public  synchronized BasePersonagem buildFromPersonagem(Personagem personagem, BaseEscritor escritor) throws PersonagemInvalidoException, EscritorInvalidoException {
+        personagem.getEscritores().removeIf(e -> e.getEscritorId() == escritor.getEscritorId());
+        builder.setEscritor(escritor);
+        return buildFromPersonagem(personagem);
+    }
+
+    public synchronized BasePersonagem buildFromPersonagem(Personagem personagem) throws PersonagemInvalidoException, EscritorInvalidoException {
 
         builder.setPersonagemId(personagem.getPersonagemId());
         builder.setNomePersonagem(personagem.getNomePersonagem());
@@ -51,7 +57,14 @@ public class PersonagemDirector {
         return builder.getResult();
     }
 
-    public BasePersonagem buildFromPersonagemEntity(PersonagemEntity personagemEntity) throws PersonagemInvalidoException, EscritorInvalidoException {
+    public synchronized BasePersonagem buildFromPersonagemEntity(PersonagemEntity personagemEntity, BaseEscritor escritor) throws PersonagemInvalidoException,
+                                                                                                                                            EscritorInvalidoException {
+        personagemEntity.getEscritores().removeIf(e -> e.getEscritorId() == escritor.getEscritorId());
+        builder.setEscritor(escritor);
+        return buildFromPersonagemEntity(personagemEntity);
+    }
+
+    public synchronized BasePersonagem buildFromPersonagemEntity(PersonagemEntity personagemEntity) throws PersonagemInvalidoException, EscritorInvalidoException {
 
         builder.setPersonagemId(personagemEntity.getPersonagemId());
         builder.setNomePersonagem(personagemEntity.getNomePersonagem());

@@ -15,7 +15,7 @@ public class DesenhistaDirector {
         this.builder = builder;
     }
 
-    public BaseDesenhista buildFromDesenhistaRequest(DesenhistaRequest desenhistaRequest) throws DesenhistaInvalidoException {
+    public synchronized BaseDesenhista buildFromDesenhistaRequest(DesenhistaRequest desenhistaRequest) throws DesenhistaInvalidoException {
 
         builder.setNomeDesenhista(desenhistaRequest.getNomeDesenhista());
         builder.setPaisNascimento(desenhistaRequest.getPaisNascimento());
@@ -28,7 +28,7 @@ public class DesenhistaDirector {
         return builder.getResult();
     }
 
-    public BaseDesenhista buildFromDesenhista(Desenhista desenhista) throws DesenhistaInvalidoException {
+    public synchronized BaseDesenhista buildFromDesenhista(Desenhista desenhista) throws DesenhistaInvalidoException {
 
         builder.setDesenhistaId(desenhista.getDesenhistaId());
         builder.setNomeDesenhista(desenhista.getNomeDesenhista());
@@ -42,7 +42,7 @@ public class DesenhistaDirector {
         return builder.getResult();
     }
 
-    public BaseDesenhista buildFromDesenhistaEntity(DesenhistaEntity desenhistaEntity) throws DesenhistaInvalidoException {
+    public synchronized BaseDesenhista buildFromDesenhistaEntity(DesenhistaEntity desenhistaEntity) throws DesenhistaInvalidoException {
         builder.setDesenhistaId(desenhistaEntity.getDesenhistaId());
         builder.setNomeDesenhista(desenhistaEntity.getNomeDesenhista());
         builder.setPaisNascimento(desenhistaEntity.getPaisNascimento());

@@ -25,43 +25,19 @@ public class PersonagemRepository {
     @Autowired
     IPersonagemRepository personagemRepository;
 
-    @Autowired
-    IEscritorRepository iEscritorRepository;
-
-    private IBasePersonagemBuilder personagemBuilder = new PersonagemBuilder();
-    private IBasePersonagemBuilder personagemEntityBuilder = new PersonagemEntityBuilder(personagemRepository, iEscritorRepository);
-    private PersonagemDirector personagemDirector = new PersonagemDirector(personagemBuilder);
-    private PersonagemDirector personagemEntityDirector = new PersonagemDirector(personagemEntityBuilder);
-
-    public Personagem getPersonagemById(int id) throws PersonagemInvalidoException, EscritorInvalidoException {
-
+    public PersonagemEntity getPersonagemById(int id) throws PersonagemInvalidoException, EscritorInvalidoException {
         Optional<PersonagemEntity> personagemEntity = personagemRepository.findById(id);
-
         if (!personagemEntity.isPresent())
             throw new PersonagemInvalidoException("Personagem não está no sistema");
-
-        BasePersonagem personagem = personagemDirector.buildFromPersonagemEntity(personagemEntity.get());
-
-        return (Personagem) personagem;
+        return personagemEntity.get();
     }
 
-    public List<Personagem> getPersonagens() throws PersonagemInvalidoException, EscritorInvalidoException {
-
-        List<PersonagemEntity> personagensEntity = personagemRepository.findAll();
-
-        List<Personagem> personagens = new ArrayList<>();
-        for (PersonagemEntity personagem : personagensEntity) {
-            personagens.add((Personagem) personagemDirector.buildFromPersonagemEntity(personagem));
-        }
-
-        return personagens;
+    public List<PersonagemEntity> getPersonagens() throws PersonagemInvalidoException, EscritorInvalidoException {
+        return personagemRepository.findAll();
     }
 
-    public Personagem addPersonagem(Personagem personagem) throws PersonagemInvalidoException, EscritorInvalidoException {
-
-        PersonagemEntity personagemEntity = (PersonagemEntity) personagemEntityDirector.buildFromPersonagem(personagem);
-        PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
-        return (Personagem) personagemDirector.buildFromPersonagemEntity(personagemToReturn);
+    public PersonagemEntity addPersonagem(PersonagemEntity personagemEntity) throws PersonagemInvalidoException, EscritorInvalidoException {
+        return personagemRepository.save(personagemEntity);
     }
 
     public boolean deletePersonagem(int id) {
@@ -73,17 +49,10 @@ public class PersonagemRepository {
         return true;
     }
 
-    public Personagem updatePersonagem(int id, Personagem personagem) throws PersonagemInvalidoException, EscritorInvalidoException {
-
+    public PersonagemEntity updatePersonagem(int id, PersonagemEntity personagemEntity) throws PersonagemInvalidoException, EscritorInvalidoException {
         if (personagemRepository.findById(id).isEmpty())
             throw new PersonagemInvalidoException("Personagem não está no sistema");
-
-        personagem.setPersonagemId(id);
-
-        PersonagemEntity personagemEntity = (PersonagemEntity) personagemEntityDirector.buildFromPersonagem(personagem);
-
-        PersonagemEntity personagemToReturn = personagemRepository.save(personagemEntity);
-
-        return (Personagem) personagemDirector.buildFromPersonagemEntity(personagemToReturn);
+        personagemEntity.setPersonagemId(id);
+        return personagemRepository.save(personagemEntity);
     }
 }

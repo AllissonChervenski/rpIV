@@ -14,11 +14,6 @@ public class Personagem extends BasePersonagem {
 
     @JsonManagedReference
     private List<Escritor> escritores = new ArrayList<>();
-    private PersonagemRepository personagemRepository;
-
-    public Personagem(PersonagemRepository personagemRepository) {
-        this.personagemRepository = personagemRepository;
-    }
 
     public void setNomePersonagem(String nomePersonagem) throws PersonagemInvalidoException {
         if (nomePersonagem == null || nomePersonagem.isEmpty())
@@ -38,11 +33,6 @@ public class Personagem extends BasePersonagem {
         if (dataCriacao.isAfter(LocalDate.now()))
             throw new PersonagemInvalidoException("Data inválida");
         this.dataCriacao = dataCriacao;
-    }
-
-    //TODO
-    public void addEscritor(Escritor escritor) throws PersonagemInvalidoException {
-        escritores.add(escritor);
     }
 
     public List<Escritor> getEscritores() {

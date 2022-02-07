@@ -22,5 +22,7 @@ public interface IBasePersonagemBuilder {
 
     public void setEscritores(List<Integer> escritoresIds) throws PersonagemInvalidoException, EscritorInvalidoException;
 
+    public void setEscritor(BaseEscritor escritor);
+
     public BasePersonagem getResult();
 }

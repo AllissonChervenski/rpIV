@@ -94,8 +94,9 @@ public class HistoriaBuilder implements IBaseHistoriaBuilder {
     @Override
     public void setEscritor(int escritorId) throws PersonagemInvalidoException, EscritorInvalidoException {
         try {
-            Escritor escritor = escritorRepository.getEscritorById(escritorId);
-            historia.setEscritor(escritor);
+            //TODO tem que resolver esse problema na próxima linha
+            //Escritor escritor = escritorRepository.getEscritorById(escritorId);
+            //historia.setEscritor(escritor);
         } catch (Exception e) {
             reset();
             throw e;

@@ -18,11 +18,6 @@ public class Escritor extends BaseEscritor {
 
     @JsonBackReference
     private List<Personagem> personagens = new ArrayList<>();
-    private PersonagemRepository personagemRepository;
-
-    public Escritor(PersonagemRepository personagemRepository) {
-        this.personagemRepository = personagemRepository;
-    }
 
     @Override
     public void setNomeEscritor(String nomeEscritor) throws EscritorInvalidoException {
@@ -59,19 +54,5 @@ public class Escritor extends BaseEscritor {
 
     public List<Personagem> getPersonagens() {
         return personagens;
-    }
-
-    //TODO
-    public Personagem criaPersonagem(int personagemId) throws PersonagemInvalidoException, EscritorInvalidoException {
-
-        for (Personagem personagem : personagens)
-            if (personagem.getPersonagemId() == personagemId)
-                throw new IllegalArgumentException("O escritor já criou esse personagem");
-
-        Personagem personagem = personagemRepository.getPersonagemById(personagemId);
-        personagens.add(personagem);
-        personagem.addEscritor(this);
-
-        return personagem;
     }
 }

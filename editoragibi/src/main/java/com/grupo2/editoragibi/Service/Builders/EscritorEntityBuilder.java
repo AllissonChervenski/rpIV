@@ -3,25 +3,32 @@ package com.grupo2.editoragibi.Service.Builders;
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
 import com.grupo2.editoragibi.Data.IPersonagemRepository;
+import com.grupo2.editoragibi.Data.PersonagemRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Directors.PersonagemDirector;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+@Component("escritorEntityBuilder")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class EscritorEntityBuilder implements IBaseEscritorBuilder {
 
-    private IPersonagemRepository iPersonagemRepository;
+    @Autowired
+    PersonagemRepository personagemRepository;
 
     private EscritorEntity escritorEntity;
 
-    public EscritorEntityBuilder(IPersonagemRepository iPersonagemRepository) {
-        this.iPersonagemRepository = iPersonagemRepository;
+    public EscritorEntityBuilder() {
         reset();
     }
 
@@ -65,14 +72,17 @@ public class EscritorEntityBuilder implements IBaseEscritorBuilder {
     }
 
     @Override
-    public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException {
+    public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<PersonagemEntity> personagensEscritor = escritorEntity.getPersonagens();
         for (Integer id : personagensIds) {
-            Optional<PersonagemEntity> personagemEntity = iPersonagemRepository.findById(id);
-            if (personagemEntity.isEmpty())
-                throw new PersonagemInvalidoException("O personagem não existe no sistema");
-            personagensEscritor.add(personagemEntity.get());
+            personagensEscritor.add(personagemRepository.getPersonagemById(id));
         }
+    }
+
+    @Override
+    public void setPersonagem(BasePersonagem personagem) {
+        if (personagem instanceof PersonagemEntity)
+            escritorEntity.getPersonagens().add((PersonagemEntity) personagem);
     }
 
     @Override

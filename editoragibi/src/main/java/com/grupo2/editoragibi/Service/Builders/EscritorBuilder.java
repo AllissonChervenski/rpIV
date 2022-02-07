@@ -5,28 +5,29 @@ import com.grupo2.editoragibi.Data.HistoriaRepository;
 import com.grupo2.editoragibi.Data.PersonagemRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Directors.PersonagemDirector;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Component
+@Component("escritorBuilder")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class EscritorBuilder implements IBaseEscritorBuilder {
-
-    @Autowired
-    EscritorRepository escritorRepository;
 
     @Autowired
     PersonagemRepository personagemRepository;
 
     @Autowired
-    HistoriaRepository historiaRepository;
+    PersonagemDirector personagemDirector;
 
     private Escritor escritor;
 
@@ -35,7 +36,7 @@ public class EscritorBuilder implements IBaseEscritorBuilder {
     }
 
     private void reset() {
-        escritor = new Escritor(personagemRepository);
+        escritor = new Escritor();
     }
 
     @Override
@@ -97,8 +98,14 @@ public class EscritorBuilder implements IBaseEscritorBuilder {
     public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<Personagem> personagensEscritor = escritor.getPersonagens();
         for (Integer id : personagensIds) {
-            personagensEscritor.add(personagemRepository.getPersonagemById(id));
+            personagensEscritor.add((Personagem) personagemDirector.buildFromPersonagemEntity(personagemRepository.getPersonagemById(id), escritor));
         }
+    }
+
+    @Override
+    public void setPersonagem(BasePersonagem personagem) {
+        if (personagem instanceof Personagem)
+            escritor.getPersonagens().add((Personagem) personagem);
     }
 
     @Override

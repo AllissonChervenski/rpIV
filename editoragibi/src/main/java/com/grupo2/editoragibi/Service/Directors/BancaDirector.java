@@ -15,7 +15,7 @@ public class BancaDirector {
         this.builder = builder;
     }
 
-    public BaseBanca buildFromBancaRequest(BancaRequest bancaRequest) throws BancaInvalidaException {
+    public synchronized BaseBanca buildFromBancaRequest(BancaRequest bancaRequest) throws BancaInvalidaException {
         builder.setNomeBanca(bancaRequest.getNomeBanca());
         builder.setEnderecoBanca(bancaRequest.getEnderecoBanca());
         builder.setTelefoneBanca(bancaRequest.getTelefoneBanca());
@@ -23,7 +23,7 @@ public class BancaDirector {
         return builder.getResult();
     }
 
-    public BaseBanca buildFromBanca(Banca banca) throws BancaInvalidaException {
+    public synchronized BaseBanca buildFromBanca(Banca banca) throws BancaInvalidaException {
         builder.setBancaId(banca.getBancaId());
         builder.setNomeBanca(banca.getNomeBanca());
         builder.setEnderecoBanca(banca.getEnderecoBanca());
@@ -32,7 +32,7 @@ public class BancaDirector {
         return builder.getResult();
     }
 
-    public BaseBanca buildFromBancaEntity(BancaEntity bancaEntity) throws BancaInvalidaException {
+    public synchronized BaseBanca buildFromBancaEntity(BancaEntity bancaEntity) throws BancaInvalidaException {
         builder.setBancaId(bancaEntity.getBancaId());
         builder.setNomeBanca(bancaEntity.getNomeBanca());
         builder.setEnderecoBanca(bancaEntity.getEnderecoBanca());

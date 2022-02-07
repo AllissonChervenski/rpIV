@@ -40,7 +40,8 @@ public class Historia extends BaseHistoria {
     }
 
     public void setEscritor(int escritorId) throws PersonagemInvalidoException, EscritorInvalidoException {
-        this.escritor = escritorRepository.getEscritorById(escritorId);
+        //TODO
+        //this.escritor = escritorRepository.getEscritorById(escritorId);
     }
 
     public void setTituloHistoria(String tituloHistoria) throws HistoriaInvalidaException {

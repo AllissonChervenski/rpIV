@@ -22,39 +22,19 @@ public class EscritorRepository {
     @Autowired
     IEscritorRepository escritorRepository;
 
-    @Autowired
-    IPersonagemRepository iPersonagemRepository;
-
-    private IBaseEscritorBuilder escritorBuilder = new EscritorBuilder();
-    private IBaseEscritorBuilder escritorEntity = new EscritorEntityBuilder(iPersonagemRepository);
-    private EscritorDirector escritorDirector = new EscritorDirector(escritorBuilder);
-    private EscritorDirector escritorEntityDirector = new EscritorDirector(escritorEntity);
-
-    public Escritor getEscritorById(int id) throws EscritorInvalidoException, PersonagemInvalidoException {
-
+    public EscritorEntity getEscritorById(int id) throws EscritorInvalidoException, PersonagemInvalidoException {
         Optional<EscritorEntity> escritorEntity = escritorRepository.findById(id);
         if (escritorEntity.isEmpty())
             throw new EscritorInvalidoException("Escritor não está no sistema");
-        BaseEscritor escritor = escritorDirector.buildFromEscritorEntity(escritorEntity.get());
-        return (Escritor) escritor;
+        return escritorEntity.get();
     }
 
-    public List<Escritor> getEscritores() throws PersonagemInvalidoException, EscritorInvalidoException {
-
-        List<EscritorEntity> escritorEntity = escritorRepository.findAll();
-
-        List<Escritor> escritores = new ArrayList<>();
-        for (EscritorEntity escritor : escritorEntity) {
-            escritores.add((Escritor) escritorDirector.buildFromEscritorEntity(escritor));
-        }
-        return escritores;
+    public List<EscritorEntity> getEscritores() throws PersonagemInvalidoException, EscritorInvalidoException {
+        return escritorRepository.findAll();
     }
 
-    public Escritor addEscritor(Escritor escritor) throws EscritorInvalidoException, PersonagemInvalidoException {
-
-        EscritorEntity escritorEntity = (EscritorEntity) escritorEntityDirector.buildFromEscritor(escritor);
-        EscritorEntity escritorToReturn = escritorRepository.save(escritorEntity);
-        return (Escritor) escritorDirector.buildFromEscritorEntity(escritorToReturn);
+    public EscritorEntity addEscritor(EscritorEntity escritorEntity) throws EscritorInvalidoException, PersonagemInvalidoException {
+        return escritorRepository.save(escritorEntity);
     }
 
     public boolean deleteEscritor(int id) {
@@ -66,14 +46,10 @@ public class EscritorRepository {
         return true;
     }
 
-    public Escritor updateEscritor(int id, Escritor escritor) throws EscritorInvalidoException, PersonagemInvalidoException {
-
+    public EscritorEntity updateEscritor(int id, EscritorEntity escritorEntity) throws EscritorInvalidoException, PersonagemInvalidoException {
         if (escritorRepository.findById(id).isEmpty())
             throw new EscritorInvalidoException("Escritor não está no sistema");
-
-        escritor.setEscritorId(id);
-        EscritorEntity escritorEntity = (EscritorEntity) escritorEntityDirector.buildFromEscritor(escritor);
-        EscritorEntity escritorToReturn = escritorRepository.save(escritorEntity);
-        return (Escritor) escritorDirector.buildFromEscritorEntity(escritorToReturn);
+        escritorEntity.setEscritorId(id);
+        return escritorRepository.save(escritorEntity);
     }
 }

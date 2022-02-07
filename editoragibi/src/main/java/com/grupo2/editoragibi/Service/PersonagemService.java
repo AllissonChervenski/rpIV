@@ -1,6 +1,7 @@
 package com.grupo2.editoragibi.Service;
 
 import com.grupo2.editoragibi.Api.Requests.PersonagemRequest;
+import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
 import com.grupo2.editoragibi.Data.EscritorRepository;
 import com.grupo2.editoragibi.Data.PersonagemRepository;
 import com.grupo2.editoragibi.Service.Builders.IBasePersonagemBuilder;
@@ -11,38 +12,45 @@ import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class PersonagemService {
 
-    private IBasePersonagemBuilder personagemBuilder = new PersonagemBuilder();
-    private PersonagemDirector personagemDirector = new PersonagemDirector(personagemBuilder);
+    @Qualifier("personagemDirector")
+    @Autowired
+    PersonagemDirector personagemDirector;
+
+    @Qualifier("personagemEntityDirector")
+    @Autowired
+    PersonagemDirector personagemEntityDirector;
 
     @Autowired
     PersonagemRepository personagemRepository;
 
-    @Autowired
-    EscritorRepository escritorRepository;
-
     public Personagem getPersonagemById(int id) throws PersonagemInvalidoException, EscritorInvalidoException {
-
-        return personagemRepository.getPersonagemById(id);
+        return (Personagem) personagemDirector.buildFromPersonagemEntity(personagemRepository.getPersonagemById(id));
     }
 
     public List<Personagem> getPersonagens() throws PersonagemInvalidoException, EscritorInvalidoException {
-
-        return personagemRepository.getPersonagens();
+        List<PersonagemEntity> personagemEntities = personagemRepository.getPersonagens();
+        List<Personagem> personagens = new ArrayList<>();
+        for (PersonagemEntity personagem : personagemEntities) {
+            personagens.add((Personagem) personagemDirector.buildFromPersonagemEntity(personagem));
+        }
+        return personagens;
     }
 
     public Personagem addPersonagem(PersonagemRequest personagemRequest) throws EscritorInvalidoException, PersonagemInvalidoException {
-
         Personagem personagem = (Personagem) personagemDirector.buildFromPersonagemRequest(personagemRequest);
-        return personagemRepository.addPersonagem(personagem);
+        PersonagemEntity personagemEntity = (PersonagemEntity) personagemEntityDirector.buildFromPersonagem(personagem);
+        return (Personagem) personagemDirector.buildFromPersonagemEntity(personagemRepository.addPersonagem(personagemEntity));
     }
 
     public void deletePersonagem(int id) throws PersonagemInvalidoException {
@@ -52,8 +60,8 @@ public class PersonagemService {
     }
 
     public Personagem updatePersonagem(int id, PersonagemRequest personagemRequest) throws EscritorInvalidoException, PersonagemInvalidoException {
-
         Personagem personagem = (Personagem) personagemDirector.buildFromPersonagemRequest(personagemRequest);
-        return personagemRepository.updatePersonagem(id, personagem);
+        PersonagemEntity personagemEntity = (PersonagemEntity) personagemEntityDirector.buildFromPersonagem(personagem);
+        return (Personagem) personagemDirector.buildFromPersonagemEntity(personagemRepository.updatePersonagem(id, personagemEntity));
     }
 }
