@@ -15,7 +15,7 @@ public class TransportadoraDirector {
         this.builder = builder;
     }
 
-    public BaseTransportadora buildFromTransportadoraRequest(TransportadoraRequest transportadoraRequest) throws TransportadoraInvalidaException {
+    public synchronized BaseTransportadora buildFromTransportadoraRequest(TransportadoraRequest transportadoraRequest) throws TransportadoraInvalidaException {
         builder.setNomeTransportadora(transportadoraRequest.getNomeTransportadora());
         builder.setEnderecoTransportadora(transportadoraRequest.getEnderecoTransportadora());
         builder.setTelefoneTransportadora(transportadoraRequest.getTelefoneTransportadora());
@@ -23,7 +23,7 @@ public class TransportadoraDirector {
         return builder.getResult();
     }
 
-    public BaseTransportadora buildFromTransportadora(Transportadora transportadora) throws TransportadoraInvalidaException {
+    public synchronized BaseTransportadora buildFromTransportadora(Transportadora transportadora) throws TransportadoraInvalidaException {
         builder.setTransportadoraId(transportadora.getTransportadoraId());
         builder.setNomeTransportadora(transportadora.getNomeTransportadora());
         builder.setEnderecoTransportadora(transportadora.getEnderecoTransportadora());
@@ -32,7 +32,7 @@ public class TransportadoraDirector {
         return builder.getResult();
     }
 
-    public BaseTransportadora buildFromTransportadoraEntity(TransportadoraEntity transportadoraEntity) throws TransportadoraInvalidaException {
+    public synchronized BaseTransportadora buildFromTransportadoraEntity(TransportadoraEntity transportadoraEntity) throws TransportadoraInvalidaException {
         builder.setTransportadoraId(transportadoraEntity.getTransportadoraId());
         builder.setNomeTransportadora(transportadoraEntity.getNomeTransportadora());
         builder.setEnderecoTransportadora(transportadoraEntity.getEnderecoTransportadora());
