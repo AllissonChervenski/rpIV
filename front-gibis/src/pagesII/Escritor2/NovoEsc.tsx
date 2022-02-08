@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import Button from '@material-ui/core/Button';
-import styles from './Amostra.module.css'
+import styles from './Escritor2.module.css'
 import { TextField, Container, CssBaseline, Avatar, Typography, Grid, ThemeProvider, Checkbox, FormControlLabel, FormLabel, RadioGroup, Radio, FormHelperText, FormControl, InputLabel, Select, MenuItem, IconButton } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { theme } from '../../Theme';

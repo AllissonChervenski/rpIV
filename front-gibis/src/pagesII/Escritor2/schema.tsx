@@ -8,6 +8,6 @@ export const validationSchema = yup.object({
   escDtN: yup.number().positive('Data de nascimento deve ser positiva').required('Data de nascimento é obrigatória.'),
   escDtF: yup.number().positive('Data de falescimento deve ser positiva'),
   escDtContr: yup.number().positive('Data de contratação deve ser positiva').required('Data de contratação é obrigatória.'),
-  escDtDimiss: yup.number().positive('Data de falescimento deve ser positiva'),
+  escDtDimiss: yup.number().positive('Data de admissão deve ser positiva'),
   escPaisNasc: yup.string().required('País de nascimento é obrigatório'),
 });
