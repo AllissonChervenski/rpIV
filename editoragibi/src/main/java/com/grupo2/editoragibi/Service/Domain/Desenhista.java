@@ -8,18 +8,6 @@ import java.util.regex.Pattern;
 
 public class Desenhista extends BaseDesenhista {
 
-    public Desenhista() {
-    }
-
-    public Desenhista(String nomeDesenhista, String enderecoDesenhista, LocalDate dataContratacao, String paisNascimento, LocalDate dataNascimento) {
-
-        this.nomeDesenhista = nomeDesenhista;
-        this.enderecoDesenhista = enderecoDesenhista;
-        this.dataContratacao = dataContratacao;
-        this.paisNascimento = paisNascimento;
-        this.dataNascimento = dataNascimento;
-    }
-
     public void setNomeDesenhista(String nomeDesenhista) throws DesenhistaInvalidoException {
         if (nomeDesenhista == null || !Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,20}$", nomeDesenhista))
             throw new DesenhistaInvalidoException("Nome Inválido");

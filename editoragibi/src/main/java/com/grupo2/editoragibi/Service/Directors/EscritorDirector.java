@@ -21,9 +21,6 @@ import java.util.stream.Collectors;
 
 public class EscritorDirector {
 
-    @Autowired
-    PersonagemRepository personagemRepository;
-
     private IBaseEscritorBuilder builder;
 
     public EscritorDirector(IBaseEscritorBuilder builder) {

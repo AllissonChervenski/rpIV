@@ -1,12 +1,16 @@
 package com.grupo2.editoragibi.Service.Builders;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
-import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+@Component("desenhistaBuilder")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class DesenhistaBuilder implements IBaseDesenhistaBuilder {
 
     private Desenhista desenhista;

@@ -1,9 +1,7 @@
 package com.grupo2.editoragibi.Config;
 
 import com.grupo2.editoragibi.Service.Builders.*;
-import com.grupo2.editoragibi.Service.Directors.BancaDirector;
-import com.grupo2.editoragibi.Service.Directors.EscritorDirector;
-import com.grupo2.editoragibi.Service.Directors.PersonagemDirector;
+import com.grupo2.editoragibi.Service.Directors.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -21,14 +19,14 @@ public class Config {
     //banca beans
     @Bean(name = "bancaDirector")
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    BancaDirector getBancaDirector() {
-        return new BancaDirector(new BancaBuilder());
+    BancaDirector getBancaDirector(BancaBuilder bancaBuilder) {
+        return new BancaDirector(bancaBuilder);
     }
 
     @Bean(name = "bancaEntityDirector")
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    BancaDirector getBancaEntityDirector() {
-        return new BancaDirector(new BancaEntityBuilder());
+    BancaDirector getBancaEntityDirector(BancaEntityBuilder bancaEntityBuilder) {
+        return new BancaDirector(bancaEntityBuilder);
     }
 
     //escritor beans
@@ -59,6 +57,31 @@ public class Config {
         return new PersonagemDirector(personagemEntityBuilder);
     }
 
-    //TODO
-    //tenho que mudar as beans pra que retorne o builder em vez da director
+    //desenhista beans
+
+    @Bean(name = "desenhistaDirector")
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    DesenhistaDirector getDesenhistaDirector(DesenhistaBuilder desenhistaBuilder) {
+        return new DesenhistaDirector(desenhistaBuilder);
+    }
+
+    @Bean(name = "desenhistaEntityDirector")
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    DesenhistaDirector getDesenhistEntityDirector(DesenhistaEntityBuilder desenhistaEntityBuilder) {
+        return new DesenhistaDirector(desenhistaEntityBuilder);
+    }
+
+    //historia beans
+
+    @Bean(name = "historiaDirector")
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    HistoriaDirector getHistoriaDirector(HistoriaBuilder historiaBuilder) {
+        return new HistoriaDirector(historiaBuilder);
+    }
+
+    @Bean(name = "historiaEntityDirector")
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    HistoriaDirector getHistoriaEntityDirector(HistoriaEntityBuilder historiaEntityBuilder) {
+        return new HistoriaDirector(historiaEntityBuilder);
+    }
 }

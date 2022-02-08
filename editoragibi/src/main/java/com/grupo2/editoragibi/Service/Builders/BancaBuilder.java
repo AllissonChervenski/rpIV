@@ -3,7 +3,12 @@ package com.grupo2.editoragibi.Service.Builders;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseBanca;
 import com.grupo2.editoragibi.Service.Domain.Banca;
 import com.grupo2.editoragibi.Service.Exceptions.BancaInvalidaException;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component("bancaBuilder")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class BancaBuilder implements IBaseBancaBuilder {
 
     private Banca banca;

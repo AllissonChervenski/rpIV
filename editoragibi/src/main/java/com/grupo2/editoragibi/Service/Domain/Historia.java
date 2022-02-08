@@ -14,44 +14,20 @@ import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Historia extends BaseHistoria {
 
-    private DesenhistaRepository desenhistaRepository;
-    private EscritorRepository escritorRepository;
-
     List<Personagem> personagens = new ArrayList<>();
 
-    public Historia(DesenhistaRepository desenhistaRepository, EscritorRepository escritorRepository) {
-        this.desenhistaRepository = desenhistaRepository;
-        this.escritorRepository = escritorRepository;
-    }
-
-    public void addPersonagem(Personagem personagem) {
-        personagens.add(personagem);
-    }
-
-    public void setArtefinalizador(int artefinalizadorId) throws HistoriaInvalidaException, DesenhistaInvalidoException {
-        this.artefinalizador = desenhistaRepository.getDesenhistaById(artefinalizadorId);
-    }
-
-    public void setDesenhista(int desenhistaId) throws DesenhistaInvalidoException {
-        this.desenhista = desenhistaRepository.getDesenhistaById(desenhistaId);
-    }
-
-    public void setEscritor(int escritorId) throws PersonagemInvalidoException, EscritorInvalidoException {
-        //TODO
-        //this.escritor = escritorRepository.getEscritorById(escritorId);
-    }
-
     public void setTituloHistoria(String tituloHistoria) throws HistoriaInvalidaException {
-        if (tituloHistoria == null || tituloHistoria.isBlank() || tituloHistoria.length() > 20)
+        if (tituloHistoria == null || !Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,20}$", tituloHistoria))
             throw new HistoriaInvalidaException("Titulo inválido");
         this.tituloHistoria = tituloHistoria;
     }
 
     public void setTotalPaginas(int totalPaginas) throws HistoriaInvalidaException {
-        if (totalPaginas <= 1)
+        if (totalPaginas < 1)
             throw new HistoriaInvalidaException("Número inválido");
         this.totalPaginas = totalPaginas;
     }
@@ -64,17 +40,23 @@ public class Historia extends BaseHistoria {
 
     @Override
     public void setArtefinalizador(BaseDesenhista artefinalizador) throws HistoriaInvalidaException, DesenhistaInvalidoException {
-         this.artefinalizador = (Desenhista) artefinalizador;
+        if (artefinalizador == null)
+            throw new DesenhistaInvalidoException("É nessessário informar o artefinalizador dessa história");
+        this.artefinalizador = artefinalizador;
     }
 
     @Override
     public void setDesenhista(BaseDesenhista desenhista) throws DesenhistaInvalidoException {
-        this.desenhista = (Desenhista) desenhista;
+        if (desenhista == null)
+            throw new DesenhistaInvalidoException("É nessessário informar o desenhista dessa história");
+        this.desenhista = desenhista;
     }
 
     @Override
     public void setEscritor(BaseEscritor escritor) throws PersonagemInvalidoException, EscritorInvalidoException {
-        this.escritor = (Escritor) escritor;
+        if (escritor == null)
+            throw new EscritorInvalidoException("É nessessário informar o escritor dessa história");
+        this.escritor = escritor;
     }
 
     public List<Personagem> getPersonagens() {

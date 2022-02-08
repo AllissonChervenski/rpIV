@@ -1,31 +1,40 @@
 package com.grupo2.editoragibi.Service.Builders;
 
-import com.grupo2.editoragibi.Data.DesenhistaRepository;
+import com.grupo2.editoragibi.Data.*;
 import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
-import com.grupo2.editoragibi.Data.EscritorRepository;
-import com.grupo2.editoragibi.Data.IDesenhistaRepository;
-import com.grupo2.editoragibi.Data.IEscritorRepository;
+import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
+@Component("HistoriaEntityBuilder")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class HistoriaEntityBuilder implements IBaseHistoriaBuilder {
 
-    private IDesenhistaRepository iDesenhistaRepository;
-    private IEscritorRepository iEscritorRepository;
+    @Autowired
+    DesenhistaRepository desenhistaRepository;
+
+    @Autowired
+    EscritorRepository escritorRepository;
+
+    @Autowired
+    PersonagemRepository personagemRepository;
+
     private HistoriaEntity historiaEntity;
 
-    public HistoriaEntityBuilder(IDesenhistaRepository iDesenhistaRepository, IEscritorRepository iEscritorRepository) {
-        this.iDesenhistaRepository = iDesenhistaRepository;
-        this.iEscritorRepository = iEscritorRepository;
+    public HistoriaEntityBuilder() {
         reset();
     }
 
@@ -55,20 +64,25 @@ public class HistoriaEntityBuilder implements IBaseHistoriaBuilder {
 
     @Override
     public void setArtefinalizador(int artefinalizadorId) throws DesenhistaInvalidoException, HistoriaInvalidaException {
-        Optional<DesenhistaEntity> desenhistaEntity = iDesenhistaRepository.findById(artefinalizadorId);
-        historiaEntity.setArtefinalizador(desenhistaEntity.get());
+        historiaEntity.setArtefinalizador(desenhistaRepository.getDesenhistaById(artefinalizadorId));
     }
 
     @Override
     public void setDesenhista(int desenhistaId) throws DesenhistaInvalidoException {
-        Optional<DesenhistaEntity> desenhistaEntity = iDesenhistaRepository.findById(desenhistaId);
-        historiaEntity.setDesenhista(desenhistaEntity.get());
+        historiaEntity.setDesenhista(desenhistaRepository.getDesenhistaById(desenhistaId));
     }
 
     @Override
     public void setEscritor(int escritorId) throws PersonagemInvalidoException, EscritorInvalidoException {
-        Optional<EscritorEntity> escritorEntity = iEscritorRepository.findById(escritorId);
-        historiaEntity.setEscritor(escritorEntity.get());
+        historiaEntity.setEscritor(escritorRepository.getEscritorById(escritorId));
+    }
+
+    @Override
+    public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException {
+        List<PersonagemEntity> personagemEntities = historiaEntity.getPersonagens();
+        for (Integer id : personagensIds) {
+            personagemEntities.add(personagemRepository.getPersonagemById(id));
+        }
     }
 
     @Override

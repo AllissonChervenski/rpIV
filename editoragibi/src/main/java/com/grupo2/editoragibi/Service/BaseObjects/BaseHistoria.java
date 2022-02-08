@@ -15,9 +15,10 @@ public abstract class BaseHistoria {
     protected String tituloHistoria;
     protected int totalPaginas;
     protected LocalDate dataProducao;
-    protected Desenhista artefinalizador;
-    protected Desenhista desenhista;
-    protected Escritor escritor;
+    //os campos a seguir tem que estar nas subclasses
+    protected BaseDesenhista artefinalizador;
+    protected BaseDesenhista desenhista;
+    protected BaseEscritor escritor;
 
     public int getHistoriaId() {
         return historiaId;
