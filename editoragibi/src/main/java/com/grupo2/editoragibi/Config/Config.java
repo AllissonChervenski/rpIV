@@ -84,4 +84,18 @@ public class Config {
     HistoriaDirector getHistoriaEntityDirector(HistoriaEntityBuilder historiaEntityBuilder) {
         return new HistoriaDirector(historiaEntityBuilder);
     }
+
+    //transportadora beans
+
+    @Bean(name = "transportadoraDirector")
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    TransportadoraDirector getTransportadoraDirector(TransportadoraBuilder transportadoraBuilder) {
+        return new TransportadoraDirector(transportadoraBuilder);
+    }
+
+    @Bean(name = "transportadoraEntityDirector")
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    TransportadoraDirector getTransportadoraEntityDirector(TransportadoraEntityBuilder transportadoraEntityBuilder) {
+        return new TransportadoraDirector(transportadoraEntityBuilder);
+    }
 }
