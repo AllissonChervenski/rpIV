@@ -1,6 +1,4 @@
-package com.editoragibi.editoragibi.edicoes;
-
-import com.editoragibi.editoragibi.gibi.Gibi;
+package com.grupo2.editoragibi.Data.Entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -24,10 +22,23 @@ public class EdicoesGibi {
     private int nroEdicao;
     private LocalDate dataPub;
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "historia_entity_historia_id")
+    private HistoriaEntity historiaEntity;
+
+    public HistoriaEntity getHistoriaEntity() {
+        return historiaEntity;
+    }
+
+    public void setHistoriaEntity(HistoriaEntity historiaEntity) {
+        this.historiaEntity = historiaEntity;
+    }
+
     public EdicoesGibi(int nroEdicao, LocalDate dataPub) {
         this.nroEdicao = nroEdicao;
         this.dataPub = dataPub;
     }
+
 
 
     public long getEdicaoGibiId() {

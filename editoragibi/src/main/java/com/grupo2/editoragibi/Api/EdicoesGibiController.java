@@ -1,6 +1,8 @@
-package com.editoragibi.editoragibi.edicoes;
+package com.grupo2.editoragibi.Api;
 
-import com.editoragibi.editoragibi.gibi.Gibi;
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
+import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
+import com.grupo2.editoragibi.Service.EdicoesGibiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -42,8 +44,20 @@ public class EdicoesGibiController {
     @PutMapping(path = "editar/{edicoesGibiId}")
     public void updateEdicoesGibi(@PathVariable Long edicoesGibiId,
                                   @RequestParam(required = false) Integer nroEdicao,
-                                  @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataPub){
-        edicoesGibiService.updateEdicoesGibi(edicoesGibiId, nroEdicao, dataPub);
+                                  @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataPub,
+                                  @RequestParam(required = false)HistoriaEntity historiaEntity){
+        edicoesGibiService.updateEdicoesGibi(edicoesGibiId, nroEdicao, dataPub, historiaEntity);
 
+    }
+
+    @PostMapping(path = "addGibiHistoria/{historiaId}&{edicaoGibiId}")
+    public void addHistoriaEdicao(@PathVariable("historiaId") Integer historiaId,
+                                  @PathVariable("edicaoGibiId") Long edicaoGibiId){
+        edicoesGibiService.addHistoriaEdicao(historiaId, edicaoGibiId);
+    }
+
+    @DeleteMapping(path = "deleteGibiHistoria/{edicaoGibiId}")
+    public void deleteHistoriaEdicao(@PathVariable("edicaoGibiId") Long edicaoGibiId){
+        edicoesGibiService.deleteHistoriaEdicao(edicaoGibiId);
     }
 }

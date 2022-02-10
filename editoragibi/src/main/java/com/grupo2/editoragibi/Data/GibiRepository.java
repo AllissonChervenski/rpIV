@@ -1,7 +1,9 @@
-package com.editoragibi.editoragibi.gibi;
+package com.grupo2.editoragibi.Data;
 
-import com.editoragibi.editoragibi.edicoes.EdicoesGibi;
-import com.editoragibi.editoragibi.edicoes.EdicoesGibiRepository;
+
+
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
+import com.grupo2.editoragibi.Data.Entity.Gibi;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

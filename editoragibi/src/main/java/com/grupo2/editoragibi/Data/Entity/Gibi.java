@@ -1,6 +1,5 @@
-package com.editoragibi.editoragibi.gibi;
+package com.grupo2.editoragibi.Data.Entity;
 
-import com.editoragibi.editoragibi.edicoes.EdicoesGibi;
 
 import javax.persistence.*;
 import java.time.LocalDate;

@@ -1,6 +1,9 @@
-package com.editoragibi.editoragibi.gibi;
+package com.grupo2.editoragibi.Service;
 
-import com.editoragibi.editoragibi.edicoes.EdicoesGibi;
+
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
+import com.grupo2.editoragibi.Data.Entity.Gibi;
+import com.grupo2.editoragibi.Data.GibiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

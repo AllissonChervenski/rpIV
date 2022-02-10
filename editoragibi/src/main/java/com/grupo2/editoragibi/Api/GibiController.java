@@ -1,7 +1,8 @@
-package com.editoragibi.editoragibi.gibi;
+package com.grupo2.editoragibi.Api;
 
-
-import com.editoragibi.editoragibi.edicoes.EdicoesGibi;
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
+import com.grupo2.editoragibi.Data.Entity.Gibi;
+import com.grupo2.editoragibi.Service.GibiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;

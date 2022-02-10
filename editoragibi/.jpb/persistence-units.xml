@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit name="editoragibi">
+        <packages>
+          <package value="com.editoragibi.editoragibi" />
+          <package value="com.grupo2.editoragibi.Data.Entity" />
+        </packages>
+        <entities>
+          <entity value="com.grupo2.editoragibi.Data.Entity.HistoriaEntity" />
+          <entity value="org.springframework.data.jpa.domain.AbstractPersistable" />
+          <entity value="org.springframework.data.jpa.domain.AbstractAuditable" />
+        </entities>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+</project>

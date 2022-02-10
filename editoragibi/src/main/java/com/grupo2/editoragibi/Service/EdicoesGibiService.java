@@ -1,13 +1,17 @@
-package com.editoragibi.editoragibi.edicoes;
+package com.grupo2.editoragibi.Service;
 
-import com.editoragibi.editoragibi.gibi.Gibi;
+
+import com.grupo2.editoragibi.Data.EdicoesGibiRepository;
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
+import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
+import com.grupo2.editoragibi.Data.IHistoriaRepository;
+import com.grupo2.editoragibi.Service.Domain.Historia;
+import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +20,12 @@ public class EdicoesGibiService {
     private final EdicoesGibiRepository edicoesGibiRepository;
 
     @Autowired
-    public EdicoesGibiService(EdicoesGibiRepository edicoesGibiRepository) {
+    private final IHistoriaRepository iHistoriaRepository;
+
+    @Autowired
+    public EdicoesGibiService(EdicoesGibiRepository edicoesGibiRepository, IHistoriaRepository iHistoriaRepository) {
         this.edicoesGibiRepository = edicoesGibiRepository;
+        this.iHistoriaRepository = iHistoriaRepository;
     }
 
     public List<EdicoesGibi> getEdicoesGibis() {
@@ -63,7 +71,7 @@ public class EdicoesGibiService {
     }
 
     @Transactional
-    public void updateEdicoesGibi(Long edicoesGibiId, Integer nroEdicao, LocalDate dataPub) {
+    public void updateEdicoesGibi(Long edicoesGibiId, Integer nroEdicao, LocalDate dataPub, HistoriaEntity historiaEntity) {
         EdicoesGibi edicoesGibi = edicoesGibiRepository.findById(edicoesGibiId).orElseThrow(
                 () -> new IllegalStateException("Edicao com id " + edicoesGibiId + " não existe")
         );
@@ -76,7 +84,33 @@ public class EdicoesGibiService {
             edicoesGibi.setDataPub(dataPub);
         }
 
+        if(historiaEntity != null){
+            edicoesGibi.setHistoriaEntity(historiaEntity);
+        }
+
         edicoesGibiRepository.save(edicoesGibi);
+    }
+
+    public void addHistoriaEdicao(Integer historiaId, Long edicaoGibiId) {
+        EdicoesGibi edicoesGibi = edicoesGibiRepository.findById(edicaoGibiId).orElseThrow(
+                () -> new IllegalStateException( "Edicao com id " + edicaoGibiId + "não existe")
+        );
+        Optional<HistoriaEntity> historiaEntityOptional = iHistoriaRepository.findById(historiaId);
+
+        historiaEntityOptional.ifPresent(edicoesGibi::setHistoriaEntity);
+
+        edicoesGibiRepository.save(edicoesGibi);
+    }
+
+    public void deleteHistoriaEdicao(Long edicaoGibiId) {
+        EdicoesGibi edicoesGibi = edicoesGibiRepository.findById(edicaoGibiId).orElseThrow(
+                () -> new IllegalStateException( "Edicao com id " + edicaoGibiId + "não existe")
+        );
+
+        edicoesGibi.setHistoriaEntity(null);
+
+        edicoesGibiRepository.save(edicoesGibi);
+
     }
 }
 

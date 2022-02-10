@@ -1,7 +1,8 @@
-package com.editoragibi.editoragibi.gibi;
+package com.grupo2.editoragibi.Config;
 
-import com.editoragibi.editoragibi.edicoes.EdicoesGibi;
-import org.apache.tomcat.jni.Local;
+
+import com.grupo2.editoragibi.Data.Entity.Gibi;
+import com.grupo2.editoragibi.Data.GibiRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
