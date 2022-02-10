@@ -8,8 +8,11 @@ function Cadastros(){
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> main
           Opções de Cadastros
         </h1>
 
@@ -17,12 +20,16 @@ function Cadastros(){
         <LinkButton to="/desenhista" text="Cadastrar novo desenhista" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> main
         <LinkButton to="/escritor" text="Cadastrar novo escritor" />
         <LinkButton to="/gibis" text="Cadastrar novo gibi" />
         <LinkButton to="/transportadoras" text="Cadastrar nova transportadora" />
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
           Página de  <span>cadastros</span>
@@ -48,6 +55,8 @@ function Cadastros(){
 >>>>>>> 1fe8be3 (Formulário Escritor - Cadastro)
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> main
        
       </section>
     )

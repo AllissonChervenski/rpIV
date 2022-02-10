@@ -16,6 +16,7 @@ function Home() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <LinkButton to="/cadastros" text="Teste Botão Cadastros" />
       <LinkButton to="/gibis" text="Teste Botão Gibis" />
       </div> 
@@ -30,10 +31,13 @@ function Home() {
 >>>>>>> a8f998c (Início da página do Editor)
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> main
         <LinkButton to="/cadastros" text="Cadastros Gerais" />
         <LinkButton to="/login" text="Página Login" />
         <LinkButton to="/editorHomePage" text="Editor Home Page" />
         
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -61,6 +65,10 @@ function Home() {
 
       </div>
 >>>>>>> origin/main
+=======
+
+      </div>
+>>>>>>> main
 
       <img src={savings} alt="Savings" />
     </section>

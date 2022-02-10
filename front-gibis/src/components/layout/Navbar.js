@@ -3,10 +3,14 @@ import Container from './Container';
 
 import styles from './Navbar.module.css';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import logo from '../../img/LOGO (3).png';
 =======
 import logo from '../../img/LOGOHEADER.png';
 >>>>>>> origin/main
+=======
+import logo from '../../img/LOGOHEADER.png';
+>>>>>>> main
 
 function Navbar() {
   return (
@@ -20,6 +24,7 @@ function Navbar() {
             <Link to="/">Home</Link>
           </li>
           <li className={styles.item}>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -37,11 +42,15 @@ function Navbar() {
 =======
             <Link to="/desenhistap">Desenhistas</Link>
 >>>>>>> origin/main
+=======
+            <Link to="/desenhistap">Desenhistas</Link>
+>>>>>>> main
           </li>
           <li className={styles.item}>
             <Link to="/escritorp">Escritores</Link>
           </li>
           <li className={styles.item}>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             <Link to="/gibis">Gibis</Link>
@@ -71,6 +80,8 @@ function Navbar() {
             <Link to="/financeiro">Financeiro</Link>
           </li>
 =======
+=======
+>>>>>>> main
             <Link to="/gibisp">Gibis</Link>
           </li>
           <li className={styles.item}>
@@ -79,7 +90,10 @@ function Navbar() {
           <li className={styles.item}>
             <Link to="/transportadoras">Transportadoras</Link>
           </li>
+<<<<<<< HEAD
 >>>>>>> origin/main
+=======
+>>>>>>> main
         </ul>
       </Container>
     </div>

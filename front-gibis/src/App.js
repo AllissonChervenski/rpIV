@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './components/pages/Home'
 import Cadastros from './components/pages/Cadastros'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Gibis from './components/pages/Gibis'
 import Financeiro from './components/pages/Financeiro'
 import Container from './components/layout/Container'
@@ -18,6 +19,8 @@ import Transportadoras from './components/pages/Transportadoras'
 =======
 >>>>>>> 175ab58 (Ajuste após substituição do SingIn por Login)
 =======
+=======
+>>>>>>> main
 import Escritor from './components/pages/Escritor'
 import Gibis from './components/pages/Gibis'
 import Financeiro from './components/pages/FinanceiroP'
@@ -26,7 +29,10 @@ import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
 import Desenhista from './components/pages/Desenhista'
 import Transportadoras from './components/pages/Transportadoras'
+<<<<<<< HEAD
 >>>>>>> origin/main
+=======
+>>>>>>> main
 import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
 import DesenhistaP from './components/pages/DesenhistaP'
@@ -36,14 +42,18 @@ import GibisP from './components/pages/GibisP'
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 66ca9bb (Banca e financeiro)
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> main
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> 5253f45 (Desenhista Forms)
@@ -72,13 +82,18 @@ import EditorHomePage from './components/pages/EditorHomePage'
 function App() {
   return (
 =======
+=======
+>>>>>>> main
 
 
 
 function App() {
   return (
     
+<<<<<<< HEAD
 >>>>>>> origin/main
+=======
+>>>>>>> main
     <Router>
       <Navbar />
       <Switch>
@@ -96,6 +111,7 @@ function App() {
         </Route>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Route exact path="/financeiro"> 
         <Financeiro />
         </Route>
@@ -110,6 +126,8 @@ function App() {
 =======
 >>>>>>> 800e520 (Organização do site)
 =======
+=======
+>>>>>>> main
         <Route exact path="/gibisp"> 
         <GibisP />
         </Route>
@@ -118,7 +136,10 @@ function App() {
         <Financeiro />
         </Route>
 
+<<<<<<< HEAD
 >>>>>>> origin/main
+=======
+>>>>>>> main
         <Route exact path="/escritorp"> 
         <EscritorP />
         </Route>
@@ -132,6 +153,7 @@ function App() {
         </Route>
 
         <Route exact path="/desenhista"> 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         <Route exact path="/escritores"> 
@@ -147,6 +169,8 @@ function App() {
 >>>>>>> 9b92b34 (ajustes 3)
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> main
         <Desenhista />
         </Route>
 
@@ -156,8 +180,11 @@ function App() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> main
 
       
         <Route exact path="/acervo"> 
@@ -167,6 +194,7 @@ function App() {
         <Route exact path="/login"> 
         <Login />
         </Route>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> e31c498 (Updates)
@@ -201,6 +229,8 @@ function App() {
 >>>>>>> 4d91f1b (Início da página do Editor)
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> main
         
         <Route exact path="/editorHomePage"> 
         <EditorHomePage />
@@ -211,6 +241,7 @@ function App() {
         </Route>
 
         
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         <Route exact path="/escritor"> 
@@ -229,6 +260,8 @@ function App() {
 >>>>>>> 4e6661d (Desenhista Forms)
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> main
       </Container>
       </Switch>
       <Footer />
