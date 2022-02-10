@@ -1,8 +1,4 @@
 .gibis_container {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> e31c498 (Updates)
   width: 450px;
   margin: 0 auto;
   padding: 3em;
@@ -14,22 +10,4 @@
 
 .newproject_container p {
   color: #7b7b7b;
-<<<<<<< HEAD
 }
-=======
-    width: 450px;
-    margin: 0 auto;
-    padding: 3em;
-  }
-  
-  .gibis_container h1 {
-    margin-bottom: 0.5em;
-  }
-  
-  .newproject_container p {
-    color: #7b7b7b;
-  }
->>>>>>> 5253f45 (Desenhista Forms)
-=======
-}
->>>>>>> e31c498 (Updates)
