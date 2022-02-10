@@ -1,0 +1,121 @@
+.EditorHomePage_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4em;
+  }
+
+  .EditorHomePage_container rectangleOne {
+    position: absolute;
+    width: 330px;
+    height: 88px;
+    left: 95px;
+    top: 191px;
+
+    background: #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 23px;
+
+  }
+
+  .EditorHomePage_container rectangleTwo {
+    position: absolute;
+    width: 330px;
+    height: 88px;
+    left: 93px;
+    top: 303px;
+
+    background: #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 23px;
+  }
+
+  .EditorHomePage_container rectangleThree {
+    position: absolute;
+    width: 328px;
+    height: 88px;
+    left: 97px;
+    top: 415px;
+
+    background: #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 23px;
+}
+
+  .EditorHomePage_container grayRectangle {
+    position: absolute;
+    width: 267px;
+    height: 788px;
+    left: -13px;
+    top: 133px;
+
+    background: rgba(0, 0, 0, 0.09);
+    border-radius: 23px;
+  }
+
+  .EditorHomePage_container olaEditor {
+    position: absolute;
+    width: 266px;
+    height: 31px;
+    left: 184px;
+    top: 18px;
+    
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+    
+    color: #FFFFFF;
+  }
+
+  .EditorHomePage_container gerirGibisText {
+    position: absolute;
+    width: 159px;
+    height: 42px;
+    left: 118px;
+    top: 216px;
+    
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    
+    color: #FFFFFF;
+  }
+
+  .EditorHomePage_container gerirPersonagensText {
+    position: absolute;
+    width: 279px;
+    height: 42px;
+    left: 118px;
+    top: 326px;
+    
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    
+    color: #FFFFFF;
+  }
+
+  .EditorHomePage_container gerirEscritoresText {
+    position: absolute;
+    width: 261px;
+    height: 72px;
+    left: 118px;
+    top: 436px;
+    
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    
+    color: #FFFFFF;
+  }
+
