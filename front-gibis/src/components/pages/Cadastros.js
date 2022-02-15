@@ -11,7 +11,7 @@ function Cadastros(){
 
         <LinkButton to="/desenhista" text="Cadastrar novo desenhista" />
         <LinkButton to="/escritor" text="Cadastrar novo escritor" />
-        <LinkButton to="/gibis" text="Cadastrar novo gibi" />
+        <LinkButton to="/newgibi" text="Cadastrar novo gibi" />
         <LinkButton to="/transportadoras" text="Cadastrar nova transportadora" />
 
        

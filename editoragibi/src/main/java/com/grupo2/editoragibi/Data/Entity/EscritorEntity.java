@@ -1,7 +1,5 @@
 package com.grupo2.editoragibi.Data.Entity;
 
-import com.fasterxml.jackson.annotation.*;
-import com.grupo2.editoragibi.Service.Domain.Personagem;
 import lombok.Data;
 
 import javax.persistence.*;

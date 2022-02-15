@@ -1,12 +1,10 @@
 package com.grupo2.editoragibi.Service;
 
 import com.grupo2.editoragibi.Data.DesenhistaRepository;
-import com.grupo2.editoragibi.Data.IDesenhistaRepository;
 import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 

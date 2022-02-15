@@ -9,7 +9,7 @@ function GibisP(){
         </h1>
 
 
-        <LinkButton to="/gibis" text="Cadastrar novo gibi" />
+        <LinkButton to="/newgibi" text="Cadastrar novo gibi" />
         <LinkButton to="/gibis" text="Ver gibis cadastrados" />
 
        

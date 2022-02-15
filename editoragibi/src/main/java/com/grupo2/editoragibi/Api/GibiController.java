@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
+@CrossOrigin
 @RestController
-@RequestMapping(path="api/v1/gibi")
+@RequestMapping(path="api/gibis")
 public class GibiController {
 
     private final GibiService gibiService;
@@ -21,7 +22,7 @@ public class GibiController {
         this.gibiService = gibiService;
     }
 
-    @GetMapping
+    @GetMapping(path="view")
     public List<Gibi> getGibis(){
        return gibiService.getGibis();
     }
@@ -31,7 +32,7 @@ public class GibiController {
         gibiService.addGibi(gibi);
     }
 
-    @PostMapping(path = "atr/{gibiId}&{edicaoId}")
+    @PostMapping(path = "{gibiId}&{edicaoId}")
     public void addEdicaoGibi(@PathVariable("gibiId") Long gibiId,@PathVariable("edicaoId") Long edicaoGibiId){
         gibiService.addEdicaoGibi(gibiId, edicaoGibiId);
     }

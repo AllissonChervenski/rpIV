@@ -1,8 +1,5 @@
 package com.grupo2.editoragibi.Data.Entity;
 
-import com.grupo2.editoragibi.Service.Domain.Desenhista;
-import com.grupo2.editoragibi.Service.Domain.Escritor;
-import com.grupo2.editoragibi.Service.Domain.Personagem;
 import lombok.Data;
 
 import javax.persistence.*;

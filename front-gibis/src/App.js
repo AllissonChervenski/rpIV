@@ -16,8 +16,7 @@ import EscritorP from './components/pages/EscritorP'
 import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
-
-
+import NewGibi from './components/pages/NewGibi'
 
 
 
@@ -38,6 +37,10 @@ function App() {
 
         <Route exact path="/gibis"> 
         <Gibis />
+        </Route>
+
+        <Route exact path="/newgibi">
+        <NewGibi />
         </Route>
 
         <Route exact path="/gibisp"> 

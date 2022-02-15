@@ -1,9 +1,10 @@
 package com.grupo2.editoragibi.Data.Entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import lombok.Data;
 
 @Data
 @Table(name = "desenhista")

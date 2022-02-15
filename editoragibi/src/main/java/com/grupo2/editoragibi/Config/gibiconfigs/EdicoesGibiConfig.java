@@ -1,4 +1,4 @@
-package com.grupo2.editoragibi.Config;
+package com.grupo2.editoragibi.Config.gibiconfigs;
 
 
 import com.grupo2.editoragibi.Data.EdicoesGibiRepository;
