@@ -1,28 +1,32 @@
 package com.editoragibi.editoragibi.edicoes;
 
 import com.editoragibi.editoragibi.gibi.Gibi;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-
+@Data
 @Entity
 @Table
 public class EdicoesGibi {
 
     @Id
-    @SequenceGenerator(
-            name = "edicoesGibi_sequence",
-            sequenceName = "edicoesGibi_sequence",
-            allocationSize = 1
-    )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator =  "edicoesGibi_sequence"
+            strategy = GenerationType.AUTO,
+            generator =  "edicoes_edicoes_id_seq"
     )
+    @Column(name = "edicao_id")
     private long edicaoGibiId;
+
+    @Column(name = "numero_edicao")
     private int nroEdicao;
+
+    @Column(name = "data_edicao")
     private LocalDate dataPub;
+
+    @Column(name = "publicada_edicao")
+    private boolean publicada;
 
     public EdicoesGibi(int nroEdicao, LocalDate dataPub) {
         this.nroEdicao = nroEdicao;
