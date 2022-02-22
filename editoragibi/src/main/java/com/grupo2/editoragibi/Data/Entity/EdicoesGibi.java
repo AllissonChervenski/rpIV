@@ -53,8 +53,8 @@ public class EdicoesGibi {
         return historiaEntity;
     }
 
-    public void setHistoriaEntity(List<HistoriaEntity> historiaEntity) {
-        this.historiaEntity = historiaEntity;
+    public void addHistoriaEntity(HistoriaEntity historiaEntity) {
+        this.historiaEntity.add(historiaEntity);
     }
 
     public EdicoesGibi(long edicaoGibiId, int nroEdicao, LocalDate dataPub) {

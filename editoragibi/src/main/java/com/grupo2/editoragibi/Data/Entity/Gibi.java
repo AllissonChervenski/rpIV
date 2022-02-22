@@ -16,8 +16,8 @@ public class Gibi {
 
     @Id
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "gibi_sequence"
+            strategy = GenerationType.AUTO,
+            generator = "gibi_gibi_id_seq"
     )
     @Column(name = "gibi_id")
     private Long gibi_id;
