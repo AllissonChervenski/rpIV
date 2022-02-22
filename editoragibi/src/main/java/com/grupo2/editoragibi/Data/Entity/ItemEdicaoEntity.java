@@ -1,6 +1,5 @@
 package com.grupo2.editoragibi.Data.Entity;
 
-import com.grupo2.editoragibi.edicoes.EdicoesGibi;
 import lombok.Data;
 
 import javax.persistence.*;

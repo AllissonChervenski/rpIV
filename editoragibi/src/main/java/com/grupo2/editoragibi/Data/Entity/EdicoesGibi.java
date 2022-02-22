@@ -1,45 +1,78 @@
 package com.grupo2.editoragibi.Data.Entity;
 
+import com.grupo2.editoragibi.editor.Editor;
+import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 
+@Data
 @Entity
-@Table
+@Table(name = "edicao")
 public class EdicoesGibi {
 
     @Id
-    @SequenceGenerator(
-            name = "edicoesGibi_sequence",
-            sequenceName = "edicoesGibi_sequence",
-            allocationSize = 1
-    )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator =  "edicoesGibi_sequence"
+            strategy = GenerationType.AUTO,
+            generator =  "edicao_edicao_id_seq"
     )
+    @Column(name = "edicao_id")
     private long edicaoGibiId;
+
+    @Column(name = "numero_edicao")
     private int nroEdicao;
+
+    @Column(name = "data_edicao")
     private LocalDate dataPub;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "historia_entity_historia_id")
-    private HistoriaEntity historiaEntity;
+    @Column(name = "publicada_edicao")
+    private boolean publicada;
 
-    public HistoriaEntity getHistoriaEntity() {
-        return historiaEntity;
-    }
+    @Column(name = "numero_exemplares_impressos")
+    private int numeroExemplaresImpressas;
 
-    public void setHistoriaEntity(HistoriaEntity historiaEntity) {
-        this.historiaEntity = historiaEntity;
-    }
+    @ManyToOne
+    @JoinColumn(name = "gibi_id")
+    private Gibi gibi;
+
+    @ManyToOne
+    @JoinColumn(name = "editor_id")
+    private Editor editor;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "publica", joinColumns = {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "historia_id")})
+    private List<HistoriaEntity> historiaEntity;
 
     public EdicoesGibi(int nroEdicao, LocalDate dataPub) {
         this.nroEdicao = nroEdicao;
         this.dataPub = dataPub;
     }
 
+    public List<HistoriaEntity> getHistoriaEntity() {
+        return historiaEntity;
+    }
 
+    public void setHistoriaEntity(List<HistoriaEntity> historiaEntity) {
+        this.historiaEntity = historiaEntity;
+    }
+
+    public EdicoesGibi(long edicaoGibiId, int nroEdicao, LocalDate dataPub) {
+        this.edicaoGibiId = edicaoGibiId;
+        this.nroEdicao = nroEdicao;
+        this.dataPub = dataPub;
+    }
+
+    public EdicoesGibi() {
+    }
+
+    public int getNumeroExemplaresImpressas() {
+        return numeroExemplaresImpressas;
+    }
+
+    public void setNumeroExemplaresImpressas(int numeroExemplaresImpressas) {
+        this.numeroExemplaresImpressas = numeroExemplaresImpressas;
+    }
 
     public long getEdicaoGibiId() {
         return edicaoGibiId;
@@ -64,18 +97,4 @@ public class EdicoesGibi {
     public void setDataPub(LocalDate dataPub) {
         this.dataPub = dataPub;
     }
-
-
-    public EdicoesGibi(long edicaoGibiId, int nroEdicao, LocalDate dataPub) {
-        this.edicaoGibiId = edicaoGibiId;
-        this.nroEdicao = nroEdicao;
-        this.dataPub = dataPub;
-    }
-
-
-    public EdicoesGibi() {
-    }
-
-
-
 }
