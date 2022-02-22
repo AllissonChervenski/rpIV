@@ -1,8 +1,12 @@
 package com.grupo2.editoragibi.Data.Entity;
 
-import com.grupo2.editoragibi.Service.Domain.Desenhista;
-import com.grupo2.editoragibi.Service.Domain.Escritor;
-import com.grupo2.editoragibi.Service.Domain.Personagem;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
+import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
+import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,7 +18,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "historia")
-public class HistoriaEntity implements Serializable {
+public class HistoriaEntity extends BaseHistoria implements Serializable {
 
     public static final Long serialVersionUID = 1L;
 
@@ -47,4 +51,19 @@ public class HistoriaEntity implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "historia_personagem", joinColumns = {@JoinColumn(name = "historia_id")}, inverseJoinColumns = {@JoinColumn(name = "personagem_id")})
     List<PersonagemEntity> personagens = new ArrayList<>();
+
+    @Override
+    public void setArtefinalizador(BaseDesenhista artefinalizador) throws HistoriaInvalidaException, DesenhistaInvalidoException {
+        this.artefinalizador = (DesenhistaEntity) artefinalizador;
+    }
+
+    @Override
+    public void setDesenhista(BaseDesenhista desenhista) throws DesenhistaInvalidoException {
+        this.desenhista = (DesenhistaEntity) desenhista;
+    }
+
+    @Override
+    public void setEscritor(BaseEscritor escritor) throws PersonagemInvalidoException, EscritorInvalidoException {
+        this.escritor = (EscritorEntity) escritor;
+    }
 }

@@ -1,28 +1,46 @@
 package com.grupo2.editoragibi.Api.Requests;
 
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+
 @Data
-public class EscritorRequest {
+public class EscritorRequest extends BaseEscritor {
 
-    @NotNull
-    private String nomeEscritor;
+    private List<Integer> personagensIds;
 
-    @NotNull
-    private String enderecoEscritor;
+    @Override
+    public void setNomeEscritor(String nomeEscritor) throws EscritorInvalidoException {
+        this.nomeEscritor = nomeEscritor;
+    }
 
-    @NotNull
-    private String telefoneEscritor;
+    @Override
+    public void setEnderecoEscritor(String enderecoEscritor) throws EscritorInvalidoException {
+        this.enderecoEscritor = enderecoEscritor;
+    }
 
-    @NotNull
-    private String emailEscritor;
+    @Override
+    public void setTelefoneEscritor(String telefoneEscritor) throws EscritorInvalidoException {
+        this.telefoneEscritor = telefoneEscritor;
+    }
 
-    @NotNull
-    private LocalDate dataContratacao;
+    @Override
+    public void setEmailEscritor(String emailEscritor) throws EscritorInvalidoException {
+        this.emailEscritor = emailEscritor;
+    }
 
-    @NotNull
-    private LocalDate dataDemissao;
+    @Override
+    public void setDataContratacao(LocalDate dataContratacao) throws EscritorInvalidoException {
+        this.dataContratacao = dataContratacao;
+    }
+
+    @Override
+    public void setDataDemissao(LocalDate dataDemissao) throws EscritorInvalidoException {
+        this.dataDemissao = dataDemissao;
+    }
+
+
 }
