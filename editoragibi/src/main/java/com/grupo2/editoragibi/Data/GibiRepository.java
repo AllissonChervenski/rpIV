@@ -1,21 +1,45 @@
 package com.grupo2.editoragibi.Data;
 
-
-
-import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
-import com.grupo2.editoragibi.Data.Entity.Gibi;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import com.grupo2.editoragibi.Data.Entity.GibiEntity;
+import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface GibiRepository extends JpaRepository<Gibi, Long>{
+public class GibiRepository {
 
-    @Query("SELECT g FROM Gibi g WHERE g.titulo = ?1")
-    Optional<Gibi> findGibiByTitulo(String titulo);
+    @Autowired
+    IGibiRepository gibiRepository;
 
-    @Query("SELECT e FROM EdicoesGibi e WHERE e.edicaoGibiId = ?1")
-    Optional<EdicoesGibi> findEdicaoGibiById(Long id);
+    public GibiEntity getGibiById(int id) throws GibiInvalidoException {
+        Optional<GibiEntity> gibi = gibiRepository.findById(id);
+        if (gibi.isEmpty())
+            throw new GibiInvalidoException("O gibi não está no sistema");
+        return gibi.get();
+    }
+
+    public List<GibiEntity> getGibis() {
+        return gibiRepository.findAll();
+    }
+
+    public GibiEntity addGibi(GibiEntity gibi) {
+        return gibiRepository.save(gibi);
+    }
+
+    public boolean deleteGibi(int id) {
+        if (gibiRepository.findById(id).isEmpty())
+            return false;
+        gibiRepository.deleteById(id);
+        return true;
+    }
+
+    public GibiEntity updateGibi(int id, GibiEntity gibi) throws GibiInvalidoException {
+        if (gibiRepository.findById(id).isEmpty())
+            throw new GibiInvalidoException("O gibi não está no sistema");
+        gibi.setGibiId(id);
+        return gibiRepository.save(gibi);
+    }
 }

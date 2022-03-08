@@ -12,12 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/gibi/edicoesGibi")
-public class EdicoesGibiController {
+public class EdicoesController {
     
     private final EdicoesGibiService edicoesGibiService;
 
     @Autowired
-    public EdicoesGibiController(EdicoesGibiService edicoesGibiService) {
+    public EdicoesController(EdicoesGibiService edicoesGibiService) {
         this.edicoesGibiService = edicoesGibiService;
     }
     

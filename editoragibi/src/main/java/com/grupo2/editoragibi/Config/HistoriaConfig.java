@@ -14,11 +14,11 @@ import java.time.LocalDate;
 @Configuration
 public class HistoriaConfig {
 
-    @Bean
-    CommandLineRunner historiaConfiguration(IHistoriaRepository ihistoriaRepository){
-        return args -> {
-            HistoriaEntity historiaEntity = new HistoriaEntity();
-        ihistoriaRepository.save(historiaEntity);
-        };
-    }
+    //@Bean
+    //CommandLineRunner historiaConfiguration(IHistoriaRepository ihistoriaRepository){
+    //    return args -> {
+    //        HistoriaEntity historiaEntity = new HistoriaEntity();
+    //    ihistoriaRepository.save(historiaEntity);
+    //    };
+    //}
 }

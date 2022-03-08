@@ -1,18 +1,17 @@
 package com.grupo2.editoragibi.Data.Entity;
 
 
-import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "gibi")
-public class Gibi {
+public class GibiEntity extends BaseGibi {
 
     @Id
     @GeneratedValue(
@@ -20,7 +19,7 @@ public class Gibi {
             generator = "gibi_gibi_id_seq"
     )
     @Column(name = "gibi_id")
-    private Long gibi_id;
+    private int gibiId;
 
     @Column(name = "titulo_gibi")
     private String titulo;
@@ -32,55 +31,23 @@ public class Gibi {
     private LocalDate encData;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gibi")
+    //TODO esse campo tem que ser o EdicoesGibiEntity
     private List<EdicoesGibi> edicoesGibis;
-
-    public Gibi(String titulo, LocalDate inicioData, LocalDate encData, List<EdicoesGibi> edicoesGibis) {
-        this.titulo = titulo;
-        this.inicioData = inicioData;
-        this.encData = encData;
-        this.edicoesGibis = edicoesGibis;
-    }
-
-    public Gibi(String titulo, LocalDate inicioData, LocalDate encData) {
-        this.titulo = titulo;
-        this.inicioData = inicioData;
-        this.encData = encData;
-        this.edicoesGibis = new ArrayList<>();
-    }
-
-    public Gibi() {
-    }
 
     public void setEdicoesGibis(List<EdicoesGibi> edicoesGibis) {
         this.edicoesGibis = edicoesGibis;
     }
 
-    public Long getGibi_id() {
-        return gibi_id;
-    }
-
-    public void setGibi_id(Long id) {
-        this.gibi_id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
+    public void setGibiId(int id) {
+        this.gibiId = id;
     }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    public LocalDate getInicioData() {
-        return inicioData;
-    }
-
     public void setInicioData(LocalDate inicioData) {
         this.inicioData = inicioData;
-    }
-
-    public LocalDate getEncData() {
-        return encData;
     }
 
     public void setEncData(LocalDate encData) {

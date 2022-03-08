@@ -34,7 +34,7 @@ public class EdicoesGibi {
 
     @ManyToOne
     @JoinColumn(name = "gibi_id")
-    private Gibi gibi;
+    private GibiEntity gibi;
 
     @ManyToOne
     @JoinColumn(name = "editor_id")
