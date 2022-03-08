@@ -5,6 +5,7 @@ import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
