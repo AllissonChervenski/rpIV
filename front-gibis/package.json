@@ -5,19 +5,13 @@
   "dependencies": {
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
-<<<<<<< HEAD
-=======
     "@material-ui/core": "^4.12.3",
->>>>>>> main
     "@mui/icons-material": "^5.2.1",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-<<<<<<< HEAD
-=======
     "@types/react": "^17.0.39",
     "@types/react-router-dom": "^5.3.3",
->>>>>>> main
     "json-server": "^0.17.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -25,12 +19,9 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "uuid": "^8.3.2",
-<<<<<<< HEAD
-    "web-vitals": "^1.1.2"
-=======
+    "web-vitals": "^1.1.2",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.11"
->>>>>>> main
   },
   "scripts": {
     "start": "react-scripts start",

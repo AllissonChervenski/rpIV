@@ -51,7 +51,7 @@ public class GibiController {
         //gibiService.addEdicaoGibi(gibiId, edicaoGibiId);
     }
 
-    @DeleteMapping(path = "{gibiId}")
+    @DeleteMapping(path = "/delete/{gibiId}")
     public ResponseEntity<Object> deleteGibi(@PathVariable("gibiId") int gibiId) {
         try {
             gibiService.deleteGibi(gibiId);
