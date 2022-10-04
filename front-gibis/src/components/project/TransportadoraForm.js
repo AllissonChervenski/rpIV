@@ -11,20 +11,10 @@ function TransportadoraForm({ btnText }) {
 
             <Input type="number" text="CNPJ" name="cnpjTransportadora" placeholder="Insira o CNPJ da Transportadora" />
 
-<<<<<<< HEAD
-<<<<<<< HEAD
             <p>Rota de Traballho</p> 
             <Input type="text" text="De" name="rotaTransportadora" placeholder="Insira o local de partida" />
             <Input type="text" text="Para" name="rotaTransportadora" placeholder="Insira o destino final" />
-=======
             <Input type="text" text="Rota de Trabalho" name="rotaTransportadora" placeholder="Insira a rota da Transportadora" />
->>>>>>> e31c498 (Updates)
-=======
-            <p>Rota de Traballho</p> 
-            <Input type="text" text="De" name="rotaTransportadora" placeholder="Insira o local de partida" />
-            <Input type="text" text="Para" name="rotaTransportadora" placeholder="Insira o destino final" />
->>>>>>> 9b92b34 (ajustes 3)
-
 
             <SubmitButtom text={btnText} />
         </form>
