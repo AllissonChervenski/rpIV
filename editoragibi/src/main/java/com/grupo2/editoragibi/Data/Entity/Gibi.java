@@ -1,14 +1,38 @@
 package com.grupo2.editoragibi.Data.Entity;
 
 
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
-@Table
+@Table(name = "gibi")
 public class Gibi {
+
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.AUTO,
+            generator = "gibi_gibi_id_seq"
+    )
+    @Column(name = "gibi_id")
+    private Long gibi_id;
+
+    @Column(name = "titulo_gibi")
+    private String titulo;
+
+    @Column(name = "data_inicio_publi")
+    private LocalDate inicioData;
+
+    @Column(name = "data_encerramento")
+    private LocalDate encData;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gibi")
+    private List<EdicoesGibi> edicoesGibis;
 
     public Gibi(String titulo, LocalDate inicioData, LocalDate encData, List<EdicoesGibi> edicoesGibis) {
         this.titulo = titulo;
@@ -17,7 +41,18 @@ public class Gibi {
         this.edicoesGibis = edicoesGibis;
     }
 
+    public Gibi(String titulo, LocalDate inicioData, LocalDate encData) {
+        this.titulo = titulo;
+        this.inicioData = inicioData;
+        this.encData = encData;
+        this.edicoesGibis = new ArrayList<>();
+    }
+
     public Gibi() {
+    }
+
+    public void setEdicoesGibis(List<EdicoesGibi> edicoesGibis) {
+        this.edicoesGibis = edicoesGibis;
     }
 
     public Long getGibi_id() {
@@ -52,52 +87,7 @@ public class Gibi {
         this.encData = encData;
     }
 
-
-    @Id
-    @SequenceGenerator(
-            name = "gibi_sequence",
-            sequenceName = "gibi_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "gibi_sequence"
-    )
-    private Long gibi_id;
-    private String titulo;
-    private LocalDate inicioData;
-    private LocalDate encData;
-
     public List<EdicoesGibi> getEdicoesGibis() {
         return edicoesGibis;
     }
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<EdicoesGibi> edicoesGibis;
-
-    public Gibi(String titulo, LocalDate inicioData, LocalDate encData) {
-        this.titulo = titulo;
-        this.inicioData = inicioData;
-        this.encData = encData;
-        this.edicoesGibis = new ArrayList<>();
-    }
-
-
-    @Override
-    public String toString() {
-        return "gibi{" +
-                "id=" + gibi_id +
-                ", titulo='" + titulo + '\'' +
-                ", inicioData=" + inicioData +
-                ", encData=" + encData +
-                ", edicoesGibis=" + edicoesGibis +
-                '}';
-    }
-
-
-    public void setEdicoesGibis(List<EdicoesGibi> edicoesGibis) {
-        this.edicoesGibis = edicoesGibis;
-    }
-
-
 }

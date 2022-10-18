@@ -83,7 +83,7 @@ public class EdicoesGibiService {
         }
 
         if(historiaEntity != null){
-            edicoesGibi.setHistoriaEntity(historiaEntity);
+            edicoesGibi.addHistoriaEntity(historiaEntity);
         }
 
         edicoesGibiRepository.save(edicoesGibi);
@@ -95,7 +95,7 @@ public class EdicoesGibiService {
         );
         Optional<HistoriaEntity> historiaEntityOptional = iHistoriaRepository.findById(historiaId);
 
-        historiaEntityOptional.ifPresent(edicoesGibi::setHistoriaEntity);
+        historiaEntityOptional.ifPresent(edicoesGibi::addHistoriaEntity);
 
         edicoesGibiRepository.save(edicoesGibi);
     }

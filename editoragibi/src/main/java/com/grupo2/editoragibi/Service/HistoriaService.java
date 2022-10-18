@@ -1,95 +1,62 @@
 package com.grupo2.editoragibi.Service;
 
-import com.grupo2.editoragibi.Data.DesenhistaRepository;
-import com.grupo2.editoragibi.Data.EscritorRepository;
+import com.grupo2.editoragibi.Api.Requests.HistoriaRequest;
+import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
 import com.grupo2.editoragibi.Data.HistoriaRepository;
-import com.grupo2.editoragibi.Data.PersonagemRepository;
-import com.grupo2.editoragibi.Service.Domain.Desenhista;
-import com.grupo2.editoragibi.Service.Domain.Escritor;
+import com.grupo2.editoragibi.Service.Directors.HistoriaDirector;
 import com.grupo2.editoragibi.Service.Domain.Historia;
-import com.grupo2.editoragibi.Service.Domain.Personagem;
+import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
+import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class HistoriaService {
 
+    @Qualifier("historiaDirector")
+    @Autowired
+    HistoriaDirector historiaDirector;
+
+    @Qualifier("historiaEntityDirector")
+    @Autowired
+    HistoriaDirector historiaEntityDirector;
+
     @Autowired
     HistoriaRepository historiaRepository;
 
-    @Autowired
-    DesenhistaRepository desenhistaRepository;
-
-    @Autowired
-    EscritorRepository escritorRepository;
-
-    @Autowired
-    PersonagemRepository personagemRepository;
-
-    public Historia getHistoriaById(int id) throws HistoriaInvalidaException {
-
-        Optional<Historia> historia = historiaRepository.getHistoriaById(id);
-
-        return historia.get();
+    public Historia getHistoriaById(int id) throws HistoriaInvalidaException, DesenhistaInvalidoException, PersonagemInvalidoException, EscritorInvalidoException {
+        return (Historia) historiaDirector.buildFromHistoriaEntity(historiaRepository.getHistoriaById(id));
     }
 
-    public List<Historia> getHsitorias() {
-
-        return historiaRepository.getHistorias();
+    public List<Historia> getHsitorias() throws DesenhistaInvalidoException, PersonagemInvalidoException, EscritorInvalidoException, HistoriaInvalidaException {
+        List<HistoriaEntity> historiasEntities = historiaRepository.getHistorias();
+        List<Historia> historias = new ArrayList<>();
+        for (HistoriaEntity historia : historiasEntities) {
+            historias.add((Historia) historiaDirector.buildFromHistoriaEntity(historia));
+        }
+        return historias;
     }
 
-    public Historia addHistoria(Historia historia, int artefinalizadorId, int desenhistaId, int escritorId, List<Integer> personagensIds) throws Exception {
-
-        addAttributes(historia, artefinalizadorId, desenhistaId, escritorId, personagensIds);
-
-        return historiaRepository.addHistoria(historia);
+    public Historia addHistoria(HistoriaRequest historiaRequest) throws Exception {
+        Historia historia = (Historia) historiaDirector.buildFromHistoriaRequest(historiaRequest);
+        HistoriaEntity historiaEntity = (HistoriaEntity) historiaEntityDirector.buildFromHistoria(historia);
+        return (Historia) historiaDirector.buildFromHistoriaEntity(historiaRepository.addHistoria(historiaEntity));
     }
 
     public void deleteHistoria(int id) throws HistoriaInvalidaException {
-
         if (!historiaRepository.deleteHistoria(id))
             throw new HistoriaInvalidaException("Historia não está no sistema");
     }
 
-    private void addAttributes(Historia historia, int artefinalizadorId, int desenhistaId, int escritorId, List<Integer> personagensIds) throws Exception {
-
-        Optional<Desenhista> artefinalizador = desenhistaRepository.getDesenhistaById(artefinalizadorId);
-        if (artefinalizador.isEmpty())
-            throw new Exception("Artefinalizador Inválido");
-        historia.setArtefinalizador(artefinalizador.get());
-
-        Optional<Desenhista> desenhista = desenhistaRepository.getDesenhistaById(desenhistaId);
-        if (desenhista.isEmpty())
-            throw new Exception("Desenhista Inválido");
-        historia.setDesenhista(desenhista.get());
-
-        Optional<Escritor> escritor = escritorRepository.getEscritorById(escritorId);
-        if (escritor.isEmpty())
-            throw new Exception("Escritor Inválido");
-        historia.setEscritor(escritor.get());
-
-        if (personagensIds.isEmpty())
-            throw new Exception("Não tem personagens relacionador à essa historia");
-
-        for (int id : personagensIds) {
-
-            Optional<Personagem> personagem = personagemRepository.getPersonagemById(id);
-
-            if (personagem.isEmpty())
-                throw new Exception("Personagem Inválido");
-
-            historia.addPersonagem(personagem.get());
-        }
-    }
-
-    public Historia updateHistoria(int id, Historia historia, int artefinalizadorId, int desenhistaId, int escritorId, List<Integer> personagensIds) throws Exception {
-
-        addAttributes(historia, artefinalizadorId, desenhistaId, escritorId, personagensIds);
-
-        return historiaRepository.updateHistoria(id, historia);
+    public Historia updateHistoria(int id, HistoriaRequest historiaRequest) throws Exception {
+        Historia historia = (Historia) historiaDirector.buildFromHistoriaRequest(historiaRequest);
+        HistoriaEntity historiaEntity = (HistoriaEntity) historiaEntityDirector.buildFromHistoria(historia);
+        return (Historia) historiaDirector.buildFromHistoriaEntity(historiaRepository.updateHistoria(id, historiaEntity));
     }
 }

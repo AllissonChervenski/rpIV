@@ -1,16 +1,18 @@
 package com.grupo2.editoragibi.Data.Entity;
 
+import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "personagem")
-public class PersonagemEntity implements Serializable {
+public class PersonagemEntity extends BasePersonagem implements Serializable {
 
     public static final Long serialVersionUID = 1L;
 
@@ -33,7 +35,7 @@ public class PersonagemEntity implements Serializable {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "escritor_personagem", joinColumns = {@JoinColumn(name = "personagem_id")}, inverseJoinColumns = {@JoinColumn(name = "escritor_id")})
-    private List<EscritorEntity> escritores;
+    private List<EscritorEntity> escritores = new ArrayList<>();
 
     public void setEscritores(List<EscritorEntity> escritores) {
         this.escritores = escritores;

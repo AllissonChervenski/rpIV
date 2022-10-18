@@ -1,5 +1,6 @@
 package com.grupo2.editoragibi.Data.Entity;
 
+import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,14 +10,14 @@ import java.time.LocalDate;
 @Data
 @Table(name = "desenhista")
 @Entity
-public class DesenhistaEntity implements Serializable {
+public class DesenhistaEntity extends BaseDesenhista implements Serializable {
 
     public static final Long serialVersionUID = 1L;
 
     @Id
     @Column(name = "desenhista_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "desenhista_desenhista_id_seq")
-    private int id;
+    private int desenhistaId;
 
     @Column(name = "nome_desenhista")
     private String nomeDesenhista;

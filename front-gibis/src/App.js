@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React, {useEffect} from 'react'
 import Home from './components/pages/Home'
 import Cadastros from './components/pages/Cadastros'
 import Escritor from './components/pages/Escritor'
@@ -17,10 +18,31 @@ import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
 import NewGibi from './components/pages/NewGibi'
+import axios from 'axios'
+
 
 
 
 function App() {
+
+  /*  const client = axios.create({
+        baseURL: "http://localhost:8080/api/v1/gibi"
+    });
+
+    useEffect(() => {
+        client.get('?_limit=10').then((response) => {
+            console.log(response.data);
+        })
+    })*/
+
+        fetch("http://localhost:8080/api/v1/gibi",  {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-cache'
+        })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+
   return (
 
     <Router>
@@ -93,6 +115,7 @@ function App() {
       </Switch>
       <Footer />
     </Router>
-     )
+
+    )
 }
 export default App

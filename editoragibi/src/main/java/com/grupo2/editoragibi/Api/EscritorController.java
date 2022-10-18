@@ -3,7 +3,6 @@ package com.grupo2.editoragibi.Api;
 import com.grupo2.editoragibi.Api.Requests.EscritorRequest;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.EscritorService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,21 +32,30 @@ public class EscritorController {
     }
 
     @GetMapping("/all")
-    public List<Escritor> getEscritores() {
+    public ResponseEntity<Object> getEscritores() {
 
-        return escritorService.getEscritores();
+        List<Escritor> escritores = null;
+
+        try {
+            escritores = escritorService.getEscritores();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+
+        return new ResponseEntity<>(escritores, HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    public Escritor addEscritor(@RequestBody EscritorRequest escritorRequest) {
+    public ResponseEntity<Object> addEscritor(@RequestBody EscritorRequest escritorRequest) {
 
-        Escritor escritor = new Escritor();
+        Escritor escritorToReturn = null;
+        try {
+            escritorToReturn = escritorService.addEscritor(escritorRequest);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
 
-        BeanUtils.copyProperties(escritorRequest, escritor);
-
-        Escritor escritorToReturn = escritorService.addEscritor(escritor);
-
-        return escritorToReturn;
+        return new ResponseEntity<>(escritorToReturn, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -64,13 +72,10 @@ public class EscritorController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Object> updateEscritor(@PathVariable int id, @RequestBody EscritorRequest escritorRequest) {
-        Escritor escritor = new Escritor();
 
-        BeanUtils.copyProperties(escritorRequest, escritor);
-
-        Escritor escritorToReturn = null;
+        Escritor escritorToReturn;
         try {
-            escritorToReturn = escritorService.updateEscritor(id, escritor);
+            escritorToReturn = escritorService.updateEscritor(id, escritorRequest);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }

@@ -14,8 +14,7 @@ function TransportadoraForm({ btnText }) {
             <p>Rota de Traballho</p> 
             <Input type="text" text="De" name="rotaTransportadora" placeholder="Insira o local de partida" />
             <Input type="text" text="Para" name="rotaTransportadora" placeholder="Insira o destino final" />
-
-
+            <Input type="text" text="Rota de Trabalho" name="rotaTransportadora" placeholder="Insira a rota da Transportadora" />
 
             <SubmitButtom text={btnText} />
         </form>
