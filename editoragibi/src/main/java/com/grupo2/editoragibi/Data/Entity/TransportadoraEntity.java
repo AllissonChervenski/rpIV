@@ -18,9 +18,22 @@ public class TransportadoraEntity extends BaseTransportadora {
     @Column(name = "nome_transportadora")
     private String nomeTransportadora;
 
+    @Column(name = "cnpj")
+    private int  cnpj;
+
     @Column(name = "endereco_transportadora")
     private String enderecoTransportadora;
 
     @Column(name = "telefoneTransportadora")
     private String telefoneTransportadora;
+
+    @Column(name = "local_partida")
+    private String localPartidaTransportadora;
+
+    @Column(name = "local_destino")
+    private String localDestinoTransportadora;
+
+    @Column(name = "rota_trabalho")
+    private String rotaTransportadora;
 }
+

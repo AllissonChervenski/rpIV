@@ -24,6 +24,16 @@ public class EscritorEntity extends BaseEscritor implements Serializable {
     @Column(name = "nome_escritor")
     private String nomeEscritor;
 
+    
+    @Column(name = "pais_nascimento")
+    private String paisNascimentoEs;
+
+    @Column(name = "data_nascimento_escritor")
+    private LocalDate dataNascimentoEs;
+
+    @Column(name = "data_falecimento_escritor")
+    private LocalDate dataFalecimentoEs;
+
     @Column(name = "endereco_escritor")
     private String enderecoEscritor;
 

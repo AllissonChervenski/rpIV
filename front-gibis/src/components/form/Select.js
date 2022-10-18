@@ -6,6 +6,8 @@ function Select({ text, name, options, handleOnChange, value }) {
       <label htmlFor={name}>{text}:</label>
       <select name={name} id={name}>
         <option>Selecione uma opção</option>
+        <option value="sim">Sim</option>
+        <option value="nao">Não</option>
       </select> 
     </div>
   )

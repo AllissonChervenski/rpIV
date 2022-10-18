@@ -13,7 +13,6 @@ function Home() {
 
       <div class="btn-toolbar">
         <LinkButton to="/cadastros" text="Cadastros Gerais" />
-        <LinkButton to="/login" text="Página Login" />
         <LinkButton to="/editorHomePage" text="Editor Home Page" />
 
 

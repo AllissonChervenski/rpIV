@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
-@Table(name = "desenhista")
+@Table(name ="desenhista")
 @Entity
 public class DesenhistaEntity extends BaseDesenhista implements Serializable {
 
@@ -16,7 +16,7 @@ public class DesenhistaEntity extends BaseDesenhista implements Serializable {
 
     @Id
     @Column(name = "desenhista_id")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "desenhista_desenhista_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator ="desenhista_desenhista_id_seq")
     private int desenhistaId;
 
     @Column(name = "nome_desenhista")
