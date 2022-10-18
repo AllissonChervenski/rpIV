@@ -1,4 +1,4 @@
-package com.grupo2.editoragibi.Service;
+/*package com.grupo2.editoragibi.Service;
 
 import com.grupo2.editoragibi.Data.Entity.UsuarioEntity;
 import com.grupo2.editoragibi.Data.IUsuarioRepository;
@@ -29,3 +29,4 @@ public class UsuarioService implements UserDetailsService {
         throw new UsernameNotFoundException("Usuário não está no sistema");
     }
 }
+*/

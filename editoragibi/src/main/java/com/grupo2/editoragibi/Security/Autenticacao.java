@@ -1,4 +1,4 @@
-package com.grupo2.editoragibi.Security;
+/*package com.grupo2.editoragibi.Security;
 
 import com.grupo2.editoragibi.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,3 +40,4 @@ public class Autenticacao extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
 }
+*/
