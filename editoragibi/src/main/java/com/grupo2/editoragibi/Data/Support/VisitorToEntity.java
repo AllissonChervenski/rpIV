@@ -1,3 +1,4 @@
+/*
 package com.grupo2.editoragibi.Data.Support;
 
 import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
@@ -51,3 +52,4 @@ public class VisitorToEntity {
         return personagemEntity;
     }
 }
+*/

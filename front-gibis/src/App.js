@@ -25,24 +25,16 @@ import axios from 'axios'
 
 function App() {
 
-  /*  const client = axios.create({
-        baseURL: "http://localhost:8080/api/v1/gibi"
-    });
+  
 
-    useEffect(() => {
-        client.get('?_limit=10').then((response) => {
-            console.log(response.data);
-        })
-    })*/
-
-        fetch("http://localhost:8080/api/v1/gibi",  {
+       /* fetch("http://localhost:8080/api/gibis/view",  {
             method: 'GET',
             mode: 'cors',
             cache: 'no-cache'
         })
         .then((response) => response.json())
         .then((data) => console.log(data))
-
+*/
   return (
 
     <Router>
