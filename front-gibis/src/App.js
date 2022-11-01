@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import React, {useEffect} from 'react'
 import Home from './components/pages/Home'
 import Cadastros from './components/pages/Cadastros'
 import Escritor from './components/pages/Escritor'
@@ -27,14 +26,14 @@ function App() {
 
   
 
-       /* fetch("http://localhost:8080/api/gibis/view",  {
+        fetch("http://localhost:8080/api/gibis/view",  {
             method: 'GET',
             mode: 'cors',
             cache: 'no-cache'
         })
         .then((response) => response.json())
         .then((data) => console.log(data))
-*/
+
   return (
 
     <Router>
