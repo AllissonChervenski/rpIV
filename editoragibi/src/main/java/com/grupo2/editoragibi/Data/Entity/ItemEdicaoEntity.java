@@ -35,5 +35,5 @@ public class ItemEdicaoEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "edicao_id")
-    private EdicoesGibi edicao;
+    private EdicoesGibiEntity edicao;
 }

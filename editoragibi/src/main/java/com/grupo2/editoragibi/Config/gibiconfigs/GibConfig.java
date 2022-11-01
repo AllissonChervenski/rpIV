@@ -1,7 +1,7 @@
-package com.grupo2.editoragibi.Config;
+package com.grupo2.editoragibi.Config.gibiconfigs;
 
 
-import com.grupo2.editoragibi.Data.Entity.Gibi;
+import com.grupo2.editoragibi.Data.Entity.GibiEntity;
 import com.grupo2.editoragibi.Data.GibiRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -17,20 +17,20 @@ public class GibConfig {
     @Bean
     CommandLineRunner commandLineRunner(GibiRepository repository){
         return args -> {
-            Gibi flash = new Gibi(
+            GibiEntity flash = new GibiEntity(
                     "flash",
                     LocalDate.of(1999, Month.JANUARY, 1),
                     LocalDate.of(2000, Month.JANUARY, 3)
 
             );
-            Gibi sm = new Gibi(
+            GibiEntity sm = new GibiEntity(
                     "SM",
                     LocalDate.of(1999, Month.JANUARY, 1),
                     LocalDate.of(2000, Month.JANUARY, 3)
 
             );
 
-            Gibi bat = new Gibi(
+            GibiEntity bat = new GibiEntity(
                     "Batman",
                     LocalDate.of(1999, Month.JANUARY, 1),
                     LocalDate.of(2000, Month.JANUARY, 3)

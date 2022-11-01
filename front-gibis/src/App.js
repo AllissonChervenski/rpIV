@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import React, {useEffect} from 'react'
 import Home from './components/pages/Home'
 import Cadastros from './components/pages/Cadastros'
 import Escritor from './components/pages/Escritor'
@@ -17,6 +16,7 @@ import EscritorP from './components/pages/EscritorP'
 import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
+import NewGibi from './components/pages/NewGibi'
 import axios from 'axios'
 
 
@@ -24,17 +24,9 @@ import axios from 'axios'
 
 function App() {
 
-  /*  const client = axios.create({
-        baseURL: "http://localhost:8080/api/v1/gibi"
-    });
+  
 
-    useEffect(() => {
-        client.get('?_limit=10').then((response) => {
-            console.log(response.data);
-        })
-    })*/
-
-        fetch("http://localhost:8080/api/v1/gibi",  {
+        fetch("http://localhost:8080/api/gibis/view",  {
             method: 'GET',
             mode: 'cors',
             cache: 'no-cache'
@@ -58,6 +50,10 @@ function App() {
 
         <Route exact path="/gibis"> 
         <Gibis />
+        </Route>
+
+        <Route exact path="/newgibi">
+        <NewGibi />
         </Route>
 
         <Route exact path="/gibisp"> 

@@ -11,3 +11,6 @@
   .newproject_container p {
     color: #7b7b7b;
   }
+  .gibis_info {
+    border: 1px solid red;
+  }

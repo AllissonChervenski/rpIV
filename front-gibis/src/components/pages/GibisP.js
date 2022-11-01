@@ -11,7 +11,7 @@ function GibisP(){
 
         <Message msg="Teste mensagem"/>
 
-        <LinkButton to="/gibis" text="Cadastrar novo gibi" />
+        <LinkButton to="/newgibi" text="Cadastrar novo gibi" />
         <LinkButton to="/gibis" text="Ver gibis cadastrados" />
 
        

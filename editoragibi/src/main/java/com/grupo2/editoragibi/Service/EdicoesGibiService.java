@@ -2,11 +2,9 @@ package com.grupo2.editoragibi.Service;
 
 
 import com.grupo2.editoragibi.Data.EdicoesGibiRepository;
-import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
 import com.grupo2.editoragibi.Data.IHistoriaRepository;
-//import com.grupo2.editoragibi.Service.Domain.Historia;
-//import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,11 +26,11 @@ public class EdicoesGibiService {
         this.iHistoriaRepository = iHistoriaRepository;
     }
 
-    public List<EdicoesGibi> getEdicoesGibis() {
+    public List<EdicoesGibiEntity> getEdicoesGibis() {
         return edicoesGibiRepository.findAll();
     }
 
-    public EdicoesGibi getGibisById(Long id) {
+    public EdicoesGibiEntity getGibisById(Long id) {
         boolean exists = edicoesGibiRepository.existsById(id);
         if (!exists) {
             throw new IllegalStateException("Edicao do id " + id + " não existe");
@@ -40,7 +38,7 @@ public class EdicoesGibiService {
         return edicoesGibiRepository.getById(id);
     }
 
-    public List<EdicoesGibi> getEdicoesGibiByEdicao(Integer edicao) {
+    public List<EdicoesGibiEntity> getEdicoesGibiByEdicao(Integer edicao) {
         if (edicoesGibiRepository.findEdicoesGibiByEdicao(edicao).isPresent()) {
             return List.of(edicoesGibiRepository.findEdicoesGibiByEdicao(edicao).get());
         }
@@ -50,8 +48,8 @@ public class EdicoesGibiService {
 
     }
 
-    public void addEdicoesGibi(EdicoesGibi edicoesGibi) {
-        Optional<EdicoesGibi> edicoesGibiOptional = edicoesGibiRepository.findEdicoesGibiByEdicao(edicoesGibi.getNroEdicao());
+    public void addEdicoesGibi(EdicoesGibiEntity edicoesGibi) {
+        Optional<EdicoesGibiEntity> edicoesGibiOptional = edicoesGibiRepository.findEdicoesGibiByEdicao(edicoesGibi.getNroEdicao());
         if (edicoesGibiOptional.isPresent()) {
                 throw new IllegalStateException("Edicao :" + edicoesGibi.getNroEdicao() + "Data: " + " já existente");
             }
@@ -61,7 +59,7 @@ public class EdicoesGibiService {
         }
 
     public void deleteEdicoesGibi(Long edicoesGibiId) {
-        Optional<EdicoesGibi> edicoesGibiOptional = edicoesGibiRepository.findById(edicoesGibiId);
+        Optional<EdicoesGibiEntity> edicoesGibiOptional = edicoesGibiRepository.findById(edicoesGibiId);
         if(edicoesGibiOptional.isPresent()){
         edicoesGibiRepository.deleteById(edicoesGibiId);
         }
@@ -72,7 +70,7 @@ public class EdicoesGibiService {
 
     @Transactional
     public void updateEdicoesGibi(Long edicoesGibiId, Integer nroEdicao, LocalDate dataPub, HistoriaEntity historiaEntity) {
-        EdicoesGibi edicoesGibi = edicoesGibiRepository.findById(edicoesGibiId).orElseThrow(
+        EdicoesGibiEntity edicoesGibi = edicoesGibiRepository.findById(edicoesGibiId).orElseThrow(
                 () -> new IllegalStateException("Edicao com id " + edicoesGibiId + " não existe")
         );
 
@@ -92,7 +90,7 @@ public class EdicoesGibiService {
     }
 
     public void addHistoriaEdicao(Integer historiaId, Long edicaoGibiId) {
-        EdicoesGibi edicoesGibi = edicoesGibiRepository.findById(edicaoGibiId).orElseThrow(
+        EdicoesGibiEntity edicoesGibi = edicoesGibiRepository.findById(edicaoGibiId).orElseThrow(
                 () -> new IllegalStateException( "Edicao com id " + edicaoGibiId + "não existe")
         );
         Optional<HistoriaEntity> historiaEntityOptional = iHistoriaRepository.findById(historiaId);
@@ -103,7 +101,7 @@ public class EdicoesGibiService {
     }
 
     public void deleteHistoriaEdicao(Long edicaoGibiId) {
-        EdicoesGibi edicoesGibi = edicoesGibiRepository.findById(edicaoGibiId).orElseThrow(
+        EdicoesGibiEntity edicoesGibi = edicoesGibiRepository.findById(edicaoGibiId).orElseThrow(
                 () -> new IllegalStateException( "Edicao com id " + edicaoGibiId + "não existe")
         );
 
