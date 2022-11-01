@@ -1,6 +1,6 @@
 package com.grupo2.editoragibi.editor;
 
-import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -27,5 +27,5 @@ public class Editor {
     private LocalDate dataFim;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "editor")
-    private List<EdicoesGibi> edicoes;
+    private List<EdicoesGibiEntity> edicoes;
 }

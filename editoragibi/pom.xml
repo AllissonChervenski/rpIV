@@ -62,12 +62,12 @@
 			<version>2.5.4</version>
 		</dependency>
 
-     <dependency>
+    <!-- <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpclient</artifactId>
         <scope>test</scope>
     </dependency>
-    
+  -->  
 	</dependencies>
 
 	<build>

@@ -1,6 +1,6 @@
 package com.grupo2.editoragibi.Api;
 
-import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
 import com.grupo2.editoragibi.Service.EdicoesGibiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/gibi/edicoesGibi")
+@RequestMapping("/gibis/edicoesGibi")
 public class EdicoesGibiController {
     
     private final EdicoesGibiService edicoesGibiService;
@@ -22,17 +22,17 @@ public class EdicoesGibiController {
     }
     
     @GetMapping
-    public List<EdicoesGibi> getEdicoesGibi(){
+    public List<EdicoesGibiEntity> getEdicoesGibi(){
         return  edicoesGibiService.getEdicoesGibis();
     }
 
     @GetMapping(path = "edicao/{edicoesGibiEdicao}")
-    public List<EdicoesGibi> getEdicoesGibiByEdicao(@PathVariable("edicoesGibiEdicao") Integer edicao){
+    public List<EdicoesGibiEntity> getEdicoesGibiByEdicao(@PathVariable("edicoesGibiEdicao") Integer edicao){
         return edicoesGibiService.getEdicoesGibiByEdicao(edicao);
     }
 
     @PostMapping
-    public void addEdicoesGibi(@RequestBody EdicoesGibi edicoesGibi){
+    public void addEdicoesGibi(@RequestBody EdicoesGibiEntity edicoesGibi){
         edicoesGibiService.addEdicoesGibi(edicoesGibi);
     }
 

@@ -1,7 +1,9 @@
 package com.grupo2.editoragibi.Data.Entity;
 
 
-import com.grupo2.editoragibi.Data.Entity.EdicoesGibi;
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
+
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,7 +14,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "gibi")
-public class Gibi {
+public class GibiEntity extends BaseGibi{
 
     @Id
     @GeneratedValue(
@@ -23,7 +25,7 @@ public class Gibi {
     private Long gibi_id;
 
     @Column(name = "titulo_gibi")
-    private String titulo;
+    private String tituloGibi;
 
     @Column(name = "data_inicio_publi")
     private LocalDate inicioData;
@@ -32,26 +34,26 @@ public class Gibi {
     private LocalDate encData;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gibi")
-    private List<EdicoesGibi> edicoesGibis;
+    private List<EdicoesGibiEntity> edicoesGibis;
 
-    public Gibi(String titulo, LocalDate inicioData, LocalDate encData, List<EdicoesGibi> edicoesGibis) {
-        this.titulo = titulo;
+    public GibiEntity(String titulo, LocalDate inicioData, LocalDate encData, List<EdicoesGibiEntity> edicoesGibis) {
+        this.tituloGibi = titulo;
         this.inicioData = inicioData;
         this.encData = encData;
         this.edicoesGibis = edicoesGibis;
     }
 
-    public Gibi(String titulo, LocalDate inicioData, LocalDate encData) {
-        this.titulo = titulo;
+    public GibiEntity(String titulo, LocalDate inicioData, LocalDate encData) {
+        this.tituloGibi = titulo;
         this.inicioData = inicioData;
         this.encData = encData;
         this.edicoesGibis = new ArrayList<>();
     }
 
-    public Gibi() {
+    public GibiEntity() {
     }
 
-    public void setEdicoesGibis(List<EdicoesGibi> edicoesGibis) {
+    public void setEdicoesGibis(List<EdicoesGibiEntity> edicoesGibis) {
         this.edicoesGibis = edicoesGibis;
     }
 
@@ -64,11 +66,11 @@ public class Gibi {
     }
 
     public String getTitulo() {
-        return titulo;
+        return tituloGibi;
     }
 
     public void setTitulo(String titulo) {
-        this.titulo = titulo;
+        this.tituloGibi = titulo;
     }
 
     public LocalDate getInicioData() {
@@ -87,7 +89,7 @@ public class Gibi {
         this.encData = encData;
     }
 
-    public List<EdicoesGibi> getEdicoesGibis() {
+    public List<EdicoesGibiEntity> getEdicoesGibis() {
         return edicoesGibis;
     }
 }

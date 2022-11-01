@@ -1,5 +1,6 @@
 package com.grupo2.editoragibi.Data.Entity;
 
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.editor.Editor;
 import lombok.Data;
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "edicao")
-public class EdicoesGibi {
+public class EdicoesGibiEntity extends BaseEdicoesGibi {
 
     @Id
     @GeneratedValue(
@@ -18,7 +19,7 @@ public class EdicoesGibi {
             generator =  "edicao_edicao_id_seq"
     )
     @Column(name = "edicao_id")
-    private long edicaoGibiId;
+    private long edicaoGibi_id;
 
     @Column(name = "numero_edicao")
     private int nroEdicao;
@@ -34,7 +35,7 @@ public class EdicoesGibi {
 
     @ManyToOne
     @JoinColumn(name = "gibi_id")
-    private Gibi gibi;
+    private GibiEntity gibi;
 
     @ManyToOne
     @JoinColumn(name = "editor_id")
@@ -44,7 +45,7 @@ public class EdicoesGibi {
     @JoinTable(name = "publica", joinColumns = {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "historia_id")})
     private List<HistoriaEntity> historiaEntity;
 
-    public EdicoesGibi(int nroEdicao, LocalDate dataPub) {
+    public EdicoesGibiEntity(int nroEdicao, LocalDate dataPub) {
         this.nroEdicao = nroEdicao;
         this.dataPub = dataPub;
     }
@@ -57,13 +58,13 @@ public class EdicoesGibi {
         this.historiaEntity.add(historiaEntity);
     }
 
-    public EdicoesGibi(long edicaoGibiId, int nroEdicao, LocalDate dataPub) {
-        this.edicaoGibiId = edicaoGibiId;
+    public EdicoesGibiEntity(long edicaoGibiId, int nroEdicao, LocalDate dataPub) {
+        this.edicaoGibi_id = edicaoGibiId;
         this.nroEdicao = nroEdicao;
         this.dataPub = dataPub;
     }
 
-    public EdicoesGibi() {
+    public EdicoesGibiEntity() {
     }
 
     public int getNumeroExemplaresImpressas() {
@@ -75,11 +76,11 @@ public class EdicoesGibi {
     }
 
     public long getEdicaoGibiId() {
-        return edicaoGibiId;
+        return edicaoGibi_id;
     }
 
     public void setEdicaoGibiId(long id) {
-        this.edicaoGibiId = id;
+        this.edicaoGibi_id = id;
     }
 
     public int getNroEdicao() {
