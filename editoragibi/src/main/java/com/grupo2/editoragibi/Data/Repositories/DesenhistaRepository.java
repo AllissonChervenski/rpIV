@@ -1,6 +1,7 @@
 package com.grupo2.editoragibi.Data.Repositories;
 
 import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
+import com.grupo2.editoragibi.Data.Repositories.Interfaces.IDesenhistaRepository;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

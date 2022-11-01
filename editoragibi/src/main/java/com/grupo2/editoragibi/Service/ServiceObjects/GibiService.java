@@ -3,7 +3,7 @@ package com.grupo2.editoragibi.Service.ServiceObjects;
 
 import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import com.grupo2.editoragibi.Data.Entity.GibiEntity;
-import com.grupo2.editoragibi.Data.Repositories.GibiRepository;
+import com.grupo2.editoragibi.Data.Repositories.Interfaces.IGibiRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +18,10 @@ import java.util.Optional;
 @Service
 public class GibiService {
 
-    private final GibiRepository gibiRepository;
+    private final IGibiRepository gibiRepository;
 
     @Autowired
-    public GibiService(GibiRepository gibiRepository) {
+    public GibiService(IGibiRepository gibiRepository) {
         this.gibiRepository = gibiRepository;
     }
 

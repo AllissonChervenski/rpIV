@@ -21,23 +21,45 @@ public class EdicoesGibiRepository{
     IEdicoesGibiRepository edicoesGibiRepository;
     //@Query("SELECT e FROM BaseEdicoesGibi e WHERE e.nroEdicao = ?1 ")
     
+    public boolean existsEdicaoGibi(int id){
+        return edicoesGibiRepository.existsById(id);
+    }
     public EdicoesGibiEntity getEdicaoByNumero(int nroEdicao) throws EdicoesGibiInvalidoException{
         Optional<EdicoesGibiEntity> edicoesGibiEntity = edicoesGibiRepository.findEdicoesGibiByEdicao(nroEdicao);
         if(edicoesGibiEntity.isEmpty()){
-            throw new EdicoesGibiInvalidoException("Esta edição não existe");
+            throw new EdicoesGibiInvalidoException("A edição não existe");
         }
         return edicoesGibiEntity.get();
     }
 
-    public List<EdicoesGibiEntity> getEdicoesGibis(){
-        return edicoesGibiRepository.findAll();
+
+    public List<EdicoesGibiEntity> getEdicoesGibis() throws EdicoesGibiInvalidoException{
+       List<EdicoesGibiEntity> edicoesGibiEntityList = edicoesGibiRepository.findAll();
+       if(edicoesGibiEntityList.isEmpty()){
+        throw new EdicoesGibiInvalidoException("Nenhuma edição foi encontrada");
+       }
+       return edicoesGibiEntityList;
     }
 
-    public void deleteEdicoesGibisById(Integer id){
+    public EdicoesGibiEntity getEdicaoGibiById(int id) throws EdicoesGibiInvalidoException{
+        Optional<EdicoesGibiEntity> eOptional = edicoesGibiRepository.findById(id);
+        if(eOptional.isEmpty()){
+            throw new EdicoesGibiInvalidoException("A edição não existe");
+        }
+        return eOptional.get();
+    }
+
+    public void deleteEdicoesGibisById(Integer id) throws EdicoesGibiInvalidoException{
+        if(edicoesGibiRepository.getById(id).equals(null)){
+            throw new EdicoesGibiInvalidoException("A edição não existe");
+        }
         edicoesGibiRepository.deleteById(id);
     }
 
 
+    public void save(EdicoesGibiEntity edicoesGibiEntity){
+        edicoesGibiRepository.save(edicoesGibiEntity);
+    }
 
 }
 

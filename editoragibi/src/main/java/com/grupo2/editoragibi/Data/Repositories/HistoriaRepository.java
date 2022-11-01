@@ -1,6 +1,7 @@
 package com.grupo2.editoragibi.Data.Repositories;
 
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
+import com.grupo2.editoragibi.Data.Repositories.Interfaces.IHistoriaRepository;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

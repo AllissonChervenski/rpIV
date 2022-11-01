@@ -2,7 +2,7 @@ package com.grupo2.editoragibi.Config.gibiconfigs;
 
 
 import com.grupo2.editoragibi.Data.Entity.GibiEntity;
-import com.grupo2.editoragibi.Data.Repositories.GibiRepository;
+import com.grupo2.editoragibi.Data.Repositories.Interfaces.IGibiRepository;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import java.util.List;
 public class GibConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(GibiRepository repository){
+    CommandLineRunner commandLineRunner(IGibiRepository repository){
         return args -> {
             GibiEntity flash = new GibiEntity(
                     "flash",

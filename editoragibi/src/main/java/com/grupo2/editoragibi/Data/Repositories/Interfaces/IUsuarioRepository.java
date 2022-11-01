@@ -1,4 +1,4 @@
-package com.grupo2.editoragibi.Data.Repositories;
+package com.grupo2.editoragibi.Data.Repositories.Interfaces;
 /*package com.grupo2.editoragibi.Data;
 
 import com.grupo2.editoragibi.Data.Entity.UsuarioEntity;

@@ -1,6 +1,7 @@
 package com.grupo2.editoragibi.Data.Repositories;
 
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
+import com.grupo2.editoragibi.Data.Repositories.Interfaces.IPersonagemRepository;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;

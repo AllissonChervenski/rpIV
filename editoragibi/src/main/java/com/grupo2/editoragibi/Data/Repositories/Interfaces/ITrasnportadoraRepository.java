@@ -1,4 +1,4 @@
-package com.grupo2.editoragibi.Data.Repositories;
+package com.grupo2.editoragibi.Data.Repositories.Interfaces;
 
 import com.grupo2.editoragibi.Data.Entity.TransportadoraEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

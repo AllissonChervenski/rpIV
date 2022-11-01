@@ -1,6 +1,7 @@
 package com.grupo2.editoragibi.Data.Repositories;
 
 import com.grupo2.editoragibi.Data.Entity.TransportadoraEntity;
+import com.grupo2.editoragibi.Data.Repositories.Interfaces.ITrasnportadoraRepository;
 import com.grupo2.editoragibi.Service.Exceptions.TransportadoraInvalidaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

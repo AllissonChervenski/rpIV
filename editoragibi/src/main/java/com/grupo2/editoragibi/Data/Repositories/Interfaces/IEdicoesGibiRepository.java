@@ -1,4 +1,4 @@
-package com.grupo2.editoragibi.Data.Repositories;
+package com.grupo2.editoragibi.Data.Repositories.Interfaces;
 
 
 import java.util.Optional;
