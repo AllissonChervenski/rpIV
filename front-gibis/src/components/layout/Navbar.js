@@ -30,6 +30,9 @@ function Navbar() {
           <li className={styles.item}>
             <Link to="/transportadoras">Transportadoras</Link>
           </li>
+          <li className={styles.item}>
+            <Link to="/Login">Login</Link>
+          </li>
         </ul>
       </Container>
     </div>
