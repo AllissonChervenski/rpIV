@@ -1,8 +1,10 @@
 package com.grupo2.editoragibi.Config.gibiconfigs;
 
 
-import com.grupo2.editoragibi.Data.EdicoesGibiRepository;
 import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
+import com.grupo2.editoragibi.Data.Repositories.EdicoesGibiRepository;
+import com.grupo2.editoragibi.Data.Repositories.Interfaces.IEdicoesGibiRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +17,7 @@ import java.util.List;
 public class EdicoesGibiConfig {
 
     @Bean
-    CommandLineRunner edicoesGibiConfiguration(EdicoesGibiRepository edicoesGibiRepository){
+    CommandLineRunner edicoesGibiConfiguration(IEdicoesGibiRepository edicoesGibiRepository){
         return  args -> {
             EdicoesGibiEntity primeira = new EdicoesGibiEntity(
                     1,

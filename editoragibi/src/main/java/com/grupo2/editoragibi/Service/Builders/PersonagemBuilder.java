@@ -1,6 +1,6 @@
 package com.grupo2.editoragibi.Service.Builders;
 
-import com.grupo2.editoragibi.Data.EscritorRepository;
+import com.grupo2.editoragibi.Data.Repositories.EscritorRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
 import com.grupo2.editoragibi.Service.Directors.EscritorDirector;

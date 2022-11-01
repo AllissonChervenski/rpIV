@@ -1,10 +1,10 @@
 package com.grupo2.editoragibi.Service.Builders;
 
-import com.grupo2.editoragibi.Data.DesenhistaRepository;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
-import com.grupo2.editoragibi.Data.EscritorRepository;
-import com.grupo2.editoragibi.Data.PersonagemRepository;
+import com.grupo2.editoragibi.Data.Repositories.DesenhistaRepository;
+import com.grupo2.editoragibi.Data.Repositories.EscritorRepository;
+import com.grupo2.editoragibi.Data.Repositories.PersonagemRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;

@@ -13,7 +13,7 @@ public class EdicoesGibi extends BaseEdicoesGibi{
     }
 
     @Override
-    public long getEdicaoGibi_id() {
+    public int getEdicaoGibi_id() {
         // TODO Auto-generated method stub
         return super.getEdicaoGibi_id();
     }
@@ -37,7 +37,7 @@ public class EdicoesGibi extends BaseEdicoesGibi{
     }
 
     @Override
-    public void setEdicaoGibi_id(long edicaoGibi_id) {
+    public void setEdicaoGibi_id(int edicaoGibi_id) {
         // TODO Auto-generated method stub
         super.setEdicaoGibi_id(edicaoGibi_id);
     }

@@ -19,7 +19,7 @@ public class EdicoesGibiEntity extends BaseEdicoesGibi {
             generator =  "edicao_edicao_id_seq"
     )
     @Column(name = "edicao_id")
-    private long edicaoGibi_id;
+    private int edicaoGibi_id;
 
     @Column(name = "numero_edicao")
     private int nroEdicao;
@@ -58,7 +58,7 @@ public class EdicoesGibiEntity extends BaseEdicoesGibi {
         this.historiaEntity.add(historiaEntity);
     }
 
-    public EdicoesGibiEntity(long edicaoGibiId, int nroEdicao, LocalDate dataPub) {
+    public EdicoesGibiEntity(int edicaoGibiId, int nroEdicao, LocalDate dataPub) {
         this.edicaoGibi_id = edicaoGibiId;
         this.nroEdicao = nroEdicao;
         this.dataPub = dataPub;
@@ -79,7 +79,7 @@ public class EdicoesGibiEntity extends BaseEdicoesGibi {
         return edicaoGibi_id;
     }
 
-    public void setEdicaoGibiId(long id) {
+    public void setEdicaoGibiId(int id) {
         this.edicaoGibi_id = id;
     }
 

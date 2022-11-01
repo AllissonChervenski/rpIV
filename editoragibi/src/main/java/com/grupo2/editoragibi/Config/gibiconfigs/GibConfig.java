@@ -2,7 +2,8 @@ package com.grupo2.editoragibi.Config.gibiconfigs;
 
 
 import com.grupo2.editoragibi.Data.Entity.GibiEntity;
-import com.grupo2.editoragibi.Data.GibiRepository;
+import com.grupo2.editoragibi.Data.Repositories.GibiRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
