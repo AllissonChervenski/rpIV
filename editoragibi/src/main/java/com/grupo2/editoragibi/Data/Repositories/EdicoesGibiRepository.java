@@ -24,35 +24,25 @@ public class EdicoesGibiRepository{
     public boolean existsEdicaoGibi(int id){
         return edicoesGibiRepository.existsById(id);
     }
-    public EdicoesGibiEntity getEdicaoByNumero(int nroEdicao) throws EdicoesGibiInvalidoException{
+    public Optional<EdicoesGibiEntity> getEdicaoByNumero(int nroEdicao){
         Optional<EdicoesGibiEntity> edicoesGibiEntity = edicoesGibiRepository.findEdicoesGibiByEdicao(nroEdicao);
-        if(edicoesGibiEntity.isEmpty()){
-            throw new EdicoesGibiInvalidoException("A edição não existe");
-        }
-        return edicoesGibiEntity.get();
+    
+        return edicoesGibiEntity;
     }
 
 
-    public List<EdicoesGibiEntity> getEdicoesGibis() throws EdicoesGibiInvalidoException{
+    public List<EdicoesGibiEntity> getEdicoesGibis(){
        List<EdicoesGibiEntity> edicoesGibiEntityList = edicoesGibiRepository.findAll();
-       if(edicoesGibiEntityList.isEmpty()){
-        throw new EdicoesGibiInvalidoException("Nenhuma edição foi encontrada");
-       }
        return edicoesGibiEntityList;
+       
     }
 
-    public EdicoesGibiEntity getEdicaoGibiById(int id) throws EdicoesGibiInvalidoException{
+    public Optional<EdicoesGibiEntity> getEdicaoGibiById(int id){
         Optional<EdicoesGibiEntity> eOptional = edicoesGibiRepository.findById(id);
-        if(eOptional.isEmpty()){
-            throw new EdicoesGibiInvalidoException("A edição não existe");
-        }
-        return eOptional.get();
+        return eOptional;
     }
 
-    public void deleteEdicoesGibisById(Integer id) throws EdicoesGibiInvalidoException{
-        if(edicoesGibiRepository.getById(id).equals(null)){
-            throw new EdicoesGibiInvalidoException("A edição não existe");
-        }
+    public void deleteEdicoesGibisById(Integer id){
         edicoesGibiRepository.deleteById(id);
     }
 

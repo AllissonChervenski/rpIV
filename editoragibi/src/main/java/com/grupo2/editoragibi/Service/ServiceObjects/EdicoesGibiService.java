@@ -37,63 +37,73 @@ public class EdicoesGibiService {
     public EdicoesGibiEntity getGibisById(Integer id) throws EdicoesGibiInvalidoException {
         boolean exists = edicoesGibiRepository.existsEdicaoGibi(id);
         if (!exists) {
-            throw new IllegalStateException("Edicao do id " + id + " não existe");
+            throw new EdicoesGibiInvalidoException("A edição não existe");
         }
-        return edicoesGibiRepository.getEdicaoGibiById(id);
+        return edicoesGibiRepository.getEdicaoGibiById(id).get();
     }
 
     public EdicoesGibiEntity getEdicoesGibiByEdicao(Integer edicao) throws EdicoesGibiInvalidoException {
-        return edicoesGibiRepository.getEdicaoByNumero(edicao);
+        Optional<EdicoesGibiEntity> e = edicoesGibiRepository.getEdicaoByNumero(edicao);
+        if(!e.isPresent()){
+            throw new EdicoesGibiInvalidoException("A edição não existe");
+        }
+        return e.get();
     }
 
-  /*   public void addEdicoesGibi(EdicoesGibiEntity edicoesGibi) {
-        Optional<EdicoesGibiEntity> edicoesGibiOptional = edicoesGibiRepository.findEdicoesGibiByEdicao(edicoesGibi.getNroEdicao());
-        if (edicoesGibiOptional.isPresent()) {
-                throw new IllegalStateException("Edicao :" + edicoesGibi.getNroEdicao() + "Data: " + " já existente");
-            }
-        else {
-                edicoesGibiRepository.save(edicoesGibi);
-            }
+    public void addEdicoesGibi(EdicoesGibiEntity edicoesGibi) throws EdicoesGibiInvalidoException {
+        Optional<EdicoesGibiEntity> eOptional = edicoesGibiRepository.getEdicaoGibiById(edicoesGibi.getEdicaoGibi_id());
+        if(eOptional.isPresent()){
+            throw new EdicoesGibiInvalidoException("A edição já existe");
         }
-*/
+        else{
+            edicoesGibiRepository.save(edicoesGibi);
+        }
+    }
+
     public void deleteEdicoesGibi(Integer edicoesGibiId) throws EdicoesGibiInvalidoException {
-       edicoesGibiRepository.deleteEdicoesGibisById(edicoesGibiId);
+        Optional<EdicoesGibiEntity> eOptional = edicoesGibiRepository.getEdicaoGibiById(edicoesGibiId);
+        if(!eOptional.isPresent()){
+            throw new EdicoesGibiInvalidoException("A edição não existe");
+        }
+        else{
+            edicoesGibiRepository.deleteEdicoesGibisById(edicoesGibiId);
+        }
     }
 
     @Transactional
     public void updateEdicoesGibi(Integer edicoesGibiId, Integer nroEdicao, LocalDate dataPub, HistoriaEntity historiaEntity) throws EdicoesGibiInvalidoException {
-        EdicoesGibiEntity edicoesGibi = edicoesGibiRepository.getEdicaoGibiById(edicoesGibiId);
+        Optional<EdicoesGibiEntity> edicoesGibi = edicoesGibiRepository.getEdicaoGibiById(edicoesGibiId);
 
         if(nroEdicao != null){
-            edicoesGibi.setNroEdicao(nroEdicao);
+            edicoesGibi.get().setNroEdicao(nroEdicao);
         }
 
         if(dataPub != null){
-            edicoesGibi.setDataPub(dataPub);
+            edicoesGibi.get().setDataPub(dataPub);
         }
 
         if(historiaEntity != null){
-            edicoesGibi.addHistoriaEntity(historiaEntity);
+            edicoesGibi.get().addHistoriaEntity(historiaEntity);
         }
 
-        edicoesGibiRepository.save(edicoesGibi);
+        edicoesGibiRepository.save(edicoesGibi.get());
     }
 
     public void addHistoriaEdicao(Integer historiaId, Integer edicaoGibiId) throws EdicoesGibiInvalidoException {
-        EdicoesGibiEntity edicoesGibi = edicoesGibiRepository.getEdicaoGibiById(edicaoGibiId);
+        Optional<EdicoesGibiEntity> edicoesGibi = edicoesGibiRepository.getEdicaoGibiById(edicaoGibiId);
         Optional<HistoriaEntity> historiaEntityOptional = iHistoriaRepository.findById(historiaId);
 
-        historiaEntityOptional.ifPresent(edicoesGibi::addHistoriaEntity);
+        historiaEntityOptional.ifPresent(edicoesGibi.get()::addHistoriaEntity);
 
-        edicoesGibiRepository.save(edicoesGibi);
+        edicoesGibiRepository.save(edicoesGibi.get());
     }
 
     public void deleteHistoriaEdicao(Integer edicaoGibiId) throws EdicoesGibiInvalidoException {
-        EdicoesGibiEntity edicoesGibi = edicoesGibiRepository.getEdicaoGibiById(edicaoGibiId);
+        Optional<EdicoesGibiEntity> edicoesGibi = edicoesGibiRepository.getEdicaoGibiById(edicaoGibiId);
      
-        edicoesGibi.setHistoriaEntity(null);
+        edicoesGibi.get().setHistoriaEntity(null);
 
-        edicoesGibiRepository.save(edicoesGibi);
+        edicoesGibiRepository.save(edicoesGibi.get());
 
     }
 }
