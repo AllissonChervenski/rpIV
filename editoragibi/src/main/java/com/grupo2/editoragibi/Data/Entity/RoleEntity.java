@@ -1,4 +1,4 @@
-package com.grupo2.editoragibi.Data.Entity;
+/*package com.grupo2.editoragibi.Data.Entity;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -40,3 +40,4 @@ public class RoleEntity implements GrantedAuthority {
     }
 
 }
+*/

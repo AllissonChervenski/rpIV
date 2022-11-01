@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+
 @Configuration
 public class Config {
 
@@ -78,6 +79,7 @@ public class Config {
         return new HistoriaDirector(historiaBuilder);
     }
 
+
     @Bean(name = "historiaEntityDirector")
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     HistoriaDirector getHistoriaEntityDirector(HistoriaEntityBuilder historiaEntityBuilder) {
@@ -97,4 +99,5 @@ public class Config {
     TransportadoraDirector getTransportadoraEntityDirector(TransportadoraEntityBuilder transportadoraEntityBuilder) {
         return new TransportadoraDirector(transportadoraEntityBuilder);
     }
+  
 }

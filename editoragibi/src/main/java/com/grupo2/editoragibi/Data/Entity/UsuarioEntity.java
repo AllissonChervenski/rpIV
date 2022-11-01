@@ -1,4 +1,4 @@
-package com.grupo2.editoragibi.Data.Entity;
+/*package com.grupo2.editoragibi.Data.Entity;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -62,3 +62,4 @@ public class UsuarioEntity implements UserDetails, Serializable {
         return true;
     }
 }
+*/
