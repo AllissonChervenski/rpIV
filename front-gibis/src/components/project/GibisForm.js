@@ -14,9 +14,6 @@ function GibisForm({btnText}){
             
             <Input type="date" text="Fim das publicações" name="fimP" placeholder="Não preencher caso as publicações estejam ativas" />
 
-            <div>
-            <input type="submit" value="Cadastrar Gibi" />
-            </div>
             <Select name="descontinuado_op" text="O Gibi foi descontinuado?" />
             
             <SubmitButtom text={btnText} />

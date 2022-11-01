@@ -18,11 +18,21 @@ public class BancaEntity extends BaseBanca implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "banca_banca_id_seq")
     private int bancaId;
 
+    @Column(name = "nome_proprietario")
+    private String nomeProprietarioBanca;
+
     @Column(name = "nome_banca")
     private String nomeBanca;
 
+    @Column(name = "cnpj")
+    private int cnpjBanca;
+
     @Column(name = "endereco_banca")
     private String enderecoBanca;
+
+    @Column(name = "cep")
+    private int cepBanca;
+
 
     @Column(name = "telefone_banca")
     private String telefoneBanca;

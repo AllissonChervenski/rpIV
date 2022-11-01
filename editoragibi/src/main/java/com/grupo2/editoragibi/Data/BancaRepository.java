@@ -1,4 +1,4 @@
-package com.grupo2.editoragibi.Data;
+ package com.grupo2.editoragibi.Data;
 
 import com.grupo2.editoragibi.Data.Entity.BancaEntity;
 import com.grupo2.editoragibi.Service.Exceptions.BancaInvalidaException;

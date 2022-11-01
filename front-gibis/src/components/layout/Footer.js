@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa'
 import styles from './Footer.module.css'
 
 function Footer() {
@@ -13,10 +13,17 @@ function Footer() {
         </li>
         <li>
           <FaLinkedin />
+        </li>       
+        <li > 
+          <FaGithub/>               
         </li>
+        <li className='styles.footer'><a   className='styles.footer' href='https://github.com/AllissonChervenski/rpIV'>         
+            <FaGithub /></a> 
+        </li>
+       
       </ul>
       <p className={styles.copy_right}>
-        <span>Hero Gibis</span> &copy; 2021
+        <span>Hero Gibis</span> &copy; 2022
       </p>
     </footer>
   )
