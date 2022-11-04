@@ -55,13 +55,13 @@ public class EdicoesGibiController {
         return new ResponseEntity<>(edicoesGibis, HttpStatus.OK);
 
     }
-
+/* 
     //TODO
     @PostMapping
     public void addEdicoesGibi(@RequestBody EdicoesGibiEntity edicoesGibi){
         edicoesGibiService.addEdicoesGibi(edicoesGibi);//TODO
     
-
+    }
      @DeleteMapping(path = "deleteEdicao/{edicoesGibiId}")
     public void deleteEdicoesGibi(@PathVariable("edicoesGibiId") Integer edicoesGibiId){
         edicoesGibiService.deleteEdicoesGibi(edicoesGibiId);
@@ -86,5 +86,5 @@ public class EdicoesGibiController {
     public void deleteHistoriaEdicao(@PathVariable("edicaoGibiId") Integer edicaoGibiId){
         edicoesGibiService.deleteHistoriaEdicao(edicaoGibiId);
     }
-
+*/
 }
