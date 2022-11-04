@@ -35,7 +35,7 @@ public class HistoriaController {
 
         List<Historia> historias = null;
         try {
-            historias = historiaService.getHsitorias();
+            historias = historiaService.getHistorias();
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }

@@ -1,4 +1,4 @@
-package com.grupo2.editoragibi.Service.Builders;
+package com.grupo2.editoragibi.Service.Builders.Interfaces;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BaseBanca;
 import com.grupo2.editoragibi.Service.Exceptions.BancaInvalidaException;

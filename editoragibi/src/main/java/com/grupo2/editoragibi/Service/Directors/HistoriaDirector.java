@@ -3,7 +3,7 @@ package com.grupo2.editoragibi.Service.Directors;
 import com.grupo2.editoragibi.Api.Requests.HistoriaRequest;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
-import com.grupo2.editoragibi.Service.Builders.IBaseHistoriaBuilder;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseHistoriaBuilder;
 import com.grupo2.editoragibi.Service.Domain.Historia;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;

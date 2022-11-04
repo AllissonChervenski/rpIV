@@ -4,6 +4,7 @@ import com.grupo2.editoragibi.Data.Repositories.DesenhistaRepository;
 import com.grupo2.editoragibi.Data.Repositories.EscritorRepository;
 import com.grupo2.editoragibi.Data.Repositories.PersonagemRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseHistoriaBuilder;
 import com.grupo2.editoragibi.Service.Directors.DesenhistaDirector;
 import com.grupo2.editoragibi.Service.Directors.EscritorDirector;
 import com.grupo2.editoragibi.Service.Directors.PersonagemDirector;

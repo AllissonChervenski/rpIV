@@ -1,6 +1,7 @@
 package com.grupo2.editoragibi.Service.Builders;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseDesenhistaBuilder;
 import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;

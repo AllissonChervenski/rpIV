@@ -6,13 +6,17 @@ import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
 import com.grupo2.editoragibi.Data.Repositories.EdicoesGibiRepository;
 import com.grupo2.editoragibi.Data.Repositories.Interfaces.IEdicoesGibiRepository;
 import com.grupo2.editoragibi.Data.Repositories.Interfaces.IHistoriaRepository;
+import com.grupo2.editoragibi.Service.Directors.EdicoesGibiDirector;
+import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +25,9 @@ public class EdicoesGibiService {
     @Autowired
     private final EdicoesGibiRepository edicoesGibiRepository;
 
+    @Qualifier("edicoesGibiDirector")
+    @Autowired
+    EdicoesGibiDirector edDirector;
     @Autowired
     private final IHistoriaRepository iHistoriaRepository;
 
@@ -30,24 +37,30 @@ public class EdicoesGibiService {
         this.iHistoriaRepository = iHistoriaRepository;
     }
 
-    public List<EdicoesGibiEntity> getEdicoesGibis() throws EdicoesGibiInvalidoException {
-        return edicoesGibiRepository.getEdicoesGibis();
+    public List<EdicoesGibi> getEdicoesGibis() throws EdicoesGibiInvalidoException {
+        List<EdicoesGibiEntity> edicoesGibiEntities = edicoesGibiRepository.getEdicoesGibis();
+        List<EdicoesGibi> edicoesGibi = new ArrayList<>();
+        for(EdicoesGibiEntity e: edicoesGibiEntities){
+            edicoesGibi.add(edDirector.buildFromEdicoesGibiEntity(e));
+        }
+
+        return edicoesGibi;
     }
 
-    public EdicoesGibiEntity getGibisById(Integer id) throws EdicoesGibiInvalidoException {
+    public EdicoesGibi getGibisById(Integer id) throws EdicoesGibiInvalidoException {
         boolean exists = edicoesGibiRepository.existsEdicaoGibi(id);
         if (!exists) {
             throw new EdicoesGibiInvalidoException("A edição não existe");
         }
-        return edicoesGibiRepository.getEdicaoGibiById(id).get();
+        return edDirector.buildFromEdicoesGibiEntity(edicoesGibiRepository.getEdicaoGibiById(id).get());
     }
 
-    public EdicoesGibiEntity getEdicoesGibiByEdicao(Integer edicao) throws EdicoesGibiInvalidoException {
+    public EdicoesGibi getEdicoesGibiByEdicao(Integer edicao) throws EdicoesGibiInvalidoException {
         Optional<EdicoesGibiEntity> e = edicoesGibiRepository.getEdicaoByNumero(edicao);
         if(!e.isPresent()){
             throw new EdicoesGibiInvalidoException("A edição não existe");
         }
-        return e.get();
+        return  edDirector.buildFromEdicoesGibiEntity(e.get());
     }
 
     public void addEdicoesGibi(EdicoesGibiEntity edicoesGibi) throws EdicoesGibiInvalidoException {

@@ -1,6 +1,7 @@
 package com.grupo2.editoragibi.Data.Entity;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
+import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.editor.Editor;
 import lombok.Data;
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "edicao")
-public class EdicoesGibiEntity extends BaseEdicoesGibi {
+public class EdicoesGibiEntity extends EdicoesGibi {
 
     @Id
     @GeneratedValue(

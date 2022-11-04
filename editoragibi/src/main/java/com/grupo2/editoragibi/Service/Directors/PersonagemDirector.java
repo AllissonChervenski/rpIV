@@ -4,7 +4,7 @@ import com.grupo2.editoragibi.Api.Requests.PersonagemRequest;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
-import com.grupo2.editoragibi.Service.Builders.IBasePersonagemBuilder;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBasePersonagemBuilder;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;

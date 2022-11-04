@@ -34,7 +34,7 @@ public class HistoriaService {
         return (Historia) historiaDirector.buildFromHistoriaEntity(historiaRepository.getHistoriaById(id));
     }
 
-    public List<Historia> getHsitorias() throws DesenhistaInvalidoException, PersonagemInvalidoException, EscritorInvalidoException, HistoriaInvalidaException {
+    public List<Historia> getHistorias() throws DesenhistaInvalidoException, PersonagemInvalidoException, EscritorInvalidoException, HistoriaInvalidaException {
         List<HistoriaEntity> historiasEntities = historiaRepository.getHistorias();
         List<Historia> historias = new ArrayList<>();
         for (HistoriaEntity historia : historiasEntities) {

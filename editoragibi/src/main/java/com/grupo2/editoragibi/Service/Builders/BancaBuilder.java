@@ -1,6 +1,7 @@
 package com.grupo2.editoragibi.Service.Builders;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BaseBanca;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseBancaBuilder;
 import com.grupo2.editoragibi.Service.Domain.Banca;
 import com.grupo2.editoragibi.Service.Exceptions.BancaInvalidaException;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;

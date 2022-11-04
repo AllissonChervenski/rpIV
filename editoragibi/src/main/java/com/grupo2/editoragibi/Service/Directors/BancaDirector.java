@@ -3,7 +3,7 @@ package com.grupo2.editoragibi.Service.Directors;
 import com.grupo2.editoragibi.Api.Requests.BancaRequest;
 import com.grupo2.editoragibi.Data.Entity.BancaEntity;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseBanca;
-import com.grupo2.editoragibi.Service.Builders.IBaseBancaBuilder;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseBancaBuilder;
 import com.grupo2.editoragibi.Service.Domain.Banca;
 import com.grupo2.editoragibi.Service.Exceptions.BancaInvalidaException;
 
