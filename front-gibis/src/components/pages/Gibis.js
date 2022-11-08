@@ -5,7 +5,7 @@ function Gibis() {
   async function getContent() {
 
     try{
-      const response = await fetch('http://localhost:8080/api/gibis/view',{
+      const response = await fetch('http://localhost:8080/gibis/view',{
           method: 'GET',
           mode: 'cors',
           cache: 'no-cache'

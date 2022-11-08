@@ -17,6 +17,7 @@ import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
 import NewGibi from './components/pages/NewGibi'
+import NewDesenhista from './components/pages/NewDesenhista'
 import axios from 'axios'
 
 
@@ -26,7 +27,7 @@ function App() {
 
   
 
-        fetch("http://localhost:8080/api/gibis/view",  {
+        fetch("http://localhost:8080/gibis/view",  {
             method: 'GET',
             mode: 'cors',
             cache: 'no-cache'
@@ -78,6 +79,11 @@ function App() {
 
         <Route exact path="/desenhista">
         <Desenhista />
+        </Route>
+
+        
+        <Route exact path="/newdesenhista">
+        <NewDesenhista />
         </Route>
 
         <Route exact path="/transportadoras"> 
