@@ -21,14 +21,10 @@ public class Desenhista extends BaseDesenhista {
     }
 
     public void setDataNascimento(LocalDate dataNascimento) throws DesenhistaInvalidoException {
-        if (dataNascimento == null || !validDate(dataNascimento))
-            throw new DesenhistaInvalidoException("Data inválida");
         this.dataNascimento = dataNascimento;
     }
 
     public void setDataFalecimento(LocalDate dataFalecimento) throws DesenhistaInvalidoException {
-        if (dataFalecimento != null && !validDate(dataFalecimento))
-            throw new DesenhistaInvalidoException("Data inválida");
         this.dataFalecimento = dataFalecimento;
     }
 
@@ -45,14 +41,10 @@ public class Desenhista extends BaseDesenhista {
     }
 
     public void setDataContratacao(LocalDate dataContratacao) throws DesenhistaInvalidoException {
-        if (dataContratacao == null || !validDate(dataContratacao))
-            throw new DesenhistaInvalidoException("Data inválida");
         this.dataContratacao = dataContratacao;
     }
 
-    public void setDataDemissao(LocalDate dataDemissao) throws DesenhistaInvalidoException {
-        if (dataDemissao != null && !validDate(dataDemissao))
-            throw new DesenhistaInvalidoException("Data inválida");
+    public void setDataDemissao(LocalDate dataDemissao) throws DesenhistaInvalidoException {;
         this.dataDemissao = dataDemissao;
     }
 }
