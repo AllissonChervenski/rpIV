@@ -1,54 +1,77 @@
-import DesenhistaForm from '../project/DesenhistaForm'
-import styles from './Desenhista.module.css'
+import Input from '../form/Input'
+import SubmitButtom from '../form/SubmitButton'
+import { React, useState } from 'react';
+import api from "../../services/api";
+
 
 function NewDesenhista() {
+  const [nomeDesenhista, setNomeDesenhista] = useState('OI');
+  const [paisNascimento, setPaisNascimento] = useState('');
+  const [dataNacimento, setDataNascimento] = useState('');
+  const [dataFalecimento, setDataFalecimento] = useState('');
+  const [enderecoDesenhista, setEnderecoDesenhista] = useState('');
+  const [dataContratacao, setDataContratacao] = useState('');
+  const [dataDemissao, setDataDemissao] = useState('');
+
+
+
+  async function postDesenhista(event) {
+    event.preventDefault();
+
+
+   alert("iniciando a requisição")
+      const response = await api.post("/desenhistas/create", {
+        nomeDesenhista ,
+        paisNascimento ,
+       
+         enderecoDesenhista ,
+       
+      })
+
+     alert(enderecoDesenhista)
+   alert(response.data);
+
+  }
+
+ 
   return (
-    <div className={styles.gibis_container}>
-      <h1>Cadastrar novo Desenhista</h1>
-      <p>Insira no formulário abaixo as informações solicitadas:</p>
-      <DesenhistaForm btnText="Cadastrar Desenhista" />
-    </div>
+    <form>
+      <span>Nome desenhista</span>
+      <input type="text" value={nomeDesenhista} onChange={(event) => setNomeDesenhista(event.target.value)}/>
+      <span>Pais nascimento</span>
+      <input type="text" value={paisNascimento} onChange={(event) => setPaisNascimento(event.target.value)}/>
+   
+      <span>Endereço</span>
+      <input type="text" value={enderecoDesenhista} onChange={(event) => setEnderecoDesenhista(event.target.value)}/>
+    
+    
+
+{
+/* 
+      <Input type="text" text="Nome Desenhista" onChange={(event) => setNomeDesenhista(event.target.value)} placeholder="Insira o nome completo do Desenhista" />
+
+  
+      <Input type="text" text="Pais de Nascimento" onChange={(event) => setPaisNascimento(event.target.value)} placeholder="País de nascimento do Desenhista" />
+
+      <Input type="date" text="Data de Nascimento" onChange={(event) => setDataNascimento(event.target.value)} placeholder="Insira a data de Nascimento" />
+
+      <Input type="date" text="Data de Falecimento" onChange={(event) => setDataFalecimento(event.target.value)} placeholder="Insira a data de Falecimento" />
+
+      <Input type="text" text="Endereço" onChange={(event) => setEnderecoDesenhista(event.target.value)} placeholder="Insira o endereço do desenhista" />
+
+      <Input type="date" text="Data do Contrato" onChange={(event) => setDataContratacao(event.target.value)} placeholder="Insira a data de contratação" />
+
+      <Input type="date" text="Data de Demissao" onChange={(event) => setDataDemissao(event.target.value)} placeholder="Insira a data de demissão (se houver)" /> */}
+
+      <button onClick={postDesenhista}/>
+    </form>
   )
 }
+
+
+
+
+
+
+
 export default NewDesenhista;
-
-
-window.onload = function() {
-  const form = document.querySelector('#formulario');
-  form.addEventListener('submit', async function novoDesenhista(){
-    const nomeElement = document.getElementById('nomeDesenhista')
-    const paisNascimentoElement = document.getElementById('paisNascimentoDe')
-    const dataNascimentoElement = document.getElementById(' dataNascimentoDe')
-    const dataFalecimentoElement = document.getElementById('dataFalecimentoDe')
-    const enderecoElement = document.getElementById('enderecoDesenhista')
-    const dataContratacaoElement = document.getElementById('contratacaoDesenhista')
-    const dataDemissaoElement = document.getElementById('demissaoDesenhista')
-    
-    try{
-      const rawResponse = await fetch('http://localhost:8080/desenhistas/create', {
-        method: 'POST',
-        headers:
-          { 'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-        body: JSON.stringify ({
-                nomeDesenhista: nomeElement.value,
-                paisNascimento: paisNascimentoElement.value,
-                dataNascimento: dataNascimentoElement.value,
-                dataFalecimento: dataFalecimentoElement.value,
-                enderecoDesenhista: enderecoElement.value,
-                dataContratacao: dataContratacaoElement.value,
-                dataDemissao: dataDemissaoElement.value,
-      
-              }),
-      })
-      
-      alert(rawResponse.json())
-    
-      }catch(err){
-        alert('erro', err)
-      }
-
-  })
-    
-};
