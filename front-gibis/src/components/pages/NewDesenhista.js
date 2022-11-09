@@ -1,5 +1,3 @@
-import Input from '../form/Input'
-import SubmitButtom from '../form/SubmitButton'
 import { React, useState } from 'react';
 import api from "../../services/api";
 
@@ -7,7 +5,7 @@ import api from "../../services/api";
 function NewDesenhista() {
   const [nomeDesenhista, setNomeDesenhista] = useState('OI');
   const [paisNascimento, setPaisNascimento] = useState('');
-  const [dataNacimento, setDataNascimento] = useState('');
+  const [dataNascimento, setDataNascimento] = useState('');
   const [dataFalecimento, setDataFalecimento] = useState('');
   const [enderecoDesenhista, setEnderecoDesenhista] = useState('');
   const [dataContratacao, setDataContratacao] = useState('');
@@ -23,8 +21,11 @@ function NewDesenhista() {
       const response = await api.post("/desenhistas/create", {
         nomeDesenhista ,
         paisNascimento ,
-       
-         enderecoDesenhista ,
+        dataNascimento , 
+        dataFalecimento , 
+        enderecoDesenhista ,
+        dataContratacao ,
+        dataDemissao , 
        
       })
 
@@ -40,9 +41,16 @@ function NewDesenhista() {
       <input type="text" value={nomeDesenhista} onChange={(event) => setNomeDesenhista(event.target.value)}/>
       <span>Pais nascimento</span>
       <input type="text" value={paisNascimento} onChange={(event) => setPaisNascimento(event.target.value)}/>
-   
+      <span>Data Nascimento</span>
+      <input type="date" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)}/>
+      <span>Data Falecimento</span>
+      <input type="date" value={dataFalecimento} onChange={(event) => setDataFalecimento(event.target.value)}/>
       <span>Endereço</span>
       <input type="text" value={enderecoDesenhista} onChange={(event) => setEnderecoDesenhista(event.target.value)}/>
+      <span>Data Contratação</span>
+      <input type="date" value={dataContratacao} onChange={(event) => setDataContratacao(event.target.value)}/>
+      <span>Data Demissão</span>
+      <input type="date" value={dataDemissao} onChange={(event) => setDataDemissao(event.target.value)}/>
     
     
 
