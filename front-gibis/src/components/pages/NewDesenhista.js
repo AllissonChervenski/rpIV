@@ -1,9 +1,10 @@
 import { React, useState } from 'react';
 import api from "../../services/api";
+import styles from './NewDesenhista.css'
 
 
 function NewDesenhista() {
-  const [nomeDesenhista, setNomeDesenhista] = useState('OI');
+  const [nomeDesenhista, setNomeDesenhista] = useState('');
   const [paisNascimento, setPaisNascimento] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
   const [dataFalecimento, setDataFalecimento] = useState('');
@@ -16,70 +17,62 @@ function NewDesenhista() {
   async function postDesenhista(event) {
     event.preventDefault();
 
+    const response = await api.post("/desenhistas/create", {
+      nomeDesenhista,
+      paisNascimento,
+      dataNascimento,
+      dataFalecimento,
+      enderecoDesenhista,
+      dataContratacao,
+      dataDemissao,
 
-   alert("iniciando a requisição")
-      const response = await api.post("/desenhistas/create", {
-        nomeDesenhista ,
-        paisNascimento ,
-        dataNascimento , 
-        dataFalecimento , 
-        enderecoDesenhista ,
-        dataContratacao ,
-        dataDemissao , 
-       
-      })
-
-     alert(enderecoDesenhista)
-   alert(response.data);
+    })
+    alert("Cadastrado com sucesso!!");
 
   }
 
- 
+
   return (
-    <form>
-      <span>Nome desenhista</span>
-      <input type="text" value={nomeDesenhista} onChange={(event) => setNomeDesenhista(event.target.value)}/>
-      <span>Pais nascimento</span>
-      <input type="text" value={paisNascimento} onChange={(event) => setPaisNascimento(event.target.value)}/>
-      <span>Data Nascimento</span>
-      <input type="date" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)}/>
-      <span>Data Falecimento</span>
-      <input type="date" value={dataFalecimento} onChange={(event) => setDataFalecimento(event.target.value)}/>
-      <span>Endereço</span>
-      <input type="text" value={enderecoDesenhista} onChange={(event) => setEnderecoDesenhista(event.target.value)}/>
-      <span>Data Contratação</span>
-      <input type="date" value={dataContratacao} onChange={(event) => setDataContratacao(event.target.value)}/>
-      <span>Data Demissão</span>
-      <input type="date" value={dataDemissao} onChange={(event) => setDataDemissao(event.target.value)}/>
-    
-    
+    <div class="container_form">
+      <h1>Formulário de Cadastro</h1>
+      <form class="form" action="#" method="post">
+        <div class="form_grupo">
+          <label for="nomeDesenhista" class="form_label"><b>Nome Desenhista:</b></label>
+          <input type="text" name="nomeDesenhista" class="form_input" id="nomeDesenhista" placeholder="Nome Desenhista" required value={nomeDesenhista} onChange={(event) => setNomeDesenhista(event.target.value)} />
+        </div>
+        <div class="form_grupo">
+          <label for="paisNascimento" class="form_label"><b>Pais Nascimento:</b></label>
+          <input type="text" name="paisNascimento" class="form_input" id="paisNascimento" placeholder="Pais Nascimento" required value={paisNascimento} onChange={(event) => setPaisNascimento(event.target.value)} />
+        </div>
+        <div class="form_grupo">
+          <label for="dataNascimento" class="form_label"><b>Data de Nascimento:</b></label>
+          <input type="date" name="dataNascimento" class="form_input" id="dataNascimento" placeholder="Data de Nascimento" required value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} />
+        </div>
+        <div class="form_grupo">
+          <label for="dataFalecimento" class="form_label"><b>Data de Falecimento:</b></label>
+          <input type="date" name="dataFalecimento" class="form_input" id="dataFalecimento" placeholder="Data de Falecimento" value={dataFalecimento} onChange={(event) => setDataFalecimento(event.target.value)} />
+        </div>
+        <div class="form_grupo">
+          <label for="enderecoDesenhista" class="form_label"><b>Endereço:</b></label>
+          <input type="text" name="enderecoDesenhista" class="form_input" id="enderecoDesenhista" placeholder="Endereço" required value={enderecoDesenhista} onChange={(event) => setEnderecoDesenhista(event.target.value)} />
+        </div>
+        <div class="form_grupo">
+          <label for="dataContratacao" class="form_label"><b>Data Contratacao:</b></label>
+          <input type="date" name="dataContratacao" class="form_input" id="dataContratacao" placeholder="Data Contratação" required value={dataContratacao} onChange={(event) => setDataContratacao(event.target.value)} />
+        </div>
+        <div class="form_grupo">
+          <label for="dataDemissao" class="form_label"><b>Data Demissão:</b></label>
+          <input type="date" name="dataDemissao" class="form_input" id="dataDemissao" placeholder="Data Demissao" value={dataDemissao} onChange={(event) => setDataDemissao(event.target.value)} />
+        </div>
 
-{
-/* 
-      <Input type="text" text="Nome Desenhista" onChange={(event) => setNomeDesenhista(event.target.value)} placeholder="Insira o nome completo do Desenhista" />
+        <div class="submit">
+          <input type="hidden" name="acao" value="enviar" />
+          <button onClick={postDesenhista} type="submit" name="Submit" class="submit_btn" >Cadastrar</button>
 
-  
-      <Input type="text" text="Pais de Nascimento" onChange={(event) => setPaisNascimento(event.target.value)} placeholder="País de nascimento do Desenhista" />
-
-      <Input type="date" text="Data de Nascimento" onChange={(event) => setDataNascimento(event.target.value)} placeholder="Insira a data de Nascimento" />
-
-      <Input type="date" text="Data de Falecimento" onChange={(event) => setDataFalecimento(event.target.value)} placeholder="Insira a data de Falecimento" />
-
-      <Input type="text" text="Endereço" onChange={(event) => setEnderecoDesenhista(event.target.value)} placeholder="Insira o endereço do desenhista" />
-
-      <Input type="date" text="Data do Contrato" onChange={(event) => setDataContratacao(event.target.value)} placeholder="Insira a data de contratação" />
-
-      <Input type="date" text="Data de Demissao" onChange={(event) => setDataDemissao(event.target.value)} placeholder="Insira a data de demissão (se houver)" /> */}
-
-      <button onClick={postDesenhista}/>
-    </form>
+        </div>
+      </form>
+    </div>
   )
 }
-
-
-
-
-
-
 
 export default NewDesenhista;
