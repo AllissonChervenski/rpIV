@@ -1,16 +1,20 @@
 package com.grupo2.editoragibi.Service.Builders;
 
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
+import com.grupo2.editoragibi.Data.Repositories.EdicoesGibiRepository;
 import com.grupo2.editoragibi.Data.Repositories.EscritorRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBasePersonagemBuilder;
+import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -27,6 +31,9 @@ public class PersonagemEntityBuilder implements IBasePersonagemBuilder {
 
     @Autowired
     EscritorRepository escritorRepository;
+
+    @Autowired
+    EdicoesGibiRepository edicoesGibiRepository;
 
     private PersonagemEntity personagemEntity;
 
@@ -86,6 +93,27 @@ public class PersonagemEntityBuilder implements IBasePersonagemBuilder {
         PersonagemEntity toReturn = personagemEntity;
         reset();
         return toReturn;
+    }
+
+    @Override
+    public void setEdicaoGibi(BaseEdicoesGibi edicoes) {
+        // TODO Auto-generated method stub
+        if(edicoes instanceof EdicoesGibi){
+            personagemEntity.getEdicoesGibi().add((EdicoesGibi) edicoes);
+        }
+        
+    }
+
+    @Override
+    public void setEdicoesGibi(List<Integer> edicoesId)  {
+        // TODO Auto-generated method stub
+        List<EdicoesGibiEntity> edicoesPersonagens = new ArrayList<>();
+        if(edicoesId != null){
+       edicoesGibiRepository.getEdicoesGibis().forEach(e -> edicoesPersonagens.add(e));
+        for (Integer id : edicoesId) {
+            edicoesPersonagens.add(edicoesGibiRepository.getEdicaoGibiById(id).get());
+        }
+    }
     }
 
   

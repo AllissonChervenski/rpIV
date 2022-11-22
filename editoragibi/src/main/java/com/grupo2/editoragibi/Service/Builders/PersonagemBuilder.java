@@ -36,6 +36,13 @@ public class PersonagemBuilder implements IBasePersonagemBuilder {
     @Autowired
     EscritorDirector escritorDirector;
 
+    @Autowired
+    EdicoesGibiRepository edicoesGibiRepository;
+
+    @Lazy
+    @Autowired
+    EdicoesGibiDirector edicoesGibiDirector;
+
 
     private Personagem personagem;
 
@@ -101,6 +108,25 @@ public class PersonagemBuilder implements IBasePersonagemBuilder {
         Personagem toReturn = personagem;
         reset();
         return toReturn;
+    }
+
+    @Override
+    public void setEdicaoGibi(BaseEdicoesGibi edicoes) {
+        // TODO Auto-generated method stub
+        if(edicoes instanceof EdicoesGibi){
+            personagem.getEdicoesGibi().add((EdicoesGibi) edicoes);
+        }
+        
+    }
+
+    @Override
+    public void setEdicoesGibi(List<Integer> edicoesId) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException {
+        // TODO Auto-generated method stub
+        List<EdicoesGibi> personagensEdicoes = personagem.getEdicoesGibi();
+        for (Integer id : edicoesId) {
+            personagensEdicoes.add((EdicoesGibi) edicoesGibiDirector.buildFromEdicoesGibiEntity(edicoesGibiRepository.getEdicaoGibiById(id).get(), personagem));
+        }
+        
     }
 
 

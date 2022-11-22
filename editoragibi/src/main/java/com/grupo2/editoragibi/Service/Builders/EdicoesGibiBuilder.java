@@ -7,25 +7,15 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
-import com.grupo2.editoragibi.Data.Entity.GibiEntity;
-import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
-import com.grupo2.editoragibi.Data.Repositories.DesenhistaRepository;
-import com.grupo2.editoragibi.Data.Repositories.EscritorRepository;
 import com.grupo2.editoragibi.Data.Repositories.GibiRepository;
 import com.grupo2.editoragibi.Data.Repositories.HistoriaRepository;
 import com.grupo2.editoragibi.Data.Repositories.PersonagemRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
-import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseEdicoesGibiBuilder;
-import com.grupo2.editoragibi.Service.Directors.DesenhistaDirector;
-import com.grupo2.editoragibi.Service.Directors.EscritorDirector;
-import com.grupo2.editoragibi.Service.Directors.GibiDirector;
-import com.grupo2.editoragibi.Service.Directors.HistoriaDirector;
 import com.grupo2.editoragibi.Service.Directors.PersonagemDirector;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.Service.Domain.Gibi;
@@ -36,7 +26,6 @@ import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
-import com.grupo2.editoragibi.editor.Editor;
 
 @Component("edicoesGibiBuilder")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -136,7 +125,7 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
         List<Personagem> personagensEscritor = edicoesGibi.getPersonagem();
         if(personagensId != null){
         for (Integer id : personagensId) {
-            personagensEscritor.add((Personagem) personagemDirector.buildFromPersonagemEntity(personagem.getPersonagemById(id)));
+            personagensEscritor.add((Personagem) personagemDirector.buildFromPersonagemEntity(personagem.getPersonagemById(id), edicoesGibi));
         }
     }
 }

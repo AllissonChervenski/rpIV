@@ -28,6 +28,9 @@ public interface IBasePersonagemBuilder {
 
     public void setEscritor(BaseEscritor escritor);
 
+    public void setEdicaoGibi(BaseEdicoesGibi edicoes);
     
+    public void setEdicoesGibi(List<Integer> edicoesId) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException;
+
     public BasePersonagem getResult();
 }
