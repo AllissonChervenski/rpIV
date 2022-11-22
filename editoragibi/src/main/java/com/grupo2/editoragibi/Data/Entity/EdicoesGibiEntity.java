@@ -1,6 +1,12 @@
 package com.grupo2.editoragibi.Data.Entity;
 
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
+import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import com.grupo2.editoragibi.editor.Editor;
 
 import lombok.Data;
@@ -110,6 +116,18 @@ public class EdicoesGibiEntity extends EdicoesGibi {
 
     public void setDataPub(LocalDate dataPub) {
         this.dataPub = dataPub;
+    }
+
+    @Override
+    public void setGibi(BaseGibi gibi) throws EdicoesGibiInvalidoException, GibiInvalidoException {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException {
+        // TODO Auto-generated method stub
+        
     }
 
 }

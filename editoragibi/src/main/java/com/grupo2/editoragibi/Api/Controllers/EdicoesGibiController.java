@@ -5,6 +5,7 @@ import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
+import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
@@ -30,7 +31,7 @@ public class EdicoesGibiController {
     EdicoesGibiService edicoesGibiService;
      
     @GetMapping("/all")
-    public ResponseEntity<Object> getEdicoesGibi(){
+    public ResponseEntity<Object> getEdicoesGibi() throws DesenhistaInvalidoException{
         List<EdicoesGibi> edicoesGibis = null;
 
         try {
@@ -44,7 +45,7 @@ public class EdicoesGibiController {
     
 
     @GetMapping(path = "edicao/{edicoesGibiEdicao}")
-    public ResponseEntity<Object> getEdicoesGibiByEdicao(@PathVariable("edicoesGibiEdicao") Integer edicao){
+    public ResponseEntity<Object> getEdicoesGibiByEdicao(@PathVariable("edicoesGibiEdicao") Integer edicao) throws DesenhistaInvalidoException{
     EdicoesGibi edicoesGibis = null;
     
         try{
@@ -59,8 +60,8 @@ public class EdicoesGibiController {
     }
  
     @PostMapping(path = "/create")
-    public ResponseEntity<Object> addEdicoesGibi(@RequestBody EdicoesGibiRequest edicoesGibirGibiRequest){
-        BaseEdicoesGibi edicoesGibi = null;
+    public ResponseEntity<Object> addEdicoesGibi(@RequestBody EdicoesGibiRequest edicoesGibirGibiRequest) throws DesenhistaInvalidoException{
+        EdicoesGibi edicoesGibi = null;
         try {
            edicoesGibi = edicoesGibiService.addEdicoesGibi(edicoesGibirGibiRequest);
         } catch (EdicoesGibiInvalidoException | GibiInvalidoException | PersonagemInvalidoException | EscritorInvalidoException | HistoriaInvalidaException e) {
@@ -85,7 +86,7 @@ public class EdicoesGibiController {
     public ResponseEntity<Object> updateEdicoesGibi(@PathVariable Integer edicoesGibiId,
                                   @RequestParam(required = false) Integer nroEdicao,
                                   @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataPub,
-                                  @RequestParam(required = false)HistoriaEntity historiaEntity) throws HistoriaInvalidaException{
+                                  @RequestParam(required = false)HistoriaEntity historiaEntity) throws HistoriaInvalidaException, DesenhistaInvalidoException{
         EdicoesGibi edicoesGibi = null;
         try {
             edicoesGibi = edicoesGibiService.updateEdicoesGibi(edicoesGibiId, nroEdicao, dataPub, nroEdicao, false, historiaEntity, null, null, null, null);

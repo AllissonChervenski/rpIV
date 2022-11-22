@@ -6,6 +6,7 @@ import java.util.List;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
+import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;

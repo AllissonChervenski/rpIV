@@ -29,6 +29,12 @@ public class Config {
         return new EdicoesGibiDirector(edicoesGibiBuilder);
     }
 
+    @Bean(name = "edicoesGibiEntityDirector")
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    EdicoesGibiDirector getEdicoesGibiDirector(EdicoesGibiEntityBuilder edicoesGibiBuilder) {
+        return new EdicoesGibiDirector(edicoesGibiBuilder);
+    }
+
 
     @Bean(name = "bancaEntityDirector")
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)

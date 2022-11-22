@@ -1,20 +1,31 @@
 package com.grupo2.editoragibi.Service.Builders;
 
 import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
+import com.grupo2.editoragibi.Data.Repositories.EdicoesGibiRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseDesenhistaBuilder;
+import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component("desenhistaEntityBuilder")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class DesenhistaEntityBuilder implements IBaseDesenhistaBuilder {
 
     private DesenhistaEntity desenhista;
+
+    @Autowired
+    EdicoesGibiRepository edicoesGibiRepository;
+
 
     public DesenhistaEntityBuilder() {
         reset();
@@ -70,4 +81,10 @@ public class DesenhistaEntityBuilder implements IBaseDesenhistaBuilder {
         reset();
         return toReturn;
     }
+
+  
+
+  
 }
+
+

@@ -1,9 +1,16 @@
 package com.grupo2.editoragibi.Service.Builders.Interfaces;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
+import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface IBaseDesenhistaBuilder {
 
@@ -23,5 +30,6 @@ public interface IBaseDesenhistaBuilder {
 
     public void setDataDemissao(LocalDate dataDemissao) throws DesenhistaInvalidoException;
 
-    public BaseDesenhista getResult();
+   
+     public BaseDesenhista getResult();
 }

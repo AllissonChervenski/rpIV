@@ -3,6 +3,7 @@ package com.grupo2.editoragibi.Service.Directors;
 import com.grupo2.editoragibi.Api.Requests.DesenhistaRequest;
 import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseDesenhistaBuilder;
 import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
@@ -54,4 +55,7 @@ public class DesenhistaDirector {
 
         return builder.getResult();
     }
+
+
+  
 }

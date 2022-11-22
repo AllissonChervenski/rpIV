@@ -11,6 +11,7 @@ import com.grupo2.editoragibi.Service.Directors.EscritorDirector;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
+import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
@@ -120,7 +121,7 @@ public class PersonagemBuilder implements IBasePersonagemBuilder {
     }
 
     @Override
-    public void setEdicoesGibi(List<Integer> edicoesId) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException {
+    public void setEdicoesGibi(List<Integer> edicoesId) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
         // TODO Auto-generated method stub
         List<EdicoesGibi> personagensEdicoes = personagem.getEdicoesGibi();
         for (Integer id : edicoesId) {

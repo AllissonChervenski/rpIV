@@ -14,6 +14,7 @@ import com.grupo2.editoragibi.Data.Repositories.Interfaces.IHistoriaRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.Directors.EdicoesGibiDirector;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
+import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
@@ -38,12 +39,16 @@ public class EdicoesGibiService {
     @Qualifier("edicoesGibiDirector")
     @Autowired
     EdicoesGibiDirector edDirector;
+
+    @Qualifier("edicoesGibiEntityDirector")
+    @Autowired
+    EdicoesGibiDirector edicoesEntityDirector;
     
     @Autowired
     IHistoriaRepository iHistoriaRepository;
 
 
-    public List<EdicoesGibi> getEdicoesGibis() throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException {
+    public List<EdicoesGibi> getEdicoesGibis() throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
         List<EdicoesGibiEntity> edicoesGibiEntities = edicoesGibiRepository.getEdicoesGibis();
         List<EdicoesGibi> edicoesGibi = new ArrayList<>();
         for (EdicoesGibiEntity e : edicoesGibiEntities) {
@@ -53,7 +58,7 @@ public class EdicoesGibiService {
         return edicoesGibi;
     }
 
-    public EdicoesGibi getGibisById(Integer id) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException {
+    public EdicoesGibi getGibisById(Integer id) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
         boolean exists = edicoesGibiRepository.existsEdicaoGibi(id);
         if (!exists) {
             throw new EdicoesGibiInvalidoException("A edição não existe");
@@ -61,7 +66,7 @@ public class EdicoesGibiService {
         return (EdicoesGibi) edDirector.buildFromEdicoesGibiEntity(edicoesGibiRepository.getEdicaoGibiById(id).get());
     }
 
-    public EdicoesGibi getEdicoesGibiByEdicao(Integer edicao) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException {
+    public EdicoesGibi getEdicoesGibiByEdicao(Integer edicao) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
         Optional<EdicoesGibiEntity> e = edicoesGibiRepository.getEdicaoByNumero(edicao);
         if (!e.isPresent()) {
             throw new EdicoesGibiInvalidoException("A edição não existe");
@@ -69,14 +74,15 @@ public class EdicoesGibiService {
         return (EdicoesGibi) edDirector.buildFromEdicoesGibiEntity(e.get());
     }
 
-    public EdicoesGibi addEdicoesGibi(EdicoesGibiRequest edicoesGibi) throws EdicoesGibiInvalidoException, GibiInvalidoException, PersonagemInvalidoException, EscritorInvalidoException, HistoriaInvalidaException {
+    public EdicoesGibi addEdicoesGibi(EdicoesGibiRequest edicoesGibi) throws EdicoesGibiInvalidoException, GibiInvalidoException, PersonagemInvalidoException, EscritorInvalidoException, HistoriaInvalidaException, DesenhistaInvalidoException {
         for (EdicoesGibiEntity e : edicoesGibiRepository.getEdicoesGibis())
             if (e.getDataPub().equals(edicoesGibi.getDataPub()) &&
                     e.getNroEdicao() == edicoesGibi.getNroEdicao()) {
                 throw new EdicoesGibiInvalidoException("A edição já existe");
             }
-        EdicoesGibiEntity edicoesGibiEntity = (EdicoesGibiEntity) edDirector.buildFromEdicoesGibiRequest(edicoesGibi);    
-        return edicoesGibiRepository.save(edicoesGibiEntity);
+        EdicoesGibi edicoes = (EdicoesGibi) edicoesEntityDirector.buildFromEdicoesGibiRequest(edicoesGibi);
+        EdicoesGibiEntity edicoesGibiEntity = (EdicoesGibiEntity) edicoesEntityDirector.buildFromEdicoesGibi(edicoes);    
+        return  edicoesGibiRepository.save(edicoesGibiEntity);
     }
 
     public void deleteEdicoesGibi(Integer edicoesGibiId) throws EdicoesGibiInvalidoException {
@@ -95,7 +101,7 @@ public class EdicoesGibiService {
             HistoriaEntity historiaEntity,
             GibiEntity gibiEntity, EscritorEntity escritorEntity, PersonagemEntity personagemEntity,
             DesenhistaEntity desenhistaEntity /*EditoraEntity editoraEntity*/)
-            throws EdicoesGibiInvalidoException, HistoriaInvalidaException, GibiInvalidoException, PersonagemInvalidoException, EscritorInvalidoException {
+            throws EdicoesGibiInvalidoException, HistoriaInvalidaException, GibiInvalidoException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
         Optional<EdicoesGibiEntity> edicoesGibi = edicoesGibiRepository.getEdicaoGibiById(edicoesGibiId);
 
         if (nroEdicao != null) {
@@ -127,7 +133,7 @@ public class EdicoesGibiService {
     }
 
     // Associação
-    public void addHistoriaEdicao(Integer historiaId, Integer edicaoGibiId) throws EdicoesGibiInvalidoException {
+    public void addHistoriaEdicao(Integer historiaId, Integer edicaoGibiId) throws EdicoesGibiInvalidoException, HistoriaInvalidaException {
         Optional<EdicoesGibiEntity> edicoesGibi = edicoesGibiRepository.getEdicaoGibiById(edicaoGibiId);
         Optional<HistoriaEntity> historiaEntityOptional = iHistoriaRepository.findById(historiaId);
         if ((!edicoesGibi.isEmpty() && edicoesGibi.get() != null)
@@ -136,7 +142,7 @@ public class EdicoesGibiService {
         edicoesGibiRepository.save(edicoesGibi.get());
     }
 
-    public void deleteHistoriaEdicao(Integer edicaoGibiId) throws EdicoesGibiInvalidoException {
+    public void deleteHistoriaEdicao(Integer edicaoGibiId) throws EdicoesGibiInvalidoException, HistoriaInvalidaException {
         Optional<EdicoesGibiEntity> edicoesGibi = edicoesGibiRepository.getEdicaoGibiById(edicaoGibiId);
 
         edicoesGibi.get().setHistoria(null);
