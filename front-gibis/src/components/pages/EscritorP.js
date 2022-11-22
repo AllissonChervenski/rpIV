@@ -9,7 +9,7 @@ function EscritorP(){
         </h1>
 
 
-        <LinkButton to="/escritor" text="Cadastrar novo escritor" />
+        <LinkButton to="/newescritor" text="Cadastrar novo escritor" />
         <LinkButton to="/escritor" text="Ver escritores cadastrados" />
 
        

@@ -13,13 +13,15 @@ import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
 import DesenhistaP from './components/pages/DesenhistaP'
 import EscritorP from './components/pages/EscritorP'
+import NewEscritor from './components/pages/NewEscritor'
 import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
 import NewGibi from './components/pages/NewGibi'
 import NewDesenhista from './components/pages/NewDesenhista'
-import axios from 'axios'
+import ViewDesenhista from './components/pages/ViewDesenhista'
 
+import axios from 'axios'
 
 
 
@@ -73,6 +75,10 @@ function App() {
         <Escritor />
         </Route>
 
+        <Route exact path="/newescritor">
+        <NewEscritor />
+        </Route>
+
         <Route exact path="/desenhistap"> 
         <DesenhistaP />
         </Route>
@@ -84,6 +90,10 @@ function App() {
         
         <Route exact path="/newdesenhista">
         <NewDesenhista />
+        </Route>
+
+        <Route exact path="/viewdesenhista">
+        <ViewDesenhista />
         </Route>
 
         <Route exact path="/transportadoras"> 
