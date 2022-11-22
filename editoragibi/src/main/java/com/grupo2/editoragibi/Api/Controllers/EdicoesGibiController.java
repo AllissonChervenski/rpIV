@@ -1,9 +1,15 @@
 package com.grupo2.editoragibi.Api.Controllers;
 
+import com.grupo2.editoragibi.Api.Requests.EdicoesGibiRequest;
 import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
+import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import com.grupo2.editoragibi.Service.ServiceObjects.EdicoesGibiService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpRequest;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,13 +26,8 @@ import java.util.List;
 @RequestMapping("/gibis/edicoesgibi")
 public class EdicoesGibiController {
     
-    private final EdicoesGibiService edicoesGibiService;
-
-
     @Autowired
-    public EdicoesGibiController(EdicoesGibiService edicoesGibiService) {
-        this.edicoesGibiService = edicoesGibiService;
-    }
+    EdicoesGibiService edicoesGibiService;
      
     @GetMapping("/all")
     public ResponseEntity<Object> getEdicoesGibi(){
@@ -33,7 +35,7 @@ public class EdicoesGibiController {
 
         try {
         edicoesGibis = edicoesGibiService.getEdicoesGibis();
-        } catch (EdicoesGibiInvalidoException e) {
+        } catch (EdicoesGibiInvalidoException | GibiInvalidoException | HistoriaInvalidaException | PersonagemInvalidoException | EscritorInvalidoException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
         
@@ -48,34 +50,51 @@ public class EdicoesGibiController {
         try{
             edicoesGibis = edicoesGibiService.getEdicoesGibiByEdicao(edicao);
         }
-        catch(EdicoesGibiInvalidoException e){
+        catch(EdicoesGibiInvalidoException | GibiInvalidoException | HistoriaInvalidaException | PersonagemInvalidoException | EscritorInvalidoException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
 
         return new ResponseEntity<>(edicoesGibis, HttpStatus.OK);
 
     }
-/* 
-    //TODO
-    @PostMapping
-    public void addEdicoesGibi(@RequestBody EdicoesGibiEntity edicoesGibi){
-        edicoesGibiService.addEdicoesGibi(edicoesGibi);//TODO
-    
+ 
+    @PostMapping(path = "/create")
+    public ResponseEntity<Object> addEdicoesGibi(@RequestBody EdicoesGibiRequest edicoesGibirGibiRequest){
+        BaseEdicoesGibi edicoesGibi = null;
+        try {
+           edicoesGibi = edicoesGibiService.addEdicoesGibi(edicoesGibirGibiRequest);
+        } catch (EdicoesGibiInvalidoException | GibiInvalidoException | PersonagemInvalidoException | EscritorInvalidoException | HistoriaInvalidaException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } 
+        return new ResponseEntity<>(edicoesGibi, HttpStatus.OK);
     }
+    
      @DeleteMapping(path = "deleteEdicao/{edicoesGibiId}")
-    public void deleteEdicoesGibi(@PathVariable("edicoesGibiId") Integer edicoesGibiId){
-        edicoesGibiService.deleteEdicoesGibi(edicoesGibiId);
+    public ResponseEntity<Object> deleteEdicoesGibi(@PathVariable("edicoesGibiId") Integer edicoesGibiId){
+   
+        try {
+            edicoesGibiService.deleteEdicoesGibi(edicoesGibiId);
+        } catch (EdicoesGibiInvalidoException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
     @PutMapping(path = "editar/{edicoesGibiId}")
-    public void updateEdicoesGibi(@PathVariable Integer edicoesGibiId,
+    public ResponseEntity<Object> updateEdicoesGibi(@PathVariable Integer edicoesGibiId,
                                   @RequestParam(required = false) Integer nroEdicao,
                                   @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataPub,
-                                  @RequestParam(required = false)HistoriaEntity historiaEntity){
-        edicoesGibiService.updateEdicoesGibi(edicoesGibiId, nroEdicao, dataPub, historiaEntity);
-
+                                  @RequestParam(required = false)HistoriaEntity historiaEntity) throws HistoriaInvalidaException{
+        EdicoesGibi edicoesGibi = null;
+        try {
+            edicoesGibi = edicoesGibiService.updateEdicoesGibi(edicoesGibiId, nroEdicao, dataPub, nroEdicao, false, historiaEntity, null, null, null, null);
+        } catch (EdicoesGibiInvalidoException | GibiInvalidoException | PersonagemInvalidoException | EscritorInvalidoException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+        return new ResponseEntity<>(edicoesGibi, HttpStatus.OK);
     }
-
+/* 
     @PostMapping(path = "addGibiHistoria/{historiaId}&{edicaoGibiId}")
     public void addHistoriaEdicao(@PathVariable("historiaId") Integer historiaId,
                                   @PathVariable("edicaoGibiId") Integer edicaoGibiId){
@@ -86,5 +105,6 @@ public class EdicoesGibiController {
     public void deleteHistoriaEdicao(@PathVariable("edicaoGibiId") Integer edicaoGibiId){
         edicoesGibiService.deleteHistoriaEdicao(edicaoGibiId);
     }
+
 */
 }

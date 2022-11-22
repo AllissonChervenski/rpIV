@@ -6,6 +6,8 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Table(name ="desenhista")
@@ -39,4 +41,7 @@ public class DesenhistaEntity extends BaseDesenhista implements Serializable {
 
     @Column(name = "data_demissao")
     private LocalDate dataDemissao;
+
+    @ManyToMany(mappedBy = "desenhistaEntity")
+    private List<EdicoesGibiEntity> edicoesGibi = new ArrayList<>();
 }

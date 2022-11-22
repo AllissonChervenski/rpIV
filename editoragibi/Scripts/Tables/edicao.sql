@@ -6,5 +6,6 @@ create table edicao (
     numero_exemplares_impressos integer not null,
     editor_id integer references editor(editor_id),
     gibi_id integer references gibi(gibi_id),
+    historia_id integer references historia(historia_id),
     primary key(edicao_id)
 )

@@ -95,9 +95,11 @@ public class EscritorBuilder implements IBaseEscritorBuilder {
     @Override
     public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<Personagem> personagensEscritor = escritor.getPersonagens();
+        if(personagensIds != null){
         for (Integer id : personagensIds) {
             personagensEscritor.add((Personagem) personagemDirector.buildFromPersonagemEntity(personagemRepository.getPersonagemById(id), escritor));
         }
+    }
     }
 
     @Override

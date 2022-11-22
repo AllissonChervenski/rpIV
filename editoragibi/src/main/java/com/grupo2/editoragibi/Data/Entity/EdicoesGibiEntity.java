@@ -1,12 +1,14 @@
 package com.grupo2.editoragibi.Data.Entity;
 
-import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.editor.Editor;
+
 import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+
 
 
 @Data
@@ -41,22 +43,32 @@ public class EdicoesGibiEntity extends EdicoesGibi {
     @ManyToOne
     @JoinColumn(name = "editor_id")
     private Editor editor;
+    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "edicoes_historia", joinColumns = {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "historia_id")})
+    private HistoriaEntity historia;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "edicoes_escritor", joinColumns = {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "escritor_id")})
+    private List<EscritorEntity> escritorEntity = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "publica", joinColumns = {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "historia_id")})
-    private List<HistoriaEntity> historiaEntity;
+    @JoinTable(name = "edicoes_personagem", joinColumns =  {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "personagem_id")})
+    private List<PersonagemEntity> personagemEntity = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "edicoes_desenhista", joinColumns ={@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "desenhista_id")})
+    private List<DesenhistaEntity> desenhistaEntity = new ArrayList<>();
+
+
 
     public EdicoesGibiEntity(int nroEdicao, LocalDate dataPub) {
         this.nroEdicao = nroEdicao;
         this.dataPub = dataPub;
     }
 
-    public List<HistoriaEntity> getHistoriaEntity() {
-        return historiaEntity;
-    }
-
-    public void addHistoriaEntity(HistoriaEntity historiaEntity) {
-        this.historiaEntity.add(historiaEntity);
+    public HistoriaEntity getHistoriaEntity() {
+        return historia;
     }
 
     public EdicoesGibiEntity(int edicaoGibiId, int nroEdicao, LocalDate dataPub) {
@@ -99,4 +111,5 @@ public class EdicoesGibiEntity extends EdicoesGibi {
     public void setDataPub(LocalDate dataPub) {
         this.dataPub = dataPub;
     }
+
 }

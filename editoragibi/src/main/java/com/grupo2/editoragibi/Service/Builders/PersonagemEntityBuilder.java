@@ -3,10 +3,14 @@ package com.grupo2.editoragibi.Service.Builders;
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
 import com.grupo2.editoragibi.Data.Repositories.EscritorRepository;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBasePersonagemBuilder;
+import com.grupo2.editoragibi.Service.Domain.Escritor;
+import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -14,6 +18,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component("personagemEntityBuilder")
@@ -60,10 +65,14 @@ public class PersonagemEntityBuilder implements IBasePersonagemBuilder {
 
     @Override
     public void setEscritores(List<Integer> escritoresIds) throws PersonagemInvalidoException, EscritorInvalidoException {
-        List<EscritorEntity> escritoresPersonagem = personagemEntity.getEscritores();
+        List<EscritorEntity> escritoresPersonagem = new ArrayList<>();
+        if(escritoresIds != null){
+        escritorRepository.getEscritores().forEach(e -> escritoresPersonagem.add(e));
         for (Integer id : escritoresIds) {
             escritoresPersonagem.add(escritorRepository.getEscritorById(id));
         }
+    }
+        
     }
 
     @Override
@@ -78,4 +87,6 @@ public class PersonagemEntityBuilder implements IBasePersonagemBuilder {
         reset();
         return toReturn;
     }
+
+  
 }

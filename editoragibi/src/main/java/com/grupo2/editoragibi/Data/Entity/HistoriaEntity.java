@@ -52,6 +52,9 @@ public class HistoriaEntity extends BaseHistoria implements Serializable {
     @JoinTable(name = "historia_personagem", joinColumns = {@JoinColumn(name = "historia_id")}, inverseJoinColumns = {@JoinColumn(name = "personagem_id")})
     List<PersonagemEntity> personagens = new ArrayList<>();
 
+    @OneToOne(mappedBy = "historia")
+    private EdicoesGibiEntity edicoesGibi;
+    
     @Override
     public void setArtefinalizador(BaseDesenhista artefinalizador) throws HistoriaInvalidaException, DesenhistaInvalidoException {
         this.artefinalizador = (DesenhistaEntity) artefinalizador;

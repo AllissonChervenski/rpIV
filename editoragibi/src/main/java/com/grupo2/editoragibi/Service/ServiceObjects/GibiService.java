@@ -38,7 +38,7 @@ public class GibiService {
     }
 */
     @Transactional
-    public void deleteGibi(Long gibiId) {
+    public void deleteGibi(Integer gibiId) {
         boolean exists = gibiRepository.existsById(gibiId);
         if (!exists) {
             throw new IllegalStateException(
@@ -57,7 +57,7 @@ public class GibiService {
     }
 
     @Transactional
-    public void updateGibi(Long gibiId, String titulo, LocalDate inicio, LocalDate enc, EdicoesGibiEntity edicoes) {
+    public void updateGibi(Integer gibiId, String titulo, LocalDate inicio, LocalDate enc, EdicoesGibiEntity edicoes) {
         GibiEntity gibi = gibiRepository.findById(gibiId).orElseThrow(
                 () -> new IllegalStateException("GibiEntity com id" + gibiId + " não existe"));
 

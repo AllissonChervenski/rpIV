@@ -26,14 +26,14 @@ function App() {
 
   
 
-        fetch("http://localhost:8080/api/gibis/view",  {
+      /*  fetch("http://localhost:8080/api/gibis/view",  {
             method: 'GET',
             mode: 'cors',
             cache: 'no-cache'
         })
         .then((response) => response.json())
         .then((data) => console.log(data))
-
+*/
   return (
 
     <Router>

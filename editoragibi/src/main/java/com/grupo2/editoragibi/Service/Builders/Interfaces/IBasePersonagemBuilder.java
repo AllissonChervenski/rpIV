@@ -1,8 +1,12 @@
 package com.grupo2.editoragibi.Service.Builders.Interfaces;
 
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 
 import java.time.LocalDate;
@@ -24,5 +28,6 @@ public interface IBasePersonagemBuilder {
 
     public void setEscritor(BaseEscritor escritor);
 
+    
     public BasePersonagem getResult();
 }
