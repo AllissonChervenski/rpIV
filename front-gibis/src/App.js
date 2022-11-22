@@ -13,12 +13,15 @@ import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
 import DesenhistaP from './components/pages/DesenhistaP'
 import EscritorP from './components/pages/EscritorP'
+import NewEscritor from './components/pages/NewEscritor'
 import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
 import NewGibi from './components/pages/NewGibi'
-import axios from 'axios'
+import NewDesenhista from './components/pages/NewDesenhista'
+import ViewDesenhista from './components/pages/ViewDesenhista'
 
+import axios from 'axios'
 
 
 
@@ -26,14 +29,14 @@ function App() {
 
   
 
-      /*  fetch("http://localhost:8080/api/gibis/view",  {
+        fetch("http://localhost:8080/gibis/view",  {
             method: 'GET',
             mode: 'cors',
             cache: 'no-cache'
         })
         .then((response) => response.json())
         .then((data) => console.log(data))
-*/
+
   return (
 
     <Router>
@@ -72,12 +75,25 @@ function App() {
         <Escritor />
         </Route>
 
+        <Route exact path="/newescritor">
+        <NewEscritor />
+        </Route>
+
         <Route exact path="/desenhistap"> 
         <DesenhistaP />
         </Route>
 
         <Route exact path="/desenhista">
         <Desenhista />
+        </Route>
+
+        
+        <Route exact path="/newdesenhista">
+        <NewDesenhista />
+        </Route>
+
+        <Route exact path="/viewdesenhista">
+        <ViewDesenhista />
         </Route>
 
         <Route exact path="/transportadoras"> 
