@@ -1,16 +1,12 @@
 package com.grupo2.editoragibi.Data.Entity;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
-<<<<<<< HEAD
-import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
-=======
 import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
 import com.grupo2.editoragibi.editor.Editor;
 
 import lombok.Data;
@@ -81,13 +77,6 @@ public class EdicoesGibiEntity extends EdicoesGibi {
         return historia;
     }
 
-<<<<<<< HEAD
-    public void addHistoriaEntity(HistoriaEntity historiaEntity) {
-        this.historiaEntity.add(historiaEntity);
-    }
-
-=======
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
     public EdicoesGibiEntity(int edicaoGibiId, int nroEdicao, LocalDate dataPub) {
         this.edicaoGibi_id = edicaoGibiId;
         this.nroEdicao = nroEdicao;
@@ -140,5 +129,4 @@ public class EdicoesGibiEntity extends EdicoesGibi {
         // TODO Auto-generated method stub
         
     }
-
 }

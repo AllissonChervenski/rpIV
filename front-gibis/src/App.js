@@ -25,25 +25,9 @@ import axios from 'axios'
 
 
 
-<<<<<<< HEAD
 function App() {         
       
 
-=======
-
-function App() {
-
-  
-
-      /*  fetch("http://localhost:8080/api/gibis/view",  {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'no-cache'
-        })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-*/
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
   return (
 
     <Router>
