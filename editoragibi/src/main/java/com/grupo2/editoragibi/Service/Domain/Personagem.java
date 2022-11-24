@@ -13,6 +13,8 @@ public class Personagem extends BasePersonagem {
     @JsonManagedReference
     private List<Escritor> escritores = new ArrayList<>();
 
+    private List<EdicoesGibi> edicoesGibis = new ArrayList<>();
+
     public void setNomePersonagem(String nomePersonagem) throws PersonagemInvalidoException {
         if (nomePersonagem == null || nomePersonagem.isEmpty())
             throw new PersonagemInvalidoException("Nome inválido");
@@ -33,7 +35,11 @@ public class Personagem extends BasePersonagem {
         this.dataCriacao = dataCriacao;
     }
 
-    public List<Escritor> getEscritores() {
-        return escritores;
+   public List<Escritor> getEscritores() {
+        return this.escritores;
+    }
+    
+    public List<EdicoesGibi> getEdicoesGibi(){
+        return this.edicoesGibis;
     }
 }

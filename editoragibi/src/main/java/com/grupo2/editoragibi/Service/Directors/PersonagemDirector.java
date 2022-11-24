@@ -2,6 +2,7 @@ package com.grupo2.editoragibi.Service.Directors;
 
 import com.grupo2.editoragibi.Api.Requests.PersonagemRequest;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBasePersonagemBuilder;
@@ -27,7 +28,7 @@ public class PersonagemDirector {
         builder.setPatentePersonagem(personagemRequest.getPatentePersonagem());
         builder.setDataCriacao(personagemRequest.getDataCriacao());
         builder.setEscritores(personagemRequest.getEscritoresIds());
-
+ 
         return builder.getResult();
     }
 
@@ -59,6 +60,14 @@ public class PersonagemDirector {
         return buildFromPersonagemEntity(personagemEntity);
     }
 
+    public synchronized BasePersonagem buildFromPersonagemEntity(PersonagemEntity personagemEntity, BaseEdicoesGibi edicoes) throws PersonagemInvalidoException,
+            EscritorInvalidoException {
+        personagemEntity.getEdicoes().removeIf(e -> e.getEdicaoGibi_id() == edicoes.getEdicaoGibi_id());
+        builder.setEdicaoGibi(edicoes);
+        return buildFromPersonagemEntity(personagemEntity);
+    }
+
+  
     public synchronized BasePersonagem buildFromPersonagemEntity(PersonagemEntity personagemEntity) throws PersonagemInvalidoException, EscritorInvalidoException {
 
         builder.setPersonagemId(personagemEntity.getPersonagemId());

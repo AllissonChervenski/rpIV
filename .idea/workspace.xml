@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67a413f4-359e-44c8-8560-f4c8aeaf1df8" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/editoragibi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editoragibi/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/editoragibi/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editoragibi/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/editoragibi/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-gibis/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-gibis/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-gibis/src/components/pages/Gibis.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-gibis/src/components/pages/Gibis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-gibis/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-gibis/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,19 +26,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/allis/OneDrive/Documentos/rpIV&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.language&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/allis/OneDrive/Documentos/rpIV/editoragibi",
+    "project.structure.last.edited": "Global Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.build"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Spring Boot.EditoragibiApplication">
     <configuration name="EditoragibiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="19" />
@@ -95,6 +94,7 @@
       <workItem from="1665457547821" duration="192000" />
       <workItem from="1665457759039" duration="759000" />
       <workItem from="1665463348897" duration="79000" />
+      <workItem from="1666359336083" duration="189000" />
     </task>
     <servers />
   </component>
@@ -111,6 +111,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">

@@ -16,6 +16,7 @@ public class DesenhistaBuilder implements IBaseDesenhistaBuilder {
 
     private Desenhista desenhista;
 
+    
     public DesenhistaBuilder() {
         reset();
     }
@@ -105,4 +106,6 @@ public class DesenhistaBuilder implements IBaseDesenhistaBuilder {
         reset();
         return toReturn;
     }
+
+
 }

@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+<<<<<<< HEAD
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+=======
+>>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
 @RestController
 @RequestMapping("/desenhistas/")
 public class DesenhistaController {
@@ -59,7 +62,10 @@ public class DesenhistaController {
     }
 
     @DeleteMapping("/delete/{id}")
+<<<<<<< HEAD
     @CrossOrigin( origins = "http://localhost:3000")
+=======
+>>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
     public ResponseEntity<Object> deleteDesenhista(@PathVariable Integer id) {
         try {
             desenhistaService.deleteDesenhista(id);

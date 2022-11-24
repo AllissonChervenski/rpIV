@@ -1,8 +1,7 @@
 package com.grupo2.editoragibi.Data.Entity;
 
-
-import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
+
 
 import lombok.Data;
 
@@ -10,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Data
 @Entity
@@ -22,7 +22,7 @@ public class GibiEntity extends BaseGibi{
             generator = "gibi_gibi_id_seq"
     )
     @Column(name = "gibi_id")
-    private Long gibi_id;
+    private Integer gibi_id;
 
     @Column(name = "titulo_gibi")
     private String tituloGibi;
@@ -63,11 +63,12 @@ public class GibiEntity extends BaseGibi{
         this.edicoesGibis = edicoesGibis;
     }
 
-    public Long getGibi_id() {
+    public Integer getGibi_id() {
         return gibi_id;
     }
 
-    public void setGibi_id(Long id) {
+
+    public void setGibi_id(Integer id){
         this.gibi_id = id;
     }
 

@@ -15,5 +15,9 @@ public interface IEdicoesGibiRepository  extends JpaRepository<EdicoesGibiEntity
     @Query("SELECT e FROM EdicoesGibiEntity e WHERE e.nroEdicao = ?1 ")
     Optional<EdicoesGibiEntity> findEdicoesGibiByEdicao(Integer edicao);
 
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
 }

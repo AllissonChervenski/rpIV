@@ -1,12 +1,24 @@
 package com.grupo2.editoragibi.Data.Entity;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
+<<<<<<< HEAD
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
+=======
+import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
+import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
+import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
+>>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
 import com.grupo2.editoragibi.editor.Editor;
+
 import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+
 
 
 @Data
@@ -41,24 +53,41 @@ public class EdicoesGibiEntity extends EdicoesGibi {
     @ManyToOne
     @JoinColumn(name = "editor_id")
     private Editor editor;
+    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "edicoes_historia", joinColumns = {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "historia_id")})
+    private HistoriaEntity historia;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "edicoes_escritor", joinColumns = {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "escritor_id")})
+    private List<EscritorEntity> escritorEntity = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "publica", joinColumns = {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "historia_id")})
-    private List<HistoriaEntity> historiaEntity;
+    @JoinTable(name = "edicoes_personagem", joinColumns =  {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "personagem_id")})
+    private List<PersonagemEntity> personagemEntity = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "edicoes_desenhista", joinColumns ={@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "desenhista_id")})
+    private List<DesenhistaEntity> desenhistaEntity = new ArrayList<>();
+
+
 
     public EdicoesGibiEntity(int nroEdicao, LocalDate dataPub) {
         this.nroEdicao = nroEdicao;
         this.dataPub = dataPub;
     }
 
-    public List<HistoriaEntity> getHistoriaEntity() {
-        return historiaEntity;
+    public HistoriaEntity getHistoriaEntity() {
+        return historia;
     }
 
+<<<<<<< HEAD
     public void addHistoriaEntity(HistoriaEntity historiaEntity) {
         this.historiaEntity.add(historiaEntity);
     }
 
+=======
+>>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
     public EdicoesGibiEntity(int edicaoGibiId, int nroEdicao, LocalDate dataPub) {
         this.edicaoGibi_id = edicaoGibiId;
         this.nroEdicao = nroEdicao;
@@ -99,4 +128,17 @@ public class EdicoesGibiEntity extends EdicoesGibi {
     public void setDataPub(LocalDate dataPub) {
         this.dataPub = dataPub;
     }
+
+    @Override
+    public void setGibi(BaseGibi gibi) throws EdicoesGibiInvalidoException, GibiInvalidoException {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

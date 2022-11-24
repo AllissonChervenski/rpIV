@@ -1,13 +1,28 @@
 package com.grupo2.editoragibi.Service.Builders;
 
+<<<<<<< HEAD
 import com.grupo2.editoragibi.Data.Repositories.EscritorRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBasePersonagemBuilder;
+=======
+import com.grupo2.editoragibi.Data.Repositories.EdicoesGibiRepository;
+import com.grupo2.editoragibi.Data.Repositories.EscritorRepository;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
+import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBasePersonagemBuilder;
+import com.grupo2.editoragibi.Service.Directors.EdicoesGibiDirector;
+>>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
 import com.grupo2.editoragibi.Service.Directors.EscritorDirector;
+import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
+import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -28,6 +43,14 @@ public class PersonagemBuilder implements IBasePersonagemBuilder {
     @Lazy
     @Autowired
     EscritorDirector escritorDirector;
+
+    @Autowired
+    EdicoesGibiRepository edicoesGibiRepository;
+
+    @Lazy
+    @Autowired
+    EdicoesGibiDirector edicoesGibiDirector;
+
 
     private Personagem personagem;
 
@@ -94,4 +117,27 @@ public class PersonagemBuilder implements IBasePersonagemBuilder {
         reset();
         return toReturn;
     }
+
+    @Override
+    public void setEdicaoGibi(BaseEdicoesGibi edicoes) {
+        // TODO Auto-generated method stub
+        if(edicoes instanceof EdicoesGibi){
+            personagem.getEdicoesGibi().add((EdicoesGibi) edicoes);
+        }
+        
+    }
+
+    @Override
+    public void setEdicoesGibi(List<Integer> edicoesId) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
+        // TODO Auto-generated method stub
+        List<EdicoesGibi> personagensEdicoes = personagem.getEdicoesGibi();
+        for (Integer id : edicoesId) {
+            personagensEdicoes.add((EdicoesGibi) edicoesGibiDirector.buildFromEdicoesGibiEntity(edicoesGibiRepository.getEdicaoGibiById(id).get(), personagem));
+        }
+        
+    }
+
+
+
+ 
 }

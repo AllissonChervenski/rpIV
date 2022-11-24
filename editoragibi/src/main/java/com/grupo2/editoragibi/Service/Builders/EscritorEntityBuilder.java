@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component("escritorEntityBuilder")
@@ -70,10 +71,13 @@ public class EscritorEntityBuilder implements IBaseEscritorBuilder {
 
     @Override
     public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException {
-        List<PersonagemEntity> personagensEscritor = escritorEntity.getPersonagens();
+        List<PersonagemEntity> personagensEscritor = new ArrayList<>();
+        if(personagensIds != null){
+        personagemRepository.getPersonagens().forEach(e -> personagensEscritor.add(e));
         for (Integer id : personagensIds) {
             personagensEscritor.add(personagemRepository.getPersonagemById(id));
         }
+    }
     }
 
     @Override
