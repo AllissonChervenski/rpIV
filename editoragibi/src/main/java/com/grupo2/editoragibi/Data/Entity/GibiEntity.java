@@ -33,20 +33,26 @@ public class GibiEntity extends BaseGibi{
     @Column(name = "data_encerramento")
     private LocalDate encData;
 
+    @Column( name =  "descontinuado_gibi")
+    private String descontinuadoGibi;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gibi")
     private List<EdicoesGibiEntity> edicoesGibis;
+ 
 
-    public GibiEntity(String titulo, LocalDate inicioData, LocalDate encData, List<EdicoesGibiEntity> edicoesGibis) {
+    public GibiEntity(String titulo, LocalDate inicioData, LocalDate encData, List<EdicoesGibiEntity> edicoesGibis, String descontinuadoGibi) {
         this.tituloGibi = titulo;
         this.inicioData = inicioData;
         this.encData = encData;
         this.edicoesGibis = edicoesGibis;
+        this.descontinuadoGibi = descontinuadoGibi;
     }
 
-    public GibiEntity(String titulo, LocalDate inicioData, LocalDate encData) {
+    public GibiEntity(String titulo, LocalDate inicioData, LocalDate encData, String descontinuadoGibi) {
         this.tituloGibi = titulo;
         this.inicioData = inicioData;
         this.encData = encData;
+        this.descontinuadoGibi = descontinuadoGibi;
         this.edicoesGibis = new ArrayList<>();
     }
 
@@ -88,7 +94,13 @@ public class GibiEntity extends BaseGibi{
     public void setEncData(LocalDate encData) {
         this.encData = encData;
     }
+    public String getDescontinuado() {
+        return descontinuadoGibi;
+    }
 
+    public void setDescontinuado(String descontinuadoGibi) {
+        this.descontinuadoGibi = descontinuadoGibi;
+    } 
     public List<EdicoesGibiEntity> getEdicoesGibis() {
         return edicoesGibis;
     }

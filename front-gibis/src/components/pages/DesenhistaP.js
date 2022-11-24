@@ -9,7 +9,7 @@ function DesenhistaP(){
         </h1>
 
 
-        <LinkButton to="/desenhista" text="Cadastrar novo desenhista" />
+        <LinkButton to="/newdesenhista" text="Cadastrar novo desenhista" />
         <LinkButton to="/desenhista" text="Ver desenhistas cadastrados" />
 
        

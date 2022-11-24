@@ -1,6 +1,7 @@
 package com.grupo2.editoragibi.Data.Entity;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
+import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.editor.Editor;
 import lombok.Data;
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "edicao")
-public class EdicoesGibiEntity extends BaseEdicoesGibi {
+public class EdicoesGibiEntity extends EdicoesGibi {
 
     @Id
     @GeneratedValue(
@@ -19,7 +20,7 @@ public class EdicoesGibiEntity extends BaseEdicoesGibi {
             generator =  "edicao_edicao_id_seq"
     )
     @Column(name = "edicao_id")
-    private long edicaoGibi_id;
+    private int edicaoGibi_id;
 
     @Column(name = "numero_edicao")
     private int nroEdicao;
@@ -58,7 +59,7 @@ public class EdicoesGibiEntity extends BaseEdicoesGibi {
         this.historiaEntity.add(historiaEntity);
     }
 
-    public EdicoesGibiEntity(long edicaoGibiId, int nroEdicao, LocalDate dataPub) {
+    public EdicoesGibiEntity(int edicaoGibiId, int nroEdicao, LocalDate dataPub) {
         this.edicaoGibi_id = edicaoGibiId;
         this.nroEdicao = nroEdicao;
         this.dataPub = dataPub;
@@ -79,7 +80,7 @@ public class EdicoesGibiEntity extends BaseEdicoesGibi {
         return edicaoGibi_id;
     }
 
-    public void setEdicaoGibiId(long id) {
+    public void setEdicaoGibiId(int id) {
         this.edicaoGibi_id = id;
     }
 

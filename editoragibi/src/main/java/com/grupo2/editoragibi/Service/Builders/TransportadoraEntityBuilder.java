@@ -2,6 +2,7 @@ package com.grupo2.editoragibi.Service.Builders;
 
 import com.grupo2.editoragibi.Data.Entity.TransportadoraEntity;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseTransportadora;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseTransportadoraBuilder;
 import com.grupo2.editoragibi.Service.Exceptions.TransportadoraInvalidaException;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;

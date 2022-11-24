@@ -4,6 +4,7 @@ import Container from './Container';
 import styles from './Navbar.module.css';
 import logo from '../../img/LOGOHEADER.png';
 
+
 function Navbar() {
   return (
     <div className={styles.navbar}>
@@ -33,7 +34,7 @@ function Navbar() {
           <li className={styles.item}>
             <Link to="/Login">Login</Link>
           </li>
-        </ul>
+        </ul>      
       </Container>
     </div>
   );

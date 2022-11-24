@@ -2,9 +2,10 @@ package com.grupo2.editoragibi.Service.Builders;
 
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
-import com.grupo2.editoragibi.Data.PersonagemRepository;
+import com.grupo2.editoragibi.Data.Repositories.PersonagemRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseEscritorBuilder;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
