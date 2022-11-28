@@ -36,58 +36,9 @@ public class GibiEntity extends BaseGibi{
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gibi")
     private List<EdicoesGibiEntity> edicoesGibis;
 
-    public GibiEntity(String titulo, LocalDate inicioData, LocalDate encData, List<EdicoesGibiEntity> edicoesGibis) {
-        this.tituloGibi = titulo;
-        this.inicioData = inicioData;
-        this.encData = encData;
-        this.edicoesGibis = edicoesGibis;
-    }
-
-    public GibiEntity(String titulo, LocalDate inicioData, LocalDate encData) {
-        this.tituloGibi = titulo;
-        this.inicioData = inicioData;
-        this.encData = encData;
-        this.edicoesGibis = new ArrayList<>();
-    }
-
-    public GibiEntity() {
-    }
 
     public void setEdicoesGibis(List<EdicoesGibiEntity> edicoesGibis) {
         this.edicoesGibis = edicoesGibis;
-    }
-
-    public Integer getGibi_id() {
-        return gibi_id;
-    }
-
-
-    public void setGibi_id(Integer id){
-        this.gibi_id = id;
-    }
-
-    public String getTitulo() {
-        return tituloGibi;
-    }
-
-    public void setTitulo(String titulo) {
-        this.tituloGibi = titulo;
-    }
-
-    public LocalDate getInicioData() {
-        return inicioData;
-    }
-
-    public void setInicioData(LocalDate inicioData) {
-        this.inicioData = inicioData;
-    }
-
-    public LocalDate getEncData() {
-        return encData;
-    }
-
-    public void setEncData(LocalDate encData) {
-        this.encData = encData;
     }
 
     public List<EdicoesGibiEntity> getEdicoesGibis() {

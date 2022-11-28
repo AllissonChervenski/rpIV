@@ -59,12 +59,8 @@ public class EdicoesGibi extends BaseEdicoesGibi{
 
     @Override
     public void setNroEdicao(int nroEdicao) throws EdicoesGibiInvalidoException {
-        if(nroEdicao != 0  ){
             this.nroEdicao = nroEdicao;
-        }
-        else{
-            throw new EdicoesGibiInvalidoException("Número da edição é inválido");
-        }
+        
     }
 
     @Override
@@ -74,9 +70,6 @@ public class EdicoesGibi extends BaseEdicoesGibi{
 
     @Override
     public void setGibi(BaseGibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException {
-        if(gibi == null){
-            throw new GibiInvalidoException("Informe um gibi válido"); 
-        }
         this.gibi = gibi;
         
     }
@@ -84,12 +77,8 @@ public class EdicoesGibi extends BaseEdicoesGibi{
 
     @Override
     public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException {
-        if(historia != null){
             this.historia = historia;
-        }
-        else{
-            throw new HistoriaInvalidaException("Informe uma história válida");
-        }
+        
     }
 
     public void setEditor(EscritorEntity escritorById) {

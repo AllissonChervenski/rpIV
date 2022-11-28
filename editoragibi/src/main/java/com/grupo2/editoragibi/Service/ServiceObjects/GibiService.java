@@ -63,8 +63,8 @@ public class GibiService {
 
         if (titulo != null &&
                 titulo.length() > 0 &&
-                !Objects.equals(gibi.getTitulo(), titulo)) {
-            gibi.setTitulo(titulo);
+                !Objects.equals(gibi.getTituloGibi(), titulo)) {
+            gibi.setTituloGibi(titulo);
         }
 
         if (inicio != null) {
