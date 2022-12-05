@@ -2,24 +2,18 @@ package com.grupo2.editoragibi.Service.BaseObjects;
 
 import java.time.LocalDate;
 
-<<<<<<< HEAD
-public class BaseEdicoesGibi {
-=======
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 
 public abstract class BaseEdicoesGibi {
 
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
     protected int edicaoGibi_id;
     protected int nroEdicao;
     protected LocalDate dataPub;
     protected boolean publicada;
     protected int numeroExemplaresImpressas;
-    
-<<<<<<< HEAD
-=======
+
     protected BaseGibi gibi;
     protected BaseHistoria historia;
     protected BaseEditora editora;
@@ -30,7 +24,7 @@ public abstract class BaseEdicoesGibi {
     public void setEditora(BaseEditora editora) {
         this.editora = editora;
     }
-    
+
     public int getNumeroExemplaresImpressas() {
         return numeroExemplaresImpressas;
     }
@@ -46,8 +40,7 @@ public abstract class BaseEdicoesGibi {
         return historia;
     }
     public abstract void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException;
- 
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
+
     public int getEdicaoGibi_id() {
         return edicaoGibi_id;
     }
@@ -73,5 +66,5 @@ public abstract class BaseEdicoesGibi {
         this.publicada = publicada;
     }
 
-    
+
 }

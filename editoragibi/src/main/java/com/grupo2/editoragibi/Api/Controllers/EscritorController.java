@@ -51,18 +51,10 @@ public class EscritorController {
 
         Escritor escritorToReturn = null;
         try {
-<<<<<<< HEAD
-            escritorToReturn = escritorService.addEscritor(escritorRequest);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
-
-=======
              escritorToReturn = escritorService.addEscritor(escritorRequest);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
         return new ResponseEntity<>(escritorToReturn, HttpStatus.OK);
     }
 

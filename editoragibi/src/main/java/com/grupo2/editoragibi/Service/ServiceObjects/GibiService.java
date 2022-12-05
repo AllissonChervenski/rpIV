@@ -38,19 +38,17 @@ public class GibiService {
     }
 */
     @Transactional
-<<<<<<< HEAD
+
     public void deleteGibi(Long gibiId) {
-=======
-    public void deleteGibi(Integer gibiId) {
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
-        boolean exists = gibiRepository.existsById(gibiId);
+
+        boolean exists = gibiRepository.existsById(Math.toIntExact(gibiId));
         if (!exists) {
             throw new IllegalStateException(
                     "GibiEntity com id " + gibiId + " não existe"
             );
         } else {
-            if (gibiRepository.findById(gibiId).isPresent() && gibiRepository.findById(gibiId).get().getEdicoesGibis().size() == 0) {
-                gibiRepository.deleteById(gibiId);
+            if (gibiRepository.findById(Math.toIntExact(gibiId)).isPresent() && gibiRepository.findById(Math.toIntExact(gibiId)).get().getEdicoesGibis().size() == 0) {
+                gibiRepository.deleteById(Math.toIntExact(gibiId));
             } else {
                 throw new IllegalStateException(
                         "GibiEntity possui uma ou mais edições, portanto não pode ser deletado."
@@ -61,12 +59,9 @@ public class GibiService {
     }
 
     @Transactional
-<<<<<<< HEAD
     public void updateGibi(Long gibiId, String titulo, LocalDate inicio, LocalDate enc, EdicoesGibiEntity edicoes) {
-=======
-    public void updateGibi(Integer gibiId, String titulo, LocalDate inicio, LocalDate enc, EdicoesGibiEntity edicoes) {
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
-        GibiEntity gibi = gibiRepository.findById(gibiId).orElseThrow(
+
+        GibiEntity gibi = gibiRepository.findById(Math.toIntExact(gibiId)).orElseThrow(
                 () -> new IllegalStateException("GibiEntity com id" + gibiId + " não existe"));
 
         if (titulo != null &&

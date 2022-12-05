@@ -1,11 +1,9 @@
 package com.grupo2.editoragibi.Service.Builders;
 
-<<<<<<< HEAD
 import com.grupo2.editoragibi.Data.Repositories.EscritorRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBasePersonagemBuilder;
-=======
 import com.grupo2.editoragibi.Data.Repositories.EdicoesGibiRepository;
 import com.grupo2.editoragibi.Data.Repositories.EscritorRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
@@ -13,7 +11,6 @@ import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBasePersonagemBuilder;
 import com.grupo2.editoragibi.Service.Directors.EdicoesGibiDirector;
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
 import com.grupo2.editoragibi.Service.Directors.EscritorDirector;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.Service.Domain.Escritor;

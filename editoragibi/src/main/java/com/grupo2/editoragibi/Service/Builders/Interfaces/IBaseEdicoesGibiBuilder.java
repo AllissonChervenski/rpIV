@@ -5,10 +5,6 @@ import java.util.List;
 
 import com.grupo2.editoragibi.Data.Entity.GibiEntity;
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
-<<<<<<< HEAD
-import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
-import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
-=======
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
@@ -22,37 +18,18 @@ import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
 import com.grupo2.editoragibi.editor.Editor;
 
 public interface IBaseEdicoesGibiBuilder{
 
-<<<<<<< HEAD
-    public void setDataPub(LocalDate dataPub);
-=======
     public void setDataPub(LocalDate dataPub) throws EdicoesGibiInvalidoException;
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
 
-   
+
     public void setEdicaoGibiId(int id);
 
-<<<<<<< HEAD
-    public void setEdicaoGibi_id(int edicaoGibi_id);
-
- 
-    public void setEditor(Editor editor);
-
-  
-    public void setGibi(GibiEntity gibi);
-
-    public void setHistoriaEntity(List<HistoriaEntity> historiaEntity);
-
-
-    public void setNroEdicao(int nroEdicao);
-=======
     public void setEditor(Integer editorId);
 
-  
+
     public void setGibi(Integer gibiId) throws GibiInvalidoException, EdicoesGibiInvalidoException;
 
     public void setGibi(BaseGibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException;
@@ -73,25 +50,20 @@ public interface IBaseEdicoesGibiBuilder{
 
     public void setDesenhista(Integer desenhistaId) throws DesenhistaInvalidoException;
 
-    public void setEscritores(List<Integer> escritorId);
+    public void setEscritores(List<Integer> escritorId) throws EscritorInvalidoException, PersonagemInvalidoException;
 
     public void setEscritor(BaseEscritor escritor);
 
     public void setEscritor(Integer escritorId) throws EscritorInvalidoException, PersonagemInvalidoException;
 
     public void setNroEdicao(int nroEdicao) throws EdicoesGibiInvalidoException;
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
 
     public void setNumeroExemplaresImpressas(int numeroExemplaresImpressas);
 
     public void setPublicada(boolean publicada);
 
 
-<<<<<<< HEAD
-    public EdicoesGibi getResult();
-=======
     public BaseEdicoesGibi getResult();
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
-  
-    
+
+
 }

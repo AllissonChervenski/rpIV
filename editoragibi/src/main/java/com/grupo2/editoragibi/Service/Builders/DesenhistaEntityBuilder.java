@@ -4,16 +4,13 @@ import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
 import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import com.grupo2.editoragibi.Data.Repositories.EdicoesGibiRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
-<<<<<<< HEAD
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseDesenhistaBuilder;
 
-=======
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseDesenhistaBuilder;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

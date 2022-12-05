@@ -40,20 +40,14 @@ public class GibiController {
     */
 
     @DeleteMapping(path = "{gibiId}")
-<<<<<<< HEAD
     public void deleteGibi(@PathVariable("gibiId") Long gibiId){
-=======
-    public void deleteGibi(@PathVariable("gibiId") Integer gibiId){
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
+
         gibiService.deleteGibi(gibiId);
     }
 
     @PutMapping(path = "{gibiId}")
-<<<<<<< HEAD
     public void updateGibi(@PathVariable("gibiId") Long gibiId,
-=======
-    public void updateGibi(@PathVariable("gibiId") Integer gibiId,
->>>>>>> e08ba23a7ae72b2cf741c87f80d5cc756ffdadb5
+
                            @RequestParam(required = false) String titulo,
                            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
                            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate enc,
