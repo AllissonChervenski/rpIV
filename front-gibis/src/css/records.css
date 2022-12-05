@@ -1,0 +1,31 @@
+.records{
+    width: 1500%;    
+    
+}
+.records tr {
+   
+    vertical-align: top
+}
+.records,th,td{
+    border: 1px solid #444;
+    border-collapse: collapse;
+    padding: 5px 2px;   
+}
+table{
+    width: 100%;
+}
+.conteudo{
+    text-align: left;
+
+}
+.acoes{
+    text-align: center;
+}
+th{
+   background-color: #264696;
+    color: #fff; 
+
+}
+tr:hover{
+    background-color: #f7f5f5;
+}
