@@ -13,7 +13,7 @@ import lombok.Data;
 public class GibiRequest extends BaseGibi{
 
     @NotNull
-    private List<Long> edicoesGibiId;
+    private List<Integer> edicoesGibiId;
 
     @Override
     public LocalDate getEncData() {
@@ -35,7 +35,7 @@ public class GibiRequest extends BaseGibi{
         }
 
 
-    public void setEdicoesGibiId(List<Long> edicoesGibiId) {
+    public void setEdicoesGibiId(List<Integer> edicoesGibiId) {
         this.edicoesGibiId = edicoesGibiId;
     }
 

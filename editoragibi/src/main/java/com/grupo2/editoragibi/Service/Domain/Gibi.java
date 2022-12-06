@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 
@@ -45,5 +46,13 @@ public class Gibi extends BaseGibi {
         }
         
     }
-    
+
+
+    public void setEdicaoGibi(BaseEdicoesGibi edicaoGibi){
+        this.edicoesGibi.add((EdicoesGibi) edicaoGibi);
+    }
+
+    public void setEdicoesGibi(ArrayList<EdicoesGibi> edicoesGibi) {
+        this.edicoesGibi = edicoesGibi;
+    }
 }

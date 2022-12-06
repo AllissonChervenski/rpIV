@@ -24,12 +24,10 @@ public interface IBaseEdicoesGibiBuilder{
 
     public void setDataPub(LocalDate dataPub) throws EdicoesGibiInvalidoException;
 
-   
     public void setEdicaoGibiId(int id);
 
     public void setEditor(Integer editorId);
 
-  
     public void setGibi(Integer gibiId) throws GibiInvalidoException, EdicoesGibiInvalidoException;
 
     public void setGibi(BaseGibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException;

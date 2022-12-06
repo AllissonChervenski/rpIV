@@ -1,11 +1,18 @@
 package com.grupo2.editoragibi.Service.ServiceObjects;
 
 
+import com.grupo2.editoragibi.Api.Requests.GibiRequest;
 import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import com.grupo2.editoragibi.Data.Entity.GibiEntity;
+import com.grupo2.editoragibi.Data.Repositories.EdicoesGibiRepository;
+import com.grupo2.editoragibi.Data.Repositories.GibiRepository;
 import com.grupo2.editoragibi.Data.Repositories.Interfaces.IGibiRepository;
+import com.grupo2.editoragibi.Service.Directors.GibiDirector;
+import com.grupo2.editoragibi.Service.Domain.Gibi;
+import com.grupo2.editoragibi.Service.Exceptions.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,35 +25,52 @@ import java.util.Optional;
 @Service
 public class GibiService {
 
-    private final IGibiRepository gibiRepository;
+    @Autowired
+    GibiRepository gibiRepository;
+
+    @Qualifier("gibiDirector")
+    @Autowired
+    GibiDirector gibiDirector;
+
+    @Qualifier("GibiEntityDirector")
+    @Autowired
+    GibiDirector gibiEntityDirector;
 
     @Autowired
-    public GibiService(IGibiRepository gibiRepository) {
-        this.gibiRepository = gibiRepository;
+    EdicoesGibiRepository edicoesGibiRepository;
+
+    public List<Gibi> getGibis() throws GibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException {
+        List<GibiEntity> gibiEntity = gibiRepository.getGibis();
+        List<Gibi> gibi = new ArrayList<>();
+        for(GibiEntity g : gibiEntity){
+            gibi.add((Gibi) gibiDirector.buildFromGibiEntity(g));
+        }
+
+        return gibi;
     }
 
-    public List<GibiEntity> getGibis() {
-        return gibiRepository.findAll();
-    }
-/* 
-    public void addGibi(GibiEntity gibi) {
-        Optional<GibiEntity> gibiOptional = gibiRepository.findGibiByTitulo(gibi.getTitulo());
+    public Gibi addGibi(GibiRequest gibiRequest) throws GibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException {
+        Optional<GibiEntity> gibiOptional = gibiRepository.getGibiByTitulo(gibiRequest.getTituloGibi());
         if (gibiOptional.isPresent()) {
             throw new IllegalStateException("Titulo já existente");
         }
-        gibiRepository.save(gibi);
+        Gibi gibi = (Gibi) gibiEntityDirector.buildFromGibiRequest(gibiRequest);
+        GibiEntity gibiEntity = (GibiEntity) gibiEntityDirector.buildFromGibi(gibi);
+        return gibiRepository.save(gibiEntity);
+        
     }
-*/
+   
+
     @Transactional
-    public void deleteGibi(Integer gibiId) {
-        boolean exists = gibiRepository.existsById(gibiId);
+    public void deleteGibi(Integer gibiId) throws GibiInvalidoException {
+        boolean exists = gibiRepository.getGibiById(gibiId).isPresent();
         if (!exists) {
             throw new IllegalStateException(
                     "GibiEntity com id " + gibiId + " não existe"
             );
         } else {
-            if (gibiRepository.findById(gibiId).isPresent() && gibiRepository.findById(gibiId).get().getEdicoesGibis().size() == 0) {
-                gibiRepository.deleteById(gibiId);
+            if (gibiRepository.getGibiById(gibiId).isPresent() && gibiRepository.getGibiById(gibiId).get().getEdicoesGibis().size() == 0) {
+                gibiRepository.deleteGibi(gibiId);
             } else {
                 throw new IllegalStateException(
                         "GibiEntity possui uma ou mais edições, portanto não pode ser deletado."
@@ -57,8 +81,8 @@ public class GibiService {
     }
 
     @Transactional
-    public void updateGibi(Integer gibiId, String titulo, LocalDate inicio, LocalDate enc, EdicoesGibiEntity edicoes) {
-        GibiEntity gibi = gibiRepository.findById(gibiId).orElseThrow(
+    public void updateGibi(Integer gibiId, String titulo, LocalDate inicio, LocalDate enc, EdicoesGibiEntity edicoes) throws IllegalStateException, GibiInvalidoException {
+        GibiEntity gibi = gibiRepository.getGibiById(gibiId).orElseThrow(
                 () -> new IllegalStateException("GibiEntity com id" + gibiId + " não existe"));
 
         if (titulo != null &&
@@ -85,24 +109,29 @@ public class GibiService {
                 }
             }
         }
-        gibiRepository.save(gibi);
-    }
-
-  /*   public void addEdicaoGibi(Long gibiId, Long edicaoGibiId) {
-        Optional<EdicoesGibiEntity> edicoesGibiOptional = gibiRepository.findEdicaoGibiById(edicaoGibiId);
-        GibiEntity gibi = gibiRepository.getById(gibiId);
-        if (edicoesGibiOptional.isPresent()) {
-            if (gibi.getEdicoesGibis() != null) {
-                gibi.getEdicoesGibis().add(edicoesGibiOptional.get());
-            }
-            else{
-                gibi.setEdicoesGibis(new ArrayList<>());
-                gibi.getEdicoesGibis().add(edicoesGibiOptional.get());
-            }
-        } else {
-            throw new IllegalStateException("Edicao nao encontrada");
+        if(edicoes != null){
+            gibi.setEdicaoGibi(edicoes);
         }
         gibiRepository.save(gibi);
     }
-     */
+
+    public void addEdicaoGibi(Integer gibiId, Integer edicaoGibiId) throws GibiInvalidoException, EdicoesGibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, HistoriaInvalidaException {
+        Optional<EdicoesGibiEntity> edicoesGibiOptional = edicoesGibiRepository.getEdicaoGibiById(edicaoGibiId);
+        Optional<GibiEntity> gibi = gibiRepository.getGibiById(gibiId);
+
+        if (edicoesGibiOptional.isPresent() && gibi.isPresent()) {
+            if (gibi.get().getEdicoesGibi() != null) {
+                gibi.get().getEdicoesGibi().add(edicoesGibiOptional.get());
+            }
+            else {
+                gibi.get().setEdicoesGibi(new ArrayList<>());
+                gibi.get().getEdicoesGibi().add(edicoesGibiOptional.get());
+            }
+
+        } else {
+            throw new EdicoesGibiInvalidoException("Edicao nao encontrada");
+        }
+        gibiRepository.save((GibiEntity) gibiDirector.buildFromGibi(gibi.get()));
+    }
+
 }

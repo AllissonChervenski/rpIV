@@ -85,6 +85,7 @@ public class EdicoesGibiService {
         return  edicoesGibiRepository.save(edicoesGibiEntity);
     }
 
+    
     public void deleteEdicoesGibi(Integer edicoesGibiId) throws EdicoesGibiInvalidoException {
         Optional<EdicoesGibiEntity> eOptional = edicoesGibiRepository.getEdicaoGibiById(edicoesGibiId);
         if (!eOptional.isPresent()) {

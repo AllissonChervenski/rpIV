@@ -31,6 +31,13 @@ public class GibiRepository {
         return iGibiRepository.findAll();
      }
 
+     public Optional<GibiEntity> getGibiByTitulo(String titulo) throws GibiInvalidoException{
+        if(!iGibiRepository.findGibiByTitulo(titulo).isPresent()){
+            throw new GibiInvalidoException("Gibi não encontrado");
+        }
+        return iGibiRepository.findGibiByTitulo(titulo);
+     }
+
      public GibiEntity addGibi(GibiEntity gibi){
         return iGibiRepository.save(gibi);
      }
@@ -50,5 +57,9 @@ public class GibiRepository {
         }
         gibi.setGibi_id(id);
         return iGibiRepository.save(gibi);
+     }
+
+     public GibiEntity save(GibiEntity gibiEntity){
+        return iGibiRepository.save(gibiEntity);
      }
 }

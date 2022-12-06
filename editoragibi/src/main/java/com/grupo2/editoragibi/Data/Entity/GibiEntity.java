@@ -3,6 +3,7 @@ package com.grupo2.editoragibi.Data.Entity;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 
 
+import com.grupo2.editoragibi.Service.Domain.Gibi;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "gibi")
-public class GibiEntity extends BaseGibi{
+public class GibiEntity extends Gibi {
 
     @Id
     @GeneratedValue(
@@ -43,5 +44,9 @@ public class GibiEntity extends BaseGibi{
 
     public List<EdicoesGibiEntity> getEdicoesGibis() {
         return edicoesGibis;
+    }
+
+    public void setEdicaoGibi(EdicoesGibiEntity edicoes) {
+        edicoesGibis.add(edicoes);
     }
 }

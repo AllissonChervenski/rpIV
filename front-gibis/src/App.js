@@ -7,7 +7,6 @@ import Financeiro from './components/pages/FinanceiroP'
 import Container from './components/layout/Container'
 import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
-import Desenhista from './components/pages/Desenhista'
 import Transportadoras from './components/pages/Transportadoras'
 import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
@@ -20,15 +19,17 @@ import EditorHomePage from './components/pages/EditorHomePage'
 import NewGibi from './components/pages/NewGibi'
 import NewDesenhista from './components/pages/NewDesenhista'
 import ViewDesenhista from './components/pages/ViewDesenhista'
-
+import Desenhista from './components/pages/crudDesenhista/DesenhistaLIsta'
+import deletar from './components/pages/crudDesenhista/deletar'
 import axios from 'axios'
+
 
 
 
 function App() {
 
   
-
+/*
         fetch("http://localhost:8080/gibis/view",  {
             method: 'GET',
             mode: 'cors',
@@ -36,7 +37,7 @@ function App() {
         })
         .then((response) => response.json())
         .then((data) => console.log(data))
-
+*/
   return (
 
     <Router>
@@ -115,6 +116,10 @@ function App() {
 
         <Route exact path="/banca"> 
         <Banca />
+        </Route>
+
+        <Route exact path="/desenhista/delete">
+        <deletar />
         </Route>
 
 
