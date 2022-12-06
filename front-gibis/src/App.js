@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './components/pages/Home'
 import Cadastros from './components/pages/Cadastros'
-import Escritor from './components/pages/Escritor'
 import Gibis from './components/pages/Gibis'
 import Financeiro from './components/pages/FinanceiroP'
 import Container from './components/layout/Container'
 import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
 import Desenhista from './components/pages/crudDesenhista/DesenhistaLIsta'
+import Escritor from './components/pages/crudEscritor/EscritorLista'
+import Gibi from './components/pages/crudGibi/GibiLista'
 import Transportadoras from './components/pages/Transportadoras'
 import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
@@ -17,9 +18,8 @@ import NewEscritor from './components/pages/NewEscritor'
 import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
-import NewGibi from './components/pages/NewGibi'
+import Nascimento from './components/pages/NewGibi'
 import NewDesenhista from './components/pages/NewDesenhista'
-import ViewDesenhista from './components/pages/ViewDesenhista'
 
 import axios from 'axios'
 
@@ -46,8 +46,12 @@ function App() {
         <Gibis />
         </Route>
 
+        <Route exact path="/gibi"> 
+        <Gibi />
+        </Route>
+
         <Route exact path="/newgibi">
-        <NewGibi />
+        <Nascimento />
         </Route>
 
         <Route exact path="/gibisp"> 
@@ -85,10 +89,6 @@ function App() {
         
         <Route exact path="/newdesenhista">
         <NewDesenhista />
-        </Route>
-
-        <Route exact path="/viewdesenhista">
-        <ViewDesenhista />
         </Route>
 
         <Route exact path="/transportadoras"> 
