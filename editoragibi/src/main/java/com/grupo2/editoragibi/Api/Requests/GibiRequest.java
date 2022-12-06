@@ -14,27 +14,6 @@ public class GibiRequest extends BaseGibi{
 
     @NotNull
     private List<Long> edicoesGibiId;
-
-    @Override
-    public LocalDate getEncData() {
-        // TODO Auto-generated method stub
-        return this.encData;
-    }
-
-
-    @Override
-    public LocalDate getInicioData() {
-        // TODO Auto-generated method stub
-        return this.inicioData;
-    }
-
-    @Override
-    public String getTituloGibi() {
-        // TODO Auto-generated method stub
-        return this.tituloGibi;
-        }
-
-
     public void setEdicoesGibiId(List<Long> edicoesGibiId) {
         this.edicoesGibiId = edicoesGibiId;
     }

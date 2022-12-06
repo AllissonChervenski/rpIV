@@ -13,11 +13,4 @@ import java.util.Optional;
 @Repository
 public interface IGibiRepository extends JpaRepository<GibiEntity, Integer>{
 
-    @Query("SELECT g FROM GibiEntity g WHERE g.tituloGibi = ?1")
-    Optional<GibiEntity> findGibiByTitulo(String titulo);
-
-    @Query("SELECT e FROM EdicoesGibiEntity e WHERE e.edicaoGibi_id = ?1")
-
-    Optional<EdicoesGibiEntity> findEdicaoGibiById(Long id);
-
 }
