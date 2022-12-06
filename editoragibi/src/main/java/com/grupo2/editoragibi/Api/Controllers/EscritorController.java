@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping("/escritores")
 public class EscritorController {
@@ -53,12 +53,14 @@ public class EscritorController {
         try {
              escritorToReturn = escritorService.addEscritor(escritorRequest);
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
         return new ResponseEntity<>(escritorToReturn, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
+    @CrossOrigin( origins = "http://localhost:3000")
     public ResponseEntity<Object> deleteEscritor(@PathVariable int id) {
 
         try {

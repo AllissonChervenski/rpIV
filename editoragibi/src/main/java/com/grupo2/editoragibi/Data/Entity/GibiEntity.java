@@ -22,7 +22,7 @@ public class GibiEntity extends BaseGibi{
             generator = "gibi_gibi_id_seq"
     )
     @Column(name = "gibi_id")
-    private Integer gibi_id;
+    private Integer gibiId;
 
     @Column(name = "titulo_gibi")
     private String tituloGibi;
@@ -64,12 +64,12 @@ public class GibiEntity extends BaseGibi{
     }
 
     public Integer getGibi_id() {
-        return gibi_id;
+        return gibiId;
     }
 
 
     public void setGibi_id(Integer id){
-        this.gibi_id = id;
+        this.gibiId = id;
     }
 
     public String getTitulo() {
