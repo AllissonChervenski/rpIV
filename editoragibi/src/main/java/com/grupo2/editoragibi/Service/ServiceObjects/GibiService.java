@@ -39,14 +39,14 @@ public class GibiService {
     @Autowired
     EdicoesGibiRepository edicoesGibiRepository;
 
-    public List<Gibi> getGibis() throws GibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException {
+    public List<GibiEntity> getGibis() throws GibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException {
         List<GibiEntity> gibiEntity = gibiRepository.getGibis();
-        List<Gibi> gibi = new ArrayList<>();
-        for(GibiEntity g : gibiEntity){
-            gibi.add((Gibi) gibiDirector.buildFromGibiEntity(g));
-        }
+        //List<Gibi> gibi = new ArrayList<>();
+        //for(GibiEntity g : gibiEntity){
+        //    gibi.add((Gibi) gibiDirector.buildFromGibiEntity(g));
+        //}
 
-        return gibi;
+        return gibiEntity;
     }
 
     public Gibi addGibi(GibiRequest gibiRequest) throws GibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException {

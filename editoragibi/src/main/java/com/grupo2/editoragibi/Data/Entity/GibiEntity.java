@@ -38,14 +38,6 @@ public class GibiEntity extends Gibi {
     private List<EdicoesGibiEntity> edicoesGibis;
 
 
-    public void setEdicoesGibis(List<EdicoesGibiEntity> edicoesGibi) {
-        this.edicoesGibis = edicoesGibi;
-    }
-
-    public List<EdicoesGibiEntity> getEdicoesGibis() {
-        return this.edicoesGibis;
-    }
-
     public void setEdicaoGibi(EdicoesGibiEntity edicoes) {
         this.edicoesGibis.add(edicoes);
     }

@@ -26,7 +26,7 @@ public class GibiDirector {
     }
 
     public synchronized BaseGibi buildFromGibiRequest(GibiRequest gibiRequest) throws GibiInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
-        
+        builder.setGibi_id(gibiRequest.getGibi_id());;
         builder.setEncData(gibiRequest.getEncData());
         builder.setInicioData(gibiRequest.getInicioData());
         builder.setTituloGibi(gibiRequest.getTituloGibi());
@@ -36,6 +36,7 @@ public class GibiDirector {
     }
 
     public synchronized BaseGibi buildFromGibiEntity(GibiEntity gibiEntity) throws GibiInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+        builder.setGibi_id(gibiEntity.getGibi_id());
         builder.setEncData(gibiEntity.getEncData());
         builder.setInicioData(gibiEntity.getInicioData());
         builder.setTituloGibi(gibiEntity.getTituloGibi());
@@ -47,6 +48,7 @@ public class GibiDirector {
     }
 
     public synchronized BaseGibi buildFromGibi(Gibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
+        builder.setGibi_id(gibi.getGibi_id());
         builder.setEncData(gibi.getEncData());
         builder.setInicioData(gibi.getInicioData());
         builder.setTituloGibi(gibi.getTituloGibi());

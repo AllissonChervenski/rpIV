@@ -31,7 +31,7 @@ public class GibiController {
 
     @GetMapping(path="/all")
     public ResponseEntity<Object> getGibis() throws GibiInvalidoException{
-        List<Gibi> gibi = null;
+        List<GibiEntity> gibi = null;
 
         try {
         gibi = gibiService.getGibis();
