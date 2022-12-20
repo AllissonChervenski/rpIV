@@ -56,7 +56,7 @@ public class GibiService {
         }
         Gibi gibi = (Gibi) gibiEntityDirector.buildFromGibiRequest(gibiRequest);
         GibiEntity gibiEntity = (GibiEntity) gibiEntityDirector.buildFromGibi(gibi);
-        return gibiRepository.save(gibiEntity);
+        return gibiRepository.addGibi(gibiEntity);
         
     }
    
@@ -112,7 +112,7 @@ public class GibiService {
         if(edicoes != null){
             gibi.setEdicaoGibi(edicoes);
         }
-        gibiRepository.save(gibi);
+        gibiRepository.addGibi(gibi);
     }
 
     public void addEdicaoGibi(Integer gibiId, Integer edicaoGibiId) throws GibiInvalidoException, EdicoesGibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, HistoriaInvalidaException {
@@ -131,7 +131,7 @@ public class GibiService {
         } else {
             throw new EdicoesGibiInvalidoException("Edicao nao encontrada");
         }
-        gibiRepository.save((GibiEntity) gibiDirector.buildFromGibi(gibi.get()));
+        gibiRepository.addGibi((GibiEntity) gibiDirector.buildFromGibi(gibi.get()));
     }
 
 }

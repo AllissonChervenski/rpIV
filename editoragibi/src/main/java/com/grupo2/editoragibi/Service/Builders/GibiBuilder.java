@@ -45,8 +45,8 @@ public class GibiBuilder  implements IBaseGibiBuilder{
     }
 
     @Override
-    public void setGibi_Id(Integer gibi_Id) {
-        gibi.setGibi_Id(gibi_Id);
+    public void setGibi_id(Integer gibi_id) {
+        gibi.setGibi_id(gibi_id);
     }
 
     @Override

@@ -6,17 +6,17 @@ import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 
 public abstract class BaseGibi {
     
-    protected Integer gibi_Id;
+    protected Integer gibi_id;
     protected String tituloGibi;
     protected LocalDate inicioData;
     protected LocalDate encData;
     
    
-    public Integer getGibi_Id() {
-        return gibi_Id;
+    public Integer getGibi_id() {
+        return gibi_id;
     }
-    public void setGibi_Id(Integer gibi_Id) {
-        this.gibi_Id = gibi_Id;
+    public void setGibi_id(Integer gibi_id) {
+        this.gibi_id = gibi_id;
     }
     public String getTituloGibi() {
         return tituloGibi;

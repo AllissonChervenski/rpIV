@@ -17,7 +17,7 @@ public class Gibi extends BaseGibi {
     
 
     public List<EdicoesGibi> getEdicoesGibi() {
-        return edicoesGibi;
+        return this.edicoesGibi;
     }
 
     @Override
@@ -38,12 +38,13 @@ public class Gibi extends BaseGibi {
 
     @Override
     public void setTituloGibi(String tituloGibi) throws GibiInvalidoException {
-        if(tituloGibi != null && Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,100}$", tituloGibi)){
+        //if(tituloGibi != null && Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,100}$", tituloGibi)){
+        if(tituloGibi != null)
             this.tituloGibi = tituloGibi;
-        }
-        else{
-            throw new GibiInvalidoException("Titulo inválido");
-        }
+        //}
+        //else{
+        //    throw new GibiInvalidoException("Titulo inválido");
+        //}
         
     }
 

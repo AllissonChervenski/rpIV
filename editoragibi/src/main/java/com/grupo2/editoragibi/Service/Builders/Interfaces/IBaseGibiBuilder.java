@@ -16,7 +16,7 @@ public interface IBaseGibiBuilder {
 
     public void setEncData(LocalDate encData);
 
-    public void setGibi_Id(Integer gibi_Id);
+    public void setGibi_id(Integer gibi_id);
 
     public void setInicioData(LocalDate inicioData);
 
