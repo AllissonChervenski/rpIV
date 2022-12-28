@@ -35,7 +35,7 @@ public class GibiEntity extends Gibi {
     private LocalDate encData;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gibi")
-    private List<EdicoesGibiEntity> edicoesGibis;
+    private List<EdicoesGibiEntity> edicoesGibis = new ArrayList<>();
 
 
     public void setEdicaoGibi(EdicoesGibiEntity edicoes) {

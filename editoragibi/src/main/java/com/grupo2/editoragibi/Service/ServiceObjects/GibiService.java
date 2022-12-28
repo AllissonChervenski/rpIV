@@ -120,14 +120,7 @@ public class GibiService {
         Optional<GibiEntity> gibi = gibiRepository.getGibiById(gibiId);
 
         if (edicoesGibiOptional.isPresent() && gibi.isPresent()) {
-            if (gibi.get().getEdicoesGibi() != null) {
                 gibi.get().getEdicoesGibi().add(edicoesGibiOptional.get());
-            }
-            else {
-                gibi.get().setEdicoesGibi(new ArrayList<>());
-                gibi.get().getEdicoesGibi().add(edicoesGibiOptional.get());
-            }
-
         } else {
             throw new EdicoesGibiInvalidoException("Edicao nao encontrada");
         }

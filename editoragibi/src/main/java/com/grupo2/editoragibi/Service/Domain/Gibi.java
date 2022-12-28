@@ -13,11 +13,11 @@ import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 //Tem ao menos uma edicao: Sim ou Nao | Descontinuado: Sim ou Nao 
 public class Gibi extends BaseGibi {
     
-    List<EdicoesGibi> edicoesGibi = new ArrayList<>();
+    List<EdicoesGibi> edicoesGibis = new ArrayList<>();
     
 
     public List<EdicoesGibi> getEdicoesGibi() {
-        return this.edicoesGibi;
+        return this.edicoesGibis;
     }
 
     @Override
@@ -50,10 +50,12 @@ public class Gibi extends BaseGibi {
 
 
     public void setEdicaoGibi(BaseEdicoesGibi edicaoGibi){
-        this.edicoesGibi.add((EdicoesGibi) edicaoGibi);
+        this.edicoesGibis.add((EdicoesGibi) edicaoGibi);
     }
 
-    public void setEdicoesGibi(ArrayList<EdicoesGibi> edicoesGibi) {
-        this.edicoesGibi = edicoesGibi;
+    /* public void setEdicoesGibi(ArrayList<EdicoesGibi> edicoesGibi) {
+        this.edicoesGibis = edicoesGibi;
     }
+    */
+    
 }
