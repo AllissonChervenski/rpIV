@@ -29,12 +29,24 @@ public class Config {
         return new EdicoesGibiDirector(edicoesGibiBuilder);
     }
 
-
     @Bean(name = "edicoesGibiEntityDirector")
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     EdicoesGibiDirector getEdicoesGibiDirector(EdicoesGibiEntityBuilder edicoesGibiBuilder) {
         return new EdicoesGibiDirector(edicoesGibiBuilder);
     }
+
+    @Bean(name = "gibiDirector")
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    GibiDirector getGibiDirector(GibiBuilder gibiBuilder) {
+        return new GibiDirector(gibiBuilder);
+    }
+
+    @Bean(name = "GibiEntityDirector")
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    GibiDirector getGibiDirector(GibiEntityBuilder GibiBuilder) {
+        return new GibiDirector(GibiBuilder);
+    }
+
 
     @Bean(name = "bancaEntityDirector")
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -111,18 +123,6 @@ public class Config {
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     TransportadoraDirector getTransportadoraEntityDirector(TransportadoraEntityBuilder transportadoraEntityBuilder) {
         return new TransportadoraDirector(transportadoraEntityBuilder);
-    }
-
-    @Bean(name = "gibiDirector")
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    GibiDirector getGibiDirector(GibiEntityBuilder gibiEntityBuilder) {
-        return new GibiDirector(gibiEntityBuilder);
-    }
-
-    @Bean(name = "gibiEntityDirector")
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    GibiDirector getGibiEntityDirector(GibiEntityBuilder gibiEntityBuilder) {
-        return new GibiDirector(gibiEntityBuilder);
     }
 
 }

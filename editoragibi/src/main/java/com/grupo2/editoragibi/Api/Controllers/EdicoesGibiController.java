@@ -1,8 +1,7 @@
 package com.grupo2.editoragibi.Api.Controllers;
 
 import com.grupo2.editoragibi.Api.Requests.EdicoesGibiRequest;
-import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
-import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
+import com.grupo2.editoragibi.Data.Entity.*;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
@@ -86,10 +85,15 @@ public class EdicoesGibiController {
     public ResponseEntity<Object> updateEdicoesGibi(@PathVariable Integer edicoesGibiId,
                                                     @RequestParam(required = false) Integer nroEdicao,
                                                     @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataPub,
-                                                    @RequestParam(required = false)HistoriaEntity historiaEntity) throws HistoriaInvalidaException, DesenhistaInvalidoException{
+                                                    @RequestParam(required = false)HistoriaEntity historiaEntity,
+                                                    @RequestParam(required = false) Boolean isPublicada,
+                                                    @RequestParam(required = false) GibiEntity gibiEntity,
+                                                    @RequestParam(required = false)EscritorEntity escritorEntity,
+                                                    @RequestParam(required = false)PersonagemEntity personagemEntity,
+                                                    @RequestParam(required = false) DesenhistaEntity desenhistaEntity) throws HistoriaInvalidaException, DesenhistaInvalidoException{
         EdicoesGibi edicoesGibi = null;
         try {
-            edicoesGibi = edicoesGibiService.updateEdicoesGibi(edicoesGibiId, nroEdicao, dataPub, nroEdicao, false, historiaEntity, null, null, null, null);
+            edicoesGibi = edicoesGibiService.updateEdicoesGibi(edicoesGibiId, nroEdicao, dataPub, nroEdicao, isPublicada, historiaEntity, gibiEntity, escritorEntity, personagemEntity, desenhistaEntity);
         } catch (EdicoesGibiInvalidoException | GibiInvalidoException | PersonagemInvalidoException | EscritorInvalidoException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }

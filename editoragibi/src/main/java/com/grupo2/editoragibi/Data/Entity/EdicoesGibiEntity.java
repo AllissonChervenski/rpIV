@@ -1,12 +1,6 @@
 package com.grupo2.editoragibi.Data.Entity;
 
-import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
-import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
-import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
-import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
-import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
-import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import com.grupo2.editoragibi.editor.Editor;
 
 import lombok.Data;
@@ -49,7 +43,7 @@ public class EdicoesGibiEntity extends EdicoesGibi {
     @ManyToOne
     @JoinColumn(name = "editor_id")
     private Editor editor;
-    
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinTable(name = "edicoes_historia", joinColumns = {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "historia_id")})
     private HistoriaEntity historia;
@@ -67,66 +61,7 @@ public class EdicoesGibiEntity extends EdicoesGibi {
     private List<DesenhistaEntity> desenhistaEntity = new ArrayList<>();
 
 
-
-    public EdicoesGibiEntity(int nroEdicao, LocalDate dataPub) {
-        this.nroEdicao = nroEdicao;
-        this.dataPub = dataPub;
-    }
-
     public HistoriaEntity getHistoriaEntity() {
         return historia;
-    }
-
-    public EdicoesGibiEntity(int edicaoGibiId, int nroEdicao, LocalDate dataPub) {
-        this.edicaoGibi_id = edicaoGibiId;
-        this.nroEdicao = nroEdicao;
-        this.dataPub = dataPub;
-    }
-
-    public EdicoesGibiEntity() {
-    }
-
-    public int getNumeroExemplaresImpressas() {
-        return numeroExemplaresImpressas;
-    }
-
-    public void setNumeroExemplaresImpressas(int numeroExemplaresImpressas) {
-        this.numeroExemplaresImpressas = numeroExemplaresImpressas;
-    }
-
-    public long getEdicaoGibiId() {
-        return edicaoGibi_id;
-    }
-
-    public void setEdicaoGibiId(int id) {
-        this.edicaoGibi_id = id;
-    }
-
-    public int getNroEdicao() {
-        return nroEdicao;
-    }
-
-    public void setNroEdicao(int nroEdicao) {
-        this.nroEdicao = nroEdicao;
-    }
-
-    public LocalDate getDataPub() {
-        return dataPub;
-    }
-
-    public void setDataPub(LocalDate dataPub) {
-        this.dataPub = dataPub;
-    }
-
-    @Override
-    public void setGibi(BaseGibi gibi) throws EdicoesGibiInvalidoException, GibiInvalidoException {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException {
-        // TODO Auto-generated method stub
-        
     }
 }

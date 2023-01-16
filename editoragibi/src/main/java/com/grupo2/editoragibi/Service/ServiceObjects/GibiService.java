@@ -1,17 +1,26 @@
 package com.grupo2.editoragibi.Service.ServiceObjects;
 
+
 import com.grupo2.editoragibi.Api.Requests.GibiRequest;
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import com.grupo2.editoragibi.Data.Entity.GibiEntity;
+import com.grupo2.editoragibi.Data.Repositories.EdicoesGibiRepository;
 import com.grupo2.editoragibi.Data.Repositories.GibiRepository;
+import com.grupo2.editoragibi.Data.Repositories.Interfaces.IGibiRepository;
 import com.grupo2.editoragibi.Service.Directors.GibiDirector;
 import com.grupo2.editoragibi.Service.Domain.Gibi;
-import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class GibiService {
@@ -23,56 +32,106 @@ public class GibiService {
     @Autowired
     GibiDirector gibiDirector;
 
-    @Qualifier("gibiEntityDirector")
+    @Qualifier("GibiEntityDirector")
     @Autowired
     GibiDirector gibiEntityDirector;
 
-    public Gibi getGibiById(int id) throws GibiInvalidoException {
-        return (Gibi) gibiDirector.buildFromGibiEntity(gibiRepository.getGibiById(id));
+    @Autowired
+    EdicoesGibiRepository edicoesGibiRepository;
+
+    public List<GibiEntity> getGibis() throws GibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException {
+        List<GibiEntity> gibiEntity = gibiRepository.getGibis();
+        //List<Gibi> gibi = new ArrayList<>();
+        //for(GibiEntity g : gibiEntity){
+        //    gibi.add((Gibi) gibiDirector.buildFromGibiEntity(g));
+        //}
+
+        return gibiEntity;
     }
 
-
-    public List<Gibi> getGibis() throws GibiInvalidoException {
-        List<GibiEntity> gibiEntities = gibiRepository.getGibis();
-        List<Gibi> gibis = new ArrayList<>();
-        for (GibiEntity gibi : gibiEntities) {
-            gibis.add((Gibi) gibiDirector.buildFromGibiEntity(gibi));
+    public Gibi addGibi(GibiRequest gibiRequest) throws GibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException {
+        Optional<GibiEntity> gibiOptional = gibiRepository.getGibiByTitulo(gibiRequest.getTituloGibi());
+        if (gibiOptional.isPresent()) {
+            throw new IllegalStateException("Titulo já existente");
         }
-        return gibis;
-    }
-
-    public Gibi addGibi(GibiRequest gibiRequest) throws GibiInvalidoException {
-        Gibi gibi = (Gibi) gibiDirector.buildFromGibiRequest(gibiRequest);
+        Gibi gibi = (Gibi) gibiEntityDirector.buildFromGibiRequest(gibiRequest);
         GibiEntity gibiEntity = (GibiEntity) gibiEntityDirector.buildFromGibi(gibi);
-        return (Gibi) gibiDirector.buildFromGibiEntity(gibiRepository.addGibi(gibiEntity));
+        return gibiRepository.addGibi(gibiEntity);
+
     }
 
-    public void deleteGibi(Integer id) throws GibiInvalidoException {
-        if (gibiRepository.deleteGibi(id))
-            throw new GibiInvalidoException("O desenhista já está no sistema");
-    }
 
-    public Gibi updateGibi(int id, GibiRequest gibiRequest) throws GibiInvalidoException {
-        Gibi gibi = (Gibi) gibiDirector.buildFromGibiRequest(gibiRequest);
-        GibiEntity gibiEntity = (GibiEntity) gibiEntityDirector.buildFromGibi(gibi);
-        return (Gibi) gibiDirector.buildFromGibiEntity(gibiRepository.updateGibi(id, gibiEntity));
-    }
-
-  /*   public void addEdicaoGibi(Long gibiId, Long edicaoGibiId) {
-        Optional<EdicoesGibiEntity> edicoesGibiOptional = gibiRepository.findEdicaoGibiById(edicaoGibiId);
-        GibiEntity gibi = gibiRepository.getById(gibiId);
-        if (edicoesGibiOptional.isPresent()) {
-            if (gibi.getEdicoesGibis() != null) {
-                gibi.getEdicoesGibis().add(edicoesGibiOptional.get());
-            }
-            else{
-                gibi.setEdicoesGibis(new ArrayList<>());
-                gibi.getEdicoesGibis().add(edicoesGibiOptional.get());
-            }
+    @Transactional
+    public void deleteGibi(Integer gibiId) throws GibiInvalidoException {
+        boolean exists = gibiRepository.getGibiById(gibiId).isPresent();
+        if (!exists) {
+            throw new IllegalStateException(
+                    "GibiEntity com id " + gibiId + " não existe"
+            );
         } else {
-            throw new IllegalStateException("Edicao nao encontrada");
+            if (gibiRepository.getGibiById(gibiId).isPresent() && gibiRepository.getGibiById(gibiId).get().getEdicoesGibis().size() == 0) {
+                gibiRepository.deleteGibi(gibiId);
+            } else {
+                throw new IllegalStateException(
+                        "GibiEntity possui uma ou mais edições, portanto não pode ser deletado."
+                );
+            }
         }
-        gibiRepository.save(gibi);
+
     }
-     */
+
+    @Transactional
+    public void updateGibi(Integer gibiId, String titulo, LocalDate inicio, LocalDate enc, EdicoesGibiEntity edicoes) throws IllegalStateException, GibiInvalidoException {
+        GibiEntity gibi = gibiRepository.getGibiById(gibiId).orElseThrow(
+                () -> new IllegalStateException("GibiEntity com id" + gibiId + " não existe"));
+
+        if (titulo != null &&
+                titulo.length() > 0 &&
+                !Objects.equals(gibi.getTituloGibi(), titulo)) {
+            gibi.setTituloGibi(titulo);
+        }
+
+        if (inicio != null) {
+            if (inicio.isBefore(gibi.getEncData())) {
+                gibi.setInicioData(inicio);
+            } else if (gibi.getEncData() == null) {
+                gibi.setInicioData(inicio);
+            } else {
+                throw new IllegalArgumentException("Data de inicio não pode ser após data de encerramento");
+            }
+        }
+        if (gibi.getInicioData() != null) {
+            if (enc != null) {
+                if (enc.isAfter(gibi.getInicioData())) {
+                    gibi.setEncData(enc);
+                } else {
+                    throw new IllegalArgumentException("Data de encerramento não pode ser antes da data de inicio");
+                }
+            }
+        }
+        if(edicoes != null){
+            gibi.setEdicaoGibi(edicoes);
+        }
+        gibiRepository.addGibi(gibi);
+    }
+
+    public void addEdicaoGibi(Integer gibiId, Integer edicaoGibiId) throws GibiInvalidoException, EdicoesGibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, HistoriaInvalidaException {
+        Optional<EdicoesGibiEntity> edicoesGibiOptional = edicoesGibiRepository.getEdicaoGibiById(edicaoGibiId);
+        Optional<GibiEntity> gibi = gibiRepository.getGibiById(gibiId);
+
+        if (edicoesGibiOptional.isPresent() && gibi.isPresent()) {
+            if (gibi.get().getEdicoesGibi() != null) {
+                gibi.get().getEdicoesGibi().add(edicoesGibiOptional.get());
+            }
+            else {
+                gibi.get().setEdicoesGibi(new ArrayList<>());
+                gibi.get().getEdicoesGibi().add(edicoesGibiOptional.get());
+            }
+
+        } else {
+            throw new EdicoesGibiInvalidoException("Edicao nao encontrada");
+        }
+        gibiRepository.addGibi((GibiEntity) gibiDirector.buildFromGibi(gibi.get()));
+    }
+
 }

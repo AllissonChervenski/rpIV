@@ -5,6 +5,7 @@ import axios from 'axios';
 import '../../../css/records.css'
 import '../../../css/button.css'
 import '../../../css/style.css'
+
 import '../../../css/main.css'
 import {deleteDesenhista} from  './deletar'
 <script>
@@ -30,7 +31,7 @@ const delDesenhista = (desenlhistaId)=>{
   
  axios.delete(`http://localhost:8080/desenhistas/delete/${desenlhistaId}`, 
   )
-  
+
 }
   return (   
    
@@ -63,6 +64,7 @@ const delDesenhista = (desenlhistaId)=>{
               <td className="conteudo">{moment(desenhista.dataContratacao).format('DD/MM/YYYY')}</td>
               <td className="conteudo">{desenhista.enderecoDesenhista}</td>
               <td className="conteudo">{moment(desenhista.dataDemissao).format('DD/MM/YYYY')}</td>
+
               <td>
                 <button  className="acoes" type="button" class="button green" id="edit-${desenhistaId}" >Editar</button>
                 <button className="acoes" type="button" class="button red" onClick={() =>delDesenhista(desenhista.desenhistaId)}>Delete</button>
