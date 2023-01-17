@@ -109,7 +109,7 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
     @Override
     public void setGibi(Integer gibiId) throws GibiInvalidoException, EdicoesGibiInvalidoException {
         // TODO Auto-generated method stub
-        edicoesGibi.setGibi(gibi.getGibiById(gibiId));
+        edicoesGibi.setGibi(gibi.getGibiById(gibiId).get());
     }
 
     public void setGibi(BaseGibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException{

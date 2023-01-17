@@ -1,5 +1,6 @@
 import styles from './Home.module.css'
 import savings from '../../img/savings.png'
+import gibis from '../../img/gibis.png'
 
 import LinkButton from '../layout/LinkButton'
 
@@ -9,16 +10,8 @@ function Home() {
       <h1>
         Bem-vindo a <span>Hero Gibis!</span>
       </h1>
-      <p>Site em construção</p>
 
-      <div class="btn-toolbar">
-        <LinkButton to="/cadastros" text="Cadastros Gerais" />
-        <LinkButton to="/editorHomePage" text="Editor Home Page" />
-
-
-      </div>
-
-      <img src={savings} alt="Savings" />
+      <img src={gibis} alt="Savings" />
     </section>
   )
 }

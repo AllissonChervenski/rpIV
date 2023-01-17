@@ -5,21 +5,19 @@ import java.time.LocalDate;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 
 public abstract class BaseGibi {
-    
-    protected int gibiId;
+
+    protected Integer gibi_id;
     protected String tituloGibi;
     protected LocalDate inicioData;
     protected LocalDate encData;
 
 
-    public int getGibiId() {
-        return gibiId;
+    public Integer getGibi_id() {
+        return gibi_id;
     }
-
-    public void setGibiId(int gibiId) {
-        this.gibiId = gibiId;
+    public void setGibi_id(Integer gibi_id) {
+        this.gibi_id = gibi_id;
     }
-
     public String getTituloGibi() {
         return tituloGibi;
     }
@@ -39,6 +37,6 @@ public abstract class BaseGibi {
         this.encData = encData;
     }
 
-    
+
 
 }

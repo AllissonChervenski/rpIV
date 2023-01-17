@@ -1,14 +1,20 @@
 package com.grupo2.editoragibi.Api.Controllers;
 
 import com.grupo2.editoragibi.Api.Requests.GibiRequest;
-import com.grupo2.editoragibi.Service.Domain.Desenhista;
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
+import com.grupo2.editoragibi.Data.Entity.GibiEntity;
 import com.grupo2.editoragibi.Service.Domain.Gibi;
+import com.grupo2.editoragibi.Service.Exceptions.*;
 import com.grupo2.editoragibi.Service.ServiceObjects.GibiService;
 
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
@@ -22,71 +28,63 @@ public class GibiController {
     public GibiController(GibiService gibiService) {
         this.gibiService = gibiService;
     }
-//
-//    @GetMapping(path="view")
-//    public List<GibiEntity> getGibis(){
-//       return gibiService.getGibis();
-//    }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> getGibiById(@PathVariable int id) {
+    @GetMapping(path="/all")
+    public ResponseEntity<Object> getGibis() throws GibiInvalidoException{
+        List<GibiEntity> gibi = null;
 
-        Gibi gibi = null;
         try {
-            gibi = gibiService.getGibiById(id);
-        } catch (Exception e) {
+            gibi = gibiService.getGibis();
+        } catch (PersonagemInvalidoException | DesenhistaInvalidoException | EscritorInvalidoException |
+                 EdicoesGibiInvalidoException | HistoriaInvalidaException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
-
         return new ResponseEntity<>(gibi, HttpStatus.OK);
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<Object> getGibis() {
-
-        List<Gibi> gibis = null;
-        try {
-            gibis = gibiService.getGibis();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
-
-        return new ResponseEntity<>(gibis, HttpStatus.OK);
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<Object> addGibi(@RequestBody GibiRequest gibiRequest) {
-
+    @PostMapping(path = "/create")
+    public ResponseEntity<Object> addGibi(@RequestBody GibiRequest gibiRequest){
         Gibi gibi = null;
-        try {
+        try{
             gibi = gibiService.addGibi(gibiRequest);
         } catch (Exception e) {
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
         return new ResponseEntity<>(gibi, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    /*@PostMapping(path = "{gibiId}&{edicaoId}")
+    public void addEdicaoGibi(@PathVariable("gibiId") Long gibiId,@PathVariable("edicaoId") Long edicaoGibiId){
+        gibiService.addEdicaoGibi(gibiId, edicaoGibiId);
+    }
+    */
+
+    @DeleteMapping(path = "deleteGibi/{gibiId}")
     @CrossOrigin( origins = "http://localhost:3000")
-    public ResponseEntity<Object> deleteGibi(@PathVariable Integer id) {
-        try {
-            gibiService.deleteGibi(id);
-        } catch (Exception e) {
+    public ResponseEntity<Object> deleteGibi(@PathVariable("gibiId") Integer gibiId){
+
+        try{
+            gibiService.deleteGibi(gibiId);
+        }catch(GibiInvalidoException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
-        return ResponseEntity.status(HttpStatus.OK).body("Gibi excluido");
+
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Object> updateGibi(@PathVariable int id, @RequestBody GibiRequest gibiRequest){
-        Gibi gibi = null;
+    @PutMapping(path = "editar/{gibiId}")
+    public ResponseEntity<Object> updateGibi(@PathVariable("gibiId") Integer gibiId,
+                                             @RequestParam(required = false) String titulo,
+                                             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
+                                             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate enc,
+                                             @RequestParam(required = false) EdicoesGibiEntity edicoes){
         try {
-            gibi = gibiService.updateGibi(id, gibiRequest);
-        } catch (Exception e) {
+            gibiService.updateGibi(gibiId, titulo, inicio, enc, edicoes);
+        } catch (IllegalStateException | GibiInvalidoException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
-        return new ResponseEntity<>(gibi, HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
+
 
 }

@@ -24,6 +24,14 @@ public interface IBaseEscritorBuilder {
 
     public void setDataDemissao(LocalDate dataDemissao);
 
+    public void setDataNascimentoEs(LocalDate dataNascimentoEs);
+
+    public void setDataFalecimentoEs(LocalDate dataFalecimentoEs);
+
+    public void setPaisNascimentoEs(String paisNascimentoEs);
+
+
+
     public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException;
 
     public void setPersonagem(BasePersonagem personagem);

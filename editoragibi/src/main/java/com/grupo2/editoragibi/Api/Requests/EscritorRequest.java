@@ -34,6 +34,11 @@ public class EscritorRequest extends BaseEscritor {
     }
 
     @Override
+    public void setPaisNascimentoEs(String paisNascimentoEs) {
+        this.paisNascimentoEs = paisNascimentoEs;
+    }
+
+    @Override
     public void setDataContratacao(LocalDate dataContratacao) throws EscritorInvalidoException {
         this.dataContratacao = dataContratacao;
     }
@@ -41,6 +46,16 @@ public class EscritorRequest extends BaseEscritor {
     @Override
     public void setDataDemissao(LocalDate dataDemissao) throws EscritorInvalidoException {
         this.dataDemissao = dataDemissao;
+    }
+
+    @Override
+    public void setDataFalecimentoEs(LocalDate dataFalecimentoEs) {
+        this.dataFalecimentoEs = dataFalecimentoEs;
+    }
+
+    @Override
+    public void setDataNascimentoEs(LocalDate dataNascimentoEs) {
+        this.dataNascimentoEs = dataNascimentoEs;
     }
 
 

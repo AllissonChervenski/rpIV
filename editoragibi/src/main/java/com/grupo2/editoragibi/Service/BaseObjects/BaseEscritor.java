@@ -13,6 +13,9 @@ public abstract class BaseEscritor {
     protected String emailEscritor;
     protected LocalDate dataContratacao;
     protected LocalDate dataDemissao;
+    protected LocalDate dataNascimentoEs;
+    protected LocalDate dataFalecimentoEs;
+    protected String paisNascimentoEs;
 
     public int getEscritorId() {
         return escritorId;
@@ -57,4 +60,28 @@ public abstract class BaseEscritor {
     }
 
     public abstract void setDataDemissao(LocalDate dataDemissao) throws EscritorInvalidoException;
+
+    public LocalDate getDataNascimentoEs() {
+        return dataNascimentoEs;
+    }
+
+    public void setDataNascimentoEs(LocalDate dataNascimentoEs) {
+        this.dataNascimentoEs = dataNascimentoEs;
+    }
+
+    public LocalDate getDataFalecimentoEs() {
+        return dataFalecimentoEs;
+    }
+
+    public void setDataFalecimentoEs(LocalDate dataFalecimentoEs) {
+        this.dataFalecimentoEs = dataFalecimentoEs;
+    }
+
+    public String getPaisNascimentoEs() {
+        return paisNascimentoEs;
+    }
+
+    public void setPaisNascimentoEs(String paisNascimentoEs) {
+        this.paisNascimentoEs = paisNascimentoEs;
+    }
 }

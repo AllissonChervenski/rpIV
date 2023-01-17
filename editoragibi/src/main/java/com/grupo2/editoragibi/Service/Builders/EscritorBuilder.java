@@ -93,6 +93,21 @@ public class EscritorBuilder implements IBaseEscritorBuilder {
     }
 
     @Override
+    public void setDataNascimentoEs(LocalDate dataNascimentoEs) {
+        escritor.setDataNascimentoEs(dataNascimentoEs);
+    }
+
+    @Override
+    public void setDataFalecimentoEs(LocalDate dataFalecimentoEs) {
+        escritor.setDataFalecimentoEs(dataFalecimentoEs);
+    }
+
+    @Override
+    public void setPaisNascimentoEs(String paisNascimentoEs) {
+        escritor.setPaisNascimentoEs(paisNascimentoEs);
+    }
+
+    @Override
     public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<Personagem> personagensEscritor = escritor.getPersonagens();
         if(personagensIds != null){

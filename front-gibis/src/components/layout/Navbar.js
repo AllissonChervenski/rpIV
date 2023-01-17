@@ -25,15 +25,6 @@ function Navbar() {
           <li className={styles.item}>
             <Link to="/gibisp">Gibis</Link>
           </li>
-          <li className={styles.item}>
-            <Link to="/financeiro">Financeiro</Link>
-          </li>
-          <li className={styles.item}>
-            <Link to="/transportadoras">Transportadoras</Link>
-          </li>
-          <li className={styles.item}>
-            <Link to="/Login">Login</Link>
-          </li>
         </ul>      
       </Container>
     </div>

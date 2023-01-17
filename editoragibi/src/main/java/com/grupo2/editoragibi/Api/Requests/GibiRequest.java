@@ -13,27 +13,48 @@ import lombok.Data;
 public class GibiRequest extends BaseGibi{
 
     @NotNull
-    private List<Long> edicoesGibiId;
-    public void setEdicoesGibiId(List<Long> edicoesGibiId) {
+    private List<Integer> edicoesGibiId;
+
+    @Override
+    public LocalDate getEncData() {
+        // TODO Auto-generated method stub
+        return this.encData;
+    }
+
+
+    @Override
+    public LocalDate getInicioData() {
+        // TODO Auto-generated method stub
+        return this.inicioData;
+    }
+
+    @Override
+    public String getTituloGibi() {
+        // TODO Auto-generated method stub
+        return this.tituloGibi;
+    }
+
+
+    public void setEdicoesGibiId(List<Integer> edicoesGibiId) {
         this.edicoesGibiId = edicoesGibiId;
     }
 
     @Override
     public void setEncData(LocalDate encData) {
-            this.encData = encData;
-        
+        this.encData = encData;
+
     }
 
     @Override
     public void setInicioData(LocalDate inicioData) {
-            this.inicioData = inicioData;
-        
+        this.inicioData = inicioData;
+
     }
 
     @Override
     public void setTituloGibi(String tituloGibi) {
         this.tituloGibi = tituloGibi;
     }
-    
-    
+
+
 }

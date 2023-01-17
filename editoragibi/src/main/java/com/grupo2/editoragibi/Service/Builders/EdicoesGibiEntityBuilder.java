@@ -81,7 +81,7 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
 
     @Override
     public void setGibi(Integer gibiId) throws GibiInvalidoException, EdicoesGibiInvalidoException {
-        edicoesGibiEntity.setGibi(gibi.getGibiById(gibiId));
+        edicoesGibiEntity.setGibi(gibi.getGibiById(gibiId).get());
 
     }
 

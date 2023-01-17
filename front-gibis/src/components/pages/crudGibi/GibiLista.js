@@ -51,14 +51,14 @@ const delGibi = (gibiId)=>{
         
            
             <tr >
-              <td className="conteudo" >{gibi.gibiId}</td>
+              <td className="conteudo" >{gibi.gibi_id}</td>
               <td className="conteudo">{gibi.tituloGibi}</td>
               <td className="conteudo">{moment(gibi.inicioData).format('DD/MM/YYYY')}</td>
               <td className="conteudo">{moment(gibi.encData).format('DD/MM/YYYY')}</td>
             
               <td>
                 <button  className="acoes" type="button" class="button green" id="edit-${gibiId}" >Editar</button>
-                <button className="acoes" type="button" class="button red" onClick={() =>delGibi(gibi.gibiId)}>Delete</button>
+                <button className="acoes" type="button" class="button red" onClick={() =>delGibi(gibi.gibi_id)}>Delete</button>
             </td>
             </tr>
             
@@ -67,7 +67,7 @@ const delGibi = (gibiId)=>{
         </table>
        
     )
-    }
+}
     
   
 
