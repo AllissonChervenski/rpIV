@@ -1,5 +1,5 @@
 package com.grupo2.editoragibi.Service.Builders.Interfaces;
-;
+
 import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 

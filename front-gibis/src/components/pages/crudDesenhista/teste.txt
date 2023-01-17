@@ -1,0 +1,85 @@
+  //Update
+  var table = document.getElementById("tableData"), rNewDesenhista;
+  for(var i = 1 ; i< table.rows.lengh; i++){
+
+  }
+  
+  var nome = document.getElementById("nomeDesenhista");
+  var pais = document.getElementById("paisNascimento");
+  var dataNasc= document.getElementById("dataNascimento");
+  var dataCont = document.getElementById("dataContratacao");
+  var dataFal = document.getElementById("dataFalecimento");
+  var endDes = document.getElementById("enderecoDesenhisto");
+  var dataDem = document.getElementById("dataDemissao");
+  var BTModUp = document.getElementById("updaDesenhista");
+
+
+  function FillDesenhista(desenhistaId){
+    if(desenhistaId==null){
+      nome.value = " ";
+      pais.value = " ";
+      dataNasc.value = " ";
+      dataCont.value = " ";
+      dataFal.value = " ";
+      endDes.value = " ";
+      dataDem.value = " ";
+    }
+    else{
+      nome.value = map[desenhistaId];
+      pais.value = " ";
+      dataNasc.value = " ";
+      dataCont.value = " ";
+      dataFal.value = " ";
+      endDes.value = " ";
+      dataDem.value = " ";
+
+    }
+
+  }
+ 
+  function  updaDesenhista (desenhistaId, nomeDesenhista, paisNascimento, 
+    dataNascimento, dataContratacao, dataFalecimento, enderecoDesenhista,
+     dataDemissao){
+    var updaDesenhista = document.getElementById("updaDesenhista")
+   // updaDesenhista.style.display="block";
+
+  }
+
+
+
+  //////
+
+   var url= "http://localhost:8080/desenhistas/update/${desenlhistaId}"
+   var table = document.getElementById(url), rdesenhistaId;
+
+   for(var i = 1; i < table.rows.length; i++){
+    table.rows[i].onClick=function(){
+      rdesenhistaId= this.rowDesenhistaId;
+      console.log(rdesenhistaId);
+  
+      document.getElementById("nomeDesenhista").value=this.cells[1];
+      document.getElementById("paisNascimento").value=this.cells[2];
+      document.getElementById("dataNascimento").value=this.cells[3];
+      document.getElementById("dataFalecimento").value=this.cells[4];   
+      document.getElementById("enderecoDesenhista").value=this.cells[5];
+      document.getElementById("dataContratacao").value=this.cells[6];
+      document.getElementById("dataDemissao").value=this.cells[7];
+      
+
+    };
+   
+   }
+   function editRow(){
+    table.rows[ rdesenhistaId].cells[1] = document.getElementById("nomeDesenhista").value;
+    table.rows[ rdesenhistaId].cells[2]= document.getElementById("paisNascimento").value;
+    table.rows[ rdesenhistaId].cells[3]= document.getElementById("dataNascimento").value;
+    table.rows[ rdesenhistaId].cells[4] = document.getElementById("dataFalecimento").value;   
+    table.rows[ rdesenhistaId].cells[5] = document.getElementById("enderecoDesenhista").value;
+    table.rows[ rdesenhistaId].cells[6]= document.getElementById("dataContratacao").value;
+    table.rows[ rdesenhistaId].cells[7] =document.getElementById("dataDemissao").value;
+      
+   }
+   // Data Update Table Here
+function updaDesenhista(){
+  document.querySelector('.tableDesenhista').setAttribute('desenhistaId')
+}

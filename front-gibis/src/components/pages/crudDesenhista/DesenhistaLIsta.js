@@ -1,15 +1,21 @@
 import { React, useState, useEffect } from "react";
 import api from "../../../services/api";
-import moment from 'moment';
 import axios from 'axios';
 import '../../../css/records.css'
 import '../../../css/button.css'
 import '../../../css/style.css'
 import '../../../css/main.css'
 import {deleteDesenhista} from  './deletar'
-<script>
+import { NavigateBefore } from "@material-ui/icons";
+import {actionDesenSelecionado} from "./actionDesenSelecionado"
+import { isPropertyName } from "typescript";
+import { useHistory } from 'react-router-dom';
+import NewDesenhista from "../NewDesenhista";
 
-</script>
+
+axios.defaults.headers.put['Access-Control-Allow-Origin'] = '*';
+
+
 export default function Desenhista() {
   const [desenhistas, setDesenhistas] = useState([]);
 
@@ -29,10 +35,114 @@ const delDesenhista = (desenlhistaId)=>{
   // deleteDesenhista(desenhistaId)
   
  axios.delete(`http://localhost:8080/desenhistas/delete/${desenlhistaId}`, 
-  )
-  
+ alert("Desenhista deletado com sucesso!!"),
+ window.location.reload(false)
+ 
+  ) 
+   
 }
-  return (   
+ 
+async function updaDesenhista(desenlhistaId) {
+  console.log(desenlhistaId);
+      // updateDesenhista(desenhistaId) 
+      try{
+
+       const response = await axios.put(`http://localhost:8080/desenhistas/update/${desenlhistaId}`, 
+            
+    ) 
+   
+
+    console.log(response);
+
+        } catch(err){
+          console.log(err)
+        }
+
+   
+  }
+
+ /* const updateD = (props) => {
+    async function updaDesenhista(e){
+        const options = {
+            method: 'PUT',
+            baseUrl: 'http://localhost:3000/desenhista/update'
+        }
+    }
+}*/
+
+  /// teste novo update
+  /*var selectedRow=null
+
+  function formDesenhista(){
+    var formData =  readformDesenhistaData();
+    resertForm()
+
+  }
+  function readformDesenhistaData(){
+    var formData = {};
+    formData["nomeDesenhista"] = document.getElementById("nomeDesenhista").value;
+    formData["paisNascimento"] = document.getElementById("paisNascimento").value;
+    formData["dataNascimento"] = document.getElementById("dataNascimento").value;
+    formData["dataFalecimento"] = document.getElementById("dataFalecimento").value;
+    formData["enderecoDesenhista"] = document.getElementById("enderecoDesenhista").value;
+    formData["dataContratacao"] = document.getElementById("dataContratacao").value;
+    formData["dataDemissao"] = document.getElementById("dataDemissao").value;
+
+    return formData;
+
+  }
+    function resertForm(){
+      document.getElementById("nomeDesenhista").value = " ";
+      document.getElementById("paisNascimento").value=" ";
+      document.getElementById("dataNascimento").value = "";
+      document.getElementById("dataFalecimento").value = " ";
+      document.getElementById("enderecoDesenhista").value =" ";
+      document.getElementById("dataContratacao").value =" ";
+      document.getElementById("dataDemissao").value= " ";
+    }
+function updaDesenhista(td){
+  selectedRow = td.parentElement.parentElement;
+  doc
+
+   
+}*/
+
+/*btnUpdateDesenhista.onClick = () =>{
+  const id = parseInt(desenhistaId.value || 0);
+
+  if(id){
+    tableDesenhista.products.update(id, {
+      nomeDesenhista: nomeDesenhista.value,
+      paisNascimento: paisNascimento.value,
+      dataNascimento: dataNascimento.value
+
+
+
+    }).then((updated) => {
+      let get = updated ? true : false;
+      
+      nomeDesenhista.value = paisNascimento.value = dataNascimento.value= " ";
+      
+    })
+
+  }else{
+    console.log(`Please Select id: ${id}`);
+  }
+
+}*/
+
+/*const btnUpdateDesenhista = (event) =>{
+  let id = parseInt(event.target.dataset.id);
+  tableDesenhista.products.get(id, function (postDesenhista{
+    let NewDesenhistaUp = 
+  })
+}
+*/
+
+
+  ///
+
+   return (   
    
     <table className="records" border="1" >
       <caption className="caption-title">Desenhista Cadastrado</caption>
@@ -51,20 +161,19 @@ const delDesenhista = (desenlhistaId)=>{
 
       </thead>
      
-      {desenhistas.map((desenhista) => (
-        
+      {desenhistas.map((desenhista) => (              
            
-            <tr >
-              <td className="conteudo" >{desenhista.desenhistaId}</td>
-              <td className="conteudo">{desenhista.nomeDesenhista}</td>
-              <td className="conteudo">{desenhista.paisNascimento}</td>
-              <td className="conteudo">{moment(desenhista.dataNascimento).format('DD/MM/YYYY')}</td>
-              <td className="conteudo">{moment(desenhista.dataFalecimento).format('DD/MM/YYYY')}</td>
-              <td className="conteudo">{moment(desenhista.dataContratacao).format('DD/MM/YYYY')}</td>
-              <td className="conteudo">{desenhista.enderecoDesenhista}</td>
-              <td className="conteudo">{moment(desenhista.dataDemissao).format('DD/MM/YYYY')}</td>
-              <td>
-                <button  className="acoes" type="button" class="button green" id="edit-${desenhistaId}" >Editar</button>
+            <tr id="tableData">
+              <td className="conteudo" id="Id">{desenhista.desenhistaId}</td>
+              <td className="conteudo"id="nome">{desenhista.nomeDesenhista}</td>
+              <td className="conteudo" id="pais">{desenhista.paisNascimento}</td>
+              <td className="conteudo" id="dataNasc">{desenhista.dataNascimento}</td>
+              <td className="conteudo" id="dataCont">{desenhista.dataContratacao}</td>
+              <td className="conteudo" id="dataFal">{desenhista.dataFalecimento}</td>
+              <td className="conteudo" id="endDes">{desenhista.enderecoDesenhista}</td>
+              <td className="conteudo" id="dataDem">{desenhista.dataDemissao}</td>
+              <td>                
+                <button id="btnUpdateDesenhista" className="acoes" type="button" class="button green" onClick={() =>updaDesenhista(desenhista.desenhistaId)}>Editar</button>                
                 <button className="acoes" type="button" class="button red" onClick={() =>delDesenhista(desenhista.desenhistaId)}>Delete</button>
             </td>
             </tr>
@@ -75,8 +184,4 @@ const delDesenhista = (desenlhistaId)=>{
        
     )
     }
-    
   
-
-
-

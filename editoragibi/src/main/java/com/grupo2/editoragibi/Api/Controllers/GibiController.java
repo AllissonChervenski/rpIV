@@ -13,7 +13,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
-@RequestMapping(path="/gibis")
+@RequestMapping("/gibis/")
 public class GibiController {
 
     private final GibiService gibiService;

@@ -1,15 +1,16 @@
 import { React, useState, useEffect } from "react";
 import api from "../../../services/api";
-import moment from 'moment';
 import axios from 'axios';
 import '../../../css/records.css'
 import '../../../css/button.css'
 import '../../../css/style.css'
 import '../../../css/main.css'
 import {deleteEscritor} from  './deletar'
-<script>
 
-</script>
+/*
+let data_americana = "2022-12-30"
+let data_brasil =  data_americana.split("-").reverse().join('/');*/
+
 export default function Escritor() {
   const [escritores, setEscritores] = useState([]);
 
@@ -29,6 +30,8 @@ const delEscritor = (escritorId)=>{
   // deleteDesenhista(desenhistaId)
   
  axios.delete(`http://localhost:8080/escritores/delete/${escritorId}`, 
+ alert("Escritor deletado com sucesso!!"),
+ window.location.reload(false)
   )
   
 }
@@ -60,13 +63,13 @@ const delEscritor = (escritorId)=>{
               <td className="conteudo" >{escritor.escritorId}</td>
               <td className="conteudo">{escritor.nomeEscritor}</td>
               <td className="conteudo">{escritor.paisNascimentoEs}</td>
-              <td className="conteudo">{moment(escritor.dataNascimentoEs).format('DD/MM/YYYY')}</td>
-              <td className="conteudo">{moment(escritor.dataFalecimentoEs).format('DD/MM/YYYY')}</td>
-              <td className="conteudo">{moment(escritor.dataContratacao).format('DD/MM/YYYY')}</td>
+              <td className="conteudo">{escritor.dataNascimentoEs}</td>
+              <td className="conteudo">{escritor.dataFalecimentoEs}</td>
+              <td className="conteudo">{escritor.dataContratacao}</td>
               <td className="conteudo">{escritor.enderecoEscritor}</td>
               <td className="conteudo">{escritor.telefoneEscritor}</td>
               <td className="conteudo">{escritor.emailEscritor}</td>
-              <td className="conteudo">{moment(escritor.dataDemissao).format('DD/MM/YYYY')}</td>
+              <td className="conteudo">{escritor.dataDemissao}</td>
               <td>
                 <button  className="acoes" type="button" class="button green" id="edit-${escritorId}" >Editar</button>
                 <button className="acoes" type="button" class="button red" onClick={() =>delEscritor(escritor.escritorId)}>Delete</button>

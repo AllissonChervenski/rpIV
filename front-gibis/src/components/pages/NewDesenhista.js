@@ -28,14 +28,15 @@ function NewDesenhista() {
 
     })
     alert("Cadastrado com sucesso!!");
+    window.location.reload(false)
 
   }
 
 
   return (
-    <div class="container_form">
+    <div class="container_form" id='tableDesenhista'>
       <h1>Formulário de Cadastro</h1>
-      <form class="form" action="#" method="post">
+      <form class="form" action="#" id='formDesenhista' method="post">
         <div class="form_grupo">
           <label for="nomeDesenhista" class="form_label"><b>Nome Desenhista:</b></label>
           <input type="text" name="nomeDesenhista" class="form_input" id="nomeDesenhista" placeholder="Nome Desenhista" required value={nomeDesenhista} onChange={(event) => setNomeDesenhista(event.target.value)} />
