@@ -9,8 +9,6 @@ function GibisP(){
           Opções disponíveis
         </h1>
 
-        <Message msg="Teste mensagem"/>
-
         <LinkButton to="/newgibi" text="Cadastrar novo gibi" />
         <LinkButton to="/gibi" text="Ver gibis cadastrados" />
 
