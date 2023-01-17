@@ -36,16 +36,11 @@ const delDesenhista = (desenlhistaId)=>{
   // deleteDesenhista(desenhistaId)
   
  axios.delete(`http://localhost:8080/desenhistas/delete/${desenlhistaId}`, 
-<<<<<<< HEAD
  alert("Desenhista deletado com sucesso!!"),
  window.location.reload(false)
  
   ) 
    
-=======
-  )
-
->>>>>>> 6937cbc26493729c8ae60d52cf58b297d1144655
 }
   
 // updateDesenhista(desenhistaId) 
@@ -170,7 +165,6 @@ function updaDesenhista(td){
      
       {desenhistas.map((desenhista) => (              
            
-<<<<<<< HEAD
             <tr id="tableData">
               <td className="conteudo" id="Id">{desenhista.desenhistaId}</td>
               <td className="conteudo"id="nome">{desenhista.nomeDesenhista}</td>
@@ -182,20 +176,6 @@ function updaDesenhista(td){
               <td className="conteudo" id="dataDem">{desenhista.dataDemissao}</td>
               <td>                
                 <button id="btnUpdateDesenhista" className="acoes" type="button" class="button green" onClick={() =>updaDesenhista(desenhista.desenhistaId)}>Editar</button>                
-=======
-            <tr >
-              <td className="conteudo" >{desenhista.desenhistaId}</td>
-              <td className="conteudo">{desenhista.nomeDesenhista}</td>
-              <td className="conteudo">{desenhista.paisNascimento}</td>
-              <td className="conteudo">{moment(desenhista.dataNascimento).format('DD/MM/YYYY')}</td>
-              <td className="conteudo">{moment(desenhista.dataFalecimento).format('DD/MM/YYYY')}</td>
-              <td className="conteudo">{moment(desenhista.dataContratacao).format('DD/MM/YYYY')}</td>
-              <td className="conteudo">{desenhista.enderecoDesenhista}</td>
-              <td className="conteudo">{moment(desenhista.dataDemissao).format('DD/MM/YYYY')}</td>
-
-              <td>
-                <button  className="acoes" type="button" class="button green" id="edit-${desenhistaId}" >Editar</button>
->>>>>>> 6937cbc26493729c8ae60d52cf58b297d1144655
                 <button className="acoes" type="button" class="button red" onClick={() =>delDesenhista(desenhista.desenhistaId)}>Delete</button>
             </td>
             </tr>
