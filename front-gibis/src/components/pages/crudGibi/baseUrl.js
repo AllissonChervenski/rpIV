@@ -1,1 +1,1 @@
-export const baseUrl = "http://localhost:3000/gibis/delete";
+export const baseUrl = "http://localhost:3000/gibis/deleteGibi";

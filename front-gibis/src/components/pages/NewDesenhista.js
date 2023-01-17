@@ -3,7 +3,7 @@ import api from "../../services/api";
 import styles from './NewDesenhista.css'
 
 
-function NewDesenhista() {
+export default function NewDesenhista() {
   const [nomeDesenhista, setNomeDesenhista] = useState('');
   const [paisNascimento, setPaisNascimento] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
@@ -11,6 +11,32 @@ function NewDesenhista() {
   const [enderecoDesenhista, setEnderecoDesenhista] = useState('');
   const [dataContratacao, setDataContratacao] = useState('');
   const [dataDemissao, setDataDemissao] = useState('');
+
+async function putDesenhista(event){
+
+  const id = localStorage.getItem('idDesenhista');
+  event.preventDefault();
+ try{
+  const response = await api.put(`/update/${id}`, {
+    nomeDesenhista,
+    paisNascimento,
+    dataNascimento,
+    dataFalecimento,
+    enderecoDesenhista,
+    dataContratacao,
+    dataDemissao,
+
+  })
+  console.log(response.data);
+
+}catch(err){
+    console.log(err);
+  }
+  alert("Cadastrado com sucesso!!");
+  window.location.reload(false)
+
+}
+
 
 
 
@@ -75,5 +101,3 @@ function NewDesenhista() {
     </div>
   )
 }
-
-export default NewDesenhista;

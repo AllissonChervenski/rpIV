@@ -6,13 +6,13 @@ import '../../../css/button.css'
 import '../../../css/style.css'
 
 import '../../../css/main.css'
-import {deleteDesenhista} from  './deletar'
+/*import {deleteDesenhista} from  './deletar'
 import { NavigateBefore } from "@material-ui/icons";
 import {actionDesenSelecionado} from "./actionDesenSelecionado"
 import { isPropertyName } from "typescript";
 import { useHistory } from 'react-router-dom';
 import NewDesenhista from "../NewDesenhista";
-
+*/
 
 axios.defaults.headers.put['Access-Control-Allow-Origin'] = '*';
 
@@ -24,10 +24,17 @@ export default function Desenhista() {
     getDesenhistas();
   }, []);
 
+
+function navigateEdit(id){
+localStorage.setItem('idDesenhista', id);
+
+}
+
   const getDesenhistas = async () => {
     await api.get("/desenhistas/all").then((response) => {
       setDesenhistas(response.data);
       console.log(response.data)
+      
     });
   };
 
@@ -60,89 +67,12 @@ async function updaDesenhista(desenlhistaId) {
           console.log(err)
         }
 
-   
-  }
-
- /* const updateD = (props) => {
-    async function updaDesenhista(e){
-        const options = {
-            method: 'PUT',
-            baseUrl: 'http://localhost:3000/desenhista/update'
-        }
-    }
-}*/
-
-  /// teste novo update
-  /*var selectedRow=null
-
-  function formDesenhista(){
-    var formData =  readformDesenhistaData();
-    resertForm()
-
-  }
-  function readformDesenhistaData(){
-    var formData = {};
-    formData["nomeDesenhista"] = document.getElementById("nomeDesenhista").value;
-    formData["paisNascimento"] = document.getElementById("paisNascimento").value;
-    formData["dataNascimento"] = document.getElementById("dataNascimento").value;
-    formData["dataFalecimento"] = document.getElementById("dataFalecimento").value;
-    formData["enderecoDesenhista"] = document.getElementById("enderecoDesenhista").value;
-    formData["dataContratacao"] = document.getElementById("dataContratacao").value;
-    formData["dataDemissao"] = document.getElementById("dataDemissao").value;
-
-    return formData;
-
-  }
-    function resertForm(){
-      document.getElementById("nomeDesenhista").value = " ";
-      document.getElementById("paisNascimento").value=" ";
-      document.getElementById("dataNascimento").value = "";
-      document.getElementById("dataFalecimento").value = " ";
-      document.getElementById("enderecoDesenhista").value =" ";
-      document.getElementById("dataContratacao").value =" ";
-      document.getElementById("dataDemissao").value= " ";
-    }
-function updaDesenhista(td){
-  selectedRow = td.parentElement.parentElement;
-  doc
-
-   
-}*/
-
-/*btnUpdateDesenhista.onClick = () =>{
-  const id = parseInt(desenhistaId.value || 0);
-
-  if(id){
-    tableDesenhista.products.update(id, {
-      nomeDesenhista: nomeDesenhista.value,
-      paisNascimento: paisNascimento.value,
-      dataNascimento: dataNascimento.value
-
-
-
-    }).then((updated) => {
-      let get = updated ? true : false;
       
-      nomeDesenhista.value = paisNascimento.value = dataNascimento.value= " ";
-      
-    })
-
-  }else{
-    console.log(`Please Select id: ${id}`);
   }
-
-}*/
-
-/*const btnUpdateDesenhista = (event) =>{
-  let id = parseInt(event.target.dataset.id);
-  tableDesenhista.products.get(id, function (postDesenhista{
-    let NewDesenhistaUp = 
-  })
-}
-*/
+  // <button id="btnUpdateDesenhista" className="acoes" type="button" class="button green" onClick={() =>updaDesenhista(desenhista.desenhistaId)}>Editar</button>
 
 
-  ///
+
 
    return (   
    
@@ -174,9 +104,10 @@ function updaDesenhista(td){
               <td className="conteudo" id="dataFal">{desenhista.dataFalecimento}</td>
               <td className="conteudo" id="endDes">{desenhista.enderecoDesenhista}</td>
               <td className="conteudo" id="dataDem">{desenhista.dataDemissao}</td>
-              <td>                
-                <button id="btnUpdateDesenhista" className="acoes" type="button" class="button green" onClick={() =>updaDesenhista(desenhista.desenhistaId)}>Editar</button>                
-                <button className="acoes" type="button" class="button red" onClick={() =>delDesenhista(desenhista.desenhistaId)}>Delete</button>
+              <td>  
+                
+                <a id="btnUpdateDesenhista" className="acoes button green" type="button" onClick={() =>updaDesenhista(desenhista.desenhistaId)} href="/newdesenhista"> Editar</a>
+              <button className="acoes button red" type="button" onClick={() =>delDesenhista(desenhista.desenhistaId)}>Delete</button>
             </td>
             </tr>
             
