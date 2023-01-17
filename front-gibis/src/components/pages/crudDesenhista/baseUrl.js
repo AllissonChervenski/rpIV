@@ -1,1 +1,1 @@
-export const baseUrl = "http://localhost:3000/desenhista/delete";
+export const baseUrl = "http://localhost:3000/desenhistas/";

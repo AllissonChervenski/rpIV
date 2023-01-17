@@ -1,11 +1,9 @@
 import { React, useState, useEffect } from "react";
 import api from "../../../services/api";
-import axios from 'axios';
 import '../../../css/button.css'
 import '../../../css/style.css'
 import '../../../css/records.css'
 import '../../../css/main.css'
-import {deleteDesenhista} from  './deletar'
 <script>
 
 </script>
@@ -24,9 +22,18 @@ export default function Desenhista() {
   };
 
   
-const delDesenhista = (desenlhistaId)=>{
+const delDesenhista = async(desenhistaId) => {
   // deleteDesenhista(desenhistaId)
-  axios.delete(`http://localhost:8080/desenhistas/${desenlhistaId}`)
+  await api.delete(`/desenhistas/delete/${desenhistaId}`).then(response => {
+    console.log(response);
+
+   getDesenhistas();
+   
+  })
+  .catch(error => {
+    console.log(error)
+    getDesenhistas();
+  });
   
 }
   return (   
@@ -34,7 +41,8 @@ const delDesenhista = (desenlhistaId)=>{
     <table className="records" border="1" >
       <caption className="caption-title">Desenhista Cadastrado</caption>
       <thead>
-      <tr >
+       
+      <tr>
               <th className="conteudo">id</th>                      
               <th className="conteudo">Nome</th>
               <th className="conteudo">Pais</th>
@@ -45,7 +53,7 @@ const delDesenhista = (desenlhistaId)=>{
               <th className="conteudo">Data demissão</th>
               <th className="acoes">Ações</th>
             </tr>
-
+          
       </thead>
      
       {desenhistas.map((desenhista) => (
@@ -62,7 +70,7 @@ const delDesenhista = (desenlhistaId)=>{
               <td className="conteudo" >{desenhista.dataDemissao}</td>
               <td>
                 <button  className="acoes" type="button" class="button green" id="edit-${desenhistaId}" >Editar</button>
-                <button className="acoes" type="button" class="button red" onClick={() =>delDesenhista(desenhista.desenhistaId)}>Delete</button>
+                <button className="acoes" type="button" class="button red" onClick={delDesenhista(desenhista.desenhistaId)}>Delete</button>
             </td>
             </tr>
             

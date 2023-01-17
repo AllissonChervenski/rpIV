@@ -1,13 +1,18 @@
+
 .records{
     width: 1500%;    
     
 }
+.table-cont{
+    width: 75%;
+    height: 100%;
+    position: absolute;
+}
 .records tr {
-   
-    vertical-align: top
+    vertical-align: top;
 }
 .records,th,td{
-    border: 1px solid #444;
+    border: 1px solid rgb(197, 197, 197);
     border-collapse: collapse;
     padding: 5px 2px;   
 }
@@ -15,17 +20,28 @@ table{
     width: 100%;
 }
 .conteudo{
-    text-align: left;
+    text-align: center;
 
 }
 .acoes{
     text-align: center;
 }
 th{
-   background-color: #264696;
-    color: #fff; 
-
+   background-color: #e2e2e2;
+    color: rgb(37, 36, 36); 
+    text-align: center;
+    padding-right: 2%;
+    padding-left: 2%; 
+    display:flex;
+    align-items: center;
 }
 tr:hover{
     background-color: #f7f5f5;
+}
+tr{
+    border: solid 0.5px rgb(158, 158, 158);
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
 }

@@ -118,7 +118,7 @@ function App() {
         <Banca />
         </Route>
 
-        <Route exact path="/desenhista/delete">
+        <Route exact path="/desenhistas/delete">
         <deletar />
         </Route>
 
