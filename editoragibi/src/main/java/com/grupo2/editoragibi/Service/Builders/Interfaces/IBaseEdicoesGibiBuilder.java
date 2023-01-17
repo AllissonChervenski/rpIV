@@ -49,6 +49,7 @@ public interface IBaseEdicoesGibiBuilder{
     public void setDesenhista(Integer desenhistaId) throws DesenhistaInvalidoException;
 
     public void setEscritores(List<Integer> escritorId) throws EscritorInvalidoException, PersonagemInvalidoException;
+    public void setEscritores(List<Integer> escritorId) throws EscritorInvalidoException, PersonagemInvalidoException;
 
     public void setEscritor(BaseEscritor escritor);
 
@@ -62,6 +63,6 @@ public interface IBaseEdicoesGibiBuilder{
 
 
     public BaseEdicoesGibi getResult();
-  
-    
+
+
 }

@@ -1,5 +1,8 @@
 package com.grupo2.editoragibi.Service.Builders.Interfaces;
 
+import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
+import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
@@ -28,7 +31,6 @@ public interface IBasePersonagemBuilder {
     public void setEscritores(List<Integer> escritoresIds) throws PersonagemInvalidoException, EscritorInvalidoException;
 
     public void setEscritor(BaseEscritor escritor);
-
     public void setEdicaoGibi(BaseEdicoesGibi edicoes);
     
     public void setEdicoesGibi(List<Integer> edicoesId) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException;

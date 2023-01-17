@@ -52,15 +52,15 @@ public class EdicoesGibiDirector {
         builder.setNumeroExemplaresImpressas(edicoesGibiEntity.getNumeroExemplaresImpressas());
         builder.setPublicada(edicoesGibiEntity.isPublicada());
         builder.setGibi(edicoesGibiEntity.getGibi());
-        List<Integer> desenhistasId = edicoesGibiEntity.getDesenhista().stream().map(desenhista -> { 
+        List<Integer> desenhistasId = edicoesGibiEntity.getDesenhista().stream().map(desenhista -> {
             return desenhista.getDesenhistaId();
         }).collect(Collectors.toList());
         builder.setDesenhistas(desenhistasId);
-        List<Integer> personagensId = edicoesGibiEntity.getPersonagem().stream().map(personagem -> { 
+        List<Integer> personagensId = edicoesGibiEntity.getPersonagem().stream().map(personagem -> {
             return personagem.getPersonagemId();
         }).collect(Collectors.toList());
         builder.setPersonagens(personagensId);
-        List<Integer> escritores = edicoesGibiEntity.getEscritor().stream().map(escritor -> { 
+        List<Integer> escritores = edicoesGibiEntity.getEscritor().stream().map(escritor -> {
             return escritor.getEscritorId();
         }).collect(Collectors.toList());
         builder.setEscritores(escritores);
@@ -78,15 +78,15 @@ public class EdicoesGibiDirector {
         builder.setNumeroExemplaresImpressas(edicoesGibi.getNumeroExemplaresImpressas());
         builder.setPublicada(edicoesGibi.isPublicada());
         builder.setGibi(edicoesGibi.getGibi());
-        List<Integer> desenhistasId = edicoesGibi.getDesenhista().stream().map(desenhista -> { 
+        List<Integer> desenhistasId = edicoesGibi.getDesenhista().stream().map(desenhista -> {
             return desenhista.getDesenhistaId();
         }).collect(Collectors.toList());
         builder.setDesenhistas(desenhistasId);
-        List<Integer> personagensId = edicoesGibi.getPersonagem().stream().map(personagem -> { 
+        List<Integer> personagensId = edicoesGibi.getPersonagem().stream().map(personagem -> {
             return personagem.getPersonagemId();
         }).collect(Collectors.toList());
         builder.setPersonagens(personagensId);
-        List<Integer> escritores = edicoesGibi.getEscritor().stream().map(escritor -> { 
+        List<Integer> escritores = edicoesGibi.getEscritor().stream().map(escritor -> {
             return escritor.getEscritorId();
         }).collect(Collectors.toList());
         builder.setEscritores(escritores);

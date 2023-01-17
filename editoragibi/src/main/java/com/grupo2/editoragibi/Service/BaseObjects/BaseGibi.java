@@ -18,6 +18,7 @@ public abstract class BaseGibi {
     public void setGibi_id(Integer gibi_id) {
         this.gibi_id = gibi_id;
     }
+
     public String getTituloGibi() {
         return tituloGibi;
     }

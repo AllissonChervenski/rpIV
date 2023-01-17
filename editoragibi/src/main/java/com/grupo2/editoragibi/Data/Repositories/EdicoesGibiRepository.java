@@ -1,10 +1,13 @@
 
 package com.grupo2.editoragibi.Data.Repositories;
 
+import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
+import com.grupo2.editoragibi.Data.Repositories.Interfaces.IEdicoesGibiRepository;
 import com.grupo2.editoragibi.Api.Requests.EdicoesGibiRequest;
 import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
 import com.grupo2.editoragibi.Data.Repositories.Interfaces.IEdicoesGibiRepository;
 import com.grupo2.editoragibi.Service.Directors.EdicoesGibiDirector;
+
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 
 
@@ -26,7 +29,7 @@ public class EdicoesGibiRepository{
     public boolean existsEdicaoGibi(int id){
         return edicoesGibiRepository.existsById(id);
     }
-    
+
     public Optional<EdicoesGibiEntity> getEdicaoByNumero(int nroEdicao){
         Optional<EdicoesGibiEntity> edicoesGibiEntity = edicoesGibiRepository.findEdicoesGibiByEdicao(nroEdicao);
     
@@ -49,9 +52,9 @@ public class EdicoesGibiRepository{
         edicoesGibiRepository.deleteById(id);
     }
 
-
     public EdicoesGibiEntity save(EdicoesGibiEntity edicoesGibiEntity){
         return edicoesGibiRepository.save(edicoesGibiEntity);
+
     }
 
 }

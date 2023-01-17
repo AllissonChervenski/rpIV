@@ -1,5 +1,5 @@
-import LinkButton from '../layout/LinkButton'
 import styles from './Home.module.css'
+import LinkButton from '../layout/LinkButton'
 
 function EscritorP(){
     return (

@@ -13,8 +13,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
@@ -28,6 +26,21 @@ public class GibiController {
     public GibiController(GibiService gibiService) {
         this.gibiService = gibiService;
     }
+//
+//    @GetMapping(path="view")
+//    public List<GibiEntity> getGibis(){
+//       return gibiService.getGibis();
+//    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getGibiById(@PathVariable int id) {
+
+        Gibi gibi = null;
+        try {
+            gibi = gibiService.getGibiById(id);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
 
     @GetMapping(path="/all")
     public ResponseEntity<Object> getGibis() throws GibiInvalidoException{
@@ -57,7 +70,6 @@ public class GibiController {
     public void addEdicaoGibi(@PathVariable("gibiId") Long gibiId,@PathVariable("edicaoId") Long edicaoGibiId){
         gibiService.addEdicaoGibi(gibiId, edicaoGibiId);
     }
-    */
 
     @DeleteMapping(path = "deleteGibi/{gibiId}")
     public ResponseEntity<Object> deleteGibi(@PathVariable("gibiId") Integer gibiId){
@@ -84,6 +96,5 @@ public class GibiController {
         }
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-
 
 }

@@ -13,7 +13,7 @@ public abstract class BaseEdicoesGibi {
     protected LocalDate dataPub;
     protected boolean publicada;
     protected int numeroExemplaresImpressas;
-    
+
     protected BaseGibi gibi;
     protected BaseHistoria historia;
     protected BaseEditora editora;
@@ -24,7 +24,7 @@ public abstract class BaseEdicoesGibi {
     public void setEditora(BaseEditora editora) {
         this.editora = editora;
     }
-    
+
     public int getNumeroExemplaresImpressas() {
         return numeroExemplaresImpressas;
     }
@@ -40,7 +40,7 @@ public abstract class BaseEdicoesGibi {
         return historia;
     }
     public abstract void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException;
- 
+
     public int getEdicaoGibi_id() {
         return edicaoGibi_id;
     }
@@ -66,5 +66,5 @@ public abstract class BaseEdicoesGibi {
         this.publicada = publicada;
     }
 
-    
+
 }

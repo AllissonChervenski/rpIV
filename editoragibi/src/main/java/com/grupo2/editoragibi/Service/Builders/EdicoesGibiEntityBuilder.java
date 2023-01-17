@@ -2,6 +2,7 @@ package com.grupo2.editoragibi.Service.Builders;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 
 import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
+import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
 import com.grupo2.editoragibi.Data.Entity.EdicoesGibiEntity;
+import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
+import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
+import com.grupo2.editoragibi.Data.Repositories.DesenhistaRepository;
+import com.grupo2.editoragibi.Data.Repositories.EscritorRepository;
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
 import com.grupo2.editoragibi.Data.Repositories.DesenhistaRepository;
@@ -36,7 +42,7 @@ import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
 
-    
+
     private EdicoesGibiEntity edicoesGibiEntity;
 
     @Autowired
@@ -77,6 +83,7 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
     @Override
     public void setEditor(Integer editorId) {
         //
+        //
     }
 
     @Override
@@ -93,6 +100,7 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
 
     @Override
     public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException {
+        edicoesGibiEntity.setHistoria(historia);
         edicoesGibiEntity.setHistoria(historia);
     }
 
@@ -123,10 +131,16 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
     @Override
     public void setPersonagem(BasePersonagem personagem) {
         edicoesGibiEntity.setPersonagem(personagem);
+        edicoesGibiEntity.setPersonagem(personagem);
     }
 
     @Override
     public void setPersonagem(Integer personagemId) {
+        try {
+            edicoesGibiEntity.setPersonagem(personagem.getPersonagemById(personagemId));
+        } catch (PersonagemInvalidoException | EscritorInvalidoException e) {
+            e.getCause();
+        }
         try {
             edicoesGibiEntity.setPersonagem(personagem.getPersonagemById(personagemId));
         } catch (PersonagemInvalidoException | EscritorInvalidoException e) {
@@ -201,6 +215,7 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
     @Override
     public void setNroEdicao(int nroEdicao) {
         edicoesGibiEntity.setNroEdicao(nroEdicao);
+        edicoesGibiEntity.setNroEdicao(nroEdicao);
     }
 
     @Override
@@ -213,16 +228,14 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
     public void setPublicada(boolean publicada) {
         edicoesGibiEntity.setPublicada(publicada);        
     }
-    
+
     @Override
     public BaseEdicoesGibi getResult() {
       EdicoesGibiEntity toReturn = edicoesGibiEntity;
       edicoesGibiEntity = new EdicoesGibiEntity();
       return toReturn;
     }
-  
+
 
 
 }
-
-

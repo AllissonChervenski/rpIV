@@ -43,7 +43,7 @@ public class EdicoesGibiService {
     @Qualifier("edicoesGibiEntityDirector")
     @Autowired
     EdicoesGibiDirector edicoesEntityDirector;
-    
+
     @Autowired
     IHistoriaRepository iHistoriaRepository;
 
@@ -81,7 +81,7 @@ public class EdicoesGibiService {
                 throw new EdicoesGibiInvalidoException("A edição já existe");
             }
         EdicoesGibi edicoes = (EdicoesGibi) edicoesEntityDirector.buildFromEdicoesGibiRequest(edicoesGibi);
-        EdicoesGibiEntity edicoesGibiEntity = (EdicoesGibiEntity) edicoesEntityDirector.buildFromEdicoesGibi(edicoes);    
+        EdicoesGibiEntity edicoesGibiEntity = (EdicoesGibiEntity) edicoesEntityDirector.buildFromEdicoesGibi(edicoes);
         return  edicoesGibiRepository.save(edicoesGibiEntity);
     }
 
@@ -97,11 +97,11 @@ public class EdicoesGibiService {
 
     @Transactional
     public EdicoesGibi updateEdicoesGibi(Integer edicoesGibiId, Integer nroEdicao, LocalDate dataPub,
-            int numeroExemplaresImpressas,
-            boolean isPublicada,
-            HistoriaEntity historiaEntity,
-            GibiEntity gibiEntity, EscritorEntity escritorEntity, PersonagemEntity personagemEntity,
-            DesenhistaEntity desenhistaEntity /*EditoraEntity editoraEntity*/)
+                                         int numeroExemplaresImpressas,
+                                         boolean isPublicada,
+                                         HistoriaEntity historiaEntity,
+                                         GibiEntity gibiEntity, EscritorEntity escritorEntity, PersonagemEntity personagemEntity,
+                                         DesenhistaEntity desenhistaEntity /*EditoraEntity editoraEntity*/)
             throws EdicoesGibiInvalidoException, HistoriaInvalidaException, GibiInvalidoException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
         Optional<EdicoesGibiEntity> edicoesGibi = edicoesGibiRepository.getEdicaoGibiById(edicoesGibiId);
 
