@@ -17,7 +17,7 @@ import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 public class GibiRepository {
 
     @Autowired
-    IGibiRepository gibiRepository;
+    IGibiRepository iGibiRepository;
 
     public Optional<GibiEntity> getGibiById(Integer id) throws GibiInvalidoException{
         Optional<GibiEntity> gibis = iGibiRepository.findById(id);
@@ -33,12 +33,9 @@ public class GibiRepository {
         return iGibiRepository.findAll();
      }
 
-     public Optional<GibiEntity> getGibiByTitulo(String titulo) throws GibiInvalidoException{
-        //if(!iGibiRepository.findGibiByTitulo(titulo).isPresent()){
-        //    throw new GibiInvalidoException("Gibi não encontrado");
-        //}
-        return iGibiRepository.findGibiByTitulo(titulo);
-     }
+     public GibiEntity getGibiByTitulo(String titulo) {
+        return iGibiRepository.findByTitulo(titulo);
+    }
 
      public GibiEntity addGibi(GibiEntity gibi){
         return iGibiRepository.save(gibi);

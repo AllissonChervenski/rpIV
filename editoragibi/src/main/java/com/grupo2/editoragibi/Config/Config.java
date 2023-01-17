@@ -126,16 +126,7 @@ public class Config {
         return new TransportadoraDirector(transportadoraEntityBuilder);
     }
 
-    @Bean(name = "gibiDirector")
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    GibiDirector getGibiDirector(GibiEntityBuilder gibiEntityBuilder) {
-        return new GibiDirector(gibiEntityBuilder);
-    }
+  
 
-    @Bean(name = "gibiEntityDirector")
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    GibiDirector getGibiEntityDirector(GibiEntityBuilder gibiEntityBuilder) {
-        return new GibiDirector(gibiEntityBuilder);
-    }
 
 }

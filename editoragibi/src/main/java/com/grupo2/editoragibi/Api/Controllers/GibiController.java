@@ -13,6 +13,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
@@ -26,11 +28,7 @@ public class GibiController {
     public GibiController(GibiService gibiService) {
         this.gibiService = gibiService;
     }
-//
-//    @GetMapping(path="view")
-//    public List<GibiEntity> getGibis(){
-//       return gibiService.getGibis();
-//    }
+    
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getGibiById(@PathVariable int id) {
@@ -41,15 +39,17 @@ public class GibiController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
+        return ResponseEntity.ok(gibi);
+    }
 
     @GetMapping(path="/all")
-    public ResponseEntity<Object> getGibis() throws GibiInvalidoException{
+    public ResponseEntity<Object> getGibis() {
         List<GibiEntity> gibi = null;
 
         try {
         gibi = gibiService.getGibis();
         } catch (PersonagemInvalidoException | DesenhistaInvalidoException | EscritorInvalidoException |
-                 EdicoesGibiInvalidoException | HistoriaInvalidaException e) {
+                 EdicoesGibiInvalidoException | HistoriaInvalidaException | GibiInvalidoException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
         return new ResponseEntity<>(gibi, HttpStatus.OK);
@@ -66,9 +66,15 @@ public class GibiController {
         return new ResponseEntity<>(gibi, HttpStatus.OK);
     }
 
-    /*@PostMapping(path = "{gibiId}&{edicaoId}")
-    public void addEdicaoGibi(@PathVariable("gibiId") Long gibiId,@PathVariable("edicaoId") Long edicaoGibiId){
-        gibiService.addEdicaoGibi(gibiId, edicaoGibiId);
+    @PostMapping(path = "{gibiId}&{edicaoId}")
+    public void addEdicaoGibi(@PathVariable("gibiId") Integer gibiId,@PathVariable("edicaoId") Integer edicaoGibiId){
+        try {
+            gibiService.addEdicaoGibi(gibiId, edicaoGibiId);
+        } catch (GibiInvalidoException | EdicoesGibiInvalidoException | PersonagemInvalidoException
+                | DesenhistaInvalidoException | EscritorInvalidoException | HistoriaInvalidaException e) {
+            
+            e.getCause();
+        }
     }
 
     @DeleteMapping(path = "deleteGibi/{gibiId}")
@@ -98,3 +104,5 @@ public class GibiController {
     }
 
 }
+
+ 
