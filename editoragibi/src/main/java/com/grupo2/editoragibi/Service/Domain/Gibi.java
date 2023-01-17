@@ -23,17 +23,18 @@ public class Gibi extends BaseGibi {
     @Override
     public void setEncData(LocalDate encData) {
         // TODO Auto-generated method stub
-        if(encData != null && encData != LocalDate.now()){
-            this.encData = encData;
-        }
+//        if(encData != null && encData != LocalDate.now()){
+//
+//        }
+        this.encData = encData;
     }
 
     @Override
     public void setInicioData(LocalDate inicioData) {
         // TODO Auto-generated method stub
-        if(inicioData != null){
-            this.inicioData = inicioData;
-        }
+//        if(inicioData != null){
+//        }
+        this.inicioData = inicioData;
     }
 
     @Override

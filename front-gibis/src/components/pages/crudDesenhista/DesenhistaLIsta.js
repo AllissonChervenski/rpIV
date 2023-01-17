@@ -2,7 +2,6 @@ import { React, useState, useEffect } from "react";
 import api from "../../../services/api";
 import '../../../css/button.css'
 import '../../../css/style.css'
-import '../../../css/records.css'
 import '../../../css/main.css'
 <script>
 
@@ -63,11 +62,11 @@ const delDesenhista = async(desenhistaId) => {
               <td className="conteudo" >{desenhista.desenhistaId}</td>
               <td className="conteudo">{desenhista.nomeDesenhista}</td>
               <td className="conteudo">{desenhista.paisNascimento}</td>
-              <td className="conteudo">{desenhista.dataNascimento}</td>
-              <td className="conteudo">{desenhista.dataContratacao}</td>
-              <td className="conteudo">{desenhista.dataFalecimento}</td>
+              <td className="conteudo">{moment(desenhista.dataNascimento).format('DD/MM/YYYY')}</td>
+              <td className="conteudo">{moment(desenhista.dataFalecimento).format('DD/MM/YYYY')}</td>
+              <td className="conteudo">{moment(desenhista.dataContratacao).format('DD/MM/YYYY')}</td>
               <td className="conteudo">{desenhista.enderecoDesenhista}</td>
-              <td className="conteudo" >{desenhista.dataDemissao}</td>
+              <td className="conteudo">{moment(desenhista.dataDemissao).format('DD/MM/YYYY')}</td>
               <td>
                 <button  className="acoes" type="button" class="button green" id="edit-${desenhistaId}" >Editar</button>
                 <button className="acoes" type="button" class="button red" onClick={delDesenhista(desenhista.desenhistaId)}>Delete</button>

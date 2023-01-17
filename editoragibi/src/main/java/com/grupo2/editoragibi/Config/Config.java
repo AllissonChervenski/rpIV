@@ -29,6 +29,7 @@ public class Config {
         return new EdicoesGibiDirector(edicoesGibiBuilder);
     }
 
+
     @Bean(name = "edicoesGibiEntityDirector")
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     EdicoesGibiDirector getEdicoesGibiDirector(EdicoesGibiEntityBuilder edicoesGibiBuilder) {
@@ -124,5 +125,8 @@ public class Config {
     TransportadoraDirector getTransportadoraEntityDirector(TransportadoraEntityBuilder transportadoraEntityBuilder) {
         return new TransportadoraDirector(transportadoraEntityBuilder);
     }
+
   
+
+
 }

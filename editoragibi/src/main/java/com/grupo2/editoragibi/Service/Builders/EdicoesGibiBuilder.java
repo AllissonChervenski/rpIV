@@ -52,7 +52,7 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
     @Autowired
     private HistoriaRepository historia;
 
-    
+
     @Autowired
     private HistoriaDirector historiaDirector;
 
@@ -62,14 +62,14 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
     @Autowired
     private EscritorDirector escritorDirector;
 
-    
-   
+
+
     @Autowired
     private PersonagemRepository personagem;
 
     @Autowired
     private PersonagemDirector personagemDirector;
-    
+
     @Autowired
     private DesenhistaRepository desenhista;
 
@@ -78,7 +78,7 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
 
 
     public EdicoesGibiBuilder(){
-    
+
         reset();
     }
 
@@ -98,12 +98,12 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
 
     @Override
     public void setEdicaoGibiId(int id) {
-      edicoesGibi.setEdicaoGibi_id(id);
+        edicoesGibi.setEdicaoGibi_id(id);
     }
 
     @Override
     public void setEditor(Integer editorId) {
-       //
+        //
     }
 
     @Override
@@ -126,51 +126,51 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
     @Override
     public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException{
         if(historia instanceof Historia){
-        edicoesGibi.setHistoria(historia);
+            edicoesGibi.setHistoria(historia);
         }
     }
     @Override
     public void setPersonagens(List<Integer> personagensId) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<Personagem> personagensEdicao = edicoesGibi.getPersonagem();
         if(personagensId != null){
-        for (Integer id : personagensId) {
-            personagensEdicao.add((Personagem) personagemDirector.buildFromPersonagemEntity(personagem.getPersonagemById(id), edicoesGibi));
+            for (Integer id : personagensId) {
+                personagensEdicao.add((Personagem) personagemDirector.buildFromPersonagemEntity(personagem.getPersonagemById(id), edicoesGibi));
+            }
         }
     }
-}
 
     @Override
     public void setDesenhistas(List<Integer> desenhistaId) throws DesenhistaInvalidoException {
         List<Desenhista> desenhistaEdicao = edicoesGibi.getDesenhista();
         if(desenhistaId != null){
-        for (Integer id : desenhistaId) {
-            desenhistaEdicao.add((Desenhista) desenhistaDirector.buildFromDesenhistaEntity(desenhista.getDesenhistaById(id)));
+            for (Integer id : desenhistaId) {
+                desenhistaEdicao.add((Desenhista) desenhistaDirector.buildFromDesenhistaEntity(desenhista.getDesenhistaById(id)));
+            }
         }
-    }
 
-}
+    }
 
     @Override
     public void setEscritores(List<Integer> escritorId) {
         // TODO Auto-generated method stub
         List<Escritor> escritorEdicao = edicoesGibi.getEscritor();
         if(escritorId != null){
-        for (Integer id : escritorId) {
-            try {
-                escritorEdicao.add((Escritor) escritorDirector.buildFromEscritorEntity(escritor.getEscritorById(id)));
-            } catch (EscritorInvalidoException | PersonagemInvalidoException e) {
-                // TODO Auto-generated catch block
-                e.getCause();
+            for (Integer id : escritorId) {
+                try {
+                    escritorEdicao.add((Escritor) escritorDirector.buildFromEscritorEntity(escritor.getEscritorById(id)));
+                } catch (EscritorInvalidoException | PersonagemInvalidoException e) {
+                    // TODO Auto-generated catch block
+                    e.getCause();
+                }
             }
         }
-    }
     }
 
     @Override
     public void setNroEdicao(int nroEdicao) throws EdicoesGibiInvalidoException {
         // TODO Auto-generated method stub
         edicoesGibi.setNroEdicao(nroEdicao);
-        
+
     }
 
     @Override
@@ -227,10 +227,10 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
     public void setEscritor(Integer escritorId) throws EscritorInvalidoException, PersonagemInvalidoException {
         // TODO Auto-generated method stub
         edicoesGibi.setEditor(escritor.getEscritorById(escritorId));
-        
+
     }
 
-    
+
 
 
 }

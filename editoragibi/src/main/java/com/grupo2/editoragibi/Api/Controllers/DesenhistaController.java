@@ -59,6 +59,7 @@ public class DesenhistaController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @CrossOrigin( origins = "http://localhost:3000")
     public ResponseEntity<Object> deleteDesenhista(@PathVariable Integer id) {
         try {
             desenhistaService.deleteDesenhista(id);

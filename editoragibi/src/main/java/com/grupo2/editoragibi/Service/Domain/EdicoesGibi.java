@@ -40,7 +40,7 @@ public class EdicoesGibi extends BaseEdicoesGibi{
     public void setDataPub(LocalDate dataPub) throws EdicoesGibiInvalidoException {
         if(dataPub != null && validDate(dataPub) ){
             this.dataPub = dataPub;
-    } 
+        }
         else{
             throw new EdicoesGibiInvalidoException("Data inválida");
         }
@@ -71,9 +71,9 @@ public class EdicoesGibi extends BaseEdicoesGibi{
     @Override
     public void setGibi(BaseGibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException {
         this.gibi = gibi;
-        
+
     }
-    
+
 
     @Override
     public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException {
@@ -82,7 +82,7 @@ public class EdicoesGibi extends BaseEdicoesGibi{
     }
 
     public void setEditor(EscritorEntity escritorById) {
-        
+
     }
 
     public void setPersonagem(BasePersonagem personagem2) {
@@ -97,5 +97,5 @@ public class EdicoesGibi extends BaseEdicoesGibi{
         this.escritor.add((Escritor) escritor2);
     }
 
-    
+
 }
