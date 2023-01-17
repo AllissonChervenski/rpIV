@@ -70,6 +70,21 @@ public class EscritorEntityBuilder implements IBaseEscritorBuilder {
     }
 
     @Override
+    public void setDataNascimentoEs(LocalDate dataNascimentoEs) {
+        escritorEntity.setDataNascimentoEs(dataNascimentoEs);
+    }
+
+    @Override
+    public void setDataFalecimentoEs(LocalDate dataFalecimentoEs) {
+        escritorEntity.setDataFalecimentoEs(dataFalecimentoEs);
+    }
+
+    @Override
+    public void setPaisNascimentoEs(String paisNascimentoEs) {
+        escritorEntity.setPaisNascimentoEs(paisNascimentoEs);
+    }
+
+    @Override
     public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<PersonagemEntity> personagensEscritor = new ArrayList<>();
         if(personagensIds != null){

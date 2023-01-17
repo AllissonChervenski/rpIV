@@ -28,6 +28,9 @@ public class EscritorDirector {
         builder.setEmailEscritor(escritorRequest.getEmailEscritor());
         builder.setDataContratacao(escritorRequest.getDataContratacao());
         builder.setDataDemissao(escritorRequest.getDataDemissao());
+        builder.setDataFalecimentoEs(escritorRequest.getDataFalecimentoEs());
+        builder.setDataNascimentoEs(escritorRequest.getDataNascimentoEs());
+        builder.setPaisNascimentoEs(escritorRequest.getPaisNascimentoEs());
         builder.setPersonagens(escritorRequest.getPersonagensIds());
 
         return builder.getResult();
@@ -48,6 +51,9 @@ public class EscritorDirector {
         builder.setEmailEscritor(escritor.getEmailEscritor());
         builder.setDataContratacao(escritor.getDataContratacao());
         builder.setDataDemissao(escritor.getDataDemissao());
+        builder.setDataFalecimentoEs(escritor.getDataFalecimentoEs());
+        builder.setDataNascimentoEs(escritor.getDataNascimentoEs());
+        builder.setPaisNascimentoEs(escritor.getPaisNascimentoEs());
         List<Integer> personagensIds = escritor.getPersonagens().stream().map(personagem -> {
             return personagem.getPersonagemId();
         }).collect(Collectors.toList());
@@ -72,6 +78,9 @@ public class EscritorDirector {
         builder.setEmailEscritor(escritorEntity.getEmailEscritor());
         builder.setDataContratacao(escritorEntity.getDataContratacao());
         builder.setDataDemissao(escritorEntity.getDataDemissao());
+        builder.setPaisNascimentoEs(escritorEntity.getPaisNascimentoEs());
+        builder.setDataNascimentoEs(escritorEntity.getDataNascimentoEs());
+        builder.setDataFalecimentoEs(escritorEntity.getDataFalecimentoEs());
         List<Integer> personagensIds = escritorEntity.getPersonagens().stream().map(personagem -> {
             return personagem.getPersonagemId();
         }).collect(Collectors.toList());

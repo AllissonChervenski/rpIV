@@ -47,6 +47,19 @@ public class Escritor extends BaseEscritor {
         this.dataDemissao = dataDemissao;
     }
 
+
+    public void setDataFalecimentoEs(LocalDate dataFalecimentoEs) {
+        this.dataFalecimentoEs = dataFalecimentoEs;
+    }
+
+    public void setDataNascimentoEs(LocalDate dataNascimentoEs) {
+        this.dataNascimentoEs = dataNascimentoEs;
+    }
+
+    public void setPaisNascimentoEs(String paisNascimentoEs) {
+        this.paisNascimentoEs = paisNascimentoEs;
+    }
+
     public List<Personagem> getPersonagens() {
         return personagens;
     }
