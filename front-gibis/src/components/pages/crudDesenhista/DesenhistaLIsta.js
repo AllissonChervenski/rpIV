@@ -41,10 +41,11 @@ const delDesenhista = (desenlhistaId)=>{
   ) 
    
 }
- 
+  
+// updateDesenhista(desenhistaId) 
+
 async function updaDesenhista(desenlhistaId) {
   console.log(desenlhistaId);
-      // updateDesenhista(desenhistaId) 
       try{
 
        const response = await axios.put(`http://localhost:8080/desenhistas/update/${desenlhistaId}`, 
