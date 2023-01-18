@@ -3,6 +3,7 @@ import api from "../../../services/api";
 import '../../../css/button.css'
 import '../../../css/style.css'
 import '../../../css/main.css'
+import moment from 'moment'
 <script>
 
 </script>
@@ -26,12 +27,10 @@ const delDesenhista = async(desenhistaId) => {
   await api.delete(`/desenhistas/delete/${desenhistaId}`).then(response => {
     console.log(response);
 
-   getDesenhistas();
-   
   })
   .catch(error => {
     console.log(error)
-    getDesenhistas();
+    
   });
   
 }
@@ -40,7 +39,7 @@ const delDesenhista = async(desenhistaId) => {
     <table className="records" border="1" >
       <caption className="caption-title">Desenhista Cadastrado</caption>
       <thead>
-       
+       <div className="content-table">
       <tr>
               <th className="conteudo">id</th>                      
               <th className="conteudo">Nome</th>
@@ -52,7 +51,8 @@ const delDesenhista = async(desenhistaId) => {
               <th className="conteudo">Data demissão</th>
               <th className="acoes">Ações</th>
             </tr>
-          
+
+            </div> 
       </thead>
      
       {desenhistas.map((desenhista) => (
