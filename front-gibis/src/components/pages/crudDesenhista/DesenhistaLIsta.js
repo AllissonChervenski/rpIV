@@ -26,7 +26,7 @@ const delDesenhista = async(desenhistaId) => {
   // deleteDesenhista(desenhistaId)
   await api.delete(`/desenhistas/delete/${desenhistaId}`).then(response => {
     console.log(response);
-
+    getDesenhistas();
   })
   .catch(error => {
     console.log(error)
@@ -52,8 +52,6 @@ const delDesenhista = async(desenhistaId) => {
               <th className="acoes">Ações</th>
             </tr>
 
-            </div> 
-      </thead>
      
       {desenhistas.map((desenhista) => (
         
@@ -69,12 +67,14 @@ const delDesenhista = async(desenhistaId) => {
               <td className="conteudo">{moment(desenhista.dataDemissao).format('DD/MM/YYYY')}</td>
               <td>
                 <button  className="acoes" type="button" class="button green" id="edit-${desenhistaId}" >Editar</button>
-                <button className="acoes" type="button" class="button red" onClick={delDesenhista(desenhista.desenhistaId)}>Delete</button>
+                <button className="acoes" type="button" class="button red" onClick={() => delDesenhista(desenhista.desenhistaId)}>Delete</button>
             </td>
             </tr>
             
         
-        ))}
+            ))}
+          </div> 
+          </thead>
         </table>
        
     )

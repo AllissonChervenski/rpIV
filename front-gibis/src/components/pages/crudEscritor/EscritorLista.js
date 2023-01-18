@@ -51,8 +51,7 @@ const delEscritor = (escritorId)=>{
               <th className="conteudo">Data Demissão</th>
               <th className="acoes">Ações</th>
             </tr>
-      </div>
-      </thead>
+     
      
       {escritores.map((escritor) => (
         
@@ -76,6 +75,8 @@ const delEscritor = (escritorId)=>{
             
         
         ))}
+         </div>
+      </thead>
         </table>
        
     )
