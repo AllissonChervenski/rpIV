@@ -1,12 +1,9 @@
 import { React, useState, useEffect } from "react";
 import api from "../../../services/api";
-import moment from 'moment';
-import axios from 'axios';
-import '../../../css/records.css'
 import '../../../css/button.css'
 import '../../../css/style.css'
 import '../../../css/main.css'
-import {deleteDesenhista} from  './deletar'
+import moment from 'moment'
 <script>
 
 </script>
@@ -24,12 +21,17 @@ export default function Desenhista() {
     });
   };
 
-
-const delDesenhista = (desenlhistaId)=>{
-  // deleteDesenhista(desenhistaId)
   
- axios.delete(`http://localhost:8080/desenhistas/delete/${desenlhistaId}`, 
-  )
+const delDesenhista = async(desenhistaId) => {
+  // deleteDesenhista(desenhistaId)
+  await api.delete(`/desenhistas/delete/${desenhistaId}`).then(response => {
+    console.log(response);
+    getDesenhistas();
+  })
+  .catch(error => {
+    console.log(error)
+    
+  });
   
 }
   return (   
@@ -37,7 +39,8 @@ const delDesenhista = (desenlhistaId)=>{
     <table className="records" border="1" >
       <caption className="caption-title">Desenhista Cadastrado</caption>
       <thead>
-      <tr >
+       <div className="content-table">
+      <tr>
               <th className="conteudo">id</th>                      
               <th className="conteudo">Nome</th>
               <th className="conteudo">Pais</th>
@@ -49,7 +52,6 @@ const delDesenhista = (desenlhistaId)=>{
               <th className="acoes">Ações</th>
             </tr>
 
-      </thead>
      
       {desenhistas.map((desenhista) => (
         
@@ -65,12 +67,14 @@ const delDesenhista = (desenlhistaId)=>{
               <td className="conteudo">{moment(desenhista.dataDemissao).format('DD/MM/YYYY')}</td>
               <td>
                 <button  className="acoes" type="button" class="button green" id="edit-${desenhistaId}" >Editar</button>
-                <button className="acoes" type="button" class="button red" onClick={() =>delDesenhista(desenhista.desenhistaId)}>Delete</button>
+                <button className="acoes" type="button" class="button red" onClick={() => delDesenhista(desenhista.desenhistaId)}>Delete</button>
             </td>
             </tr>
             
         
-        ))}
+            ))}
+          </div> 
+          </thead>
         </table>
        
     )

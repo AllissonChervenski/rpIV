@@ -49,8 +49,8 @@ public class DesenhistaService {
 
 
     public void deleteDesenhista(Integer id) throws DesenhistaInvalidoException {
-        if (desenhistaRepository.deleteDesenhista(id))
-            throw new DesenhistaInvalidoException("O desenhista já está no sistema");
+        if (!desenhistaRepository.deleteDesenhista(id))
+            throw new DesenhistaInvalidoException("O desenhista não está no sistema");
     }
 
     public Desenhista updateDesenhista(int id, DesenhistaRequest desenhistaRequest) throws DesenhistaInvalidoException {

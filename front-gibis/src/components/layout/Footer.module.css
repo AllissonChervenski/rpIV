@@ -1,14 +1,17 @@
 .footer {
     background-color: #222;
     color: #fff;
-    padding: 3em;
     text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
   }
   
   .social_list {
     display: flex;
     justify-content: center;
     list-style-type: none;
+    padding-top: 20px;
   }
   
   .social_list li {
@@ -26,6 +29,7 @@
   
   .copy_right {
     margin-top: 2em;
+    padding-bottom: 10px;
   }
   
   .copy_right span {
