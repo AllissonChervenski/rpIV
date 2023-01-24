@@ -6,6 +6,7 @@ const deleteDesenhista = async(desenhistaId)=>{
     // return await axios.delete(`${baseUrl}/delete/${desenhistaId}`);    
     const response = await axios.delete(`${baseUrl}/delete/${desenhistaId}`);  
     console.log(response)
+    return response;
 }
 
 export {

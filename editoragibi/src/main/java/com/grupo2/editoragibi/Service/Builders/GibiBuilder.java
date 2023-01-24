@@ -61,10 +61,10 @@ public class GibiBuilder  implements IBaseGibiBuilder{
 
     @Override
     public void setEdicoesGibi(List<Integer> edicoesGibi) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
-        List<EdicoesGibi> gibiEdicoes =  gibi.getEdicoesGibi();
+        //List<EdicoesGibi> gibiEdicoes =  gibi.getEdicoesGibi();
         if(edicoesGibi != null){
             for(Integer id : edicoesGibi){
-                gibiEdicoes.add((EdicoesGibi) edicoesGibiDirector.buildFromEdicoesGibiEntity(this.edicoesGibi.getEdicaoGibiById(id).get()));
+                gibi.getEdicoesGibi().add((EdicoesGibi) edicoesGibiDirector.buildFromEdicoesGibiEntity(this.edicoesGibi.getEdicaoGibiById(id).get()));
             }
         }
     }

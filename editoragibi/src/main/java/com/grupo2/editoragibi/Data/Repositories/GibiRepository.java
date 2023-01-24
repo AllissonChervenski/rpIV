@@ -3,6 +3,8 @@ package com.grupo2.editoragibi.Data.Repositories;
 import java.util.List;
 import java.util.Optional;
 
+import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
+import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -31,11 +33,8 @@ public class GibiRepository {
         return iGibiRepository.findAll();
     }
 
-    public Optional<GibiEntity> getGibiByTitulo(String titulo) throws GibiInvalidoException{
-        //if(!iGibiRepository.findGibiByTitulo(titulo).isPresent()){
-        //    throw new GibiInvalidoException("Gibi não encontrado");
-        //}
-        return iGibiRepository.findGibiByTitulo(titulo);
+    public GibiEntity getGibiByTitulo(String titulo) {
+        return iGibiRepository.findByTitulo(titulo);
     }
 
     public GibiEntity addGibi(GibiEntity gibi){

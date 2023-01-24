@@ -7,6 +7,7 @@ import com.grupo2.editoragibi.Service.Domain.Gibi;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +19,9 @@ import java.util.List;
 public class GibiEntity extends Gibi {
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.AUTO,
-            generator = "gibi_gibi_id_seq"
-    )
     @Column(name = "gibi_id")
-    private Integer gibi_id;
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "gibi_gibi_id_seq")
+    private int gibiId;
 
     @Column(name = "titulo_gibi")
     private String tituloGibi;
@@ -35,7 +33,7 @@ public class GibiEntity extends Gibi {
     private LocalDate encData;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gibi")
-    private List<EdicoesGibiEntity> edicoesGibis;
+    private List<EdicoesGibiEntity> edicoesGibis = new ArrayList<>();
 
 
     public void setEdicaoGibi(EdicoesGibiEntity edicoes) {

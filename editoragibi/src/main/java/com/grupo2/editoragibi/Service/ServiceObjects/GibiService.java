@@ -13,6 +13,7 @@ import com.grupo2.editoragibi.Service.Exceptions.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,8 +50,14 @@ public class GibiService {
         return gibiEntity;
     }
 
+    public Gibi getGibiById(Integer id) throws GibiInvalidoException {
+        return gibiRepository.getGibiById(id)
+                .orElseThrow(() -> new GibiInvalidoException("Gibi com id " + id + " não encontrado."));
+    }
+
+
     public Gibi addGibi(GibiRequest gibiRequest) throws GibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException {
-        Optional<GibiEntity> gibiOptional = gibiRepository.getGibiByTitulo(gibiRequest.getTituloGibi());
+        Optional<GibiEntity> gibiOptional = Optional.ofNullable(gibiRepository.getGibiByTitulo(gibiRequest.getTituloGibi()));
         if (gibiOptional.isPresent()) {
             throw new IllegalStateException("Titulo já existente");
         }
@@ -120,14 +127,7 @@ public class GibiService {
         Optional<GibiEntity> gibi = gibiRepository.getGibiById(gibiId);
 
         if (edicoesGibiOptional.isPresent() && gibi.isPresent()) {
-            if (gibi.get().getEdicoesGibi() != null) {
-                gibi.get().getEdicoesGibi().add(edicoesGibiOptional.get());
-            }
-            else {
-                gibi.get().setEdicoesGibi(new ArrayList<>());
-                gibi.get().getEdicoesGibi().add(edicoesGibiOptional.get());
-            }
-
+            gibi.get().getEdicoesGibi().add(edicoesGibiOptional.get());
         } else {
             throw new EdicoesGibiInvalidoException("Edicao nao encontrada");
         }

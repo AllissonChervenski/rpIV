@@ -13,27 +13,28 @@ import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 //Tem ao menos uma edicao: Sim ou Nao | Descontinuado: Sim ou Nao 
 public class Gibi extends BaseGibi {
 
-    List<EdicoesGibi> edicoesGibi = new ArrayList<>();
+    List<EdicoesGibi> edicoesGibis = new ArrayList<>();
 
 
     public List<EdicoesGibi> getEdicoesGibi() {
-        return this.edicoesGibi;
+        return this.edicoesGibis;
     }
 
     @Override
     public void setEncData(LocalDate encData) {
         // TODO Auto-generated method stub
-        if(encData != null && encData != LocalDate.now()){
-            this.encData = encData;
-        }
+//        if(encData != null && encData != LocalDate.now()){
+//
+//        }
+        this.encData = encData;
     }
 
     @Override
     public void setInicioData(LocalDate inicioData) {
         // TODO Auto-generated method stub
-        if(inicioData != null){
-            this.inicioData = inicioData;
-        }
+//        if(inicioData != null){
+//        }
+        this.inicioData = inicioData;
     }
 
     @Override
@@ -50,10 +51,12 @@ public class Gibi extends BaseGibi {
 
 
     public void setEdicaoGibi(BaseEdicoesGibi edicaoGibi){
-        this.edicoesGibi.add((EdicoesGibi) edicaoGibi);
+        this.edicoesGibis.add((EdicoesGibi) edicaoGibi);
     }
 
-    public void setEdicoesGibi(ArrayList<EdicoesGibi> edicoesGibi) {
-        this.edicoesGibi = edicoesGibi;
+    /* public void setEdicoesGibi(ArrayList<EdicoesGibi> edicoesGibi) {
+        this.edicoesGibis = edicoesGibi;
     }
+    */
+
 }

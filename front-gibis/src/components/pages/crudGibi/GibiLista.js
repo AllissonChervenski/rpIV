@@ -40,6 +40,7 @@ const delGibi = (gibiId)=>{
     <table className="records" border="1" >
       <caption className="caption-title">Gibis Cadastrados</caption>
       <thead>
+      <div className="content-table">
       <tr >
               <th className="conteudo">Id</th>                      
               <th className="conteudo">Título</th>
@@ -47,8 +48,7 @@ const delGibi = (gibiId)=>{
               <th className="conteudo">Data de Encerramento</th>
               <th className="acoes">Ações</th>
             </tr>
-
-      </thead>
+   
      
       {gibis.map((gibi) => (
         
@@ -67,6 +67,8 @@ const delGibi = (gibiId)=>{
             
         
         ))}
+         </div>
+      </thead>
         </table>
        
     )

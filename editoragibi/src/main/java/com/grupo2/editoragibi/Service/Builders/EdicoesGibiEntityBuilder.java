@@ -77,6 +77,7 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
     @Override
     public void setEditor(Integer editorId) {
         //
+        //
     }
 
     @Override
@@ -93,6 +94,7 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
 
     @Override
     public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException {
+        edicoesGibiEntity.setHistoria(historia);
         edicoesGibiEntity.setHistoria(historia);
     }
 
@@ -123,10 +125,16 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
     @Override
     public void setPersonagem(BasePersonagem personagem) {
         edicoesGibiEntity.setPersonagem(personagem);
+        edicoesGibiEntity.setPersonagem(personagem);
     }
 
     @Override
     public void setPersonagem(Integer personagemId) {
+        try {
+            edicoesGibiEntity.setPersonagem(personagem.getPersonagemById(personagemId));
+        } catch (PersonagemInvalidoException | EscritorInvalidoException e) {
+            e.getCause();
+        }
         try {
             edicoesGibiEntity.setPersonagem(personagem.getPersonagemById(personagemId));
         } catch (PersonagemInvalidoException | EscritorInvalidoException e) {
@@ -200,6 +208,7 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
 
     @Override
     public void setNroEdicao(int nroEdicao) {
+        edicoesGibiEntity.setNroEdicao(nroEdicao);
         edicoesGibiEntity.setNroEdicao(nroEdicao);
     }
 

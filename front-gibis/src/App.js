@@ -25,99 +25,103 @@ import axios from 'axios'
 
 
 
-function App() {         
-      
+function App() {
+
 
   return (
 
-    <Router>
-      <Navbar />
-      <Switch>
-      <Container customClass = "min-height">
-        <Route exact path="/"> 
-        <Home />
-        </Route>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Container customClass = "min-height">
+            <Route exact path="/">
+              <Home />
+            </Route>
 
-        <Route exact path="/cadastros"> 
-        <Cadastros />
-        </Route>
+            <Route exact path="/cadastros">
+              <Cadastros />
+            </Route>
 
-        <Route exact path="/gibis"> 
-        <Gibis />
-        </Route>
+            <Route exact path="/gibis">
+              <Gibis />
+            </Route>
 
-        <Route exact path="/gibi"> 
-        <Gibi />
-        </Route>
+            <Route exact path="/gibi">
+              <Gibi />
+            </Route>
 
-        <Route exact path="/newgibi">
-        <Nascimento />
-        </Route>
+            <Route exact path="/newgibi">
+              <Nascimento />
+            </Route>
 
-        <Route exact path="/gibisp"> 
-        <GibisP />
-        </Route>
+            <Route exact path="/gibisp">
+              <GibisP />
+            </Route>
 
-        <Route exact path="/financeiro"> 
-        <Financeiro />
-        </Route>
+            <Route exact path="/financeiro">
+              <Financeiro />
+            </Route>
 
-        <Route exact path="/escritorp"> 
-        <EscritorP />
-        </Route>
+            <Route exact path="/escritorp">
+              <EscritorP />
+            </Route>
 
-        <Route exact path="/escritor"> 
-        <Escritor />
-        </Route>
+            <Route exact path="/escritor">
+              <Escritor />
+            </Route>
 
-        <Route exact path="/newescritor">
-        <NewEscritor />
-        </Route>
+            <Route exact path="/newescritor">
+              <NewEscritor />
+            </Route>
 
-        <Route exact path="/desenhistap"> 
-        <DesenhistaP />
-        </Route>
+            <Route exact path="/desenhistap">
+              <DesenhistaP />
+            </Route>
 
-        <Route exact path="/desenhista">
-        <Desenhista />
-        </Route>
+            <Route exact path="/desenhista">
+              <Desenhista />
+            </Route>
 
-        <Route exact path="/desenhista/delete">
-        <deletar />
-        </Route>
-
-        
-        <Route exact path="/newdesenhista">
-        <NewDesenhista />
-        </Route>
-
-        <Route exact path="/transportadoras"> 
-        <Transportadoras />
-        </Route>
+            <Route exact path="/desenhista/delete">
+              <deletar />
+            </Route>
 
 
-        <Route exact path="/acervo"> 
-        <Acervo />
-        </Route>
+            <Route exact path="/newdesenhista">
+              <NewDesenhista />
+            </Route>
 
-        <Route exact path="/login"> 
-        <Login />
-        </Route>
-
-        <Route exact path="/editorHomePage"> 
-        <EditorHomePage />
-        </Route>
-
-        <Route exact path="/banca"> 
-        <Banca />
-        </Route>
+            <Route exact path="/transportadoras">
+              <Transportadoras />
+            </Route>
 
 
-      </Container>
-      </Switch>
-      <Footer />
-    </Router>
+            <Route exact path="/acervo">
+              <Acervo />
+            </Route>
 
-    )
+            <Route exact path="/login">
+              <Login />
+            </Route>
+
+            <Route exact path="/editorHomePage">
+              <EditorHomePage />
+            </Route>
+
+            <Route exact path="/banca">
+              <Banca />
+            </Route>
+
+            <Route exact path="/desenhistas/delete">
+              <deletar />
+            </Route>
+
+
+          </Container>
+        </Switch>
+        <Footer />
+      </Router>
+
+  )
 }
 export default App

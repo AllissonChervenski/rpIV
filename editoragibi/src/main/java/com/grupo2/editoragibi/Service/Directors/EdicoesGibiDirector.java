@@ -31,23 +31,23 @@ public class EdicoesGibiDirector {
     }
 
     public synchronized BaseEdicoesGibi buildFromEdicoesGibiRequest(EdicoesGibiRequest edicoesGibiRequest) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException{
-
-        builder.setDataPub(edicoesGibiRequest.getDataPub());
-        builder.setEdicaoGibiId(edicoesGibiRequest.getNroEdicao());
-        builder.setNroEdicao(edicoesGibiRequest.getNroEdicao());
-        builder.setNumeroExemplaresImpressas(edicoesGibiRequest.getNumeroExemplaresImpressas());
-        builder.setPublicada(edicoesGibiRequest.isPublicada());
-        builder.setGibi(edicoesGibiRequest.getGibi());
-        builder.setHistoria(edicoesGibiRequest.getHistoria());
-        builder.setPersonagens(edicoesGibiRequest.getPersonagensId());
-        builder.setEscritores(edicoesGibiRequest.getEscritorId());
-
+      
+            builder.setDataPub(edicoesGibiRequest.getDataPub());
+            builder.setEdicaoGibiId(edicoesGibiRequest.getEdicaoGibi_id());
+            builder.setNroEdicao(edicoesGibiRequest.getNroEdicao());
+            builder.setNumeroExemplaresImpressas(edicoesGibiRequest.getNumeroExemplaresImpressas());
+            builder.setPublicada(edicoesGibiRequest.isPublicada());
+            builder.setGibi(edicoesGibiRequest.getGibi());
+            builder.setHistoria(edicoesGibiRequest.getHistoria());
+            builder.setPersonagens(edicoesGibiRequest.getPersonagensId());
+            builder.setEscritores(edicoesGibiRequest.getEscritorId());
+      
         return builder.getResult();
     }
 
     public synchronized BaseEdicoesGibi buildFromEdicoesGibiEntity(EdicoesGibiEntity edicoesGibiEntity) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
         builder.setDataPub(edicoesGibiEntity.getDataPub());
-        builder.setEdicaoGibiId(edicoesGibiEntity.getNroEdicao());
+        builder.setEdicaoGibiId(edicoesGibiEntity.getEdicaoGibi_id());
         builder.setNroEdicao(edicoesGibiEntity.getNroEdicao());
         builder.setNumeroExemplaresImpressas(edicoesGibiEntity.getNumeroExemplaresImpressas());
         builder.setPublicada(edicoesGibiEntity.isPublicada());
@@ -73,7 +73,7 @@ public class EdicoesGibiDirector {
     public synchronized BaseEdicoesGibi buildFromEdicoesGibi(EdicoesGibi edicoesGibi) throws GibiInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
 
         builder.setDataPub(edicoesGibi.getDataPub());
-        builder.setEdicaoGibiId(edicoesGibi.getNroEdicao());
+        builder.setEdicaoGibiId(edicoesGibi.getEdicaoGibi_id());
         builder.setNroEdicao(edicoesGibi.getNroEdicao());
         builder.setNumeroExemplaresImpressas(edicoesGibi.getNumeroExemplaresImpressas());
         builder.setPublicada(edicoesGibi.isPublicada());
