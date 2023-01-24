@@ -1,8 +1,5 @@
 import styles from './Home.module.css'
-import savings from '../../img/savings.png'
 import gibis from '../../img/gibis.png'
-
-import LinkButton from '../layout/LinkButton'
 
 function Home() {
   return (

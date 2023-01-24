@@ -1,9 +1,5 @@
 import styles from './EditorHomePage.module.css'
-import savings from '../../img/savings.png'
 
-
-
-import LinkButton from '../layout/LinkButton'
 
 function EditorHomePage() {
   return (

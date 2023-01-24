@@ -1,5 +1,5 @@
 import styles from './Gibis.module.css'
-import GibisForm from '../project/GibisForm'
+
 function Gibis() {
 
   async function getContent() {

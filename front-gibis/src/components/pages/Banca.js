@@ -1,6 +1,5 @@
 import BancaForm from '../project/BancaForm'
 import styles from './Desenhista.module.css'
-import LinkButton from '../layout/LinkButton'
 
 function Desenhista() {
   return (

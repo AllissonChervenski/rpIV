@@ -1,5 +1,4 @@
 import Input from '../form/Input'
-import Select from '../form/Select'
 import SubmitButtom from '../form/SubmitButton'
 
 import styles from './DesenhistaForm.module.css'

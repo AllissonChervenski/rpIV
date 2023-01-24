@@ -21,8 +21,6 @@ import EditorHomePage from './components/pages/EditorHomePage'
 import Nascimento from './components/pages/NewGibi'
 import NewDesenhista from './components/pages/NewDesenhista'
 
-import axios from 'axios'
-
 
 
 function App() {

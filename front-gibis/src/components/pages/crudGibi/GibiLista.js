@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import api from "../../../services/api";
 import moment from 'moment';
 import axios from 'axios';
@@ -6,7 +6,7 @@ import '../../../css/records.css'
 import '../../../css/button.css'
 import '../../../css/style.css'
 import '../../../css/main.css'
-import {deleteGibi} from  './deletar'
+
 <script>
 
 </script>

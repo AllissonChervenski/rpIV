@@ -1,6 +1,5 @@
 import LinkButton from '../layout/LinkButton'
 import styles from './Home.module.css'
-import Message from '../layout/Message'
 
 function GibisP(){
     return (
