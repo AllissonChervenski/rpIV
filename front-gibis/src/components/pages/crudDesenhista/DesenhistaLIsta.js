@@ -30,16 +30,39 @@ const delDesenhista = (desenlhistaId)=>{
   // deleteDesenhista(desenhistaId)
   
  axios.delete(`http://localhost:8080/desenhistas/delete/${desenlhistaId}`, 
+ alert("Desenhista deletado com sucesso!!"),
+ window.location.reload(false)
   )
 
 }
+
+// updateDesenhista(desenhistaId) 
+
+async function updaDesenhista(desenlhistaId) {
+  console.log(desenlhistaId);
+      try{
+
+       const response = await axios.put(`http://localhost:8080/desenhistas/update/${desenlhistaId}`, 
+            
+    ) 
+   
+
+    console.log(response);
+
+        } catch(err){
+          console.log(err)
+        }
+
+   
+  }
+
   return (   
    
     <table className="records" border="1" >
-      <caption className="caption-title">Desenhista Cadastrado</caption>
+      <caption className="caption-title">Desenhistas Cadastrados</caption>
       <thead>
-      <tr >
-              <th className="conteudo">id</th>                      
+        <tr >
+              <th className="conteudo">Id</th>                      
               <th className="conteudo">Nome</th>
               <th className="conteudo">Pais</th>
               <th className="conteudo">Data de Nascimento</th>
@@ -66,8 +89,8 @@ const delDesenhista = (desenlhistaId)=>{
               <td className="conteudo">{moment(desenhista.dataDemissao).format('DD/MM/YYYY')}</td>
 
               <td>
-                <button  className="acoes" type="button" class="button green" id="edit-${desenhistaId}" >Editar</button>
-                <button className="acoes" type="button" class="button red" onClick={() =>delDesenhista(desenhista.desenhistaId)}>Delete</button>
+              <button id="btnUpdateDesenhista" className="acoes" type="button" class="button green" onClick={() =>updaDesenhista(desenhista.desenhistaId)}>Editar</button>
+              <button className="acoes" type="button" class="button red" onClick={() =>delDesenhista(desenhista.desenhistaId)}>Delete</button>
             </td>
             </tr>
             

@@ -22,8 +22,8 @@ table{
     text-align: center;
 }
 th{
-   background-color: #264696;
-    color: #fff; 
+   background-color: #e2e2e2;
+   color: rgb(37, 36, 36); 
 
 }
 tr:hover{

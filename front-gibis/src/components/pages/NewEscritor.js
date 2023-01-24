@@ -32,9 +32,10 @@ function NewEscritor() {
 
     })
     alert("Cadastrado com sucesso!!");
+    window.location.reload(false)
 
   }
-
+  
 
   return (
     <div class="container_form">
@@ -42,7 +43,7 @@ function NewEscritor() {
       <form class="form" action="#" method="post">
         <div class="form_grupo">
           <label for="nomeEscritor" class="form_label"><b>Nome Escritor:</b></label>
-          <input type="text" name="nomeEscritor" class="form_input" id="nomeEscritor" placeholder="Nome Escritor" required value={nomeEscritor} onChange={(event) => setNomeEscritor(event.target.value)} />
+          <input type="text" name="nomeEscritor" class="form_input" id="nomeEscritor" required placeholder="Nome Escritor" value={nomeEscritor} onChange={(event) => setNomeEscritor(event.target.value)} />
         </div>
         <div class="form_grupo">
           <label for="paisNascimentoEs" class="form_label"><b>Pais Nascimento:</b></label>
@@ -79,7 +80,7 @@ function NewEscritor() {
 
         <div class="submit">
           <input type="hidden" name="acao" value="enviar" />
-          <button onClick={postEscritor} type="submit" name="Submit" class="submit_btn" >Cadastrar</button>
+          <button onClick={postEscritor} type="submit" name="Submit" id="submit" class="submit_btn">Cadastrar</button>
 
         </div>
       </form>

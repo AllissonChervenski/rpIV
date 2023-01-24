@@ -28,8 +28,11 @@ export default function Gibi() {
 const delGibi = (gibiId)=>{
   // deleteDesenhista(desenhistaId)
   
- axios.delete(`http://localhost:8080/gibis/delete/${gibiId}`, 
+ axios.delete(`http://localhost:8080/gibis/deleteGibi/${gibiId}`, 
+ alert("Gibi deletado com sucesso!!"),
+  window.location.reload(false)
   )
+  
   
 }
   return (   

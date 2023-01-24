@@ -20,7 +20,7 @@ function NewGibi() {
 
     })
     alert("Cadastrado com sucesso!!");
-
+    window.location.reload(false)
   }
 
 

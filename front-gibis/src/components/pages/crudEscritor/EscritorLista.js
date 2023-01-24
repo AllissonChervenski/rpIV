@@ -29,13 +29,15 @@ const delEscritor = (escritorId)=>{
   // deleteDesenhista(desenhistaId)
   
  axios.delete(`http://localhost:8080/escritores/delete/${escritorId}`, 
+ alert("Escritor deletado com sucesso!!"),
+ window.location.reload(false)
   )
   
 }
   return (   
    
     <table className="records" border="1" >
-      <caption className="caption-title">Escritor Cadastrado</caption>
+      <caption className="caption-title">Escritores Cadastrados</caption>
       <thead>
       <tr >
               <th className="conteudo">id</th>                      

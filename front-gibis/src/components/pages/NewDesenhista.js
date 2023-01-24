@@ -28,7 +28,7 @@ function NewDesenhista() {
 
     })
     alert("Cadastrado com sucesso!!");
-
+    window.location.reload(false)
   }
 
 
