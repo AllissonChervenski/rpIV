@@ -1,7 +1,8 @@
 import { React, useState } from 'react';
 import api from "../../services/api";
-import styles from './NewDesenhista.css'
-
+import styles from './NewDesenhista.module.css'
+import Input from '../form/Input'
+import SubmitButtom from '../form/SubmitButton'
 
 function NewEscritor() {
   const [nomeEscritor, setNomeEscritor] = useState('');
@@ -35,7 +36,7 @@ function NewEscritor() {
 
   }
 
-
+/*
   return (
     <div class="container_form">
       <h1>Formulário de Cadastro</h1>
@@ -86,5 +87,36 @@ function NewEscritor() {
     </div>
   )
 }
+*/
 
+
+return (
+  <section className={styles.container_form}>
+      <h1>
+          Escritor
+      </h1>
+      <form className={styles.container} onSubmit={postEscritor}>
+            <Input type="text" text="Nome do Escritor"  placeholder="Insira o nome do escritor"  required value={nomeEscritor} handleOnChange={(event) => setNomeEscritor(event.target.value)} />
+
+            <Input type="text" text="Pais de Nascimento" name="paisNascimento" placeholder="Insira o Pais de Nascimento do Escritor" required value={paisNascimentoEs} handleOnChange={(event) => setPaisNascimento(event.target.value)}  />
+
+            <Input type="text" text="Endereço Escritor" name="ederecoDesenhista" placeholder="Insira o Endereco do Escritor"  required value={enderecoEscritor} handleOnChange={(event) => setEnderecoEscritor(event.target.value)}/>
+
+            <Input type="date" text="Data de Nascimento" name="dataNascimento" placeholder="Data de Nascimento"  required value={dataNascimentoEs} handleOnChange={(event) => setDataNascimento(event.target.value)}/>
+
+            <Input type="date" text="Data de Falecimento" name="dataDalecimento" placeholder="Data de Falecimento"  value={dataFalecimentoEs} handleOnChange={(event) => setDataFalecimento(event.target.value)} />
+
+            <Input type="date" text="Data de Contratação" name="dataContratação" placeholder="Data de Contratação" required value={dataContratacao} handleOnChange={(event) => setDataContratacao(event.target.value)}/>
+
+            <Input type="date" text="Data de Demissão" name="dataDemissão" placeholder="Data de Demissão"  value={dataDemissao} handleOnChange={(event) => setDataDemissao(event.target.value)}/>
+
+            <Input type="tel" text="Telefone do Escritor" name="telefone" placeholder="Telefone"  value={telefoneEscritor} handleOnChange={(event) => setTelefoneEscritor(event.target.value)}/>
+
+            <Input type="email" text="Email do Escritor" name="email" placeholder="Email do Escritor"  value={emailEscritor} handleOnChange={(event) => setEmailEscritor(event.target.value)}/>
+
+            <SubmitButtom text= "Cadastrar Escritor"/>
+        </form>
+  </section>
+)
+}
 export default NewEscritor;

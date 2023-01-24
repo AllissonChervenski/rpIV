@@ -16,5 +16,7 @@
   }
   
   .min-height {
-    min-height: 75%;
+    min-height: 100%;
+    margin-bottom: 100px;
   }
+

@@ -22,6 +22,7 @@ import Nascimento from './components/pages/NewGibi'
 import NewDesenhista from './components/pages/NewDesenhista'
 
 import axios from 'axios'
+import { height } from '@mui/system'
 
 
 
@@ -88,7 +89,9 @@ function App() {
 
         
         <Route exact path="/newdesenhista">
-        <NewDesenhista />
+    
+          <NewDesenhista />
+
         </Route>
 
         <Route exact path="/transportadoras"> 
@@ -120,6 +123,8 @@ function App() {
       </Container>
       </Switch>
       <Footer />
+    
+   
     </Router>
 
     )

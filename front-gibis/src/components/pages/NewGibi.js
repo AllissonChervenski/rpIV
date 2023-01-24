@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import api from "../../services/api";
-import styles from './NewDesenhista.css'
+import styles from './NewDesenhista.module.css'
+import Input from '../form/Input'
+import SubmitButtom from '../form/SubmitButton'
 
 
 function NewGibi() {
@@ -23,7 +25,7 @@ function NewGibi() {
 
   }
 
-
+/*
   return (
       <div class="container_form">
         <h1>Formulário de Cadastro</h1>
@@ -49,6 +51,25 @@ function NewGibi() {
       </form>
     </div>
   )
+}*/
+
+return(
+  <section className={styles.container_form}>
+      <h1>
+          Gibi
+      </h1>
+      <form className={styles.container} onSubmit={postGibi}>
+            <Input type="text" text="Titulo do Gibi"  placeholder="Insira o titulo do Gibi"  required value={tituloGibi} handleOnChange={(event) => setTituloGibi(event.target.value)} />
+
+            <Input type="date" text="Data de inicio" name="dataDeInicio" placeholder="Data de Inicio"  value={inicioData} handleOnChange={(event) => setDataInicio(event.target.value)} />
+
+            <Input type="date" text="Data de Encerramento" name="dataEncerramento" placeholder="Data de Encerramento" required value={encData} handleOnChange={(event) => setDataEncerramento(event.target.value)}/>
+            
+            <Input type="date" text="Data de Encerramento" name="dataEncerramento" placeholder="Data de Encerramento" required value={encData} handleOnChange={(event) => setDataEncerramento(event.target.value)}/>   
+            <SubmitButtom text= "Cadastrar Gibi"/>
+        </form>
+  </section>
+)
 }
 
 export default NewGibi;

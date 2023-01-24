@@ -3,6 +3,8 @@ import styles from './Home.module.css'
 
 function DesenhistaP(){
     return (
+
+
         <section className={styles.home_container}>
         <h1>
           Opções disponíveis
@@ -14,6 +16,7 @@ function DesenhistaP(){
 
        
       </section>
+ 
     )
 }
 export default DesenhistaP
