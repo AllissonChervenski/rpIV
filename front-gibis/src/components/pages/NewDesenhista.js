@@ -76,7 +76,7 @@ const currentYear = date.getFullYear();
         </div>
         <div class="form_grupo">
           <label for="dataNascimento" class="form_label"><b>Data de Nascimento:</b></label>
-          <input type="date" name="dataNascimento" className="form_input" min="2018-04-01"  id="dataNascimento" placeholder="Data de Nascimento" required value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} />
+          <input type="date" name="dataNascimento" className="form_input"  id="dataNascimento" placeholder="Data de Nascimento" required value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} />
         </div>
         <div class="form_grupo">
           <label for="dataFalecimento" class="form_label"><b>Data de Falecimento:</b></label>

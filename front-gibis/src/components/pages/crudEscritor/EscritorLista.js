@@ -6,6 +6,8 @@ import '../../../css/button.css'
 import '../../../css/style.css'
 import '../../../css/main.css'
 import {deleteEscritor} from  './deletar'
+import moment from 'moment'
+
 
 /*
 let data_americana = "2022-12-30"
@@ -35,6 +37,12 @@ const delEscritor = (escritorId)=>{
   )
   
 }
+// updateEscritor(escritor) 
+
+async function updaEscritor(escritor) {
+
+  localStorage.setItem('escritor', JSON.stringify(escritor) );
+}
   return (   
    
     <table className="records" border="1" >
@@ -63,15 +71,15 @@ const delEscritor = (escritorId)=>{
               <td className="conteudo" >{escritor.escritorId}</td>
               <td className="conteudo">{escritor.nomeEscritor}</td>
               <td className="conteudo">{escritor.paisNascimentoEs}</td>
-              <td className="conteudo">{escritor.dataNascimentoEs}</td>
-              <td className="conteudo">{escritor.dataFalecimentoEs}</td>
-              <td className="conteudo">{escritor.dataContratacao}</td>
+              <td className="conteudo">{moment(escritor.dataNascimentoEs).format("DD/MM/YYYY")}</td>
+              <td className="conteudo">{moment(escritor.dataFalecimentoEs).format("DD/MM/YYYY")}</td>
+              <td className="conteudo">{moment(escritor.dataContratacao).format("DD/MM/YYYY")}</td>
               <td className="conteudo">{escritor.enderecoEscritor}</td>
               <td className="conteudo">{escritor.telefoneEscritor}</td>
               <td className="conteudo">{escritor.emailEscritor}</td>
-              <td className="conteudo">{escritor.dataDemissao}</td>
+              <td className="conteudo">{moment(escritor.dataDemissao).format("DD/MM/YYYY")}</td>
               <td>
-                <button  className="acoes" type="button" class="button green" id="edit-${escritorId}" >Editar</button>
+              <a id="btnUpdateEscritor" className="acoes button blue" type="button " onClick={() =>updaEscritor(escritor)} href="/updateescritor"> Editar</a>
                 <button className="acoes" type="button" class="button red" onClick={() =>delEscritor(escritor.escritorId)}>Delete</button>
             </td>
             </tr>

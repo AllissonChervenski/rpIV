@@ -55,7 +55,7 @@ async function updaDesenhista(desenhista) {
 
       localStorage.setItem('desenhista', JSON.stringify(desenhista) );
   }
-  
+
    return (   
    
     <table className="records" border="1" >
@@ -87,7 +87,7 @@ async function updaDesenhista(desenhista) {
               <td className="conteudo" id="endDes">{desenhista.enderecoDesenhista}</td>
               <td className="conteudo" id="dataDem">{moment(desenhista.dataDemissao).format('DD/MM/YYYY')}</td>
               <td>                  
-                <a id="btnUpdateDesenhista" className="acoes button green" type="button" onClick={() =>updaDesenhista(desenhista)} href="/updatedesenhista"> Editar</a>
+                <a id="btnUpdateDesenhista" className="acoes button blue" type="button " onClick={() =>updaDesenhista(desenhista)} href="/updatedesenhista"> Editar</a>
               <button className="acoes button red" type="button" onClick={() =>delDesenhista(desenhista.desenhistaId)}>Delete</button>
             </td>
             </tr>

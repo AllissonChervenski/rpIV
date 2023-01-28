@@ -1,9 +1,8 @@
-
 import React, {useEffect,  useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../../../../src/services/api';
 
-export default function UpdateDesenhista() {
+export default function  UpdateEscritor() {
  
   const objectData = JSON.parse(localStorage.getItem('desenhista'));
   const [nomeDesenhista, setNomeDesenhista] = useState(objectData.nomeDesenhista);
@@ -89,7 +88,7 @@ useEffect(() => {
 
         <div class="submit">
           <input type="hidden" name="acao" value="enviar" />
-          <button onClick={putDesenhista} type="submit" name="Submit" class="submit_btn" >Atualizar</button>
+          <button onClick={putDesenhista} type="submit" name="Submit" className="submit_btn green" >Atualizar</button>
 
         </div>
       </form>

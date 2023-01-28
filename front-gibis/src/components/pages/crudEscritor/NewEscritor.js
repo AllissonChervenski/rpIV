@@ -1,7 +1,5 @@
 import { React, useState } from 'react';
-import api from "../../services/api";
-import styles from './NewDesenhista.css'
-
+import api from "../../../services/api"
 
 function NewEscritor() {
   const [nomeEscritor, setNomeEscritor] = useState('');
@@ -55,7 +53,7 @@ function NewEscritor() {
         </div>
         <div class="form_grupo">
           <label for="dataFalecimentoEs" class="form_label"><b>Data de Falecimento:</b></label>
-          <input type="date" name="dataFalecimentoEs" class="form_input" id="dataFalecimentoEs" placeholder="Data de Falecimento" value={dataFalecimentoEs} onChange={(event) => setDataFalecimento(event.target.value)} />
+          <input type="date" disabled name="dataFalecimentoEs" class="form_input" id="dataFalecimentoEs" placeholder="Data de Falecimento" value={dataFalecimentoEs} onChange={(event) => setDataFalecimento(event.target.value)} />
         </div>
         <div class="form_grupo">
           <label for="enderecoEscritor" class="form_label"><b>Endereço:</b></label>
@@ -75,7 +73,7 @@ function NewEscritor() {
         </div>
         <div class="form_grupo">
           <label for="dataDemissao" class="form_label"><b>Data Demissão:</b></label>
-          <input type="date" name="dataDemissao" class="form_input" id="dataDemissao" placeholder="Data Demissao" value={dataDemissao} onChange={(event) => setDataDemissao(event.target.value)} />
+          <input type="date" disabled name="dataDemissao" class="form_input" id="dataDemissao" placeholder="Data Demissao" value={dataDemissao} onChange={(event) => setDataDemissao(event.target.value)} />
         </div>
 
         <div class="submit">
