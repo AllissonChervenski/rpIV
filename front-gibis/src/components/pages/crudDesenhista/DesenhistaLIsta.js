@@ -1,10 +1,10 @@
 import { React, useState, useEffect } from "react";
 import api from "../../../services/api";
 import axios from 'axios';
+import moment from 'moment'
 import '../../../css/records.css'
 import '../../../css/button.css'
 import '../../../css/style.css'
-
 import '../../../css/main.css'
 /*import {deleteDesenhista} from  './deletar'
 import { NavigateBefore } from "@material-ui/icons";
@@ -37,8 +37,7 @@ localStorage.setItem('idDesenhista', id);
       
     });
   };
-
-
+ 
 const delDesenhista = (desenlhistaId)=>{
   // deleteDesenhista(desenhistaId)
   
@@ -52,28 +51,11 @@ const delDesenhista = (desenlhistaId)=>{
   
 // updateDesenhista(desenhistaId) 
 
-async function updaDesenhista(desenlhistaId) {
-  console.log(desenlhistaId);
-      try{
+async function updaDesenhista(desenhista) {
 
-       const response = await axios.put(`http://localhost:8080/desenhistas/update/${desenlhistaId}`, 
-            
-    ) 
-   
-
-    console.log(response);
-
-        } catch(err){
-          console.log(err)
-        }
-
-      
+      localStorage.setItem('desenhista', JSON.stringify(desenhista) );
   }
-  // <button id="btnUpdateDesenhista" className="acoes" type="button" class="button green" onClick={() =>updaDesenhista(desenhista.desenhistaId)}>Editar</button>
-
-
-
-
+  
    return (   
    
     <table className="records" border="1" >
@@ -99,14 +81,13 @@ async function updaDesenhista(desenlhistaId) {
               <td className="conteudo" id="Id">{desenhista.desenhistaId}</td>
               <td className="conteudo"id="nome">{desenhista.nomeDesenhista}</td>
               <td className="conteudo" id="pais">{desenhista.paisNascimento}</td>
-              <td className="conteudo" id="dataNasc">{desenhista.dataNascimento}</td>
-              <td className="conteudo" id="dataCont">{desenhista.dataContratacao}</td>
-              <td className="conteudo" id="dataFal">{desenhista.dataFalecimento}</td>
+              <td className="conteudo" id="dataNasc">{moment(desenhista.dataNascimento).format('DD/MM/YYYY')}</td>
+              <td className="conteudo" id="dataCont">{moment(desenhista.dataContratacao).format('DD/MM/YYYY')}</td>
+              <td className="conteudo" id="dataFal">{moment(desenhista.dataFalecimento).format('DD/MM/YYYY')}</td>
               <td className="conteudo" id="endDes">{desenhista.enderecoDesenhista}</td>
-              <td className="conteudo" id="dataDem">{desenhista.dataDemissao}</td>
-              <td>  
-                
-                <a id="btnUpdateDesenhista" className="acoes button green" type="button" onClick={() =>updaDesenhista(desenhista.desenhistaId)} href="/newdesenhista"> Editar</a>
+              <td className="conteudo" id="dataDem">{moment(desenhista.dataDemissao).format('DD/MM/YYYY')}</td>
+              <td>                  
+                <a id="btnUpdateDesenhista" className="acoes button green" type="button" onClick={() =>updaDesenhista(desenhista)} href="/updatedesenhista"> Editar</a>
               <button className="acoes button red" type="button" onClick={() =>delDesenhista(desenhista.desenhistaId)}>Delete</button>
             </td>
             </tr>

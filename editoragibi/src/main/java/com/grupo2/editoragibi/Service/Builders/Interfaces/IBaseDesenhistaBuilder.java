@@ -12,7 +12,6 @@ import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface IBaseDesenhistaBuilder {

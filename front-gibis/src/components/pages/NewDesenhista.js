@@ -3,6 +3,7 @@ import api from "../../services/api";
 import styles from './NewDesenhista.css'
 
 
+
 export default function NewDesenhista() {
   const [nomeDesenhista, setNomeDesenhista] = useState('');
   const [paisNascimento, setPaisNascimento] = useState('');
@@ -28,7 +29,7 @@ async function putDesenhista(event){
 
   })
   console.log(response.data);
-
+  
 }catch(err){
     console.log(err);
   }
@@ -36,8 +37,10 @@ async function putDesenhista(event){
   window.location.reload(false)
 
 }
-
-
+const date = new Date();
+const today = date.getDate();
+const currentMonth = date.getMonth() + 1; 
+const currentYear = date.getFullYear();
 
 
   async function postDesenhista(event) {
@@ -53,7 +56,7 @@ async function putDesenhista(event){
       dataDemissao,
 
     })
-    alert("Cadastrado com sucesso!!");
+    alert("Cadastrado com sucesso!!")
     window.location.reload(false)
 
   }
@@ -73,11 +76,11 @@ async function putDesenhista(event){
         </div>
         <div class="form_grupo">
           <label for="dataNascimento" class="form_label"><b>Data de Nascimento:</b></label>
-          <input type="date" name="dataNascimento" class="form_input" id="dataNascimento" placeholder="Data de Nascimento" required value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} />
+          <input type="date" name="dataNascimento" className="form_input" min="2018-04-01"  id="dataNascimento" placeholder="Data de Nascimento" required value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} />
         </div>
         <div class="form_grupo">
           <label for="dataFalecimento" class="form_label"><b>Data de Falecimento:</b></label>
-          <input type="date" name="dataFalecimento" class="form_input" id="dataFalecimento" placeholder="Data de Falecimento" value={dataFalecimento} onChange={(event) => setDataFalecimento(event.target.value)} />
+          <input type="date" disabled name="dataFalecimento" class="form_input" id="dataFalecimento" placeholder="Data de Falecimento" value={dataFalecimento} onChange={(event) => setDataFalecimento(event.target.value)} />
         </div>
         <div class="form_grupo">
           <label for="enderecoDesenhista" class="form_label"><b>Endereço:</b></label>
@@ -89,7 +92,7 @@ async function putDesenhista(event){
         </div>
         <div class="form_grupo">
           <label for="dataDemissao" class="form_label"><b>Data Demissão:</b></label>
-          <input type="date" name="dataDemissao" class="form_input" id="dataDemissao" placeholder="Data Demissao" value={dataDemissao} onChange={(event) => setDataDemissao(event.target.value)} />
+          <input type="date" disabled name="dataDemissao" class="form_input" id="dataDemissao" placeholder="Data Demissao" value={dataDemissao} onChange={(event) => setDataDemissao(event.target.value)} />
         </div>
 
         <div class="submit">

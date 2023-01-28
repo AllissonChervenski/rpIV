@@ -20,6 +20,7 @@ import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
 import Nascimento from './components/pages/NewGibi'
 import NewDesenhista from './components/pages/NewDesenhista'
+import UpdateDesenhista from './components/pages/crudDesenhista/FormUpdate';
 
 import axios from 'axios'
 
@@ -89,6 +90,10 @@ function App() {
         
         <Route exact path="/newdesenhista">
         <NewDesenhista />
+        </Route>
+
+        <Route exact path="/updatedesenhista">
+        < UpdateDesenhista/>
         </Route>
 
         <Route exact path="/transportadoras"> 

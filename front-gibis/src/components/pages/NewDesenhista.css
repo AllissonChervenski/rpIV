@@ -13,6 +13,11 @@
 
 }
 
+input:disabled{
+    color: gray;
+    border: 1px solid gray;
+}
+
 .container_form h1 {
     
     font-family:'open_sansregular';

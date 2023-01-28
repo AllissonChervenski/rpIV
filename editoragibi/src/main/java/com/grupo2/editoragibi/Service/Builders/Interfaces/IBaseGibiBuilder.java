@@ -1,10 +1,4 @@
 package com.grupo2.editoragibi.Service.Builders.Interfaces;
-<<<<<<< HEAD
-
-import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
-import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
-=======
->>>>>>> 6937cbc26493729c8ae60d52cf58b297d1144655
 
 import java.time.LocalDate;
 import java.util.List;
