@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge= 3600, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
+
 @RestController
 @RequestMapping(path="/gibis")
 public class GibiController {
@@ -33,7 +34,7 @@ public class GibiController {
     @GetMapping("/{id}")
     public ResponseEntity<Object> getGibiById(@PathVariable int id) {
 
-        Gibi gibi = null;
+        GibiEntity gibi = null;
         try {
             gibi = gibiService.getGibiById(id);
         } catch (Exception e) {
@@ -57,10 +58,10 @@ public class GibiController {
 
     @PostMapping(path = "/create")
     public ResponseEntity<Object> addGibi(@RequestBody GibiRequest gibiRequest){
-        Gibi gibi = null;
+        GibiEntity gibi = null;
         try{
             gibi = gibiService.addGibi(gibiRequest);
-        } catch (Exception e) {
+        } catch (GibiInvalidoException | PersonagemInvalidoException | DesenhistaInvalidoException | EscritorInvalidoException | EdicoesGibiInvalidoException | HistoriaInvalidaException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
         return new ResponseEntity<>(gibi, HttpStatus.OK);

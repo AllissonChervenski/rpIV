@@ -18,7 +18,7 @@ import NewEscritor from './components/pages/NewEscritor'
 import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
-import Nascimento from './components/pages/NewGibi'
+import NewGibi from './components/pages/NewGibi'
 import NewDesenhista from './components/pages/NewDesenhista'
 
 import axios from 'axios'
@@ -52,7 +52,7 @@ function App() {
         </Route>
 
         <Route exact path="/newgibi">
-        <Nascimento />
+        <NewGibi />
         </Route>
 
         <Route exact path="/gibisp"> 

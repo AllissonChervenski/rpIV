@@ -12,9 +12,11 @@ import {deleteGibi} from  './deletar'
 </script>
 export default function Gibi() {
   const [gibis, setGibis] = useState([]);
+  const [edicoesGibi, setEdicaoGibi] = useState();
 
   useEffect(() => {
     getGibis();
+    getEdicoes();
   }, []);
 
   const getGibis = async () => {
@@ -30,8 +32,15 @@ const delGibi = (gibiId)=>{
   
  axios.delete(`http://localhost:8080/gibis/delete/${gibiId}`, 
   )
-  
 }
+  const getEdicoes = async () =>{
+    await api.get("gibis/edicoesgibi/all").then((response) => { 
+    setEdicaoGibi(response.data);
+    console.log(response.data)
+  });
+};
+
+
   return (   
    
     <table className="records" border="1" >
@@ -43,6 +52,7 @@ const delGibi = (gibiId)=>{
               <th className="conteudo">Título</th>
               <th className="conteudo">Data da Publicação</th>
               <th className="conteudo">Data de Encerramento</th>
+              <th className="conteudo">Edição</th>
               <th className="acoes">Ações</th>
             </tr>
    
@@ -55,6 +65,7 @@ const delGibi = (gibiId)=>{
               <td className="conteudo">{gibi.tituloGibi}</td>
               <td className="conteudo">{moment(gibi.inicioData).format('DD/MM/YYYY')}</td>
               <td className="conteudo">{moment(gibi.encData).format('DD/MM/YYYY')}</td>
+              <td className="conteudo">{gibi.edicoesGibi}</td>
             
               <td>
                 <button  className="acoes" type="button" class="button green" id="edit-${gibiId}" >Editar</button>
@@ -67,7 +78,7 @@ const delGibi = (gibiId)=>{
          </div>
       </thead>
         </table>
-       
+     
     )
     }
     

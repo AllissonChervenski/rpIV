@@ -22,12 +22,18 @@ import java.net.http.HttpRequest;
 import java.time.LocalDate;
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge= 3600, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
 @RestController
 @RequestMapping("/gibis/edicoesgibi")
 public class EdicoesGibiController {
 
+    
+    private final EdicoesGibiService edicoesGibiService;
+
     @Autowired
-    EdicoesGibiService edicoesGibiService;
+    public EdicoesGibiController(EdicoesGibiService gibiService) {
+        this.edicoesGibiService = gibiService;
+    }
 
     @GetMapping("/all")
     public ResponseEntity<Object> getEdicoesGibi() throws DesenhistaInvalidoException{
@@ -57,6 +63,7 @@ public class EdicoesGibiController {
         return new ResponseEntity<>(edicoesGibis, HttpStatus.OK);
 
     }
+
 
     @PostMapping(path = "/create")
     public ResponseEntity<Object> addEdicoesGibi(@RequestBody EdicoesGibiRequest edicoesGibirGibiRequest) throws DesenhistaInvalidoException{
