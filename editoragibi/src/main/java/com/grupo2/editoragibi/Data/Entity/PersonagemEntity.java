@@ -1,6 +1,9 @@
 package com.grupo2.editoragibi.Data.Entity;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Domain.Escritor;
+import com.grupo2.editoragibi.Service.Domain.Personagem;
+
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,7 +15,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "personagem")
-public class PersonagemEntity extends BasePersonagem implements Serializable {
+public class PersonagemEntity extends Personagem implements Serializable {
 
     public static final Long serialVersionUID = 1L;
 
@@ -37,7 +40,18 @@ public class PersonagemEntity extends BasePersonagem implements Serializable {
     @JoinTable(name = "escritor_personagem", joinColumns = {@JoinColumn(name = "personagem_id")}, inverseJoinColumns = {@JoinColumn(name = "escritor_id")})
     private List<EscritorEntity> escritores = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "personagemEntity")
+    private List<EdicoesGibiEntity> edicoes = new ArrayList<>();
+
     public void setEscritores(List<EscritorEntity> escritores) {
         this.escritores = escritores;
+    }
+
+    @Override
+    public List<Escritor> getEscritores(){
+        return super.getEscritores();
+    }
+    public static Long getSerialversionuid() {
+        return serialVersionUID;
     }
 }

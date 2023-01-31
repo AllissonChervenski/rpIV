@@ -1,7 +1,8 @@
 package com.grupo2.editoragibi.Config.gibiconfigs;
 
 import com.grupo2.editoragibi.Data.Entity.HistoriaEntity;
-import com.grupo2.editoragibi.Data.IHistoriaRepository;
+import com.grupo2.editoragibi.Data.Repositories.Interfaces.IHistoriaRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

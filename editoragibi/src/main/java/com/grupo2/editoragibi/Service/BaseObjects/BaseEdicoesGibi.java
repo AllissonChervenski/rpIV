@@ -2,28 +2,61 @@ package com.grupo2.editoragibi.Service.BaseObjects;
 
 import java.time.LocalDate;
 
-public class BaseEdicoesGibi {
-    protected long edicaoGibi_id;
+import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
+import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
+
+public abstract class BaseEdicoesGibi {
+
+    protected int edicaoGibi_id;
     protected int nroEdicao;
     protected LocalDate dataPub;
     protected boolean publicada;
-    
-    public long getEdicaoGibi_id() {
+    protected int numeroExemplaresImpressas;
+
+    protected BaseGibi gibi;
+    protected BaseHistoria historia;
+    protected BaseEditora editora;
+
+    public BaseEditora getEditora() {
+        return editora;
+    }
+    public void setEditora(BaseEditora editora) {
+        this.editora = editora;
+    }
+
+    public int getNumeroExemplaresImpressas() {
+        return numeroExemplaresImpressas;
+    }
+    public void setNumeroExemplaresImpressas(int numeroExemplaresImpressas) {
+        this.numeroExemplaresImpressas = numeroExemplaresImpressas;
+    }
+    public BaseGibi getGibi() {
+        return gibi;
+    }
+    public abstract void setGibi(BaseGibi gibi) throws EdicoesGibiInvalidoException, GibiInvalidoException;
+
+    public BaseHistoria getHistoria() {
+        return historia;
+    }
+    public abstract void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException;
+
+    public int getEdicaoGibi_id() {
         return edicaoGibi_id;
     }
-    public void setEdicaoGibi_id(long edicaoGibi_id) {
+    public void setEdicaoGibi_id(int edicaoGibi_id) {
         this.edicaoGibi_id = edicaoGibi_id;
     }
     public int getNroEdicao() {
         return nroEdicao;
     }
-    public void setNroEdicao(int nroEdicao) {
+    public void setNroEdicao(int nroEdicao) throws EdicoesGibiInvalidoException {
         this.nroEdicao = nroEdicao;
     }
     public LocalDate getDataPub() {
         return dataPub;
     }
-    public void setDataPub(LocalDate dataPub) {
+    public void setDataPub(LocalDate dataPub) throws EdicoesGibiInvalidoException {
         this.dataPub = dataPub;
     }
     public boolean isPublicada() {
@@ -33,5 +66,5 @@ public class BaseEdicoesGibi {
         this.publicada = publicada;
     }
 
-    
+
 }

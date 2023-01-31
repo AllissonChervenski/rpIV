@@ -2,9 +2,10 @@ package com.grupo2.editoragibi.Service.Builders;
 
 import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
 import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
-import com.grupo2.editoragibi.Data.PersonagemRepository;
+import com.grupo2.editoragibi.Data.Repositories.PersonagemRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseEscritorBuilder;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component("escritorEntityBuilder")
@@ -69,10 +71,13 @@ public class EscritorEntityBuilder implements IBaseEscritorBuilder {
 
     @Override
     public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException {
-        List<PersonagemEntity> personagensEscritor = escritorEntity.getPersonagens();
+        List<PersonagemEntity> personagensEscritor = new ArrayList<>();
+        if(personagensIds != null){
+        personagemRepository.getPersonagens().forEach(e -> personagensEscritor.add(e));
         for (Integer id : personagensIds) {
             personagensEscritor.add(personagemRepository.getPersonagemById(id));
         }
+    }
     }
 
     @Override

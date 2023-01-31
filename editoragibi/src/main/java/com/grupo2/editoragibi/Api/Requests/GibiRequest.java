@@ -7,47 +7,54 @@ import javax.validation.constraints.NotNull;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 
+import lombok.Data;
 
+@Data
 public class GibiRequest extends BaseGibi{
 
     @NotNull
-    private List<Long> edicoesGibiId;
+    private List<Integer> edicoesGibiId;
 
     @Override
     public LocalDate getEncData() {
         // TODO Auto-generated method stub
-        return super.getEncData();
+        return this.encData;
     }
 
 
     @Override
     public LocalDate getInicioData() {
         // TODO Auto-generated method stub
-        return super.getInicioData();
+        return this.inicioData;
     }
 
     @Override
     public String getTituloGibi() {
         // TODO Auto-generated method stub
-        return super.getTituloGibi();
+        return this.tituloGibi;
+        }
+
+
+    public void setEdicoesGibiId(List<Integer> edicoesGibiId) {
+        this.edicoesGibiId = edicoesGibiId;
     }
 
     @Override
     public void setEncData(LocalDate encData) {
-        // TODO Auto-generated method stub
-        super.setEncData(encData);
+            this.encData = encData;
+        
     }
 
     @Override
     public void setInicioData(LocalDate inicioData) {
-        // TODO Auto-generated method stub
-        super.setInicioData(inicioData);
+            this.inicioData = inicioData;
+        
     }
 
     @Override
     public void setTituloGibi(String tituloGibi) {
-        // TODO Auto-generated method stub
-        super.setTituloGibi(tituloGibi);
+        this.tituloGibi = tituloGibi;
     }
+    
     
 }

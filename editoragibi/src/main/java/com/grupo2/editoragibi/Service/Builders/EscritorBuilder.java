@@ -1,8 +1,9 @@
 package com.grupo2.editoragibi.Service.Builders;
 
-import com.grupo2.editoragibi.Data.PersonagemRepository;
+import com.grupo2.editoragibi.Data.Repositories.PersonagemRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseEscritorBuilder;
 import com.grupo2.editoragibi.Service.Directors.PersonagemDirector;
 import com.grupo2.editoragibi.Service.Domain.Escritor;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
@@ -94,9 +95,11 @@ public class EscritorBuilder implements IBaseEscritorBuilder {
     @Override
     public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException {
         List<Personagem> personagensEscritor = escritor.getPersonagens();
+        if(personagensIds != null){
         for (Integer id : personagensIds) {
             personagensEscritor.add((Personagem) personagemDirector.buildFromPersonagemEntity(personagemRepository.getPersonagemById(id), escritor));
         }
+    }
     }
 
     @Override

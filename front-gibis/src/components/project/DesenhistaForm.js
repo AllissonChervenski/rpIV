@@ -1,25 +1,33 @@
 import Input from '../form/Input'
 import SubmitButtom from '../form/SubmitButton'
+import React, {useState} from 'react'
 
 import styles from './DesenhistaForm.module.css'
 
 
-function DesenhistaForm({ btnText }) {
-    return (
-        <form className={styles.form}>
-            <Input type="text" text="Nome do Desenhista" name="nomeDesenhista" placeholder="Insira o nome completo do Desenhista" />
 
-            <Input type="text" text="Pais Nacimento" name="paisNascimentoDe" placeholder="País de nascimento do Desenhista" />
+function DesenhistaForm({btnText}) {
+    const [value, setValue] = useState('');
 
-            <Input type="date" text="Data de Nascimento" name="dataNascimentoDe" placeholder="Insira a data de Nascimento" />
+    const handleChange = (event) => {
+       setValue(event.target.value);
+    }
 
-            <Input type="date" text="Data de Falecimento" name="dataFalecimentoDe" placeholder="Insira a data de Falecimento" />
+        return (
+        <form className={styles.container}>
+            <Input type="text" text="Nome de Desenhista" value={value} className={styles.form_input} placeholder="Insira o nome do desenhista"  handleOnChange={handleChange()} />
 
-            <Input type="text" text="Endereço" name="enderecoDesenhista" placeholder="Insira o endereço do desenhista" />
+            <Input type="text" text="Pais de Nascimento" name="paisNascimento" placeholder="Insira o Pais de Nascimento do Desenhista"   />
 
-            <Input type="date" text="Data contratação" name="contratacaoDesenhista" placeholder="Insira a data de contratação" />
+            <Input type="text" text="Endereço Desenhista" name="ederecoDesenhista" placeholder="Insira o Endereco do Desenhista"  />
 
-            <Input type="date" text="Data demissão" name="demissaoDesenhista" placeholder="Insira a data de demissão (se houver)" />
+            <Input type="date" text="Data de Nascimento" name="dataNascimento" placeholder="Data de Nascimento" />
+
+            <Input type="date" text="Data de Falecimento" name="dataDalecimento" placeholder="Data de Falecimento"  />
+
+            <Input type="date" text="Data de Contratação" name="dataContratação" placeholder="Data de Contratação" />
+
+            <Input type="date" text="Data de Demissão" name="dataDemissão" placeholder="Data de Demissão" />
 
             <SubmitButtom text={btnText} />
         </form>

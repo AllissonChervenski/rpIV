@@ -1,2 +1,16 @@
 {
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "mel.db.elephantsql.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "hekvxewu",
+            "database": "hekvxewu",
+            "username": "hekvxewu",
+            "password": "8R1UmnwjxkXpFYMmzn9ELJj535-RMQXg"
+        }
+    ],
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

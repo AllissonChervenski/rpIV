@@ -1,7 +1,10 @@
 package com.grupo2.editoragibi.Service.Builders;
 
 import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
+import com.grupo2.editoragibi.Data.Repositories.EdicoesGibiRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
+import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseDesenhistaBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -13,6 +16,10 @@ import java.time.LocalDate;
 public class DesenhistaEntityBuilder implements IBaseDesenhistaBuilder {
 
     private DesenhistaEntity desenhista;
+
+    @Autowired
+    EdicoesGibiRepository edicoesGibiRepository;
+
 
     public DesenhistaEntityBuilder() {
         reset();
@@ -68,4 +75,10 @@ public class DesenhistaEntityBuilder implements IBaseDesenhistaBuilder {
         reset();
         return toReturn;
     }
+
+  
+
+  
 }
+
+

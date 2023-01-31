@@ -6,5 +6,6 @@ create table historia (
     desenhista_artefinaliza_id integer references desenhista(desenhista_id),
     desenhista_desenha_id integer references desenhista(desenhista_id),
     escritor_id integer references escritor(escritor_id),
+    edicao_id integer references edicao(edicao_id),
     primary key(historia_id)
 )

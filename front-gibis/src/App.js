@@ -1,38 +1,33 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './components/pages/Home'
 import Cadastros from './components/pages/Cadastros'
-import Escritor from './components/pages/Escritor'
 import Gibis from './components/pages/Gibis'
 import Financeiro from './components/pages/FinanceiroP'
 import Container from './components/layout/Container'
 import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
-import Desenhista from './components/pages/Desenhista'
+import Desenhista from './components/pages/crudDesenhista/DesenhistaLIsta'
+import Escritor from './components/pages/crudEscritor/EscritorLista'
+import Gibi from './components/pages/crudGibi/GibiLista'
 import Transportadoras from './components/pages/Transportadoras'
 import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
 import DesenhistaP from './components/pages/DesenhistaP'
 import EscritorP from './components/pages/EscritorP'
+import NewEscritor from './components/pages/NewEscritor'
 import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
 import NewGibi from './components/pages/NewGibi'
+import NewDesenhista from './components/pages/NewDesenhista'
+
 import axios from 'axios'
+import { height } from '@mui/system'
 
 
 
-
-function App() {
-
-  
-
-        fetch("http://localhost:8080/api/gibis/view",  {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'no-cache'
-        })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
+function App() {         
+      
 
   return (
 
@@ -50,6 +45,10 @@ function App() {
 
         <Route exact path="/gibis"> 
         <Gibis />
+        </Route>
+
+        <Route exact path="/gibi"> 
+        <Gibi />
         </Route>
 
         <Route exact path="/newgibi">
@@ -72,12 +71,27 @@ function App() {
         <Escritor />
         </Route>
 
+        <Route exact path="/newescritor">
+        <NewEscritor />
+        </Route>
+
         <Route exact path="/desenhistap"> 
         <DesenhistaP />
         </Route>
 
         <Route exact path="/desenhista">
         <Desenhista />
+        </Route>
+
+        <Route exact path="/desenhista/delete">
+        <deletar />
+        </Route>
+
+        
+        <Route exact path="/newdesenhista">
+    
+          <NewDesenhista />
+
         </Route>
 
         <Route exact path="/transportadoras"> 
@@ -101,10 +115,16 @@ function App() {
         <Banca />
         </Route>
 
+        <Route exact path="/desenhistas/delete">
+        <deletar />
+        </Route>
+
 
       </Container>
       </Switch>
       <Footer />
+    
+   
     </Router>
 
     )
