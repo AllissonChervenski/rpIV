@@ -54,7 +54,7 @@ function App() {
                     </Route>
 
                     <Route exact path="/newgibi">
-                        <Nascimento />
+                        <NewGibi />
                     </Route>
 
                     <Route exact path="/gibisp">
