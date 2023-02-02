@@ -17,14 +17,14 @@ public class Desenhista extends BaseDesenhista {
     }
 
     public void setNomeDesenhista(String nomeDesenhista) throws DesenhistaInvalidoException {
-        if (nomeDesenhista == null || !Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,20}$", nomeDesenhista))
-            throw new DesenhistaInvalidoException("Nome Inválido");
+//        if (nomeDesenhista == null || !Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,20}$", nomeDesenhista))
+//            throw new DesenhistaInvalidoException("Nome Inválido");
         this.nomeDesenhista = nomeDesenhista;
     }
 
     public void setPaisNascimento(String paisNascimento) throws DesenhistaInvalidoException {
-        if (paisNascimento == null || !Pattern.matches("^[a-zA-Z\\s]([a-zA-Z])[a-zA-Z\\s]{1,20}$", paisNascimento))
-            throw new DesenhistaInvalidoException("País inválido");
+//        if (paisNascimento == null || !Pattern.matches("^[a-zA-Z\\s]([a-zA-Z])[a-zA-Z\\s]{1,20}$", paisNascimento))
+//            throw new DesenhistaInvalidoException("País inválido");
         this.paisNascimento = paisNascimento;
     }
 
@@ -43,8 +43,8 @@ public class Desenhista extends BaseDesenhista {
     }
 
     public void setEnderecoDesenhista(String enderecoDesenhista) throws DesenhistaInvalidoException {
-        if (enderecoDesenhista == null || !Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,25}$", enderecoDesenhista))
-            throw new DesenhistaInvalidoException("Endereco inválido");
+//        if (enderecoDesenhista == null || !Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,25}$", enderecoDesenhista))
+//            throw new DesenhistaInvalidoException("Endereco inválido");
         this.enderecoDesenhista = enderecoDesenhista;
     }
 

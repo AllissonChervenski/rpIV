@@ -16,8 +16,8 @@ public class Personagem extends BasePersonagem {
     private List<EdicoesGibi> edicoesGibis = new ArrayList<>();
 
     public void setNomePersonagem(String nomePersonagem) throws PersonagemInvalidoException {
-        if (nomePersonagem == null || nomePersonagem.isEmpty())
-            throw new PersonagemInvalidoException("Nome inválido");
+//        if (nomePersonagem == null || nomePersonagem.isEmpty())
+//            throw new PersonagemInvalidoException("Nome inválido");
         this.nomePersonagem = nomePersonagem;
     }
 
@@ -30,8 +30,8 @@ public class Personagem extends BasePersonagem {
     }
 
     public void setDataCriacao(LocalDate dataCriacao) throws PersonagemInvalidoException {
-        if (dataCriacao.isAfter(LocalDate.now()))
-            throw new PersonagemInvalidoException("Data inválida");
+//        if (dataCriacao.isAfter(LocalDate.now()))
+//            throw new PersonagemInvalidoException("Data inválida");
         this.dataCriacao = dataCriacao;
     }
 

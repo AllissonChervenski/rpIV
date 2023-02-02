@@ -1,7 +1,7 @@
 import LinkButton from '../layout/LinkButton'
 import styles from './Home.module.css'
 
-function DesenhistaP(){
+function PersonagensP(){
     return (
 
 
@@ -11,12 +11,12 @@ function DesenhistaP(){
         </h1>
 
 
-        <LinkButton to="/newdesenhista" text="Cadastrar novo desenhista" />
-        <LinkButton to="/desenhista" text="Ver desenhistas cadastrados" />
+        <LinkButton to="/newpersonagem" text="Cadastrar novo personagem" />
+        <LinkButton to="/personagem" text="Ver personagens cadastrados" />
 
        
       </section>
  
     )
 }
-export default DesenhistaP
+export default PersonagensP

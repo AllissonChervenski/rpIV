@@ -35,7 +35,7 @@ export default function Desenhista() {
     return (
 
         <table className="records" border="1" >
-            <caption className="caption-title">Desenhista Cadastrado</caption>
+            <caption className="caption-title">Desenhistas Cadastrados</caption>
             <thead>
             <div className="content-table">
                 <tr>
@@ -77,3 +77,6 @@ export default function Desenhista() {
 
     )
 }
+
+
+

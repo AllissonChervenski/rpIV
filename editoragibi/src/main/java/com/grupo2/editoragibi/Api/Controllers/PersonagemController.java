@@ -1,6 +1,8 @@
 package com.grupo2.editoragibi.Api.Controllers;
 
+import com.grupo2.editoragibi.Api.Requests.DesenhistaRequest;
 import com.grupo2.editoragibi.Api.Requests.PersonagemRequest;
+import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.ServiceObjects.PersonagemService;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping("/personagens/")
 public class PersonagemController {
@@ -46,7 +49,7 @@ public class PersonagemController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Object> addPersonagem(@RequestBody PersonagemRequest personagemRequest) throws Exception {
+    public ResponseEntity<Object> addPersonagem(@RequestBody PersonagemRequest personagemRequest) {
         Personagem personagem = null;
 
         try {
@@ -57,6 +60,7 @@ public class PersonagemController {
 
         return new ResponseEntity<>(personagem, HttpStatus.OK);
     }
+
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deletePersonagem(@PathVariable int id) {

@@ -21,11 +21,12 @@ caption{
 }
 
 .caption-title{
-    color: black;
+    color: rgb(68, 68, 68);
     font-size: 2rem;
     font-weight: bold;
     margin-top: 20px;
-    
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 main{
