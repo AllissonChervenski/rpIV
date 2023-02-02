@@ -113,7 +113,7 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
     }
 
     public void setGibi(BaseGibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException{
-        if(gibi instanceof Gibi){
+        if(gibi instanceof BaseGibi){
             edicoesGibi.setGibi(gibi);
         }
     }

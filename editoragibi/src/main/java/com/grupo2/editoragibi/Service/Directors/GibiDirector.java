@@ -9,6 +9,7 @@ import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 import com.grupo2.editoragibi.Service.Builders.GibiBuilder;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseGibiBuilder;
+import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.Service.Domain.Gibi;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
@@ -60,13 +61,13 @@ public class GibiDirector {
         return builder.getResult();
     }
 
-    public synchronized BaseGibi buildFromGibi(Gibi gibi,  BaseEdicoesGibi edicoesGibi) throws  EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+    public synchronized BaseGibi buildFromGibi(Gibi gibi,  EdicoesGibi edicoesGibi) throws  EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
         gibi.getEdicoesGibi().removeIf(p -> p.getEdicaoGibi_id() == edicoesGibi.getEdicaoGibi_id());
         builder.setEdicaoGibi(edicoesGibi);
         return buildFromGibi(gibi);
     }
 
-    public synchronized BaseGibi buildFromGibiEntity(GibiEntity gibi,  BaseEdicoesGibi edicoesGibi) throws  EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+    public synchronized BaseGibi buildFromGibiEntity(GibiEntity gibi,  EdicoesGibi edicoesGibi) throws  EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
         gibi.getEdicoesGibis().removeIf(p -> p.getEdicaoGibi_id() == edicoesGibi.getEdicaoGibi_id());
         builder.setEdicaoGibi(edicoesGibi);
         return buildFromGibiEntity(gibi);

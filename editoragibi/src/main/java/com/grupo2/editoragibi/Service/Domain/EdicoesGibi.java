@@ -37,13 +37,10 @@ public class EdicoesGibi extends BaseEdicoesGibi{
 
 
     @Override
-    public void setDataPub(LocalDate dataPub) throws EdicoesGibiInvalidoException {
-        if(dataPub != null && validDate(dataPub) ){
+    public void setDataPub(LocalDate dataPub)  {
+
             this.dataPub = dataPub;
-        }
-        else{
-            throw new EdicoesGibiInvalidoException("Data inválida");
-        }
+
     }
 
     private boolean validDate(LocalDate date) {

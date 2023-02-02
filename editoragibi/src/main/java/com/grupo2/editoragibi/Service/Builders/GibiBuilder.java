@@ -83,7 +83,7 @@ public class GibiBuilder  implements IBaseGibiBuilder{
 
     @Override
     public BaseGibi getResult() {
-        Gibi toReturn = gibi;
+        BaseGibi toReturn = gibi;
         reset();
         return toReturn;
     }

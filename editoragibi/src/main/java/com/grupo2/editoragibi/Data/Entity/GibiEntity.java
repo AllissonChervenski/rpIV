@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "gibi")
-public class GibiEntity extends Gibi {
+public class GibiEntity extends BaseGibi {
 
     @Id
     @Column(name = "gibi_id")

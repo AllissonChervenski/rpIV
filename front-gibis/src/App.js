@@ -18,7 +18,7 @@ import NewEscritor from './components/pages/NewEscritor'
 import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
-import Nascimento from './components/pages/NewGibi'
+import NewGibi from './components/pages/NewGibi'
 import NewDesenhista from './components/pages/NewDesenhista'
 import NewPersonagem from './components/pages/NewPersonagem'
 import PersonagensP from './components/pages/PersonagensP'
@@ -28,11 +28,10 @@ import axios from 'axios'
 import { height } from '@mui/system'
 
 
+function App() {         
+      
 
-function App() {
-
-
-    return (
+  return (
 
         <Router>
             <Navbar />
