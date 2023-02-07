@@ -13,8 +13,7 @@ import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
 import com.grupo2.editoragibi.Service.Builders.Interfaces.IBaseEdicoesGibiBuilder;
-import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
-import com.grupo2.editoragibi.Service.Domain.Personagem;
+import com.grupo2.editoragibi.Service.Domain.*;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
@@ -38,7 +37,7 @@ public class EdicoesGibiDirector {
             builder.setNumeroExemplaresImpressas(edicoesGibiRequest.getNumeroExemplaresImpressas());
             builder.setPublicada(edicoesGibiRequest.isPublicada());
             builder.setGibi(edicoesGibiRequest.getGibi());
-            builder.setHistoria(edicoesGibiRequest.getHistoria());
+            builder.setHistoria((Historia) edicoesGibiRequest.getHistoria());
             builder.setPersonagens(edicoesGibiRequest.getPersonagensId());
             builder.setEscritores(edicoesGibiRequest.getEscritorId());
       
@@ -51,7 +50,7 @@ public class EdicoesGibiDirector {
         builder.setNroEdicao(edicoesGibiEntity.getNroEdicao());
         builder.setNumeroExemplaresImpressas(edicoesGibiEntity.getNumeroExemplaresImpressas());
         builder.setPublicada(edicoesGibiEntity.isPublicada());
-        builder.setGibi(edicoesGibiEntity.getGibi());
+        builder.setGibi(edicoesGibiEntity.getGibiEntity());
         List<Integer> desenhistasId = edicoesGibiEntity.getDesenhista().stream().map(desenhista -> {
             return desenhista.getDesenhistaId();
         }).collect(Collectors.toList());
@@ -65,7 +64,7 @@ public class EdicoesGibiDirector {
         }).collect(Collectors.toList());
         builder.setEscritores(escritores);
 
-        builder.setHistoria(edicoesGibiEntity.getHistoria());
+        builder.setHistoria(edicoesGibiEntity.getHistoriaEntity());
 
         return builder.getResult();
     }
@@ -91,64 +90,64 @@ public class EdicoesGibiDirector {
         }).collect(Collectors.toList());
         builder.setEscritores(escritores);
 
-        builder.setHistoria(edicoesGibi.getHistoria());
+        builder.setHistoria((Historia) edicoesGibi.getHistoria());
 
         return builder.getResult();
     }
 
-    public  synchronized BaseEdicoesGibi buildFromEdicoesGibi(EdicoesGibi edicoesGibi, BaseGibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
+    public  synchronized BaseEdicoesGibi buildFromEdicoesGibi(EdicoesGibi edicoesGibi, Gibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
         builder.setGibi(gibi);
         return buildFromEdicoesGibi(edicoesGibi);
     }
 
-    public synchronized BaseEdicoesGibi buildFromEdicoesGibiEntity(EdicoesGibiEntity edicoesGibi, BaseGibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+    public synchronized BaseEdicoesGibi buildFromEdicoesGibiEntity(EdicoesGibiEntity edicoesGibi, Gibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
         builder.setGibi(gibi);
         return buildFromEdicoesGibiEntity(edicoesGibi);
     }
 
-    public synchronized BaseEdicoesGibi buildFromEdicoesGibi(EdicoesGibi edicoesGibi, BaseHistoria historia) throws GibiInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+    public synchronized BaseEdicoesGibi buildFromEdicoesGibi(EdicoesGibi edicoesGibi, Historia historia) throws GibiInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
         builder.setHistoria(historia);
         return buildFromEdicoesGibi(edicoesGibi);
     }
 
-    public synchronized BaseEdicoesGibi buildFromEdicoesGibiEntity(EdicoesGibiEntity edicoesGibi, BaseHistoria historia) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+    public synchronized BaseEdicoesGibi buildFromEdicoesGibiEntity(EdicoesGibiEntity edicoesGibi, Historia historia) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
         edicoesGibi.getHistoria();
         builder.setHistoria(historia);
         return buildFromEdicoesGibiEntity(edicoesGibi);
     }
 
-    public synchronized BaseEdicoesGibi buildFromEdicoesGibi(EdicoesGibi edicoesGibi, BasePersonagem personagem) throws  EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+    public synchronized BaseEdicoesGibi buildFromEdicoesGibi(EdicoesGibi edicoesGibi, Personagem personagem) throws  EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
         edicoesGibi.getPersonagem().removeIf(p -> p.getPersonagemId() == personagem.getPersonagemId());
         builder.setPersonagem(personagem);
         return buildFromEdicoesGibi(edicoesGibi);
     }
 
-    public synchronized BaseEdicoesGibi buildFromEdicoesGibiEntity(EdicoesGibiEntity edicoesGibiEntity, BasePersonagem personagem) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+    public synchronized BaseEdicoesGibi buildFromEdicoesGibiEntity(EdicoesGibiEntity edicoesGibiEntity, Personagem personagem) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
         edicoesGibiEntity.getPersonagem().removeIf(p -> p.getPersonagemId() == personagem.getPersonagemId());
         builder.setPersonagem(personagem);
         return buildFromEdicoesGibiEntity(edicoesGibiEntity);
     }
 //desenhistas
 
-    public synchronized BaseEdicoesGibi buildFromEdicoesGibi(EdicoesGibi edicoesGibi, BaseDesenhista desenhista) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+    public synchronized BaseEdicoesGibi buildFromEdicoesGibi(EdicoesGibi edicoesGibi, Desenhista desenhista) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
         edicoesGibi.getDesenhista().removeIf(p -> p.getDesenhistaId() == desenhista.getDesenhistaId());
         builder.setDesenhista(desenhista);
         return buildFromEdicoesGibi(edicoesGibi);
     }
 
-    public synchronized BaseEdicoesGibi buildFromEdicoesGibiEntity(EdicoesGibiEntity edicoesGibiEntity, BaseDesenhista desenhista) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+    public synchronized BaseEdicoesGibi buildFromEdicoesGibiEntity(EdicoesGibiEntity edicoesGibiEntity, Desenhista desenhista) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
         edicoesGibiEntity.getDesenhista().removeIf(p -> p.getDesenhistaId() == desenhista.getDesenhistaId());
         builder.setDesenhista(desenhista);
         return buildFromEdicoesGibiEntity(edicoesGibiEntity);
     }
 
-    public synchronized BaseEdicoesGibi buildFromEdicoesGibi(EdicoesGibi edicoesGibi, BaseEscritor escritor) throws  EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+    public synchronized BaseEdicoesGibi buildFromEdicoesGibi(EdicoesGibi edicoesGibi, Escritor escritor) throws  EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
         edicoesGibi.getEscritor().removeIf(p -> p.getEscritorId() == escritor.getEscritorId());
         builder.setEscritor(escritor);
         return buildFromEdicoesGibi(edicoesGibi);
     }
 
-    public synchronized BaseEdicoesGibi buildFromEdicoesGibiEntity(EdicoesGibiEntity edicoesGibiEntity, BaseEscritor escritor) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+    public synchronized BaseEdicoesGibi buildFromEdicoesGibiEntity(EdicoesGibiEntity edicoesGibiEntity, Escritor escritor) throws EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
         edicoesGibiEntity.getEscritor().removeIf(p -> p.getEscritorId() == escritor.getEscritorId());
         builder.setEscritor(escritor);
         return buildFromEdicoesGibiEntity(edicoesGibiEntity);

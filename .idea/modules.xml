@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/editoragibi.iml" filepath="$PROJECT_DIR$/editoragibi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/editoragibi/editoragibi.iml" filepath="$PROJECT_DIR$/editoragibi/editoragibi.iml" />
     </modules>
   </component>
 </project>

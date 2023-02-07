@@ -79,7 +79,7 @@ public class HistoriaEntityBuilder implements IBaseHistoriaBuilder {
 
     @Override
     public void setPersonagens(List<Integer> personagensIds) throws PersonagemInvalidoException, EscritorInvalidoException {
-        List<PersonagemEntity> personagemEntities = historiaEntity.getPersonagens();
+        List<PersonagemEntity> personagemEntities = historiaEntity.getPersonagensEntity();
         for (Integer id : personagensIds) {
             personagemEntities.add(personagemRepository.getPersonagemById(id));
         }

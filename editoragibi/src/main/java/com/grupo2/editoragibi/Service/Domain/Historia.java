@@ -1,5 +1,6 @@
 package com.grupo2.editoragibi.Service.Domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
@@ -7,12 +8,13 @@ import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import com.grupo2.editoragibi.Service.Exceptions.PersonagemInvalidoException;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-
+@Data
 public class Historia extends BaseHistoria {
 
     List<Personagem> personagens = new ArrayList<>();
@@ -56,7 +58,4 @@ public class Historia extends BaseHistoria {
         this.escritor = escritor;
     }
 
-    public List<Personagem> getPersonagens() {
-        return personagens;
-    }
 }

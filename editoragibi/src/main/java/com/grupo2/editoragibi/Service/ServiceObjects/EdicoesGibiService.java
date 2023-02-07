@@ -14,6 +14,7 @@ import com.grupo2.editoragibi.Data.Repositories.Interfaces.IHistoriaRepository;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
 import com.grupo2.editoragibi.Service.Directors.EdicoesGibiDirector;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
+import com.grupo2.editoragibi.Service.Domain.Historia;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
@@ -146,7 +147,7 @@ public class EdicoesGibiService {
     public void deleteHistoriaEdicao(Integer edicaoGibiId) throws EdicoesGibiInvalidoException, HistoriaInvalidaException {
         Optional<EdicoesGibiEntity> edicoesGibi = edicoesGibiRepository.getEdicaoGibiById(edicaoGibiId);
 
-        edicoesGibi.get().setHistoria(null);
+        edicoesGibi.get().setHistoria(new Historia());
 
         edicoesGibiRepository.save(edicoesGibi.get());
 

@@ -41,7 +41,7 @@ public class GibiDirector {
         builder.setEncData(gibiEntity.getEncData());
         builder.setInicioData(gibiEntity.getInicioData());
         builder.setTituloGibi(gibiEntity.getTituloGibi());
-        List<Integer> edicoesGibisIds = gibiEntity.getEdicoesGibis().stream().map(gibi -> {
+        List<Integer> edicoesGibisIds = gibiEntity.getEdicoesGibisEntity().stream().map(gibi -> {
             return gibi.getEdicaoGibi_id();
         }).collect(Collectors.toList());
         builder.setEdicoesGibi(edicoesGibisIds);
@@ -68,7 +68,7 @@ public class GibiDirector {
     }
     
     public synchronized BaseGibi buildFromGibiEntity(GibiEntity gibi,  EdicoesGibi edicoesGibi) throws  EdicoesGibiInvalidoException, GibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
-        gibi.getEdicoesGibis().removeIf(p -> p.getEdicaoGibi_id() == edicoesGibi.getEdicaoGibi_id());
+        gibi.getEdicoesGibisEntity().removeIf(p -> p.getEdicaoGibi_id() == edicoesGibi.getEdicaoGibi_id());
         builder.setEdicaoGibi(edicoesGibi);
         return buildFromGibiEntity(gibi);
     }

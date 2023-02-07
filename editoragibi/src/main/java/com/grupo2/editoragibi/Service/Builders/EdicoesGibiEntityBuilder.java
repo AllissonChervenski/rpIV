@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.grupo2.editoragibi.Service.Domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -93,13 +94,13 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
     }
 
     @Override
-    public void setGibi(BaseGibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException {
+    public void setGibi(Gibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException {
         edicoesGibiEntity.setGibi(gibi);
         
     }
 
     @Override
-    public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException {
+    public void setHistoria(Historia historia) throws HistoriaInvalidaException {
         edicoesGibiEntity.setHistoria(historia);
         edicoesGibiEntity.setHistoria(historia);
     }
@@ -129,7 +130,7 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
     
 
     @Override
-    public void setPersonagem(BasePersonagem personagem) {
+    public void setPersonagem(Personagem personagem) {
         edicoesGibiEntity.setPersonagem(personagem);
         edicoesGibiEntity.setPersonagem(personagem);
     }
@@ -165,7 +166,7 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
 
 
     @Override
-    public void setDesenhista(BaseDesenhista desenhista) {
+    public void setDesenhista(Desenhista desenhista) {
         edicoesGibiEntity.setDesenhista(desenhista);
         
     }
@@ -197,7 +198,7 @@ public class EdicoesGibiEntityBuilder implements IBaseEdicoesGibiBuilder {
     }
 
     @Override
-    public void setEscritor(BaseEscritor escritor) {
+    public void setEscritor(Escritor escritor) {
       edicoesGibiEntity.setEscritor(escritor);
         
     }

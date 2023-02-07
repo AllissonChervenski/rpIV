@@ -1,12 +1,16 @@
 package com.grupo2.editoragibi.Api.Requests;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.grupo2.editoragibi.Data.Entity.DesenhistaEntity;
+import com.grupo2.editoragibi.Data.Entity.EscritorEntity;
+import com.grupo2.editoragibi.Data.Entity.GibiEntity;
+import com.grupo2.editoragibi.Data.Entity.PersonagemEntity;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEdicoesGibi;
-import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
-import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
+import com.grupo2.editoragibi.Service.Domain.*;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
@@ -14,7 +18,7 @@ import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
 import lombok.Data;
 
 @Data
-public class EdicoesGibiRequest extends BaseEdicoesGibi{
+public class EdicoesGibiRequest extends EdicoesGibi {
 
 
     private List<Integer> personagensId;
@@ -23,6 +27,10 @@ public class EdicoesGibiRequest extends BaseEdicoesGibi{
     private List<Integer> escritorId;
     
     private Integer gibiId;
+
+    private Integer historiaId;
+    private Integer editoraId;
+
     private Integer editorId;
     
     @Override
@@ -44,7 +52,7 @@ public class EdicoesGibiRequest extends BaseEdicoesGibi{
     }
 
     @Override
-    public void setDataPub(LocalDate dataPub) throws EdicoesGibiInvalidoException {
+    public void setDataPub(LocalDate dataPub){
         // TODO Auto-generated method stub
         this.dataPub = dataPub;
     }
@@ -62,13 +70,13 @@ public class EdicoesGibiRequest extends BaseEdicoesGibi{
     }
 
     @Override
-    public void setGibi(BaseGibi gibi) throws EdicoesGibiInvalidoException, GibiInvalidoException {
+    public void setGibi(Gibi gibi) throws EdicoesGibiInvalidoException, GibiInvalidoException {
         // TODO Auto-generated method stub
         this.gibi = gibi;
     }
 
     @Override
-    public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException {
+    public void setHistoria(Historia historia) throws HistoriaInvalidaException {
         // TODO Auto-generated method stub
         this.historia = historia;
     }

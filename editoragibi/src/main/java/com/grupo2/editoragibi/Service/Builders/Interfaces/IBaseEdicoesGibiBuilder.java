@@ -11,7 +11,7 @@ import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseGibi;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
 import com.grupo2.editoragibi.Service.BaseObjects.BasePersonagem;
-import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
+import com.grupo2.editoragibi.Service.Domain.*;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
@@ -30,27 +30,27 @@ public interface IBaseEdicoesGibiBuilder{
 
     public void setGibi(Integer gibiId) throws GibiInvalidoException, EdicoesGibiInvalidoException;
 
-    public void setGibi(BaseGibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException;
+    public void setGibi(Gibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException;
 
-    public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException;
+    public void setHistoria(Historia historia) throws HistoriaInvalidaException;
 
     public void setHistoria(Integer historiaId) throws HistoriaInvalidaException;
 
     public void setPersonagens(List<Integer> personagensId) throws PersonagemInvalidoException, EscritorInvalidoException;
 
-    public void setPersonagem(BasePersonagem personagem);
+    public void setPersonagem(Personagem personagem);
 
     public void setPersonagem(Integer personagemId) throws PersonagemInvalidoException, EscritorInvalidoException;
 
     public void setDesenhistas(List<Integer> desenhistaId) throws DesenhistaInvalidoException;
 
-    public void setDesenhista(BaseDesenhista desenhista);
+    public void setDesenhista(Desenhista desenhista);
 
     public void setDesenhista(Integer desenhistaId) throws DesenhistaInvalidoException;
 
     public void setEscritores(List<Integer> escritorId) throws EscritorInvalidoException, PersonagemInvalidoException;
   
-    public void setEscritor(BaseEscritor escritor);
+    public void setEscritor(Escritor escritor);
 
     public void setEscritor(Integer escritorId) throws EscritorInvalidoException, PersonagemInvalidoException;
 

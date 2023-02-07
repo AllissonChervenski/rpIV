@@ -1,8 +1,11 @@
 package com.grupo2.editoragibi.Data.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
-import com.grupo2.editoragibi.Service.BaseObjects.BaseHistoria;
+import com.grupo2.editoragibi.Service.Domain.Historia;
+import com.grupo2.editoragibi.Service.Domain.Personagem;
 import com.grupo2.editoragibi.Service.Exceptions.DesenhistaInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
@@ -18,7 +21,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "historia")
-public class HistoriaEntity extends BaseHistoria implements Serializable {
+public class HistoriaEntity extends Historia  {
 
     public static final Long serialVersionUID = 1L;
 
@@ -38,35 +41,24 @@ public class HistoriaEntity extends BaseHistoria implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "desenhista_artefinaliza_id")
-    private DesenhistaEntity artefinalizador;
+    private DesenhistaEntity artefinalizadorEntity;
 
     @ManyToOne
     @JoinColumn(name = "desenhista_desenha_id")
-    private DesenhistaEntity desenhista;
+    private DesenhistaEntity desenhistaEntity;
 
     @ManyToOne
     @JoinColumn(name = "escritor_id")
-    private EscritorEntity escritor;
+    private EscritorEntity escritorEntity;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "historia_personagem", joinColumns = {@JoinColumn(name = "historia_id")}, inverseJoinColumns = {@JoinColumn(name = "personagem_id")})
-    List<PersonagemEntity> personagens = new ArrayList<>();
+    List<PersonagemEntity> personagensEntity = new ArrayList<>();
 
-    @OneToOne(mappedBy = "historia")
-    private EdicoesGibiEntity edicoesGibi;
+    @OneToOne(mappedBy = "historiaEntity")
+    private EdicoesGibiEntity edicoesGibiEntity;
     
-    @Override
-    public void setArtefinalizador(BaseDesenhista artefinalizador) throws HistoriaInvalidaException, DesenhistaInvalidoException {
-        this.artefinalizador = (DesenhistaEntity) artefinalizador;
-    }
 
-    @Override
-    public void setDesenhista(BaseDesenhista desenhista) throws DesenhistaInvalidoException {
-        this.desenhista = (DesenhistaEntity) desenhista;
-    }
 
-    @Override
-    public void setEscritor(BaseEscritor escritor) throws PersonagemInvalidoException, EscritorInvalidoException {
-        this.escritor = (EscritorEntity) escritor;
-    }
+
 }

@@ -62,7 +62,7 @@ public class PersonagemDirector {
 
     public synchronized BasePersonagem buildFromPersonagemEntity(PersonagemEntity personagemEntity, BaseEdicoesGibi edicoes) throws PersonagemInvalidoException,
             EscritorInvalidoException {
-        personagemEntity.getEdicoes().removeIf(e -> e.getEdicaoGibi_id() == edicoes.getEdicaoGibi_id());
+        personagemEntity.getEdicoesEntity().removeIf(e -> e.getEdicaoGibi_id() == edicoes.getEdicaoGibi_id());
         builder.setEdicaoGibi(edicoes);
         return buildFromPersonagemEntity(personagemEntity);
     }

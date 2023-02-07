@@ -76,7 +76,7 @@ public class GibiService {
                     "GibiEntity com id " + gibiId + " não existe"
             );
         } else {
-            if (gibiRepository.getGibiById(gibiId).isPresent() && gibiRepository.getGibiById(gibiId).get().getEdicoesGibis().size() == 0) {
+            if (gibiRepository.getGibiById(gibiId).isPresent() && gibiRepository.getGibiById(gibiId).get().getEdicoesGibisEntity().size() == 0) {
                 gibiRepository.deleteGibi(gibiId);
             } else {
                 throw new IllegalStateException(
@@ -127,7 +127,7 @@ public class GibiService {
         Optional<GibiEntity> gibi = gibiRepository.getGibiById(gibiId);
 
         if (edicoesGibiOptional.isPresent() && gibi.isPresent()) {
-                gibi.get().getEdicoesGibis().add(edicoesGibiOptional.get());
+                gibi.get().getEdicoesGibisEntity().add(edicoesGibiOptional.get());
         } else {
             throw new EdicoesGibiInvalidoException("Edicao nao encontrada");
         }

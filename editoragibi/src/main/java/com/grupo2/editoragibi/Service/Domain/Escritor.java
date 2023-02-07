@@ -3,15 +3,16 @@ package com.grupo2.editoragibi.Service.Domain;
 import com.grupo2.editoragibi.Service.BaseObjects.BaseEscritor;
 import com.grupo2.editoragibi.Service.Exceptions.EscritorInvalidoException;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-
+@Data
 public class Escritor extends BaseEscritor {
 
-    @JsonBackReference
+
     private List<Personagem> personagens = new ArrayList<>();
 
     @Override
@@ -47,7 +48,5 @@ public class Escritor extends BaseEscritor {
         this.dataDemissao = dataDemissao;
     }
 
-    public List<Personagem> getPersonagens() {
-        return personagens;
-    }
+
 }

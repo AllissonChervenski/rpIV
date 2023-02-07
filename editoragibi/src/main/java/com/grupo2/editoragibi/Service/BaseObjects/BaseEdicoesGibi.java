@@ -2,6 +2,10 @@ package com.grupo2.editoragibi.Service.BaseObjects;
 
 import java.time.LocalDate;
 
+import com.grupo2.editoragibi.Data.Entity.GibiEntity;
+import com.grupo2.editoragibi.Service.Domain.Editora;
+import com.grupo2.editoragibi.Service.Domain.Gibi;
+import com.grupo2.editoragibi.Service.Domain.Historia;
 import com.grupo2.editoragibi.Service.Exceptions.EdicoesGibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.GibiInvalidoException;
 import com.grupo2.editoragibi.Service.Exceptions.HistoriaInvalidaException;
@@ -14,14 +18,14 @@ public abstract class BaseEdicoesGibi {
     protected boolean publicada;
     protected int numeroExemplaresImpressas;
 
-    protected BaseGibi gibi;
-    protected BaseHistoria historia;
-    protected BaseEditora editora;
+    protected Gibi gibi;
+    protected Historia historia;
+    protected Editora editora;
 
-    public BaseEditora getEditora() {
+    public Editora getEditora() {
         return editora;
     }
-    public void setEditora(BaseEditora editora) {
+    public void setEditora(Editora editora) {
         this.editora = editora;
     }
 
@@ -31,15 +35,15 @@ public abstract class BaseEdicoesGibi {
     public void setNumeroExemplaresImpressas(int numeroExemplaresImpressas) {
         this.numeroExemplaresImpressas = numeroExemplaresImpressas;
     }
-    public BaseGibi getGibi() {
+    public Gibi getGibi() {
         return gibi;
     }
-    public abstract void setGibi(BaseGibi gibi) throws EdicoesGibiInvalidoException, GibiInvalidoException;
+    public abstract void setGibi(Gibi gibi) throws EdicoesGibiInvalidoException, GibiInvalidoException;
 
     public BaseHistoria getHistoria() {
         return historia;
     }
-    public abstract void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException;
+    public abstract void setHistoria(Historia historia) throws HistoriaInvalidaException;
 
     public int getEdicaoGibi_id() {
         return edicaoGibi_id;

@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "gibi")
-public class GibiEntity extends BaseGibi {
+public class GibiEntity extends Gibi {
 
     @Id
     @Column(name = "gibi_id")
@@ -32,11 +32,11 @@ public class GibiEntity extends BaseGibi {
     @Column(name = "data_encerramento")
     private LocalDate encData;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gibi")
-    private List<EdicoesGibiEntity> edicoesGibis = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gibiEntity")
+    private List<EdicoesGibiEntity> edicoesGibisEntity = new ArrayList<>();
 
 
     public void setEdicaoGibi(EdicoesGibiEntity edicoes) {
-        this.edicoesGibis.add(edicoes);
+        this.edicoesGibisEntity.add(edicoes);
     }
 }

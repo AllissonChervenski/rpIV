@@ -1,10 +1,13 @@
 package com.grupo2.editoragibi.Data.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.grupo2.editoragibi.Service.Domain.EdicoesGibi;
 import com.grupo2.editoragibi.editor.Editor;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +17,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "edicao")
-public class EdicoesGibiEntity extends EdicoesGibi {
+public class EdicoesGibiEntity extends EdicoesGibi{
 
     @Id
     @GeneratedValue(
@@ -38,15 +41,15 @@ public class EdicoesGibiEntity extends EdicoesGibi {
 
     @ManyToOne
     @JoinColumn(name = "gibi_id")
-    private GibiEntity gibi;
+    private GibiEntity gibiEntity;
 
     @ManyToOne
     @JoinColumn(name = "editor_id")
     private Editor editor;
-    
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinTable(name = "edicoes_historia", joinColumns = {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "historia_id")})
-    private HistoriaEntity historia;
+    private HistoriaEntity historiaEntity;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "edicoes_escritor", joinColumns = {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "escritor_id")})
@@ -56,12 +59,12 @@ public class EdicoesGibiEntity extends EdicoesGibi {
     @JoinTable(name = "edicoes_personagem", joinColumns =  {@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "personagem_id")})
     private List<PersonagemEntity> personagemEntity = new ArrayList<>();
 
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "edicoes_desenhista", joinColumns ={@JoinColumn(name = "edicao_id")}, inverseJoinColumns = {@JoinColumn(name = "desenhista_id")})
     private List<DesenhistaEntity> desenhistaEntity = new ArrayList<>();
 
 
-    public HistoriaEntity getHistoriaEntity() {
-        return historia;
-    }
+
+
 }

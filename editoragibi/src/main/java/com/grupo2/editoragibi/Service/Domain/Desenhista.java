@@ -12,9 +12,7 @@ public class Desenhista extends BaseDesenhista {
 
     List<EdicoesGibi> edicoesGibi = new ArrayList<>();
     
-    public List<EdicoesGibi> getEdicoesGibi() {
-        return edicoesGibi;
-    }
+
 
     public void setNomeDesenhista(String nomeDesenhista) throws DesenhistaInvalidoException {
         if (nomeDesenhista == null || !Pattern.matches("^[a-zà-úA-ZÀ-Ú\\s]([a-zà-úA-ZÀ-Ú])[a-zà-úA-ZÀ-Ú\\s]{1,20}$", nomeDesenhista))

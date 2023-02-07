@@ -1,6 +1,7 @@
 package com.grupo2.editoragibi.Data.Entity;
 
 import com.grupo2.editoragibi.Service.BaseObjects.BaseDesenhista;
+import com.grupo2.editoragibi.Service.Domain.Desenhista;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import java.util.List;
 @Data
 @Table(name ="desenhista")
 @Entity
-public class DesenhistaEntity extends BaseDesenhista implements Serializable {
+public class DesenhistaEntity extends Desenhista {
 
     public static final Long serialVersionUID = 1L;
 

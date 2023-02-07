@@ -112,10 +112,9 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
         edicoesGibi.setGibi(gibi.getGibiById(gibiId).get());
     }
 
-    public void setGibi(BaseGibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException{
-        if(gibi instanceof BaseGibi){
+    public void setGibi(Gibi gibi) throws GibiInvalidoException, EdicoesGibiInvalidoException{
             edicoesGibi.setGibi(gibi);
-        }
+
     }
 
     @Override
@@ -124,7 +123,7 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
     }
 
     @Override
-    public void setHistoria(BaseHistoria historia) throws HistoriaInvalidaException{
+    public void setHistoria(Historia historia) throws HistoriaInvalidaException{
         if(historia instanceof Historia){
             edicoesGibi.setHistoria(historia);
         }
@@ -194,7 +193,7 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
     }
 
     @Override
-    public void setPersonagem(BasePersonagem personagem) {
+    public void setPersonagem(Personagem personagem) {
         // TODO Auto-generated method stub
         edicoesGibi.setPersonagem(personagem);
     }
@@ -206,7 +205,7 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
     }
 
     @Override
-    public void setDesenhista(BaseDesenhista desenhista) {
+    public void setDesenhista(Desenhista desenhista) {
         // TODO Auto-generated method stub
         edicoesGibi.setDesenhista(desenhista);
     }
@@ -218,7 +217,7 @@ public class EdicoesGibiBuilder implements IBaseEdicoesGibiBuilder {
     }
 
     @Override
-    public void setEscritor(BaseEscritor escritor) {
+    public void setEscritor(Escritor escritor) {
         // TODO Auto-generated method stub
         edicoesGibi.setEscritor(escritor);
     }
