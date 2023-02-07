@@ -78,6 +78,27 @@
     background: rgba(0, 0, 0, 0.09);
     border-radius: 23px;
   }
+  @media (max-width: 768px) {
+    .home_container {
+      padding: 2em;
+    }
+    
+    .home_container h1 {
+      font-size: 1.5em;
+    }
+    
+    .home_container img {
+      width: 250px;
+    }
+    
+    .home_container home,
+    .home_container rectangleOne,
+    .home_container rectangleTwo,
+    .home_container grayRectangle {
+      width: 100%;
+      left: 0;
+    }
+  }
 
   
   

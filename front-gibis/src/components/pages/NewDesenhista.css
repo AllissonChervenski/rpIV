@@ -207,3 +207,29 @@ input:disabled{
     font-weight: bold;
     
 }
+@media (max-width: 700px) {
+    .container_form {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .container_form h1 {
+      font-size: 1.5em;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .form_grupo .legenda {
+      font-size: 1.2em;
+    }
+    
+    .submit_btn {
+      font-size: 1.5em;
+    }
+    
+    .dropdown, .form_input {
+      font-size: 1.2em;
+    }
+  }
+  

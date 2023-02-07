@@ -119,3 +119,33 @@
     color: #FFFFFF;
   }
 
+  @media only screen and (max-width: 768px) {
+    .EditorHomePage_container {
+      padding: 2em;
+    }
+    
+    .EditorHomePage_container rectangleOne,
+    .EditorHomePage_container rectangleTwo,
+    .EditorHomePage_container rectangleThree {
+      width: 80%;
+      left: 10%;
+    }
+    
+    .EditorHomePage_container grayRectangle {
+      width: 90%;
+      left: 5%;
+    }
+    
+    .EditorHomePage_container olaEditor {
+      font-size: 18px;
+      line-height: 22px;
+    }
+    
+    .EditorHomePage_container gerirGibisText,
+    .EditorHomePage_container gerirPersonagensText,
+    .EditorHomePage_container gerirEscritoresText {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+  
