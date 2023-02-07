@@ -14,7 +14,7 @@ import Acervo from './components/pages/Acervo'
 import Login from './components/pages/Login'
 import DesenhistaP from './components/pages/DesenhistaP'
 import EscritorP from './components/pages/EscritorP'
-import NewEscritor from './components/pages/NewEscritor'
+import NewEscritor from './components/pages/crudEscritor/NewEscritor'
 import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
@@ -23,6 +23,9 @@ import NewDesenhista from './components/pages/NewDesenhista'
 import NewPersonagem from './components/pages/NewPersonagem'
 import PersonagensP from './components/pages/PersonagensP'
 import Personagem from './components/pages/crudPersonagem/PersonagemLista'
+import UpdateDesenhista from './components/pages/crudDesenhista/FormUpdate';
+import  UpdateEscritor from './components/pages/crudEscritor/FormUpdateEscritor'
+
 
 import axios from 'axios'
 import { height } from '@mui/system'
@@ -81,6 +84,10 @@ function App() {
                         <DesenhistaP />
                     </Route>
 
+                    <Route exact path="/updateescritor">
+                        < UpdateEscritor/>
+                    </Route>
+
                     <Route exact path="/desenhista">
                         <Desenhista />
                     </Route>
@@ -89,15 +96,21 @@ function App() {
                         <deletar />
                     </Route>
 
-
-                    <Route exact path="/newdesenhista">
-
-                        <NewDesenhista />
-
+                    <Route exact path="/desenhista/delete">
+                    <deletar />
                     </Route>
 
-                    <Route exact path="/transportadoras">
-                        <Transportadoras />
+                    
+                    <Route exact path="/newdesenhista">
+                    <NewDesenhista />
+                    </Route>
+
+                    <Route exact path="/updatedesenhista">
+                    < UpdateDesenhista/>
+                    </Route>
+
+                    <Route exact path="/transportadoras"> 
+                    <Transportadoras />
                     </Route>
 
 

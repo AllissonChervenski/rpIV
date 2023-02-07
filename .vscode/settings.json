@@ -1,5 +1,5 @@
 {
-    "sqltools.connections": [
+ "sqltools.connections": [
         {
             "previewLimit": 50,
             "server": "mel.db.elephantsql.com",
@@ -13,4 +13,5 @@
     ],
     "java.compile.nullAnalysis.mode": "automatic",
     "java.configuration.updateBuildConfiguration": "interactive"
+
 }

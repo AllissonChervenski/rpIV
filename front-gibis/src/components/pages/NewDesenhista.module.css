@@ -13,6 +13,11 @@
 
 }
 
+input:disabled{
+    color: gray;
+    border: 1px solid gray;
+}
+
 .container_form h1 {
     text-align: center;
     font-size: 2.3em;
