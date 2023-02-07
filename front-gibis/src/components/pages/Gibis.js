@@ -1,11 +1,10 @@
 import styles from './Gibis.module.css'
-import GibisForm from '../project/GibisForm'
 function Gibis() {
 
   async function getContent() {
 
     try{
-      const response = await fetch('http://localhost:8080/gibis/view',{
+      const response = await fetch('http://localhost:8080/',{
           method: 'GET',
           mode: 'cors',
           cache: 'no-cache'
@@ -37,19 +36,7 @@ function show(atr) {
     );
 
 
-   //document.querySelector('.gibis_container').appendChild(`<div className= "gibis_info" style={{"border": "1px solid"}}></div>`);
-      
-  /*  if(output.childNodes.length === 0){
-          document.querySelector(".gibis_info").innerHTML +=`<h3> Título:  ${atr[gibi].titulo} </h3>` + `<h4> Data de inicio:  ${atr[gibi].inicioData} </h4>`; 
-          if(atr[gibi].encData != null  ){
-            document.querySelector(".gibis_info").innerHTML += `<h4> Data do fim: ${atr[gibi].encData}`
-          }
-        }
-        else{
-          document.querySelector(".gibis_container").innerHTML += `<div><div className= "gibis_info" style={{"border": "1px solid"}}></div></div>`
-        }
-      
-    */    
+    
   }
 
   return(

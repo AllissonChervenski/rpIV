@@ -20,3 +20,4 @@ public interface IGibiRepository extends JpaRepository<GibiEntity, Integer>{
     Optional<EdicoesGibiEntity> findEdicaoGibiById(Integer id);
 
 }
+

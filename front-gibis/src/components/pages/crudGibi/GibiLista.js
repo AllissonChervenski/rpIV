@@ -6,16 +6,16 @@ import '../../../css/records.css'
 import '../../../css/button.css'
 import '../../../css/style.css'
 import '../../../css/main.css'
-import {deleteGibi} from  './deletar'
-<script>
 
-</script>
+axios.defaults.headers.put['Access-Control-Allow-Origin'] = '*';
+
 export default function Gibi() {
   const [gibis, setGibis] = useState([]);
-
+  const [query, setQuery] = useState("");
   useEffect(() => {
-    getGibis();
-  }, []);
+    getGibis(query);
+  }, [query]);
+  
 
   const getGibis = async () => {
     await api.get("/gibis/all").then((response) => {
@@ -24,15 +24,20 @@ export default function Gibi() {
     });
   };
 
+    // deleteDesenhista(desenhistaId)
 
-const delGibi = (gibiId)=>{
-  // deleteDesenhista(desenhistaId)
-  
+const delGibi = (gibiId)=>{  
  axios.delete(`http://localhost:8080/gibis/deleteGibi/${gibiId}`, 
  alert("Gibi deletado com sucesso!!"),
  window.location.reload(false)
   )
   
+ 
+}
+
+    // updateGibi(gibi) 
+async function updateGibi(gibi){
+  localStorage.setItem('gibi', JSON.stringify(gibi));
 }
   return (   
    
@@ -59,7 +64,7 @@ const delGibi = (gibiId)=>{
               <td className="conteudo">{moment(gibi.encData).format('DD/MM/YYYY')}</td>
             
               <td>
-                <button  className="acoes" type="button" class="button green" id="edit-${gibiId}" >Editar</button>
+                <a id="btnUpdateGibi" className="acoes button blue" type="button " onClick={() =>updateGibi(gibi)} href="/updategibi"> Editar</a>
                 <button className="acoes" type="button" class="button red" onClick={() =>delGibi(gibi.gibi_id)}>Delete</button>
             </td>
             </tr>

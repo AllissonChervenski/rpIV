@@ -6,13 +6,6 @@ import '../../../css/records.css'
 import '../../../css/button.css'
 import '../../../css/style.css'
 import '../../../css/main.css'
-/*import {deleteDesenhista} from  './deletar'
-import { NavigateBefore } from "@material-ui/icons";
-import {actionDesenSelecionado} from "./actionDesenSelecionado"
-import { isPropertyName } from "typescript";
-import { useHistory } from 'react-router-dom';
-import NewDesenhista from "../NewDesenhista";
-*/
 
 axios.defaults.headers.put['Access-Control-Allow-Origin'] = '*';
 

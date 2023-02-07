@@ -78,42 +78,46 @@ public class GibiService {
             }
         }
 
-    }
+    } 
 
-    @Transactional
-    public void updateGibi(Integer gibiId, String titulo, LocalDate inicio, LocalDate enc, EdicoesGibiEntity edicoes) throws IllegalStateException, GibiInvalidoException {
+
+
+       public Gibi updateGibi(int gibiId, String titulo, LocalDate inicio, LocalDate enc, EdicoesGibiEntity edicoes) throws IllegalStateException, GibiInvalidoException, EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException {
         GibiEntity gibi = gibiRepository.getGibiById(gibiId).orElseThrow(
-                () -> new IllegalStateException("GibiEntity com id" + gibiId + " não existe"));
+                () -> new IllegalStateException("GibiEntity com id: " + gibiId + " não existe"));
 
         if (titulo != null &&
-                titulo.length() > 0 &&
-                !Objects.equals(gibi.getTituloGibi(), titulo)) {
+                titulo.trim().length() > 0 &&
+                !gibi.getTituloGibi().equals(titulo)) {
             gibi.setTituloGibi(titulo);
         }
 
         if (inicio != null) {
-            if (inicio.isBefore(gibi.getEncData())) {
-                gibi.setInicioData(inicio);
-            } else if (gibi.getEncData() == null) {
+            if (gibi.getEncData() == null || inicio.isBefore(gibi.getEncData())) {
                 gibi.setInicioData(inicio);
             } else {
-                throw new IllegalArgumentException("Data de inicio não pode ser após data de encerramento");
+                throw new IllegalStateException("Data de inicio não pode ser após data de encerramento");
             }
         }
-        if (gibi.getInicioData() != null) {
-            if (enc != null) {
-                if (enc.isAfter(gibi.getInicioData())) {
-                    gibi.setEncData(enc);
-                } else {
-                    throw new IllegalArgumentException("Data de encerramento não pode ser antes da data de inicio");
-                }
+        if (enc != null && gibi.getInicioData() != null) {
+            if (enc.isAfter(gibi.getInicioData())) {
+                gibi.setEncData(enc);
+            } else {
+                throw new IllegalStateException("Data de encerramento não pode ser antes da data de inicio");
             }
         }
         if(edicoes != null){
             gibi.setEdicaoGibi(edicoes);
         }
-        gibiRepository.addGibi(gibi);
+       // return gibiRepository.updateGibi(gibiId,gibi);
+       return (Gibi) gibiDirector.buildFromGibiEntity(gibiRepository.updateGibi(gibiId, gibi));
+   
     }
+
+
+
+    
+/* */
 
     public void addEdicaoGibi(Integer gibiId, Integer edicaoGibiId) throws GibiInvalidoException, EdicoesGibiInvalidoException, PersonagemInvalidoException, DesenhistaInvalidoException, EscritorInvalidoException, HistoriaInvalidaException {
         Optional<EdicoesGibiEntity> edicoesGibiOptional = edicoesGibiRepository.getEdicaoGibiById(edicaoGibiId);
@@ -132,6 +136,10 @@ public class GibiService {
             throw new EdicoesGibiInvalidoException("Edicao nao encontrada");
         }
         gibiRepository.addGibi((GibiEntity) gibiDirector.buildFromGibi(gibi.get()));
+    }
+
+    public Gibi getGibiById(int gibiId) {
+        return null;
     }
 
 }

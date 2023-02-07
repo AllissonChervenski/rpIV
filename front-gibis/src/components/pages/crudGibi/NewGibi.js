@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import api from "../../services/api";
-import styles from './NewDesenhista.css'
+import api from "../../../services/api";
+import styles from '../../pages/NewDesenhista.css'
 
 
 function NewGibi() {
@@ -39,7 +39,7 @@ function NewGibi() {
           </div>
           <div class="form_grupo">
             <label for="encData" class="form_label"><b>Data de encerramento da Publicação:</b></label>
-            <input type="date" name="encData" class="form_input" id="encData" placeholder="Data de encerramento da publicação" value={encData} onChange={(event) => setDataEncerramento(event.target.value)} />
+            <input type="date" disabled name="encData" class="form_input" id="encData" placeholder="Data de encerramento da publicação" value={encData} onChange={(event) => setDataEncerramento(event.target.value)} />
           </div>
 
           <div class="submit">

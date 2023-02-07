@@ -18,10 +18,11 @@ import NewEscritor from './components/pages/crudEscritor/NewEscritor'
 import GibisP from './components/pages/GibisP'
 import Banca from './components/pages/Banca'
 import EditorHomePage from './components/pages/EditorHomePage'
-import Nascimento from './components/pages/NewGibi'
+import Nascimento from './components/pages/crudGibi/NewGibi'
 import NewDesenhista from './components/pages/NewDesenhista'
 import UpdateDesenhista from './components/pages/crudDesenhista/FormUpdate';
 import  UpdateEscritor from './components/pages/crudEscritor/FormUpdateEscritor'
+import UpdateGibi from './components/pages/crudGibi/FormUpdateGibi'
 
 import axios from 'axios'
 
@@ -50,6 +51,10 @@ function App() {
 
         <Route exact path="/gibi"> 
         <Gibi />
+        </Route>
+
+        <Route exact path="/updategibi">
+        < UpdateGibi/>
         </Route>
 
         <Route exact path="/newgibi">

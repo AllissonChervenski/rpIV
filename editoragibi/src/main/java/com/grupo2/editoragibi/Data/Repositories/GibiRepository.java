@@ -19,22 +19,18 @@ public class GibiRepository {
 
     public Optional<GibiEntity> getGibiById(Integer id) throws GibiInvalidoException{
         Optional<GibiEntity> gibis = iGibiRepository.findById(id);
-        //if(gibis.isEmpty())
-        //    throw new GibiInvalidoException("O gibi não existe");
+        
         return gibis;
     }
 
     public List<GibiEntity> getGibis() throws GibiInvalidoException{
-        // if(iGibiRepository.findAll().isEmpty())
-        //    throw new GibiInvalidoException("Nenhum gibi encontrado");
+        
 
         return iGibiRepository.findAll();
     }
 
     public Optional<GibiEntity> getGibiByTitulo(String titulo) throws GibiInvalidoException{
-        //if(!iGibiRepository.findGibiByTitulo(titulo).isPresent()){
-        //    throw new GibiInvalidoException("Gibi não encontrado");
-        //}
+       
         return iGibiRepository.findGibiByTitulo(titulo);
     }
 
@@ -61,3 +57,7 @@ public class GibiRepository {
 
 
 }
+
+
+
+

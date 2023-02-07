@@ -19,7 +19,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
-@RequestMapping("/gibis/")
+@RequestMapping("/gibis")
 public class GibiController {
 
     private final GibiService gibiService;
@@ -27,6 +27,20 @@ public class GibiController {
     @Autowired
     public GibiController(GibiService gibiService) {
         this.gibiService = gibiService;
+    }
+
+    @GetMapping("/{gibiId}")
+    public ResponseEntity<Object> getGibiById(@PathVariable int gibiId) {
+
+        Gibi gibi = null;
+
+        try {
+            gibi = gibiService.getGibiById(gibiId);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+
+        return new ResponseEntity<>(gibi, HttpStatus.OK);
     }
 
     @GetMapping(path="/all")
@@ -53,12 +67,6 @@ public class GibiController {
         return new ResponseEntity<>(gibi, HttpStatus.OK);
     }
 
-    /*@PostMapping(path = "{gibiId}&{edicaoId}")
-    public void addEdicaoGibi(@PathVariable("gibiId") Long gibiId,@PathVariable("edicaoId") Long edicaoGibiId){
-        gibiService.addEdicaoGibi(gibiId, edicaoGibiId);
-    }
-    */
-
     @DeleteMapping(path = "deleteGibi/{gibiId}")
     @CrossOrigin( origins = "http://localhost:3000")
     public ResponseEntity<Object> deleteGibi(@PathVariable("gibiId") Integer gibiId){
@@ -72,19 +80,22 @@ public class GibiController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PutMapping(path = "editar/{gibiId}")
+
+    @PutMapping(path = "update/{gibiId}")
     public ResponseEntity<Object> updateGibi(@PathVariable("gibiId") Integer gibiId,
                                              @RequestParam(required = false) String titulo,
                                              @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
                                              @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate enc,
-                                             @RequestParam(required = false) EdicoesGibiEntity edicoes){
+                                             @RequestParam(required = false) EdicoesGibiEntity edicoes) throws EdicoesGibiInvalidoException, HistoriaInvalidaException, PersonagemInvalidoException, EscritorInvalidoException, DesenhistaInvalidoException{
+
+        Gibi gibi = null;
         try {
-            gibiService.updateGibi(gibiId, titulo, inicio, enc, edicoes);
+             gibi = gibiService.updateGibi(gibiId, titulo, inicio, enc, edicoes);
         } catch (IllegalStateException | GibiInvalidoException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(gibi, HttpStatus.OK);
+
     }
-
-
 }
+
