@@ -11,3 +11,22 @@ body,
   background-color: #efefef;
   height: 100%;
 }
+.home_container {
+  text-align: center;
+  padding: 50px;
+}
+
+@media (max-width: 600px) {
+  .home_container {
+    padding: 25px;
+  }
+
+  h1 span {
+    display: block;
+    font-size: 1.5em;
+  }
+
+  img {
+    width: 100%;
+  }
+}

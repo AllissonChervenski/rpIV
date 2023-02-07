@@ -1,4 +1,4 @@
-table*{margin:0; padding: 0; box-sizing: border-box;}
+table*{margin:2px; padding: 0; box-sizing: border-box;}
 
 .content{display:flex; margin: auto;}
 
@@ -14,11 +14,15 @@ table*{margin:0; padding: 0; box-sizing: border-box;}
     .rTable tbody td{display: flex; flex-direction: column; }
 }
 
-@media only screen and (min-width: 1200px){
+@media only screen and (min-width: 767px){
     .content{width:100%;}
     .rTable tbody tr td:nth-child(1){width:10%;}
     .rTable tbody tr td:nth-child(2){width:30%;}
     .rTable tbody tr td:nth-child(3){width:20%;}
     .rTable tbody tr td:nth-child(4){width:10%;}
     .rTable tbody tr td:nth-child(5){width:30%;}
+    
 }
+
+
+  
